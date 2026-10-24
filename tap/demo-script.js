@@ -33,3 +33,14 @@ export const demoScript = [
 ];
 
 export const speakerLabels = { ai: 'Clearway assistant', maya: 'Maya', sam: 'Sam · Clearway' };
+
+// Optional, scripted follow-up in the same conversation after the ending screen.
+export const feedbackScript = [
+  { type: 'line', id: 'f01', speaker: 'ai', text: 'Hey Maya. Before you go, could you help us with something? How did that feel?', beats: ['Hey Maya. Before you go, could you help us with something?', 'How did that feel?'] },
+  { type: 'line', id: 'f02', speaker: 'maya', text: "Honestly, good. I thought I'd have to explain everything again when Sam joined, but he already knew." },
+  { type: 'line', id: 'f03', speaker: 'ai', text: "I'm glad. Was anything confusing?" },
+  { type: 'line', id: 'f04', speaker: 'maya', text: "Just one thing. After Face ID, I wasn't sure the old transfer had been cancelled." },
+  { type: 'line', id: 'f05', speaker: 'ai', text: "That's helpful. We should have shown that more clearly. I'll share it with the Clearway team. Thank you, Maya.", beats: ["That's helpful. We should have shown that more clearly.", "I'll share it with the Clearway team. Thank you, Maya."] },
+  { type: 'line', id: 'f06', speaker: 'maya', text: 'Yeah, of course.' },
+  { type: 'card', style: 'feedback-receipt', label: 'Feedback', title: 'Shared with Clearway', detail: 'Your note about the transfer confirmation was saved.' },
+];

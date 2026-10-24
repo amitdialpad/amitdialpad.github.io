@@ -114,3 +114,53 @@ viewport.addEventListener('touchend', event => {
   if (Math.abs(distance) > 45) move(distance < 0 ? 1 : -1);
 }, { passive: true });
 window.setInterval(() => { if (!paused && !moving && !document.hidden && !reduceMotion.matches) move(1); }, 7000);
+
+// Explain the handoff as the visitor reaches it, then leave the whole exchange readable.
+const staySection = document.getElementById('stay-in-app');
+const stayLineArt = staySection?.querySelector('.stay-line-art');
+const stayConversation = document.querySelector('.stay-conversation');
+if (stayConversation && !reduceMotion.matches) {
+  const beats = [...stayConversation.querySelectorAll('.stay-message, .stay-join')];
+  let delay = 160;
+  let joinDelay = 0;
+  for (const beat of beats) {
+    beat.style.setProperty('--reveal-delay', `${delay}ms`);
+    if (beat.classList.contains('stay-message')) {
+      const words = beat.textContent.trim().split(/\s+/);
+      beat.replaceChildren();
+      words.forEach((word, index) => {
+        if (index) beat.append(' ');
+        const span = document.createElement('span');
+        span.className = 'stay-word';
+        span.textContent = word;
+        span.style.setProperty('--word-delay', `${delay + 180 + index * 110}ms`);
+        beat.append(span);
+      });
+      delay += 180 + words.length * 110 + 440;
+    } else {
+      joinDelay = delay;
+      delay += 760;
+    }
+  }
+  if (staySection && joinDelay) {
+    staySection.style.setProperty('--stay-art-first-duration', `${joinDelay - 340}ms`);
+    staySection.style.setProperty('--stay-art-second-duration', `${joinDelay - 560}ms`);
+    staySection.style.setProperty('--stay-art-node-one-delay', `${joinDelay - 480}ms`);
+    staySection.style.setProperty('--stay-art-node-two-delay', `${joinDelay - 220}ms`);
+  }
+  stayConversation.classList.add('stay-motion-ready');
+  const reveal = () => {
+    stayConversation.classList.add('is-playing');
+    stayLineArt?.classList.add('is-visible');
+  };
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      observer.disconnect();
+      reveal();
+    }, { threshold: .2 });
+    observer.observe(stayConversation);
+  } else {
+    reveal();
+  }
+}

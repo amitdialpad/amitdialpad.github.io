@@ -8,9 +8,9 @@
     <title>Dialpad Tap — Talk to the app</title>
     <link rel="stylesheet" href="./assets/tokens-base-light.css" />
     <link rel="stylesheet" href="./assets/tokens-dp-light.css" />
-    <link rel="stylesheet" href="./styles.css?v=4" />
-    <script src="./site.js" defer></script>
-    <script type="module" src="./demo.js"></script>
+    <link rel="stylesheet" href="./styles.css?v=21" />
+    <script src="./site.js?v=5" defer></script>
+    <script type="module" src="./demo.js?v=6"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -75,9 +75,31 @@
 
       <section class="experience section-wrap" id="experience" aria-labelledby="experience-title"><div class="section-intro"><span class="eyebrow">One conversation</span><h2 id="experience-title">A question starts here.<br /><em>It stays here.</em></h2><p>What starts inside the app can move from an AI agent to a person, with the story intact.</p></div><div class="journey"><article><span class="journey-number" aria-hidden="true">01</span><h3>Tap to talk</h3><p>Speak or type in the app or website.</p></article><article><span class="journey-number" aria-hidden="true">02</span><h3>Get it resolved</h3><p>The AI agent answers and takes approved action.</p></article><article><span class="journey-number" aria-hidden="true">03</span><h3>Bring in a person</h3><p>When needed, a person joins the same conversation with the full story.</p></article></div></section>
 
+      <section class="stay-section" id="stay-in-app" aria-labelledby="stay-title">
+        <svg class="stay-line-art" viewBox="0 0 720 560" fill="none" aria-hidden="true" focusable="false">
+          <circle class="stay-art-stroke stay-art-stroke-one" cx="270" cy="280" r="215" transform="rotate(-65 270 280)" />
+          <circle class="stay-art-stroke stay-art-stroke-two" cx="450" cy="280" r="215" transform="rotate(-115 450 280)" />
+          <rect class="stay-art-node stay-art-node-one" x="356" y="81" width="8" height="8" rx="2.4" />
+          <rect class="stay-art-node stay-art-node-two" x="356" y="471" width="8" height="8" rx="2.4" />
+        </svg>
+        <div class="section-wrap stay-grid">
+          <div class="stay-copy">
+            <h2 id="stay-title">One app.<br /><em>The whole conversation.</em></h2>
+      <p>Keep support in your app so the customer experience stays yours.</p>
+            <button class="primary-button" type="button" id="open-tap-demo-stay" aria-haspopup="dialog">Tap to talk</button>
+          </div>
+          <figure class="stay-conversation" aria-label="In an airline app, Maya asks to move her flight. The assistant finds an option and Alex joins the same conversation with the booking in view.">
+            <p class="stay-message stay-message-maya">Can I move my flight to tomorrow?</p>
+            <p class="stay-message stay-message-agent">There’s a seat at 10:30. I’ll bring Alex in to confirm the change.</p>
+            <div class="stay-join"><span>Alex joined</span></div>
+            <p class="stay-message stay-message-sam">Hi Maya. I have your booking and the new flight. Want me to make the change?</p>
+          </figure>
+        </div>
+      </section>
+
       <section class="business" id="business" aria-labelledby="business-title"><div class="section-wrap business-grid"><div><span class="eyebrow">For your team</span><h2 id="business-title">Teach the app<br /><em>your business.</em></h2><p>Connect your knowledge and systems. Choose what the AI agent can do and when your team steps in.</p></div><div class="setup-card" aria-label="Illustration of business controls"><div class="setup-head"><span class="spark" aria-hidden="true">✦</span><strong>Your customer experience</strong><span class="setup-live"><span></span>Ready to connect</span></div><div class="setup-body"><div class="setup-side"><span class="selected">◫ &nbsp; Sources</span><span>◇ &nbsp; Actions</span><span>↗ &nbsp; Handoffs</span><span>▣ &nbsp; Channels</span></div><div class="setup-main"><h3>Make it yours</h3><p>Start with what your business already knows.</p><div class="setup-row"><span class="row-icon">▤</span><div><strong>Knowledge</strong><small>Policies and help content</small></div><span class="toggle"></span></div><div class="setup-row"><span class="row-icon">↗</span><div><strong>Human handoff</strong><small>Your team, with full context</small></div><span class="toggle"></span></div><div class="setup-row"><span class="row-icon">▣</span><div><strong>Website and app</strong><small>One experience, wherever they are</small></div><span class="toggle"></span></div></div></div></div></div></section>
     </main>
-    <footer><div class="section-wrap footer-inner"><div class="brand"><img src="./assets/dialpad-logo.svg" alt="Dialpad" /><span class="brand-product">Tap</span></div><span>Talk to the app.</span><a href="#top">Back to top ↑</a></div></footer>
+    <footer><div class="section-wrap footer-inner"><div class="brand"><img src="./assets/dialpad-logo.svg" alt="Dialpad" /><span class="brand-product">Tap</span></div><a href="#top">Back to top ↑</a></div></footer>
 
     <dialog class="tap-story" id="tap-story" aria-label="Dialpad Tap demonstration">
       <div class="tap-story-stage">
@@ -109,10 +131,20 @@
               <span class="sr-only" id="tap-control-status" role="status" aria-live="polite"></span>
             </div>
 
-            <div class="tap-finish" id="tap-finish" hidden><div class="tap-finish-grid" id="tap-finish-grid" aria-hidden="true"></div><span class="tap-finish-orb" aria-hidden="true"><img src="./assets/dialpad-starmark.svg" alt="" /><span class="tap-starmark-shine"></span></span><h2 tabindex="-1" aria-label="One conversation. From start to finish."><span class="tap-finish-line" aria-hidden="true"><span id="tap-finish-line-one"></span></span><span class="tap-finish-line" aria-hidden="true"><span id="tap-finish-line-two"></span></span></h2><p>Powered by Dialpad Tap</p><button id="replay-tap-demo" type="button">Replay demo</button></div>
+            <div class="tap-finish" id="tap-finish" hidden>
+              <div class="tap-finish-grid" id="tap-finish-grid" aria-hidden="true"></div>
+              <span class="tap-finish-orb" aria-hidden="true"><img src="./assets/dialpad-starmark.svg" alt="" /><span class="tap-starmark-shine"></span></span>
+              <div class="tap-finish-headlines">
+                <h2 class="tap-finish-statement" tabindex="-1" aria-label="One conversation. From start to finish."><span class="tap-finish-line" aria-hidden="true"><span id="tap-finish-line-one"></span></span><span class="tap-finish-line" aria-hidden="true"><span id="tap-finish-line-two"></span></span></h2>
+                <h2 class="tap-feedback-question" id="tap-feedback-question" tabindex="-1" aria-hidden="true" aria-label="How was that call?"></h2>
+              </div>
+              <p>Powered by Dialpad Tap</p>
+              <p class="tap-thanks-note" id="tap-thanks-note" hidden>That was helpful. We’ll take a closer look at the transfer confirmation.</p>
+              <div class="tap-finish-actions"><button id="tap-feedback-start" type="button" hidden>Tell us</button><button id="tap-feedback-later" type="button" hidden>Maybe later</button><button id="tap-back-home" type="button" hidden>Back to home</button></div>
+            </div>
           </div>
         </div>
-        <div class="tap-story-controls"><span id="tap-demo-caption">A scripted preview of the Tap experience</span><div><button id="tap-demo-replay" type="button" hidden>Replay</button></div></div>
+        <div class="tap-story-controls"><span id="tap-demo-caption">A scripted preview of the Tap experience</span></div>
       </div>
     </dialog>
   </body>

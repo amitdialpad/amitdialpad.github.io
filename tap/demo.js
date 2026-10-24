@@ -1,18 +1,22 @@
-import { demoScript, speakerLabels } from './demo-script.js';
+import { demoScript, feedbackScript, speakerLabels } from './demo-script.js?v=2';
 
 const byId = id => document.getElementById(id);
 const dialog = byId('tap-story');
 const profile = byId('tap-profile');
 const conversation = byId('tap-conversation');
 const finish = byId('tap-finish');
-const finishHeading = finish.querySelector('h2');
+const finishHeading = finish.querySelector('.tap-finish-statement');
+const feedbackQuestion = byId('tap-feedback-question');
+const feedbackStart = byId('tap-feedback-start');
+const feedbackLater = byId('tap-feedback-later');
+const thanksNote = byId('tap-thanks-note');
 const transcript = byId('tap-transcript');
 const scroller = byId('tap-conversation-scroll');
 const deviceScreen = byId('tap-device-screen');
 const micButton = byId('tap-mic-control');
 const speakerButton = byId('tap-speaker-control');
 const controlStatus = byId('tap-control-status');
-const replayButton = byId('tap-demo-replay');
+const backHomeButton = byId('tap-back-home');
 const stageGrid = byId('tap-stage-grid');
 const finishGrid = byId('tap-finish-grid');
 const finishLines = [byId('tap-finish-line-one'), byId('tap-finish-line-two')];
@@ -24,15 +28,20 @@ let microphoneMuted = false;
 let speakerMuted = false;
 let audioContext;
 let outputGain;
-let customerGain;
 let audioBuffers = new Map();
 let preloadPromise;
 let activeSource;
-let activeSpeaker;
 let opener;
+let endingAnimations = [];
+
+function stopEndingTransition() {
+  endingAnimations.forEach(animation => animation.cancel());
+  endingAnimations = [];
+  deviceScreen.classList.remove('is-feedback-transition');
+}
 
 // A quiet corner-radius change travels across each transformation grid.
-function buildGrid(container, columns, rows) {
+function buildGrid(container, columns, rows, duration = 20) {
   const tiles = document.createDocumentFragment();
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < columns; col++) {
@@ -48,7 +57,7 @@ function buildGrid(container, columns, rows) {
       const tile = document.createElement('span');
       if (nearest.distance < .24) {
         tile.className = 'tap-grid-morph';
-        tile.style.setProperty('--grid-delay', `${(-nearest.phase * 20).toFixed(2)}s`);
+        tile.style.setProperty('--grid-delay', `${(-nearest.phase * duration).toFixed(2)}s`);
       }
       if (nearest.distance < .16 && nearest.phase < .09) tile.classList.add('tap-grid-resting-round');
       tiles.append(tile);
@@ -57,7 +66,7 @@ function buildGrid(container, columns, rows) {
   container.append(tiles);
 }
 buildGrid(stageGrid, 20, 12);
-buildGrid(finishGrid, 10, 18);
+buildGrid(finishGrid, 10, 18, 14);
 
 function syncControls() {
   micButton.classList.toggle('is-muted', microphoneMuted);
@@ -69,27 +78,33 @@ function syncControls() {
   speakerButton.setAttribute('aria-label', speakerMuted ? 'Unmute speaker' : 'Mute speaker');
   speakerButton.title = speakerButton.getAttribute('aria-label');
   if (outputGain) outputGain.gain.value = speakerMuted ? 0 : 1;
-  if (customerGain) customerGain.gain.value = microphoneMuted ? 0 : 1;
 }
 
 function stopAudio() {
   if (activeSource) {
     try { activeSource.stop(); } catch { /* It may have finished already. */ }
     activeSource = null;
-    activeSpeaker = null;
   }
 }
 
 function resetScene() {
+  stopEndingTransition();
   stopAudio();
   dialog.classList.remove('is-finished');
   transcript.replaceChildren();
   profile.hidden = false;
   conversation.hidden = true;
   finish.hidden = true;
-  finish.classList.remove('title-complete', 'finish-meta-visible', 'finish-ready');
+  finish.classList.remove('title-complete', 'finish-meta-visible', 'finish-ready', 'is-feedback-invite', 'is-feedback-thanks');
+  finishHeading.setAttribute('aria-hidden', 'false');
+  feedbackQuestion.setAttribute('aria-hidden', 'true');
+  feedbackQuestion.setAttribute('aria-label', 'How was that call?');
+  feedbackQuestion.textContent = '';
+  feedbackStart.hidden = true;
+  feedbackLater.hidden = true;
+  thanksNote.hidden = true;
   finishLines.forEach(line => line.replaceChildren());
-  replayButton.hidden = true;
+  backHomeButton.hidden = true;
   deviceScreen.classList.remove('conversation-active');
   microphoneMuted = false;
   speakerMuted = false;
@@ -102,11 +117,9 @@ async function preloadAudio() {
   preloadPromise = (async () => {
     audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
     outputGain ||= audioContext.createGain();
-    customerGain ||= audioContext.createGain();
-    customerGain.connect(outputGain);
     outputGain.connect(audioContext.destination);
     syncControls();
-    const spoken = demoScript.filter(event => event.type === 'line');
+    const spoken = [...demoScript, ...feedbackScript].filter(event => event.type === 'line');
     const results = await Promise.allSettled(spoken.map(async event => {
       const response = await fetch(`./audio/${event.id}.mp3`);
       if (!response.ok) throw new Error(`Audio ${event.id} unavailable`);
@@ -131,6 +144,7 @@ function openDemo() {
 
 function closeDemo() {
   run++;
+  stopEndingTransition();
   stopAudio();
   dialog.close();
   document.body.classList.remove('tap-demo-open');
@@ -149,13 +163,18 @@ async function showFinish(token) {
   finish.hidden = false;
   dialog.classList.add('is-finished');
   deviceScreen.classList.remove('conversation-active');
-  finish.classList.remove('title-complete', 'finish-meta-visible', 'finish-ready');
+  finish.classList.remove('title-complete', 'finish-meta-visible', 'finish-ready', 'is-feedback-invite', 'is-feedback-thanks');
+  finishHeading.setAttribute('aria-hidden', 'false');
+  feedbackQuestion.setAttribute('aria-hidden', 'true');
+  feedbackQuestion.textContent = '';
+  feedbackStart.hidden = true;
   finishLines.forEach(line => line.replaceChildren());
   finishHeading.focus({ preventScroll: true });
 
   if (reducedMotion.matches) {
     finishLines.forEach((line, index) => { line.textContent = finishWords[index].join(' '); });
     finish.classList.add('finish-meta-visible', 'finish-ready');
+    await showFeedbackInvite(token);
     return;
   }
 
@@ -183,25 +202,57 @@ async function showFinish(token) {
   finish.classList.add('finish-meta-visible');
   if (!await delay(270, token)) return;
   finish.classList.add('finish-ready');
+  await showFeedbackInvite(token);
+}
+
+async function showFeedbackInvite(token) {
+  // Give the original ending time to land before the optional next chapter.
+  if (!await delay(reducedMotion.matches ? 2200 : 2800, token)) return;
+  finish.classList.add('is-feedback-invite');
+  finishHeading.setAttribute('aria-hidden', 'true');
+  if (!await delay(reducedMotion.matches ? 180 : 350, token)) return;
+  feedbackQuestion.setAttribute('aria-hidden', 'false');
+  feedbackQuestion.setAttribute('aria-label', 'How was that call?');
+  if (!await typeFeedbackHeading('How was that call?', token)) return;
+  if (!await delay(reducedMotion.matches ? 80 : 180, token)) return;
+  feedbackStart.hidden = false;
+  feedbackLater.hidden = false;
+  feedbackQuestion.focus({ preventScroll: true });
+}
+
+async function typeFeedbackHeading(message, token) {
+  feedbackQuestion.textContent = '';
+  if (reducedMotion.matches) {
+    feedbackQuestion.textContent = message;
+  } else {
+    const caret = document.createElement('span');
+    caret.className = 'tap-finish-caret';
+    feedbackQuestion.append(caret);
+    for (const character of message) {
+      if (token !== run) { caret.remove(); return false; }
+      feedbackQuestion.insertBefore(document.createTextNode(character), caret);
+      if (!await delay(/[?.!]/.test(character) ? 180 : 55, token)) { caret.remove(); return false; }
+    }
+    caret.remove();
+  }
+  return token === run;
 }
 
 function scrollToLatest() {
   scroller.scrollTop = scroller.scrollHeight;
 }
 
-function playClip(id, speaker) {
+function playClip(id) {
   const buffer = audioBuffers.get(id);
   if (!audioContext || !buffer) return Promise.resolve();
   return new Promise(resolve => {
     const source = audioContext.createBufferSource();
     source.buffer = buffer;
-    source.connect(speaker === 'maya' ? customerGain : outputGain);
+    source.connect(outputGain);
     activeSource = source;
-    activeSpeaker = speaker;
     source.onended = () => {
       if (activeSource === source) {
         activeSource = null;
-        activeSpeaker = null;
       }
       resolve();
     };
@@ -225,8 +276,9 @@ async function streamLineBeats(event, duration, token) {
   const totalWords = event.text.split(/\s+/).length;
   for (const beat of beats) {
     if (token !== run) return;
+    transcript.querySelector('.tap-line.is-speaking')?.classList.remove('is-speaking');
     const bubble = document.createElement('div');
-    bubble.className = `tap-line ${event.speaker}`;
+    bubble.className = `tap-line ${event.speaker} is-speaking`;
     const speaker = document.createElement('span');
     speaker.className = 'tap-line-speaker sr-only';
     speaker.textContent = speakerLabels[event.speaker];
@@ -241,14 +293,12 @@ async function streamLineBeats(event, duration, token) {
 }
 
 async function showLine(event, token) {
-  while (event.speaker === 'maya' && microphoneMuted && token === run) {
-    if (!(await delay(150, token))) return;
-  }
   if (token !== run) return;
   const audioDuration = audioBuffers.get(event.id)?.duration;
   const duration = audioDuration || Math.max(2, event.text.split(/\s+/).length * .34);
-  await Promise.all([streamLineBeats(event, duration, token), playClip(event.id, event.speaker)]);
+  await Promise.all([streamLineBeats(event, duration, token), playClip(event.id)]);
   if (token !== run) return;
+  transcript.querySelector('.tap-line.is-speaking')?.classList.remove('is-speaking');
   await delay(360, token);
 }
 
@@ -373,18 +423,83 @@ async function startDemo() {
   await showFinish(token);
 }
 
+async function startFeedback() {
+  const token = ++run;
+  finish.hidden = true;
+  conversation.hidden = false;
+  dialog.classList.remove('is-finished');
+  deviceScreen.classList.add('conversation-active');
+  scrollToLatest();
+  try {
+    await preloadAudio();
+    await audioContext.resume();
+  } catch {
+    // Captions remain available if audio cannot load.
+  }
+  if (token !== run) return;
+  for (const event of feedbackScript) {
+    if (token !== run) return;
+    if (event.type === 'line') await showLine(event, token);
+    if (event.type === 'card') await showCard(event, token);
+  }
+  if (token !== run) return;
+  if (!await delay(950, token)) return;
+  await showFeedbackThanks(token);
+}
+
+async function showFeedbackThanks(token) {
+  if (token !== run) return;
+  finish.hidden = false;
+  finish.classList.remove('title-complete', 'is-feedback-invite');
+  finish.classList.add('is-feedback-thanks', 'finish-meta-visible', 'finish-ready');
+  finishHeading.setAttribute('aria-hidden', 'true');
+  feedbackQuestion.setAttribute('aria-hidden', 'true');
+  feedbackQuestion.setAttribute('aria-label', 'Thanks, Maya.');
+  feedbackQuestion.textContent = '';
+  feedbackStart.hidden = true;
+  feedbackLater.hidden = true;
+  thanksNote.hidden = true;
+  backHomeButton.hidden = true;
+  deviceScreen.classList.add('is-feedback-transition');
+  const exit = conversation.animate([{ opacity: 1 }, { opacity: 0 }], { duration: reducedMotion.matches ? 180 : 520, easing: 'cubic-bezier(.77, 0, .175, 1)', fill: 'forwards' });
+  const enter = finish.animate([{ opacity: 0 }, { opacity: 1 }], { duration: reducedMotion.matches ? 200 : 620, delay: reducedMotion.matches ? 0 : 110, easing: 'cubic-bezier(.23, 1, .32, 1)', fill: 'both' });
+  endingAnimations = [exit, enter];
+  await Promise.allSettled(endingAnimations.map(animation => animation.finished));
+  if (token !== run) return;
+  conversation.hidden = true;
+  deviceScreen.classList.remove('conversation-active');
+  dialog.classList.add('is-finished');
+  stopEndingTransition();
+  if (!await delay(reducedMotion.matches ? 80 : 150, token)) return;
+  feedbackQuestion.setAttribute('aria-hidden', 'false');
+  if (!await typeFeedbackHeading('Thanks, Maya.', token)) return;
+  feedbackQuestion.focus({ preventScroll: true });
+  if (!await delay(reducedMotion.matches ? 80 : 220, token)) return;
+  thanksNote.hidden = false;
+  if (!await delay(reducedMotion.matches ? 180 : 580, token)) return;
+  backHomeButton.hidden = false;
+}
+
 function endConversation() {
   run++;
   resetScene();
   byId('start-tap-demo').focus();
 }
 
+function returnHome() {
+  run++;
+  resetScene();
+  byId('start-tap-demo').focus();
+}
+
 byId('open-tap-demo').addEventListener('click', openDemo);
+byId('open-tap-demo-stay').addEventListener('click', openDemo);
 byId('close-tap-demo').addEventListener('click', closeDemo);
 byId('start-tap-demo').addEventListener('click', startDemo);
 byId('tap-end-conversation').addEventListener('click', endConversation);
-byId('replay-tap-demo').addEventListener('click', startDemo);
-replayButton.addEventListener('click', startDemo);
+feedbackStart.addEventListener('click', startFeedback);
+feedbackLater.addEventListener('click', returnHome);
+backHomeButton.addEventListener('click', returnHome);
 dialog.addEventListener('cancel', event => { event.preventDefault(); closeDemo(); });
 micButton.addEventListener('click', () => {
   microphoneMuted = !microphoneMuted;
@@ -398,9 +513,58 @@ speakerButton.addEventListener('click', () => {
 });
 
 // Local design review: open directly on the final frame without playing the script.
-if (location.hostname === '127.0.0.1' && new URLSearchParams(location.search).get('preview') === 'end') {
+const localPreview = location.hostname === '127.0.0.1' ? new URLSearchParams(location.search).get('preview') : null;
+if (localPreview === 'thanks') {
   dialog.showModal();
   document.body.classList.add('tap-demo-open');
   profile.hidden = true;
+  finish.hidden = false;
+  dialog.classList.add('is-finished');
+  finish.classList.add('is-feedback-thanks', 'finish-meta-visible', 'finish-ready');
+  finishHeading.setAttribute('aria-hidden', 'true');
+  feedbackQuestion.setAttribute('aria-hidden', 'false');
+  feedbackQuestion.setAttribute('aria-label', 'Thanks, Maya.');
+  feedbackQuestion.textContent = 'Thanks, Maya.';
+  feedbackStart.hidden = true;
+  feedbackLater.hidden = true;
+  thanksNote.hidden = false;
+  backHomeButton.hidden = false;
+} else if (localPreview === 'feedback-close') {
+  dialog.showModal();
+  document.body.classList.add('tap-demo-open');
+  profile.hidden = true;
+  conversation.hidden = false;
+  deviceScreen.classList.add('conversation-active');
+  for (const event of feedbackScript.slice(-2)) {
+    if (event.type === 'line') {
+      const bubble = document.createElement('div');
+      bubble.className = `tap-line ${event.speaker}`;
+      const text = document.createElement('span');
+      text.className = 'tap-line-text';
+      text.textContent = event.text;
+      bubble.append(text);
+      transcript.append(bubble);
+    } else if (event.type === 'card') {
+      showCard(event, run);
+    }
+  }
+  delay(900, run).then(ready => { if (ready) showFeedbackThanks(run); });
+} else if (localPreview === 'end') {
+  dialog.showModal();
+  document.body.classList.add('tap-demo-open');
+  profile.hidden = true;
+  // Keep the last exchange visible when the feedback chapter resumes.
+  for (const event of demoScript.filter(item => item.id === '18' || item.id === '19')) {
+    const bubble = document.createElement('div');
+    bubble.className = `tap-line ${event.speaker}`;
+    const speaker = document.createElement('span');
+    speaker.className = 'tap-line-speaker sr-only';
+    speaker.textContent = speakerLabels[event.speaker];
+    const text = document.createElement('span');
+    text.className = 'tap-line-text';
+    text.textContent = event.text;
+    bubble.append(speaker, text);
+    transcript.append(bubble);
+  }
   showFinish(run);
 }
