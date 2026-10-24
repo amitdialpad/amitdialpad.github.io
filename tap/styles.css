@@ -304,6 +304,7 @@
   @media (max-width: 1080px) { .hero { grid-template-columns: minmax(0, 1fr); } .hero-copy, .hero-showcase { min-width: 0; } }
   .platform-reach { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 22px; margin-bottom: 27px; }
   .hero-copy p { margin-bottom: 0; }
+  @media (min-width: 1200px) { .hero-copy-closer { display: block; } }
   .platform-reach-label { color: var(--muted); font-family: 'Season Sans', sans-serif; font-size: 13px; font-weight: 600; white-space: nowrap; }
   .platform-list { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; }
   .platform-item { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid #e7e3eb; border-radius: 999px; background: #fff; color: #19132d; font-family: 'Season Sans', sans-serif; font-size: 13px; font-weight: 700; }
@@ -454,7 +455,7 @@
   .tap-finish-orb { background: var(--cw-green); box-shadow: none; }
   .tap-finish h2 { color: var(--cw-ink); font-family: inherit; letter-spacing: -.045em; }
   .tap-finish p { color: var(--cw-muted); }
-  .tap-finish button { background: var(--cw-green); }
+  .tap-finish button { background: #1d0155; }
   .tap-story-controls button { font-size: 12px; }
   @media (max-width: 650px) {
     .tap-story, .tap-story-stage, .tap-device { background: #f7faf7; }
@@ -501,11 +502,30 @@
   /* Resolve's grid frames the story; Clearway's own UI remains inside the phone. */
   .tap-story-stage { position: relative; isolation: isolate; background: #f2f0ee; }
   .tap-stage-grid { position: absolute; z-index: 0; left: 50%; top: 50%; width: min(1040px, 94vw); aspect-ratio: 20 / 12; display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); grid-template-rows: repeat(12, minmax(0, 1fr)); gap: 4px; transform: translate(-50%, -50%); pointer-events: none; }
-  .tap-stage-grid span { display: block; min-width: 0; min-height: 0; border-radius: 10%; background: #cec8c4; opacity: .52; }
+  .tap-stage-grid span { display: block; min-width: 0; min-height: 0; border-radius: 10%; background: #e0ddda; }
   .tap-stage-grid .tap-grid-morph { animation: tap-grid-round 20s linear infinite; animation-delay: var(--grid-delay); }
   @keyframes tap-grid-round { 0%, 100% { border-radius: 10%; } 8% { border-radius: 50%; } 16% { border-radius: 10%; } }
+  .tap-finish { position: relative; isolation: isolate; overflow: hidden; }
+  .tap-finish-grid { position: absolute; z-index: -1; inset: 10px; display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); grid-template-rows: repeat(18, minmax(0, 1fr)); gap: 5px; pointer-events: none; }
+  .tap-finish-grid span { display: block; min-width: 0; min-height: 0; border-radius: 10%; background: #e0ddda; opacity: .18; }
+  .tap-finish-grid .tap-grid-morph { animation: tap-grid-round 20s linear infinite; animation-delay: var(--grid-delay); }
+  .tap-finish-orb { position: relative; isolation: isolate; width: 70px; height: 70px; border-radius: 0; background: none; }
+  .tap-finish-orb img { display: block; width: 100%; height: 100%; }
+  .tap-starmark-shine { position: absolute; inset: 0; overflow: hidden; pointer-events: none; -webkit-mask: url('./assets/dialpad-starmark.svg') center / contain no-repeat; mask: url('./assets/dialpad-starmark.svg') center / contain no-repeat; }
+  .tap-starmark-shine::after { content: ''; position: absolute; top: -15%; bottom: -15%; left: -35%; width: 30%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.28) 18%, rgba(255,255,255,.95) 50%, rgba(255,255,255,.28) 82%, transparent); transform: translateX(0) skewX(-22deg); }
+  .tap-finish.title-complete .tap-starmark-shine::after { animation: tap-star-sweep 700ms cubic-bezier(.35, 0, .1, 1) 550ms both; }
+  .tap-finish h2 { min-height: 2.12em; }
+  .tap-finish h2:focus { outline: none; }
+  .tap-finish-line { display: block; min-height: 1.06em; }
+  .tap-finish p, .tap-finish button { visibility: hidden; opacity: 0; pointer-events: none; }
+  .tap-finish.finish-meta-visible p { visibility: visible; opacity: 1; transition: opacity 600ms linear; }
+  .tap-finish.finish-ready button { visibility: visible; opacity: 1; pointer-events: auto; transition: opacity 700ms linear; }
+  .tap-finish-caret { display: inline-block; width: 2px; height: .78em; margin-left: 2px; background: currentColor; vertical-align: -.06em; animation: tap-caret-blink 650ms step-end infinite; }
+  @keyframes tap-caret-blink { 50% { opacity: 0; } }
+  @keyframes tap-star-sweep { to { transform: translateX(500%) skewX(-22deg); } }
   .tap-story-topline, .tap-device, .tap-story-controls { position: relative; z-index: 1; }
   .tap-story-topline, .tap-story-controls { color: #342c29; }
+  .tap-story.is-finished .tap-story-topline > span { visibility: hidden; }
   .tap-story-close { border-color: #c9c2be; background: #fff; color: #342c29; }
   .tap-story-close:hover, .tap-story-close:focus-visible { background: #f9f6f3; }
   .tap-story-controls button { border-color: #c9c2be; background: #fff; color: #342c29; }
@@ -533,8 +553,11 @@
     .tap-stage-grid { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .tap-stage-grid .tap-grid-morph, .tap-conversation:not([hidden]), .tap-line, .tap-card, .tap-handoff, .tap-check { animation: none !important; }
-    .tap-stage-grid .tap-grid-resting-round { border-radius: 50%; }
+    .tap-stage-grid .tap-grid-morph, .tap-finish-grid .tap-grid-morph, .tap-conversation:not([hidden]), .tap-line, .tap-card, .tap-handoff, .tap-check { animation: none !important; }
+    .tap-stage-grid .tap-grid-resting-round, .tap-finish-grid .tap-grid-resting-round { border-radius: 50%; }
+    .tap-finish-caret, .tap-finish.title-complete .tap-starmark-shine::after { animation: none; }
+    .tap-finish-caret { display: none; }
+    .tap-finish.finish-meta-visible p, .tap-finish.finish-ready button { transition-duration: 180ms; }
   }
 }
 @layer page {

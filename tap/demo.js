@@ -5,6 +5,7 @@ const dialog = byId('tap-story');
 const profile = byId('tap-profile');
 const conversation = byId('tap-conversation');
 const finish = byId('tap-finish');
+const finishHeading = finish.querySelector('h2');
 const transcript = byId('tap-transcript');
 const scroller = byId('tap-conversation-scroll');
 const deviceScreen = byId('tap-device-screen');
@@ -13,6 +14,10 @@ const speakerButton = byId('tap-speaker-control');
 const controlStatus = byId('tap-control-status');
 const replayButton = byId('tap-demo-replay');
 const stageGrid = byId('tap-stage-grid');
+const finishGrid = byId('tap-finish-grid');
+const finishLines = [byId('tap-finish-line-one'), byId('tap-finish-line-two')];
+const finishWords = [['One', 'conversation.'], ['From', 'start', 'to', 'finish.']];
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 let run = 0;
 let microphoneMuted = false;
@@ -26,14 +31,13 @@ let activeSource;
 let activeSpeaker;
 let opener;
 
-// Resolve's transformation grid stays behind the customer app. Tiles do not move;
-// a single soft change in corner radius travels a figure-eight over 20 seconds.
-function buildStageGrid() {
+// A quiet corner-radius change travels across each transformation grid.
+function buildGrid(container, columns, rows) {
   const tiles = document.createDocumentFragment();
-  for (let row = 0; row < 12; row++) {
-    for (let col = 0; col < 20; col++) {
-      const x = (col - 9.5) / 9.5;
-      const y = (row - 5.5) / 5.5;
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < columns; col++) {
+      const x = (col - (columns - 1) / 2) / ((columns - 1) / 2);
+      const y = (row - (rows - 1) / 2) / ((rows - 1) / 2);
       let nearest = { distance: Infinity, phase: 0 };
       for (let step = 0; step < 120; step++) {
         const phase = step / 120;
@@ -50,9 +54,10 @@ function buildStageGrid() {
       tiles.append(tile);
     }
   }
-  stageGrid.append(tiles);
+  container.append(tiles);
 }
-buildStageGrid();
+buildGrid(stageGrid, 20, 12);
+buildGrid(finishGrid, 10, 18);
 
 function syncControls() {
   micButton.classList.toggle('is-muted', microphoneMuted);
@@ -77,10 +82,13 @@ function stopAudio() {
 
 function resetScene() {
   stopAudio();
+  dialog.classList.remove('is-finished');
   transcript.replaceChildren();
   profile.hidden = false;
   conversation.hidden = true;
   finish.hidden = true;
+  finish.classList.remove('title-complete', 'finish-meta-visible', 'finish-ready');
+  finishLines.forEach(line => line.replaceChildren());
   replayButton.hidden = true;
   deviceScreen.classList.remove('conversation-active');
   microphoneMuted = false;
@@ -134,6 +142,47 @@ function delay(ms, token) {
     const finishWait = () => resolve(token === run);
     window.setTimeout(finishWait, ms);
   });
+}
+
+async function showFinish(token) {
+  conversation.hidden = true;
+  finish.hidden = false;
+  dialog.classList.add('is-finished');
+  deviceScreen.classList.remove('conversation-active');
+  finish.classList.remove('title-complete', 'finish-meta-visible', 'finish-ready');
+  finishLines.forEach(line => line.replaceChildren());
+  finishHeading.focus({ preventScroll: true });
+
+  if (reducedMotion.matches) {
+    finishLines.forEach((line, index) => { line.textContent = finishWords[index].join(' '); });
+    finish.classList.add('finish-meta-visible', 'finish-ready');
+    return;
+  }
+
+  const caret = document.createElement('span');
+  caret.className = 'tap-finish-caret';
+  for (let lineIndex = 0; lineIndex < finishWords.length; lineIndex++) {
+    const line = finishLines[lineIndex];
+    line.append(caret);
+    for (const [wordIndex, word] of finishWords[lineIndex].entries()) {
+      if (wordIndex) line.insertBefore(document.createTextNode(' '), caret);
+      for (const character of word) {
+        if (token !== run) return;
+        line.insertBefore(document.createTextNode(character), caret);
+        if (!await delay(character === '.' ? 155 : 43, token)) return;
+      }
+      if (!await delay(125, token)) return;
+    }
+    if (lineIndex === 0 && !await delay(200, token)) return;
+  }
+  caret.remove();
+  if (token !== run) return;
+  finish.classList.add('title-complete');
+  // Let the star finish its delayed sweep before the byline and action arrive.
+  if (!await delay(1400, token)) return;
+  finish.classList.add('finish-meta-visible');
+  if (!await delay(270, token)) return;
+  finish.classList.add('finish-ready');
 }
 
 function scrollToLatest() {
@@ -321,11 +370,7 @@ async function startDemo() {
     if (event.type === 'handoff') await showHandoff(event, token);
   }
   if (token !== run) return;
-  conversation.hidden = true;
-  finish.hidden = false;
-  replayButton.hidden = false;
-  deviceScreen.classList.remove('conversation-active');
-  byId('replay-tap-demo').focus();
+  await showFinish(token);
 }
 
 function endConversation() {
@@ -351,3 +396,11 @@ speakerButton.addEventListener('click', () => {
   syncControls();
   controlStatus.textContent = speakerMuted ? 'Speaker muted' : 'Speaker on';
 });
+
+// Local design review: open directly on the final frame without playing the script.
+if (location.hostname === '127.0.0.1' && new URLSearchParams(location.search).get('preview') === 'end') {
+  dialog.showModal();
+  document.body.classList.add('tap-demo-open');
+  profile.hidden = true;
+  showFinish(run);
+}
