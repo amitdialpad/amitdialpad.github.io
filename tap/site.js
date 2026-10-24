@@ -1,11 +1,11 @@
 const examples = [
-  { label: 'Travel', symbol: 'A', business: 'Aero Airlines', support: 'Aero support', tag: 'TRAVEL', title: 'Where next?', subtitle: 'Book. Change. Take off.', question: 'Is my flight on time?', icon: '✈', answer: 'On time · Gate C12', detail: 'Boarding at 2:10 PM', human: 'Alex · Aero', message: 'I can help with your seat. I already have your flight details.', image: 'Airplane wing above clouds at sunrise' },
-  { label: 'Healthcare', symbol: 'N', business: 'Northside Health', support: 'Northside support', tag: 'HEALTHCARE', title: 'Feel better.', subtitle: 'Care, on your time.', question: 'Can I move my appointment?', icon: '✳', answer: 'Tuesday · 10:30 AM', detail: 'A new opening is available', human: 'Maya · Northside', message: 'I can help you choose a new time. I have your request here.', image: 'Warm modern clinic with a doctor in the background' },
-  { label: 'Finance', symbol: 'C', business: 'Clearway', support: 'Clearway support', tag: 'FINANCE', title: 'Money moves.', subtitle: 'Know what happens next.', question: 'Where is my transfer?', icon: '↗', answer: 'Transfer in progress', detail: 'Latest status is available', human: 'Sam · Clearway', message: 'I can look into this further. I have the transfer details you shared.', image: 'Phone and banking card on a warm desk' },
-  { label: 'Retail', symbol: 'M', business: 'Morrow Goods', support: 'Morrow support', tag: 'RETAIL', title: 'On its way.', subtitle: 'The good part is coming.', question: 'Where is my order?', icon: '▣', answer: 'Out for delivery', detail: 'Expected today · 4–6 PM', human: 'Jules · Morrow', message: 'I can help with delivery changes. I have your order here.', image: 'Parcel with folded clothes being prepared in a boutique' },
+  { label: 'Travel', symbol: 'A', business: 'Aero Airlines', tag: 'TRAVEL', title: 'Where next?', subtitle: 'Book. Change. Take off.', question: 'Is my flight on time?', assistant: 'Let me check your flight.', icon: '✈', answer: 'On time · Gate C12', detail: 'Boarding at 2:10 PM', human: 'Alex · Aero', message: 'I can help with your seat. I already have your flight details.', image: 'Airplane wing above clouds at sunrise', accent: '#245d85', soft: '#eaf4fa' },
+  { label: 'Healthcare', symbol: 'N', business: 'Northside Health', tag: 'HEALTHCARE', title: 'Feel better.', subtitle: 'Care, on your time.', question: 'Can I move my appointment?', assistant: 'I’ll check the next opening.', icon: '✳', answer: 'Tuesday · 10:30 AM', detail: 'A new opening is available', human: 'Maya · Northside', message: 'I can help you choose a new time. I have your request here.', image: 'Warm modern clinic with a doctor in the background', accent: '#a4494c', soft: '#f9eeec' },
+  { label: 'Finance', symbol: 'C', business: 'Clearway', tag: 'FINANCE', title: 'Money moves.', subtitle: 'Know what happens next.', question: 'Where is my transfer?', assistant: 'Let me check that for you.', icon: '↗', answer: 'Transfer in progress', detail: 'Latest status is available', human: 'Sam · Clearway', message: 'I have your transfer details. Let’s take a look.', image: 'Phone and banking card on a warm desk', accent: '#175c43', soft: '#edf6f0' },
+  { label: 'Retail', symbol: 'M', business: 'Morrow Goods', tag: 'RETAIL', title: 'On its way.', subtitle: 'The good part is coming.', question: 'Where is my order?', assistant: 'I’ll look up your order.', icon: '▣', answer: 'Out for delivery', detail: 'Expected today · 4–6 PM', human: 'Jules · Morrow', message: 'I have your order here. I can help with delivery.', image: 'Parcel with folded clothes being prepared in a boutique', accent: '#9a5935', soft: '#faf2ea' },
 ];
 
-const fields = { symbol: 'business-symbol', business: 'business-name', support: 'support-title', tag: 'scene-tag', title: 'scene-title', subtitle: 'scene-subtitle', question: 'customer-question', icon: 'answer-icon', answer: 'answer-title', detail: 'answer-detail', human: 'human-name', message: 'human-message' };
+const fields = { symbol: 'business-symbol', business: 'business-name', tag: 'scene-tag', title: 'scene-title', subtitle: 'scene-subtitle', question: 'customer-question', assistant: 'assistant-message', icon: 'answer-icon', answer: 'answer-title', detail: 'answer-detail', message: 'human-message' };
 const template = document.getElementById('slide-template');
 const track = document.getElementById('carousel-track');
 const dots = [...document.querySelectorAll('.story-tab')];
@@ -35,6 +35,10 @@ function createSlide(exampleIndex) {
   appName.textContent = `${example.business} app`;
   appName.removeAttribute('id');
   frame.querySelector('.app-context-mark').textContent = example.symbol;
+  frame.querySelector('#handoff-name').textContent = `${example.human.split(' · ')[0]} joined`;
+  frame.querySelector('#handoff-name').removeAttribute('id');
+  frame.style.setProperty('--app-accent', example.accent);
+  frame.style.setProperty('--app-soft', example.soft);
   return frame;
 }
 

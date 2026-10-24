@@ -32,6 +32,135 @@
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
 }
 @layer page {
+  .tap-story[hidden], .tap-profile[hidden], .tap-conversation[hidden], .tap-finish[hidden], .tap-story-controls [hidden] { display: none !important; }
+  .tap-story { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: #160e32; overflow: hidden; }
+  .tap-story::backdrop { background: rgba(13, 5, 38, .76); backdrop-filter: blur(13px); }
+  .tap-story-stage { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 12px; background: radial-gradient(circle at 50% 54%, rgba(156, 122, 255, .25), transparent 46%); }
+  .tap-story-topline, .tap-story-controls { width: min(412px, 100%); display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #f5f2ff; font: 600 12px/1.3 'Season Sans', sans-serif; letter-spacing: .01em; }
+  .tap-story-topline { min-height: 36px; }
+  .tap-story-close { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; background: rgba(255,255,255,.1); color: white; font-size: 23px; line-height: 1; }
+  .tap-story-close:hover, .tap-story-close:focus-visible { background: rgba(255,255,255,.25); }
+  .tap-device { position: relative; width: min(392px, calc(100vw - 24px)); height: min(740px, calc(100dvh - 103px)); min-height: 560px; padding: 10px; border: 2px solid #2b2440; border-radius: 46px; background: #171323; box-shadow: 0 28px 90px rgba(5, 1, 19, .48), inset 0 0 0 2px #443b56; overflow: hidden; }
+  .tap-device-camera { position: absolute; z-index: 8; width: 90px; height: 21px; top: 15px; left: 50%; transform: translateX(-50%); border-radius: 30px; background: #171323; }
+  .tap-device-screen { position: relative; display: flex; flex-direction: column; width: 100%; height: 100%; border-radius: 36px; background: #fbfaff; overflow: hidden; }
+  .tap-system-bar { height: 37px; padding: 10px 25px 0; display: flex; justify-content: space-between; color: #241b40; font: 700 11px/1 'Season Sans', sans-serif; }
+  .tap-app-header { height: 62px; padding: 0 22px; display: flex; align-items: center; gap: 9px; background: white; border-bottom: 1px solid #ebe7f2; font: 700 20px/1 'Season Sans', sans-serif; }
+  .tap-clearway-mark { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 8px; color: white; background: #1d0b47; font-size: 18px; }
+  .tap-app-avatar { display: grid; place-items: center; margin-left: auto; width: 30px; height: 30px; border-radius: 50%; background: #eee6ff; color: #5c31c8; font-size: 12px; }
+  .tap-profile { position: relative; flex: 1; min-height: 0; padding: 0 22px 80px; overflow-y: auto; }
+  .tap-profile .tap-app-header { margin: 0 -22px 26px; }
+  .tap-profile-eyebrow { color: #6b45c8; font-size: 10px; letter-spacing: .16em; font-weight: 800; }
+  .tap-profile-title h2 { margin: 9px 0 5px; color: #21123f; font: 700 38px/.98 'Season Sans', sans-serif; letter-spacing: -.07em; }
+  .tap-profile-title p { margin: 0; color: #736981; font-size: 13px; }
+  .tap-balance { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; padding: 21px; border-radius: 22px; background: linear-gradient(135deg, #251052, #5d3cbc 70%, #9c82e3); color: white; box-shadow: 0 15px 28px rgba(59, 31, 131, .18); }
+  .tap-balance > span { color: #d8cafa; font-size: 12px; }
+  .tap-balance > strong { font: 700 37px/1 'Season Sans', sans-serif; letter-spacing: -.06em; }
+  .tap-balance > div { display: flex; gap: 8px; margin-top: 10px; }
+  .tap-balance > div span { border: 1px solid rgba(255,255,255,.36); border-radius: 9px; padding: 8px 11px; font-size: 11px; font-weight: 700; }
+  .tap-profile-menu { margin: 25px 0 20px; border: 1px solid #ebe6f1; border-radius: 18px; background: white; overflow: hidden; }
+  .tap-profile-menu > span { display: block; padding: 15px 16px 7px; color: #777083; font-size: 11px; font-weight: 700; }
+  .tap-profile-menu > div { display: flex; justify-content: space-between; padding: 13px 16px; border-top: 1px solid #f0ecf4; font-size: 13px; font-weight: 600; }
+  .tap-profile-menu b { font-size: 19px; line-height: 12px; color: #8b7d9c; }
+  .tap-entry { width: 100%; min-height: 73px; display: flex; align-items: center; gap: 12px; padding: 12px 15px; border: 1px solid #bcabef; border-radius: 17px; background: #f4efff; color: #1e0a4d; text-align: left; box-shadow: 0 0 0 0 rgba(115, 77, 241, .22); animation: tap-entry-pulse 2s ease-in-out infinite; }
+  .tap-entry { position: absolute; z-index: 2; left: 22px; bottom: 75px; width: calc(100% - 44px); }
+  .tap-entry > span:nth-child(2) { display: flex; flex-direction: column; gap: 4px; }
+  .tap-entry strong { font-size: 13px; }
+  .tap-entry small { color: #6c5a94; font-size: 11px; }
+  .tap-entry > span:last-child { margin-left: auto; font-size: 24px; color: #794bdf; }
+  .tap-entry-orb { display: grid; place-items: center; width: 40px; height: 40px; flex: none; border-radius: 14px; color: white; background: radial-gradient(circle at 25% 20%, #ffb985, #ed60a1 35%, #794bff 75%); font-size: 22px; box-shadow: 0 0 18px rgba(144, 70, 240, .45); }
+  @keyframes tap-entry-pulse { 50% { box-shadow: 0 0 0 9px rgba(115, 77, 241, .09); } }
+  .tap-app-nav { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-around; height: 62px; padding: 9px 10px; border-top: 1px solid #ede7f3; background: white; }
+  .tap-app-nav > span { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #8b8299; font-size: 22px; }
+  .tap-app-nav > span.selected { color: #673fd4; }
+  .tap-app-nav small { font-size: 9px; font-weight: 700; }
+  .tap-conversation { display: flex; flex-direction: column; flex: 1; min-height: 0; background: linear-gradient(#fbfaff, #f4f1f9); }
+  .tap-conversation-head { min-height: 56px; padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: white; border-bottom: 1px solid #eae4f1; }
+  .tap-end { padding: 7px 12px; border: 1px solid #e5dfea; border-radius: 99px; background: #fff; color: #544665; font: 700 11px/1 'Season Sans', sans-serif; }
+  .tap-end:hover, .tap-end:focus-visible { border-color: #a691d1; color: #341764; }
+  .tap-agent-orb { display: grid; place-items: center; width: 36px; height: 36px; flex: none; border-radius: 12px; color: white; background: linear-gradient(135deg,#ec77ae,#7245e7); font-size: 22px; }
+  .tap-agent-orb.human { background: #d7bb9f; color: #332315; border-radius: 50%; font-size: 14px; }
+  .tap-conversation-head strong { display: block; font-size: 13px; }
+  .tap-conversation-head small { display: block; margin-top: 3px; color: #736b82; font-size: 10px; }
+  .tap-live-pill { margin-left: auto; padding: 5px 7px; border-radius: 6px; background: #eee8ff; color: #6943cc; font-size: 9px; font-weight: 800; letter-spacing: .07em; }
+  .tap-live-pill.human { background: #e8f8ef; color: #157044; }
+  .tap-voice-focus { --voice-halo: rgba(132, 86, 236, .17); min-height: 91px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: radial-gradient(circle at center, var(--voice-halo), transparent 58%); color: #72579e; font-size: 10px; font-weight: 700; transition: background 500ms ease, color 500ms ease; }
+  .tap-voice-focus.maya { --voice-halo: rgba(52, 130, 205, .18); color: #3d78ab; }
+  .tap-voice-focus.sam { --voice-halo: rgba(42, 163, 107, .18); color: #25805a; }
+  .tap-voice-rings { position: relative; width: 57px; height: 57px; display: grid; place-items: center; }
+  .tap-voice-rings::before, .tap-voice-rings::after { content: ''; position: absolute; inset: 0; border: 1px solid currentColor; border-radius: 50%; opacity: .24; animation: tap-voice-ring 2.2s ease-out infinite; }
+  .tap-voice-rings::after { animation-delay: -1.1s; }
+  .tap-voice-focus.idle .tap-voice-rings::before, .tap-voice-focus.idle .tap-voice-rings::after { animation-play-state: paused; }
+  .tap-voice-core { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: linear-gradient(135deg,#ed75a7,#8653e5); color: white; font-size: 23px; box-shadow: 0 8px 18px rgba(96, 51, 190, .24); }
+  .tap-voice-focus.maya .tap-voice-core { background: linear-gradient(135deg,#68b7db,#476ace); box-shadow: 0 8px 18px rgba(35, 98, 172, .19); }
+  .tap-voice-focus.sam .tap-voice-core { background: linear-gradient(135deg,#83d3a1,#27a17c); box-shadow: 0 8px 18px rgba(30, 141, 92, .2); }
+  @keyframes tap-voice-ring { from { transform: scale(.65); opacity: .4; } to { transform: scale(1.3); opacity: 0; } }
+  .tap-conversation-scroll { flex: 1; min-height: 0; overflow-y: auto; scroll-behavior: smooth; padding: 18px 15px 12px; }
+  .tap-conversation-start { margin: 0 auto 16px; color: #8b8296; font-size: 10px; text-align: center; }
+  #tap-transcript { display: flex; flex-direction: column; gap: 11px; }
+  .tap-line { max-width: 94%; display: flex; flex-direction: column; gap: 3px; align-self: flex-start; }
+  .tap-line.maya { align-self: flex-end; align-items: flex-end; }
+  .tap-line-speaker { padding: 0 3px; color: #766b86; font-size: 10px; font-weight: 700; }
+  .tap-line-text { padding: 10px 12px; border: 1px solid #ece6f4; border-radius: 13px 13px 13px 4px; background: white; color: #2b1b46; font-size: 12px; line-height: 1.43; }
+  .tap-line.maya .tap-line-text { border-color: #7050d8; border-radius: 13px 13px 4px 13px; background: #7653dd; color: white; }
+  .tap-line.sam .tap-line-text { border-color: #d5e8da; background: #f2fbf5; }
+  .tap-card { padding: 12px 13px; border: 1px solid #e8def5; border-radius: 14px; background: white; box-shadow: 0 8px 18px rgba(35, 19, 72, .06); animation: tap-card-in 420ms cubic-bezier(.22,1,.36,1) both; }
+  .tap-card-kicker { display: block; margin-bottom: 5px; color: #754fcd; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .11em; }
+  .tap-card strong { display: block; color: #23133e; font-size: 13px; line-height: 1.25; }
+  .tap-card p { margin: 5px 0 0; color: #71667d; font-size: 10px; line-height: 1.4; }
+  .tap-card.review { border-color: #eadfba; background: #fffdf5; }
+  .tap-card.approved { border-color: #bfe5d0; background: #f4fff9; }
+  .tap-card.transfer-review { border-color: #c7b5f0; background: #fff; box-shadow: 0 12px 24px rgba(82, 44, 141, .12); }
+  .tap-review-rows { margin: 12px 0 4px; border-top: 1px solid #eee7f6; }
+  .tap-review-rows > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px solid #f1ecf7; font-size: 11px; }
+  .tap-review-rows dt { color: #796f88; }
+  .tap-review-rows dd { margin: 0; color: #28143e; text-align: right; font-weight: 800; }
+  .tap-card.transfer-review p { margin-top: 10px; color: #5b3b98; font-weight: 700; }
+  .tap-card.face-id { position: relative; border-color: #d4c5f1; background: #f8f5ff; padding-right: 58px; }
+  .tap-face-id-mark { position: absolute; right: 13px; top: 15px; width: 33px; height: 33px; display: grid; place-items: center; border: 2px solid #7857cc; border-radius: 10px; color: #714dc9; font-size: 25px; animation: tap-face-pulse 1s ease-in-out infinite alternate; }
+  .tap-card.face-id.approved .tap-face-id-mark { border-color: #1b9a62; color: #168e59; animation: none; }
+  @keyframes tap-face-pulse { to { box-shadow: 0 0 0 7px rgba(120,87,204,.1); } }
+  .tap-card.next-step { border-color: #bbd9ec; background: #f4fbff; }
+  .tap-handoff { display: flex; align-items: center; gap: 9px; padding: 10px 12px; border-radius: 12px; background: #eaf8ef; color: #155638; font-size: 11px; font-weight: 800; animation: tap-card-in 420ms ease both; }
+  .tap-handoff-avatar { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #d7bb9f; color: #35251a; }
+  @keyframes tap-card-in { from { opacity: 0; transform: translateY(13px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  .tap-speaking { display: none; }
+  .tap-speaking.human { color: #21724d; }
+  .tap-speaking-bars { display: flex; align-items: center; justify-content: center; gap: 2px; width: 55px; height: 28px; }
+  .tap-speaking-bars i { width: 3px; height: 14px; border-radius: 4px; background: currentColor; animation: voice-pulse 750ms ease-in-out infinite alternate; }
+  .tap-speaking-bars i:nth-child(2n) { height: 21px; animation-delay: -300ms; }
+  .tap-speaking-bars i:nth-child(3n) { height: 9px; animation-delay: -500ms; }
+  .tap-speaking.idle .tap-speaking-bars i { animation: none; height: 4px; opacity: .45; }
+  .tap-conversation-footer { min-height: 48px; padding: 0 16px; display: flex; align-items: center; gap: 9px; border-top: 1px solid #eee9f4; background: #fff; color: #6d6579; font-size: 10px; font-weight: 700; }
+  .tap-footer-mic { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; background: #eee8ff; color: #724bd9; font-size: 19px; }
+  .tap-footer-type { margin-left: auto; color: #724bd9; }
+  .tap-finish { display: flex; flex: 1; min-height: 0; flex-direction: column; align-items: flex-start; justify-content: center; padding: 32px; background: radial-gradient(circle at 90% 0%, #d7bfff, transparent 42%), #fcfaff; }
+  .tap-finish-orb { display: grid; place-items: center; width: 70px; height: 70px; border-radius: 23px; background: linear-gradient(135deg,#ffae75,#e862a7 38%,#774cf0 84%); color: white; font-size: 42px; box-shadow: 0 17px 34px rgba(143, 82, 207, .25); }
+  .tap-finish h2 { margin: 26px 0 12px; font: 700 37px/1.06 'Season Sans', sans-serif; letter-spacing: -.06em; }
+  .tap-finish p { margin: 0; color: #6b607c; font-size: 13px; }
+  .tap-finish button { margin-top: 32px; padding: 14px 18px; border: 0; border-radius: 12px; color: white; background: #210b5c; font-size: 14px; font-weight: 700; }
+  .tap-story-controls { min-height: 28px; font-size: 11px; font-weight: 400; }
+  .tap-story-controls > div { display: flex; gap: 7px; }
+  .tap-story-controls button { padding: 5px 9px; border: 1px solid rgba(255,255,255,.35); border-radius: 7px; color: white; background: rgba(255,255,255,.1); font-size: 11px; }
+  .tap-story-controls button:hover { background: rgba(255,255,255,.22); }
+  body.tap-demo-open > .site-header, body.tap-demo-open > main, body.tap-demo-open > footer { filter: blur(4px); }
+  @media (max-width: 650px) {
+    .tap-story { background: #fbfaff; }
+    .tap-story-stage { padding: 0; gap: 0; background: #fbfaff; }
+    .tap-story-topline { position: absolute; z-index: 10; top: 40px; right: 10px; width: auto; min-height: 0; }
+    .tap-story-topline > span { display: none; }
+    .tap-story-close { border-color: #e5ddec; background: white; color: #22143e; }
+    .tap-device { width: 100vw; height: 100dvh; min-height: 0; padding: 0; border: 0; border-radius: 0; box-shadow: none; background: #fbfaff; }
+    .tap-device-camera { display: none; }
+    .tap-device-screen { border-radius: 0; }
+    .tap-story-controls { position: absolute; z-index: 10; bottom: 6px; width: 100%; padding: 5px 15px; color: #655b75; background: rgba(255,255,255,.96); }
+    .tap-story-controls button { border-color: #e4dbef; color: #4d2fa5; background: white; }
+    .tap-profile { padding-bottom: 100px; }
+    .tap-entry { bottom: 100px; }
+    .tap-app-nav { bottom: 34px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .tap-entry, .tap-speaking-bars i, .tap-card, .tap-handoff, .tap-voice-rings::before, .tap-voice-rings::after { animation: none !important; } .tap-conversation-scroll { scroll-behavior: auto; } }
+}
+@layer page {
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
   .slide-control { width: min(560px, 100%); margin: 11px auto 0; gap: 10px; justify-content: center; }
   .slide-control .arrow { width: 42px; height: 42px; flex: none; display: grid; place-items: center; border-color: #ded8e8; color: #30185a; }
@@ -223,4 +352,202 @@
   @keyframes tap-pulse { 50% { box-shadow: 0 0 0 6px rgba(8, 121, 84, .12); } }
   @media (max-width: 650px) { .tap-demo { width: 100%; max-width: none; height: min(700px, 100dvh); max-height: none; margin: auto 0 0; border-radius: 20px 20px 0 0; } }
   @media (prefers-reduced-motion: reduce) { .tap-demo-mic[aria-pressed="true"] { animation: none; } }
+}
+
+/* Clearway is the fictional customer's app. The marketing page above keeps Dialpad branding. */
+@layer page {
+  .tap-story {
+    --cw-ink: #16231d;
+    --cw-muted: #627168;
+    --cw-green: #146b4b;
+    --cw-line: #dce7df;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--cw-ink);
+  }
+  .tap-story-stage { background: #17291f; }
+  .tap-story-topline, .tap-story-controls { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #e7f3eb; }
+  .tap-device { border-color: #283b30; background: #17251d; box-shadow: 0 26px 80px rgba(3, 16, 8, .4); }
+  .tap-device-camera { background: #17251d; }
+  .tap-device-screen, .tap-profile, .tap-conversation { background: #f7faf7; }
+  .tap-system-bar { color: var(--cw-ink); font-family: inherit; }
+  .tap-app-header { border-color: var(--cw-line); font-family: inherit; }
+  .tap-clearway-mark { background: var(--cw-green); }
+  .tap-app-avatar { background: #e0eee5; color: var(--cw-green); }
+  .tap-profile-eyebrow { color: var(--cw-green); }
+  .tap-profile-title h2 { color: var(--cw-ink); font-family: inherit; letter-spacing: -.045em; }
+  .tap-profile-title p { color: var(--cw-muted); }
+  .tap-balance { background: #183d2c; border: 1px solid #29513c; box-shadow: none; }
+  .tap-balance > span { color: #c3dfcb; }
+  .tap-balance > strong { font-family: inherit; letter-spacing: -.045em; }
+  .tap-profile-menu { border-color: var(--cw-line); }
+  .tap-profile-menu > span, .tap-profile-menu b { color: var(--cw-muted); }
+  .tap-profile-menu > div { border-color: var(--cw-line); }
+  .tap-entry { border-color: #a6cbb5; background: #ebf6ef; color: var(--cw-ink); box-shadow: none; animation: none; }
+  .tap-entry:hover, .tap-entry:focus-visible { border-color: var(--cw-green); background: #e3f2e8; }
+  .tap-entry small { color: var(--cw-muted); }
+  .tap-entry > span:last-child { color: var(--cw-green); }
+  .tap-entry-orb { background: var(--cw-green); box-shadow: none; font-size: 21px; }
+  .tap-app-nav { border-color: var(--cw-line); }
+  .tap-app-nav > span { color: #8a9a90; }
+  .tap-app-nav > span.selected { color: var(--cw-green); }
+  .tap-conversation-head { min-height: 64px; padding: 13px 21px; border-color: var(--cw-line); }
+  .tap-conversation-head strong { font-size: 17px; letter-spacing: -.025em; }
+  .tap-conversation-head small { font-size: 12px; color: var(--cw-muted); }
+  .tap-end { padding: 9px 14px; border-color: var(--cw-line); color: var(--cw-ink); font-family: inherit; font-size: 13px; font-weight: 600; }
+  .tap-end:hover, .tap-end:focus-visible { border-color: var(--cw-green); color: var(--cw-green); }
+  .tap-voice-focus { --voice-halo: transparent; min-height: 73px; flex-direction: row; justify-content: flex-start; gap: 12px; padding: 6px 22px; background: #f1f7f2; border-bottom: 1px solid var(--cw-line); color: var(--cw-green); font-size: 13px; font-weight: 600; }
+  .tap-voice-focus.maya { --voice-halo: transparent; color: #275e7e; }
+  .tap-voice-focus.sam { --voice-halo: transparent; color: #7a5b30; }
+  .tap-voice-rings { width: 42px; height: 42px; }
+  .tap-voice-rings::before, .tap-voice-rings::after { border-width: 1.5px; }
+  .tap-voice-core, .tap-voice-focus.maya .tap-voice-core, .tap-voice-focus.sam .tap-voice-core { width: 33px; height: 33px; box-shadow: none; font-size: 18px; color: white; }
+  .tap-voice-core { background: var(--cw-green); }
+  .tap-voice-focus.maya .tap-voice-core { background: #275e7e; }
+  .tap-voice-focus.sam .tap-voice-core { background: #7a5b30; }
+  .tap-conversation { position: relative; }
+  .tap-conversation-scroll { padding: 18px 19px 20px; }
+  .tap-call-controls { display: flex; flex: none; align-items: center; justify-content: center; gap: 24px; min-height: 84px; padding: 11px 16px 16px; border-top: 1px solid var(--cw-line); background: #fff; }
+  .tap-call-control { position: relative; display: grid; place-items: center; width: 52px; height: 52px; border: 1px solid #d2dfd6; border-radius: 50%; background: #f7faf7; color: var(--cw-ink); cursor: pointer; transition: background 160ms ease, transform 160ms ease, border-color 160ms ease; }
+  .tap-call-control:hover { transform: translateY(-2px); background: #eef6f0; border-color: #aac8b3; }
+  .tap-call-control:focus-visible { outline: 3px solid #75b889; outline-offset: 3px; }
+  .tap-call-control svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  .tap-call-control.is-muted { background: #e9eeea; color: #66766b; }
+  .tap-call-control.is-muted::after { content: ''; position: absolute; width: 29px; height: 2px; border-radius: 2px; background: currentColor; transform: rotate(-45deg); box-shadow: 0 0 0 2px #e9eeea; }
+  .tap-call-end { border-color: #ad3838; background: #bd4545; color: #fff; }
+  .tap-call-end:hover { border-color: #a32f2f; background: #a93636; }
+  .tap-story:has(.tap-conversation:not([hidden])) .tap-story-controls { display: none; }
+  .tap-conversation-start { color: var(--cw-muted); font-size: 12px; margin-bottom: 22px; }
+  #tap-transcript { gap: 15px; }
+  .tap-line { max-width: 96%; gap: 5px; }
+  .tap-line-speaker { color: var(--cw-muted); font-size: 12px; }
+  .tap-line-text { padding: 13px 15px; border-color: var(--cw-line); border-radius: 17px 17px 17px 5px; color: var(--cw-ink); font-size: 15px; line-height: 1.43; box-shadow: 0 2px 8px rgba(15, 50, 29, .035); }
+  .tap-line.maya .tap-line-text { border-color: #175c43; border-radius: 17px 17px 5px 17px; background: var(--cw-green); }
+  .tap-line.sam .tap-line-text { border-color: #d2e2d6; background: #eef6f0; }
+  .tap-card { padding: 15px 17px; border-color: var(--cw-line); border-radius: 16px; box-shadow: none; }
+  .tap-card-kicker { margin-bottom: 7px; color: var(--cw-green); font-size: 11px; letter-spacing: .075em; }
+  .tap-card strong { color: var(--cw-ink); font-size: 16px; line-height: 1.25; }
+  .tap-card p { margin-top: 7px; color: var(--cw-muted); font-size: 13px; line-height: 1.4; }
+  .tap-card.status, .tap-card.compare { align-self: flex-start; width: auto; max-width: 82%; background: #fff; }
+  .tap-card.status strong, .tap-card.compare strong { font-size: 19px; letter-spacing: -.025em; }
+  .tap-card.review, .tap-card.next-step, .tap-card.approved { align-self: flex-start; max-width: 88%; border-color: #c8dfcf; background: #f1f8f3; }
+  .tap-card.transfer-review { align-self: stretch; border: 1px solid #a8cbb2; background: #fff; box-shadow: 0 8px 20px rgba(22, 70, 43, .07); }
+  .tap-card.transfer-review strong { font-size: 19px; }
+  .tap-review-rows { border-color: var(--cw-line); }
+  .tap-review-rows > div { padding: 9px 0; border-color: var(--cw-line); font-size: 13px; }
+  .tap-review-rows dt { color: var(--cw-muted); }
+  .tap-review-rows dd { color: var(--cw-ink); }
+  .tap-card.transfer-review p { color: var(--cw-green); }
+  .tap-card.face-id { border-color: #b6d8c0; background: #f3faf5; }
+  .tap-face-id-mark { border-color: var(--cw-green); color: var(--cw-green); }
+  .tap-handoff { align-self: stretch; justify-content: center; gap: 12px; padding: 6px 0; border: 0; background: transparent; color: var(--cw-muted); font-size: 12px; font-weight: 650; }
+  .tap-handoff::before, .tap-handoff::after { content: ''; height: 1px; flex: 1; background: var(--cw-line); }
+  .tap-line.ai + .tap-line.ai, .tap-line.sam + .tap-line.sam, .tap-line.maya + .tap-line.maya { margin-top: -8px; }
+  .tap-check { align-self: flex-start; display: flex; align-items: center; gap: 9px; padding: 10px 12px; border-radius: 12px; background: #eaf3ec; color: #345f45; font-size: 13px; font-weight: 600; animation: tap-card-in 300ms ease both; }
+  .tap-check-dots { letter-spacing: 2px; animation: tap-check-pulse 800ms ease-in-out infinite alternate; }
+  .tap-check.complete { opacity: .65; }
+  .tap-check.complete .tap-check-dots { animation: none; letter-spacing: 0; }
+  .tap-check.complete .tap-check-dots::after { content: '✓'; }
+  .tap-check.complete .tap-check-dots { font-size: 0; }
+  .tap-check.complete .tap-check-dots::after { font-size: 13px; }
+  @keyframes tap-check-pulse { to { opacity: .35; } }
+  .tap-finish { background: #f7faf7; }
+  .tap-finish-orb { background: var(--cw-green); box-shadow: none; }
+  .tap-finish h2 { color: var(--cw-ink); font-family: inherit; letter-spacing: -.045em; }
+  .tap-finish p { color: var(--cw-muted); }
+  .tap-finish button { background: var(--cw-green); }
+  .tap-story-controls button { font-size: 12px; }
+  @media (max-width: 650px) {
+    .tap-story, .tap-story-stage, .tap-device { background: #f7faf7; }
+    .tap-story-close { border-color: var(--cw-line); color: var(--cw-ink); }
+    .tap-story-controls { border-top: 1px solid var(--cw-line); color: var(--cw-muted); }
+    .tap-story-controls button { border-color: var(--cw-line); color: var(--cw-green); }
+  }
+}
+@layer page {
+  /* Carousel foreground mirrors the in-app voice session rather than a webchat widget. */
+  .story-stage .conversation { background: #f7faf7; border-color: rgba(28, 54, 39, .12); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .story-stage .app-context { height: 46px; flex: none; background: #fff; border-bottom-color: #e3e9e4; color: #172a1d; font-size: 12px; }
+  .story-stage .app-context-mark { background: var(--app-accent); }
+  .story-stage .app-context-label { display: flex; align-items: center; gap: 7px; color: #506358; font-size: 9px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+  .story-stage .app-context-label .live-dot { width: 6px; height: 6px; background: var(--app-accent); box-shadow: 0 0 0 3px var(--app-soft); }
+  .story-stage .preview-transcript { flex: 1; gap: 10px; padding: 17px 15px 10px; background: #f7faf7; }
+  .preview-bubble { width: fit-content; max-width: 88%; margin: 0; padding: 10px 12px; font-size: 12px; line-height: 1.38; box-shadow: 0 2px 8px rgba(15, 50, 29, .035); }
+  .preview-bubble-you { align-self: flex-end; border-radius: 14px 14px 4px 14px; background: var(--app-accent); color: #fff; }
+  .preview-bubble-agent, .preview-bubble-human { align-self: flex-start; border: 1px solid #dfe7e1; border-radius: 14px 14px 14px 4px; background: #fff; color: #1b2b20; }
+  .preview-bubble-human { background: var(--app-soft); border-color: transparent; }
+  .story-stage .answer-card { align-self: flex-start; max-width: 95%; min-width: 77%; padding: 10px; border: 1px solid #d8e4dc; border-radius: 12px; background: #fff; }
+  .story-stage .answer-icon { width: 30px; height: 30px; background: var(--app-soft); color: var(--app-accent); font-size: 16px; }
+  .story-stage .answer-card strong { color: #1b2b20; font-size: 12px; }
+  .story-stage .answer-card small { color: #5e7064; }
+  .story-stage .handoff-label { align-self: stretch; justify-content: center; gap: 8px; color: #63746a; font-size: 10px; font-weight: 600; }
+  .story-stage .handoff-label::before, .story-stage .handoff-label::after { content: ''; height: 1px; flex: 1; background: #dbe5de; }
+  .story-stage .handoff-label > span:first-child { display: inline; width: auto; height: auto; border-radius: 0; background: none; color: inherit; font-size: inherit; white-space: nowrap; }
+  .preview-call-controls { display: flex; flex: none; justify-content: center; align-items: center; gap: 17px; height: 61px; border-top: 1px solid #e3e9e4; background: #fff; }
+  .preview-call-controls > span { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid #d5dfd7; border-radius: 50%; background: #f7faf7; color: #233b2c; }
+  .preview-call-controls > .preview-call-end { background: #bd4545; border-color: #ad3838; color: #fff; }
+  .preview-call-controls svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  @media (max-width: 650px) {
+    .story-stage .app-context { height: 36px; font-size: 11px; }
+    .story-stage .app-context-label { font-size: 8px; }
+    .story-stage .preview-transcript { gap: 6px; padding: 8px 10px 6px; }
+    .preview-bubble { padding: 7px 9px; font-size: 11px; }
+    .story-stage .answer-card { padding: 6px 8px; }
+    .preview-call-controls { height: 47px; gap: 13px; }
+    .preview-call-controls > span { width: 31px; height: 31px; }
+    .preview-call-controls svg { width: 15px; height: 15px; }
+  }
+}
+@layer page {
+  /* Resolve's grid frames the story; Clearway's own UI remains inside the phone. */
+  .tap-story-stage { position: relative; isolation: isolate; background: #f2f0ee; }
+  .tap-stage-grid { position: absolute; z-index: 0; left: 50%; top: 50%; width: min(1040px, 94vw); aspect-ratio: 20 / 12; display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); grid-template-rows: repeat(12, minmax(0, 1fr)); gap: 4px; transform: translate(-50%, -50%); pointer-events: none; }
+  .tap-stage-grid span { display: block; min-width: 0; min-height: 0; border-radius: 10%; background: #cec8c4; opacity: .52; }
+  .tap-stage-grid .tap-grid-morph { animation: tap-grid-round 20s linear infinite; animation-delay: var(--grid-delay); }
+  @keyframes tap-grid-round { 0%, 100% { border-radius: 10%; } 8% { border-radius: 50%; } 16% { border-radius: 10%; } }
+  .tap-story-topline, .tap-device, .tap-story-controls { position: relative; z-index: 1; }
+  .tap-story-topline, .tap-story-controls { color: #342c29; }
+  .tap-story-close { border-color: #c9c2be; background: #fff; color: #342c29; }
+  .tap-story-close:hover, .tap-story-close:focus-visible { background: #f9f6f3; }
+  .tap-story-controls button { border-color: #c9c2be; background: #fff; color: #342c29; }
+  .tap-story-controls button:hover { background: #f9f6f3; }
+
+  /* Rate and review cards use their content and layout for hierarchy. */
+  .tap-card.compare { width: min(100%, 285px); max-width: 100%; border: 1px solid var(--cw-line); background: #fff; }
+  .tap-card.compare .tap-rate-values { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: end; gap: 10px; margin: 10px 0 7px; }
+  .tap-rate-previous, .tap-rate-current { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .tap-rate-values small { color: var(--cw-muted); font-size: 11px; font-weight: 600; letter-spacing: 0; }
+  .tap-rate-values b { color: var(--cw-ink); font-size: 18px; font-weight: 750; letter-spacing: -.025em; white-space: nowrap; }
+  .tap-rate-current b { color: var(--cw-green); }
+  .tap-rate-arrow { align-self: end; padding-bottom: 1px; color: var(--cw-muted); font-size: 18px; font-weight: 400; }
+  .tap-card.transfer-review { border: 1px solid #b8cfc0; box-shadow: 0 6px 18px rgba(22, 70, 43, .06); }
+  .story-stage .answer-card { border: 1px solid #d8e4dc; }
+
+  /* Arrival and handoff are the only foreground motion. */
+  .tap-conversation:not([hidden]) { animation: tap-view-in 340ms cubic-bezier(.35, 0, .1, 1) both; }
+  .tap-line { animation: tap-bubble-in 230ms cubic-bezier(.35, 0, .1, 1) both; }
+  .tap-card, .tap-handoff, .tap-check { animation: tap-card-in 300ms cubic-bezier(.35, 0, .1, 1) both; }
+  @keyframes tap-view-in { from { opacity: .65; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes tap-bubble-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 650px) {
+    .tap-story-stage { background: #f7faf7; }
+    .tap-stage-grid { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tap-stage-grid .tap-grid-morph, .tap-conversation:not([hidden]), .tap-line, .tap-card, .tap-handoff, .tap-check { animation: none !important; }
+    .tap-stage-grid .tap-grid-resting-round { border-radius: 50%; }
+  }
+}
+@layer page {
+  /* The scripted phone preview needs one unmistakable place to begin. */
+  .tap-entry { position: relative; left: auto; bottom: auto; width: 100%; min-height: 82px; gap: 12px; margin: 18px 0 20px; padding: 12px 14px; border: 1px solid #0d5a3e; border-radius: 17px; background: var(--cw-green); color: #fff; box-shadow: 0 0 0 4px #d4eadb, 0 12px 28px rgba(16, 73, 48, .19); animation: tap-entry-appear 500ms cubic-bezier(.35, 0, .1, 1) both; }
+  .tap-profile-menu { margin-top: 0; }
+  .tap-entry:hover, .tap-entry:focus-visible { border-color: #0d5a3e; background: #0f5b3f; box-shadow: 0 0 0 4px #bedfca, 0 15px 30px rgba(16, 73, 48, .24); }
+  .tap-entry:focus-visible { outline: 3px solid #0d5a3e; outline-offset: 6px; }
+  .tap-entry-orb { width: 44px; height: 44px; border-radius: 50%; background: #fff; color: var(--cw-green); box-shadow: none; }
+  .tap-entry-orb svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .tap-entry strong { color: #fff; font-size: 16px; letter-spacing: -.025em; }
+  .tap-entry small { color: #e4f3e9; font-size: 11px; }
+  .tap-entry > span:last-child { color: #fff; font-size: 25px; }
+  @keyframes tap-entry-appear { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .tap-entry { animation: none !important; } }
 }

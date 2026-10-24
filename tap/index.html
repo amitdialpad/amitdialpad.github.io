@@ -8,8 +8,9 @@
     <title>Dialpad Tap — Talk to the app</title>
     <link rel="stylesheet" href="./assets/tokens-base-light.css" />
     <link rel="stylesheet" href="./assets/tokens-dp-light.css" />
-    <link rel="stylesheet" href="./styles.css?v=2" />
+    <link rel="stylesheet" href="./styles.css?v=4" />
     <script src="./site.js" defer></script>
+    <script type="module" src="./demo.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -32,7 +33,7 @@
               <span class="platform-item web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c-3 3-4 6-4 9s1 6 4 9M12 3c3 3 4 6 4 9s-1 6-4 9"/></svg>Web</span>
             </div>
           </div>
-          <button class="primary-button" type="button" disabled>Tap to talk</button>
+          <button class="primary-button" type="button" id="open-tap-demo" aria-haspopup="dialog">Tap to talk</button>
         </div>
 
         <div class="hero-showcase" aria-label="Examples of customer support inside a business website or app">
@@ -58,15 +59,15 @@
             </div>
           </div>
               <div class="conversation" aria-label="Support conversation in the customer app">
-                <div class="app-context"><span class="app-context-mark" aria-hidden="true">A</span><span id="app-name">Aero Airlines app</span><span class="app-context-label">IN THE APP</span></div>
-                <div class="conversation-top"><span class="spark" aria-hidden="true">✦</span><div><strong id="support-title">Aero support</strong><small>AI agent</small></div><span class="conversation-more" aria-hidden="true">···</span></div>
-                <div class="message-stack">
-                  <div class="spoken-question"><span class="speech-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4m-4 0h8"/></svg></span><div><small>YOU ASKED BY VOICE</small><p id="customer-question">Is my flight on time?</p></div></div>
+                <div class="app-context"><span class="app-context-mark" aria-hidden="true">A</span><span id="app-name">Aero Airlines app</span><span class="app-context-label"><span class="live-dot" aria-hidden="true"></span>Voice connected</span></div>
+                <div class="message-stack preview-transcript">
+                  <p class="preview-bubble preview-bubble-you" id="customer-question">Is my flight on time?</p>
+                  <p class="preview-bubble preview-bubble-agent" id="assistant-message">Let me check that for you.</p>
                   <div class="answer-card"><span class="answer-icon" id="answer-icon" aria-hidden="true">✈</span><div><strong id="answer-title">On time · Gate C12</strong><small id="answer-detail">Boarding at 2:10 PM</small></div><span class="good" aria-label="Confirmed">✓</span></div>
-                  <div class="handoff-label"><span aria-hidden="true">↗</span><span>Connected to a person with the full story</span></div>
-                  <div class="human-voice"><div class="human-voice-head"><span class="human-avatar" aria-hidden="true">A</span><div><strong id="human-name">Alex · Aero</strong><small><span class="live-dot"></span> LIVE VOICE</small></div></div><div class="voice-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p id="human-message">I can help with your seat. I already have your flight details.</p></div>
+                  <div class="handoff-label"><span id="handoff-name">Alex joined</span></div>
+                  <p class="preview-bubble preview-bubble-human" id="human-message">I can help with your seat. I already have your flight details.</p>
                 </div>
-                <div class="voice-toolbar"><span class="voice-on"><span class="live-dot"></span> Voice is live</span><span class="type-option">Type instead</span></div>
+                <div class="preview-call-controls" aria-hidden="true"><span><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"/></svg></span><span><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M16 9a4 4 0 0 1 0 6m2-9a8 8 0 0 1 0 12"/></svg></span><span class="preview-call-end"><svg viewBox="0 0 24 24"><path d="M6 6 18 18M18 6 6 18"/></svg></span></div>
               </div>
           </div>
         </template>
@@ -77,5 +78,42 @@
       <section class="business" id="business" aria-labelledby="business-title"><div class="section-wrap business-grid"><div><span class="eyebrow">For your team</span><h2 id="business-title">Teach the app<br /><em>your business.</em></h2><p>Connect your knowledge and systems. Choose what the AI agent can do and when your team steps in.</p></div><div class="setup-card" aria-label="Illustration of business controls"><div class="setup-head"><span class="spark" aria-hidden="true">✦</span><strong>Your customer experience</strong><span class="setup-live"><span></span>Ready to connect</span></div><div class="setup-body"><div class="setup-side"><span class="selected">◫ &nbsp; Sources</span><span>◇ &nbsp; Actions</span><span>↗ &nbsp; Handoffs</span><span>▣ &nbsp; Channels</span></div><div class="setup-main"><h3>Make it yours</h3><p>Start with what your business already knows.</p><div class="setup-row"><span class="row-icon">▤</span><div><strong>Knowledge</strong><small>Policies and help content</small></div><span class="toggle"></span></div><div class="setup-row"><span class="row-icon">↗</span><div><strong>Human handoff</strong><small>Your team, with full context</small></div><span class="toggle"></span></div><div class="setup-row"><span class="row-icon">▣</span><div><strong>Website and app</strong><small>One experience, wherever they are</small></div><span class="toggle"></span></div></div></div></div></div></section>
     </main>
     <footer><div class="section-wrap footer-inner"><div class="brand"><img src="./assets/dialpad-logo.svg" alt="Dialpad" /><span class="brand-product">Tap</span></div><span>Talk to the app.</span><a href="#top">Back to top ↑</a></div></footer>
+
+    <dialog class="tap-story" id="tap-story" aria-label="Dialpad Tap demonstration">
+      <div class="tap-story-stage">
+        <div class="tap-stage-grid" id="tap-stage-grid" aria-hidden="true"></div>
+        <div class="tap-story-topline"><span>Start with the help button in the app</span><button class="tap-story-close" id="close-tap-demo" type="button" aria-label="Close demo">×</button></div>
+        <div class="tap-device" id="tap-device">
+          <div class="tap-device-camera" aria-hidden="true"></div>
+          <div class="tap-device-screen" id="tap-device-screen">
+            <div class="tap-system-bar" aria-hidden="true"><span>9:41</span><span>●●● ▰</span></div>
+
+            <div class="tap-profile" id="tap-profile">
+              <div class="tap-app-header"><span class="tap-clearway-mark">C</span><strong>Clearway</strong><span class="tap-app-avatar">M</span></div>
+              <div class="tap-profile-title"><span class="tap-profile-eyebrow">YOUR ACCOUNT</span><h2>Good morning,<br />Maya.</h2><p>Your money, moving clearly.</p></div>
+              <div class="tap-balance"><span>Total balance</span><strong>$4,280.65</strong><div><span>Send money</span><span>Activity</span></div></div>
+              <button class="tap-entry" id="start-tap-demo" type="button"><span class="tap-entry-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"></path></svg></span><span><strong>Need help? Tap to talk</strong><small>Tap here to start the conversation</small></span><span aria-hidden="true">›</span></button>
+              <div class="tap-profile-menu"><span>Profile</span><div>Personal details <b>›</b></div><div>Payment methods <b>›</b></div></div>
+              <div class="tap-app-nav" aria-hidden="true"><span>⌂<small>Home</small></span><span>⇄<small>Transfers</small></span><span class="selected">○<small>Profile</small></span></div>
+            </div>
+
+            <div class="tap-conversation" id="tap-conversation" hidden>
+              <div class="tap-conversation-scroll" id="tap-conversation-scroll" aria-live="polite" aria-relevant="additions text">
+                <div id="tap-transcript"></div>
+              </div>
+              <div class="tap-call-controls" role="group" aria-label="Voice conversation controls">
+                <button class="tap-call-control" id="tap-mic-control" type="button" aria-label="Mute microphone" aria-pressed="false" title="Mute microphone"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"></path></svg></button>
+                <button class="tap-call-control" id="tap-speaker-control" type="button" aria-label="Mute speaker" aria-pressed="false" title="Mute speaker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z"></path><path d="M16 9a4 4 0 0 1 0 6m2-9a8 8 0 0 1 0 12"></path></svg></button>
+                <button class="tap-call-control tap-call-end" id="tap-end-conversation" type="button" aria-label="End conversation" title="End conversation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18"></path></svg></button>
+              </div>
+              <span class="sr-only" id="tap-control-status" role="status" aria-live="polite"></span>
+            </div>
+
+            <div class="tap-finish" id="tap-finish" hidden><span class="tap-finish-orb" aria-hidden="true">✓</span><h2>One conversation.<br />From start to finish.</h2><p>Powered by Dialpad Tap</p><button id="replay-tap-demo" type="button">Replay demo</button></div>
+          </div>
+        </div>
+        <div class="tap-story-controls"><span id="tap-demo-caption">A scripted preview of the Tap experience</span><div><button id="tap-demo-replay" type="button" hidden>Replay</button></div></div>
+      </div>
+    </dialog>
   </body>
 </html>
