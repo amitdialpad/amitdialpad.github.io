@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info:
+  title: Clearway Synthetic Transfer Status
+  version: 1.0.0
+  description: Read-only synthetic transfer records for an internal Dialpad beta agent test.
+servers:
+  - url: https://amitdialpad.github.io/tap/clearway-test-api
+paths:
+  /transfers/{reference}.json:
+    get:
+      operationId: getTransferStatus
+      summary: Get transfer status
+      description: Look up one synthetic Clearway transfer by its exact test reference.
+      parameters:
+        - name: reference
+          in: path
+          required: true
+          description: Exact test reference, such as CW-TEST-001.
+          schema:
+            type: string
+            pattern: '^CW-TEST-[0-9]{3}$'
+      responses:
+        '200':
+          description: Matching synthetic transfer record.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [synthetic, reference, status, status_detail]
+                properties:
+                  synthetic:
+                    type: boolean
+                  reference:
+                    type: string
+                  status:
+                    type: string
+                    enum: [processing, delivered]
+                  status_detail:
+                    type: string
+                  estimated_delivery:
+                    type: string
+                    nullable: true
+        '404':
+          description: No matching synthetic transfer record.
