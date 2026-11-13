@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amit</title>
+<meta name="description" content="Amit, staff product designer at Dialpad.">
+<meta name="theme-color" content="#1f1e1c">
+<style>
+:root{
+  --paper:#1f1e1c; --ink:#f4f1e8; --soft:#b9b5a8;
+  --red:#ff6a4d; --red-text:#ff6a4d;
+  --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --gutter:clamp(1.25rem,5vw,3.5rem);
+  color-scheme:dark; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root[data-theme="light"]{ --paper:#f4f1e8; --ink:#141414; --soft:#55524a; --red:#c8321a; --red-text:#a82813; color-scheme:light; }
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans);
+  font-size:clamp(1.0625rem,1rem + .25vw,1.1875rem); line-height:1.5; -webkit-font-smoothing:antialiased}
+
+/* Every block gets the same side gutters. Vertical spacing is set separately so it can never cancel them. */
+.wrap{max-width:70rem; margin-inline:auto; padding-inline:var(--gutter)}
+
+a{color:inherit; text-decoration-thickness:1.5px; text-underline-offset:.2em; -webkit-tap-highlight-color:transparent; transition:text-decoration-color 150ms ease}
+@media (hover:hover) and (pointer:fine){ a:hover{text-decoration-color:var(--red)} }
+a:active{text-decoration-color:var(--red)}
+:focus-visible{outline:2px solid var(--red); outline-offset:3px}
+h1,h2,h3{font-weight:700; letter-spacing:-.025em; line-height:1.05; margin:0; text-wrap:balance}
+p{margin:0 0 .9rem; max-width:62ch}
+.soft{color:var(--soft)}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* Top bar */
+.top{display:flex; justify-content:flex-end; padding-block:.75rem 0}
+.lights{font:inherit; font-size:.95rem; color:var(--ink); background:none; border:0; min-height:44px; padding:.6rem 0 .6rem 1rem; cursor:pointer;
+  text-decoration:underline; text-underline-offset:.2em; touch-action:manipulation; user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent;
+  transform-origin:right center; transition:transform 160ms var(--ease-out)}
+.lights:active{transform:scale(.97)}
+
+/* Cover */
+.cover{min-height:clamp(28rem,68vh,48rem); padding-block:clamp(3rem,8vw,6rem) clamp(3rem,7vw,5rem); display:flex; flex-direction:column; justify-content:flex-end}
+h1{font-size:clamp(6rem,22vw,18rem); line-height:.75; letter-spacing:-.075em}
+.letter-i{position:relative; display:inline-block}
+.i-dot{position:absolute; left:50%; top:.02em; width:.12em; height:.12em; border-radius:50%; background:var(--red); transform:translateX(-50%); transition:transform 180ms var(--ease-out)}
+.i-dot.entering{animation:dot-arrive 500ms var(--ease-out) 200ms both}
+@keyframes dot-arrive{from{opacity:0; transform:translate(-50%,-.12em)} to{opacity:1; transform:translate(-50%,0)}}
+@media (hover:hover) and (pointer:fine){h1:hover .i-dot:not(.entering){transform:translate(-50%,-.06em)}}
+@media (prefers-reduced-motion:reduce){.i-dot.entering{animation:none} .i-dot{transition:none} h1:hover .i-dot:not(.entering){transform:translateX(-50%)}}
+.lede{font-size:clamp(1.35rem,1.05rem + 1.3vw,2.1rem); line-height:1.22; letter-spacing:-.02em; max-width:31ch; margin:clamp(3rem,8vw,6rem) 0 0}
+@media (min-width:54rem){.cover .lede{align-self:flex-end; width:48%}}
+@media (max-width:40rem){.cover{min-height:62svh} h1{font-size:clamp(5.25rem,24vw,8rem)} .lede{margin-top:3.5rem}}
+
+/* Sections: heading on the left, content on the right, one after another */
+.sec{padding-block:clamp(2.25rem,5vw,4rem) clamp(4rem,8vw,6.5rem); display:grid; gap:1.5rem}
+@media (min-width:54rem){ .sec{grid-template-columns:14rem minmax(0,1fr); column-gap:clamp(3rem,7vw,7rem)} }
+.sec > h2{font-size:1rem; font-weight:700; letter-spacing:.015em; line-height:1.25; max-width:12rem}
+.sec > div > p:not(.big){max-width:49ch}
+.big{font-size:clamp(1.9rem,1.4rem + 2.4vw,3.4rem); line-height:1.04; letter-spacing:-.03em; font-weight:700; max-width:20ch; margin:0 0 1.1rem; text-wrap:balance}
+
+.projects{list-style:none; counter-reset:project; margin:0; padding:0; display:grid; gap:0}
+.projects li{counter-increment:project; padding-block:0 clamp(2rem,5vw,3.5rem); margin-bottom:clamp(2rem,5vw,3.5rem)}
+.projects li:last-child{margin-bottom:0; padding-bottom:0}
+.projects h3{font-size:clamp(2.25rem,1.5rem + 3.5vw,4.5rem); line-height:.98; letter-spacing:-.05em; margin-bottom:.7rem}
+.projects h3::before{content:counter(project,decimal-leading-zero); display:block; color:var(--red-text); font-size:.82rem; line-height:1; letter-spacing:.05em; margin-bottom:1rem}
+.projects p{margin:0}
+
+/* The one correction on the page */
+del{text-decoration:none; position:relative; white-space:nowrap}
+del::after{content:""; position:absolute; left:-.04em; right:-.04em; top:54%; height:.09em; background:var(--red); clip-path:inset(0 0 0 0); transition:clip-path 280ms var(--ease-out)}
+ins{text-decoration:none; color:var(--red-text); display:inline-block; transition:opacity 220ms var(--ease-out) 240ms, filter 220ms var(--ease-out) 240ms}
+.armed del::after{clip-path:inset(0 100% 0 0)}
+.armed ins{opacity:0; filter:blur(2px)}
+@media (prefers-reduced-motion:reduce){ del::after{transition:none} ins{transition:opacity 200ms ease} .armed ins{filter:none} }
+
+.desk{margin:1.75rem 0 0; display:grid; grid-template-columns:auto 1fr; gap:.4rem 1.5rem; max-width:36rem}
+.desk dt{font-weight:700} .desk dd{margin:0; color:var(--soft)}
+@media (max-width:40rem){ .desk{grid-template-columns:1fr; row-gap:0} .desk dd{margin-bottom:.7rem} }
+
+/* Opinion: the one inverted block */
+.stance{background:var(--ink); color:var(--paper); padding-block:clamp(3.5rem,9vw,7rem)}
+.stance p{font-size:clamp(2.15rem,1.35rem + 4vw,5rem); line-height:.98; letter-spacing:-.035em; font-weight:700; max-width:16ch; margin:0; text-wrap:balance}
+
+
+.plain{list-style:none; margin:0; padding:0; max-width:36rem}
+.plain li{padding-block:.85rem}
+.plain li:first-child{padding-top:0}
+.side{max-width:none}
+.side li{display:grid; gap:.2rem 2rem; padding-block:1.25rem}
+.side li:first-child{padding-top:0}
+.side b{font-size:1.2rem; letter-spacing:-.025em}
+.side span{color:var(--soft)}
+.side .project-links{display:flex; flex-wrap:wrap; gap:.5rem 1.5rem; margin-top:.45rem; font-size:.85rem; font-weight:700}
+.project-links a{color:var(--ink)}
+@media (min-width:40rem){ .side li{grid-template-columns:11rem 1fr} }
+
+/* Hours */
+.goa-row{display:grid; grid-template-columns:minmax(0,1fr) 12rem; gap:1rem 2rem; align-items:end; max-width:42rem}
+.goa-row p{margin-bottom:0}
+.goa-scene{display:block; width:100%; max-width:12rem; height:auto; color:var(--ink)}
+.goa-scene .sun{fill:var(--red)}
+.goa-scene .palm{fill:none; stroke:currentColor; stroke-width:3; stroke-linecap:round; stroke-linejoin:round}
+.goa-scene .water{fill:none; stroke:var(--soft); stroke-width:1.5; stroke-linecap:round}
+@media (max-width:40rem){.goa-row{grid-template-columns:1fr}.goa-scene{width:9rem; margin-top:.5rem}}
+.hours-label{font-weight:700; margin:1.75rem 0 .15rem}
+.hours-range{font-size:clamp(1.4rem,1.1rem + 1vw,2rem); letter-spacing:-.025em; margin:0 0 .75rem}
+.ruler{margin:0 0 .6rem; max-width:36rem}
+.ruler svg{display:block; width:100%; height:auto}
+.ruler .track{fill:var(--soft); opacity:.35}
+.ruler .band{fill:var(--ink)}
+.hours-note{font-size:.9rem; margin:0}
+[hidden]{display:none!important}
+
+.links{list-style:none; margin:0; padding:0; font-size:clamp(1.9rem,1.4rem + 2.4vw,3.4rem); font-weight:700; letter-spacing:-.03em; line-height:1.15}
+.end{padding-block:0 3.5rem}
+
+/* Easter egg: type r-u-n, or triple-tap the audiobook line */
+#runner{position:fixed; left:0; bottom:calc(env(safe-area-inset-bottom,0px) + 12px); z-index:9; pointer-events:none; display:none; align-items:flex-end; gap:.6rem; color:var(--ink)}
+#runner.go{display:flex; animation:jog 9s linear forwards}
+#runner small{font-size:.85rem; background:var(--paper); border:1.5px solid var(--ink); padding:.1rem .45rem; font-variant-numeric:tabular-nums}
+@keyframes jog{from{transform:translateX(-14rem)} to{transform:translateX(100vw)}}
+#runner .legs{transform-origin:20px 30px; animation:stride .35s steps(2) infinite}
+@keyframes stride{50%{transform:scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){ #runner.go{animation:none; transform:translateX(1rem)} #runner .legs{animation:none} }
+</style>
+</head>
+<body>
+
+<div class="wrap top"><button class="lights" id="lights" type="button" aria-label="Switch to light theme">Light</button></div>
+
+<header class="wrap cover">
+  <h1 aria-label="Amit">Am<span class="letter-i" aria-hidden="true">ı<span class="i-dot entering"></span></span>t</h1>
+  <p class="lede">Staff product designer at Dialpad. I make stuff.</p>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="sec" aria-labelledby="h-day">
+      <h2 id="h-day">What I do</h2>
+      <div>
+        <p>At Dialpad, I’ve worked on calls, meetings, integrations, and billing. Right now, I’m focused on Agentic Connectors and the Developer Platform.</p>
+        <p>I also make tools, prototypes, and whatever else feels worth making. Making things with AI feels like the best game I’ve played since Zelda.</p>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="h-work">
+      <h2 id="h-work">Three things I'm proud of</h2>
+      <ul class="projects">
+        <li><h3>Calls &amp; meetings</h3><p>The call bar puts the controls people need within reach. Meetings adapts its layout to the conversation.</p></li>
+        <li><h3>Billing</h3><p>An interactive invoice and preview that let people explore the details behind each charge.</p></li>
+        <li><h3>Connectors</h3><p>I'm working on redesigning how agents connect to a team's tools, including how people sign in and decide what agents can access.</p></li>
+      </ul>
+    </section>
+
+    <section class="sec" aria-labelledby="h-how" id="redline">
+      <h2 id="h-how">How I design</h2>
+      <div>
+        <p class="big">Make the complicated thing feel <del>simple</del> <span style="white-space:nowrap"><ins>obvious</ins>,</span> then get out of the way.</p>
+        <p>The craft is in the parts nobody screenshots: the error state, the empty state, the third step of an OAuth flow.</p>
+        <p>I talk through the big picture in Codex voice chat while other agents handle focused tasks.</p>
+        <dl class="desk">
+          <dt>Codex app, Claude</dt><dd>where I ask questions and build a working prototype</dd>
+          <dt>Figma</dt><dd>where I refine the last details</dd>
+          <dt>Design Review Mode</dt><dd>where I share the prototype for comments</dd>
+          <dt>Chameleon</dt><dd>for teaching the product inside the product</dd>
+        </dl>
+      </div>
+    </section>
+  </div>
+
+  <section class="stance" aria-labelledby="h-opinion">
+    <div class="wrap">
+      <h2 id="h-opinion" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">A strong opinion</h2>
+      <p>I think voice will become the natural way to talk to software. The interface should build itself around what you ask for.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="sec" aria-labelledby="h-side">
+      <h2 id="h-side">Things I made</h2>
+      <ul class="plain side">
+        <li><b>Design Review Mode</b><span>Comments on live browser prototypes, attached to the thing you're reviewing.<span class="project-links"><a target="_blank" href="https://review-prototype.netlify.app/" rel="noopener">Live preview</a><a target="_blank" href="https://github.com/amitdialpad/review-prototype" rel="noopener">GitHub</a></span></span></li>
+        <li><b>Design Pair Sessions</b><span>Three guided sessions where designers move from watching to pairing to leading real prototype work with AI.<span class="project-links"><a target="_blank" href="https://amitdialpad.github.io/design-pair-sessions/sessions/session-1.html" rel="noopener">Session guide</a><a target="_blank" href="https://github.com/amitdialpad/design-pair-sessions" rel="noopener">GitHub</a></span></span></li>
+        <li><b>Tap</b><span>A prototype for an in-app support conversation that could move from AI to a person without losing context.<span class="project-links"><a target="_blank" href="https://amitdialpad.github.io/tap/#top" rel="noopener">Live preview</a></span></span></li>
+        <li><b>Marshall was here</b><span>A farewell page I made for Marshall Norman, bringing together five years of work, stories, and people who wanted to say goodbye.<span class="project-links"><a target="_blank" href="https://amitdialpad.github.io/marshall-was-here/" rel="noopener">View page</a><a target="_blank" href="https://github.com/amitdialpad/marshall-was-here" rel="noopener">GitHub</a></span></span></li>
+      </ul>
+    </section>
+
+    <section class="sec" aria-labelledby="h-off">
+      <h2 id="h-off">Off the clock</h2>
+      <div>
+        <ul class="plain">
+          <li id="egg">I run with music and listen to audiobooks on walks.</li>
+          <li>I cook. It's the thing I make most that isn't design.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="h-with">
+      <h2 id="h-with">Working with me</h2>
+      <div>
+        <p>Send me a rough thought or a Markdown file. I like making something concrete and working through it together.</p>
+        <div class="goa-row">
+          <p>I live in Goa. I tend to do my best work at night, and prefer meetings earlier when we can.</p>
+          <svg class="goa-scene" viewBox="0 0 220 132" role="img" aria-label="Palm tree and sunset by the water">
+            <circle class="sun" cx="169" cy="77" r="23"/>
+            <path class="water" d="M105 106c35-2 76-2 113 0M122 116c28-2 59-2 88 0M151 125c18-1 37-1 54 0"/>
+            <path class="palm" d="M20 128c18-16 31-44 40-83M60 45C41 24 23 20 3 33M60 45C53 20 59 8 75 2M60 45c22-27 47-31 74-18M60 45c28-7 48 3 65 24M60 45C38 48 21 59 12 78"/>
+          </svg>
+        </div>
+        <p id="hours-label" class="hours-label">My usual hours in Goa (IST)</p>
+        <p id="status" class="hours-range tnum" aria-live="polite">14:30–23:00 IST</p>
+        <div class="ruler" aria-hidden="true"><svg id="ruler" viewBox="0 0 600 8"><rect x="4" y="1" width="592" height="6" rx="3" class="track"/><rect x="361.7" y="1" width="209.7" height="6" rx="3" class="band"/></svg></div>
+        <p id="hours-note" class="hours-note soft tnum" hidden>09:00–17:30 GMT</p>
+      </div>
+    </section>
+
+    <section class="sec end" aria-labelledby="h-find" style="padding-top:clamp(2rem,4.5vw,3.25rem)">
+      <h2 id="h-find">Find me</h2>
+      <ul class="links">
+        <li><a target="_blank" href="https://x.com/amitayre" rel="noopener">@amitayre</a></li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<div id="runner" aria-hidden="true">
+  <svg width="40" height="48" viewBox="0 0 40 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <circle cx="22" cy="7" r="5"/><path d="M20 13 L17 29 M19 17 L28 22 M19 17 L10 21"/><path d="M16.5 7 a6 6 0 0 1 11 0" stroke-width="2"/>
+    <g class="legs"><path d="M17 29 L25 37 L23 46 M17 29 L11 38 L4 40"/></g>
+  </svg>
+  <small>Chapter 12 of 31</small>
+</div>
+
+<script>
+(function(){
+  // Amit's working hours, in GMT. Edit here if they change.
+  var START_GMT = 9, END_GMT = 17.5;
+
+  var root = document.documentElement, btn = document.getElementById('lights');
+  var dot = document.querySelector('.i-dot');
+  if(dot) dot.addEventListener('animationend', function(){ dot.classList.remove('entering'); }, {once:true});
+  function isDark(){ var t = root.getAttribute('data-theme'); return t !== 'light'; }
+  function sync(){ var d = isDark(); btn.textContent = d ? 'Light' : 'Dark'; btn.setAttribute('aria-label', d ? 'Switch to light theme' : 'Switch to dark theme');
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function(m){ m.setAttribute('content', d ? '#1f1e1c' : '#f4f1e8'); }); }
+  try{ var saved = localStorage.getItem('amit-theme'); if(saved) root.setAttribute('data-theme', saved); }catch(e){}
+  sync();
+  btn.addEventListener('click', function(){ var n = isDark() ? 'light' : 'dark'; root.setAttribute('data-theme', n); try{ localStorage.setItem('amit-theme', n); }catch(e){} sync(); });
+
+  // A 24-hour day in the visitor's local time. The solid bar is Amit's usual working day.
+  var svg = document.getElementById('ruler'), NS = 'http://www.w3.org/2000/svg', L = 4, W = 592;
+  function mk(tag, a){ var e = document.createElementNS(NS, tag); for(var k in a) e.setAttribute(k, a[k]); return e; }
+  function x(h){ return L + h / 24 * W; }
+  function clock(h){ var m = Math.round((((h % 24) + 24) % 24) * 60); return String(Math.floor(m / 60) % 24).padStart(2,'0') + ':' + String(m % 60).padStart(2,'0'); }
+  function draw(){
+    var now = new Date(), off = -now.getTimezoneOffset() / 60;
+    var a = (((START_GMT + off) % 24) + 24) % 24, b = a + (END_GMT - START_GMT);
+    var localRange = clock(a) + '\u2013' + clock(b) + (b > 24 ? ' (next day)' : '');
+    var marks = document.createDocumentFragment();
+    marks.appendChild(mk('rect',{x:L,y:1,width:W,height:6,rx:3,'class':'track'}));
+    if(b <= 24){ marks.appendChild(mk('rect',{x:x(a),y:1,width:x(b)-x(a),height:6,rx:3,'class':'band'})); }
+    else { marks.appendChild(mk('rect',{x:x(a),y:1,width:x(24)-x(a),height:6,rx:3,'class':'band'}));
+           marks.appendChild(mk('rect',{x:x(0),y:1,width:x(b-24)-x(0),height:6,rx:3,'class':'band'})); }
+    svg.replaceChildren(marks);
+    document.getElementById('hours-label').textContent = 'My usual hours, shown in your local time';
+    document.getElementById('status').textContent = localRange;
+    document.getElementById('hours-note').hidden = false;
+  }
+  draw(); setInterval(draw, 3600000);
+
+  // The correction plays once, when it first scrolls into view.
+  var rl = document.getElementById('redline');
+  if(rl && 'IntersectionObserver' in window){
+    rl.classList.add('armed');
+    var io = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ rl.classList.remove('armed'); io.disconnect(); } }, {threshold:.5});
+    io.observe(rl);
+  }
+
+  var buf = '', runner = document.getElementById('runner');
+  function go(){
+    runner.querySelector('small').textContent = 'Chapter ' + (5 + Math.floor(Math.random() * 20)) + ' of 31';
+    runner.classList.remove('go'); void runner.offsetWidth; runner.classList.add('go');
+    setTimeout(function(){ runner.classList.remove('go'); }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 3000 : 9200);
+  }
+  document.addEventListener('keydown', function(ev){
+    buf = (buf + (ev.key || '').toLowerCase()).slice(-3);
+    if(buf === 'run'){ buf = ''; go(); }
+  });
+  var taps = 0, tapTimer;
+  document.getElementById('egg').addEventListener('click', function(){
+    clearTimeout(tapTimer); tapTimer = setTimeout(function(){ taps = 0; }, 600);
+    if(++taps >= 3){ taps = 0; go(); }
+  });
+})();
+</script>
+</body>
+</html>
