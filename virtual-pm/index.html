@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#151027" />
+    <meta name="description" content="Virtual PM: one living project file for product decisions, task ownership, blockers, and proof. An experiment from the Dial Bot hackathon." />
+    <title>Virtual PM — One plan that moves with the work</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="identity" href="#top" aria-label="Virtual PM, back to top"><span class="identity-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Virtual PM</span></a>
+      <nav aria-label="Main navigation"><a href="#idea">The idea</a><a href="#workflow">How it works</a><a href="#sample">Sample</a></nav>
+      <a class="header-link" href="../dialbot/">Born from Dial Bot <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> An experiment from the Dial Bot hackathon</div>
+          <h1 id="hero-title">A plan that<br /><em>moves with</em><br />the work.</h1>
+          <p class="hero-lead">Meet Virtual PM: one living file for what we’re building, who owns it, what changed, and the proof that it works.</p>
+          <div class="hero-actions"><a class="button button-light" href="#workflow">See the method <span aria-hidden="true">↘</span></a><a class="plain-link" href="#sample">Explore a sample <span aria-hidden="true">→</span></a></div>
+          <p class="hero-caption">Made for a small team building fast, with coding agents in the loop.</p>
+        </div>
+        <div class="hero-art" aria-label="Illustration of one project file connecting intent, tasks, decisions, and proof">
+          <div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div>
+          <div class="hero-card main-card"><div class="card-top"><span class="file-icon" aria-hidden="true">▤</span><div><small>ONE SOURCE OF TRUTH</small><strong>PROJECT.md</strong></div><span class="live-indicator"><i></i> Live plan</span></div><div class="card-rule"></div><div class="document-line"><span class="line-swatch lavender"></span><span>Product intent</span><b>01</b></div><div class="document-line"><span class="line-swatch blue"></span><span>Owners &amp; tasks</span><b>02</b></div><div class="document-line"><span class="line-swatch pink"></span><span>Decisions</span><b>03</b></div><div class="document-line"><span class="line-swatch lime"></span><span>Proof</span><b>04</b></div></div>
+          <div class="floating-note note-one"><span class="note-symbol">✓</span><span><small>Checked against the work</small><strong>Evidence attached</strong></span></div>
+          <div class="floating-note note-two"><span class="note-symbol purple">↗</span><span><small>Change lands</small><strong>Plan moves too</strong></span></div>
+          <div class="hero-art-label">ONE FILE. ONE SHARED VIEW.</div>
+        </div>
+      </section>
+
+      <section class="idea section-wrap" id="idea" aria-labelledby="idea-title">
+        <div class="section-intro"><span class="section-kicker">01 / The idea</span><h2 id="idea-title">Four builders.<br /><em>One understanding.</em></h2><p>Work moves fast. The context around it gets scattered across messages, code, task boards, and someone’s memory. Virtual PM brings the product story and delivery status into the same place.</p></div>
+        <div class="idea-rail"><div class="rail-line" aria-hidden="true"></div><article><span>01</span><div><h3>Know the promise</h3><p>The experience we want to create stays visible next to the implementation.</p></div></article><article><span>02</span><div><h3>Know the owner</h3><p>Every piece has a person responsible and a clear next proof.</p></div></article><article><span>03</span><div><h3>Know what changed</h3><p>Decisions and tradeoffs are recorded as the team learns.</p></div></article><article><span>04</span><div><h3>Know what works</h3><p>“Done” means demonstrated, with evidence someone else can inspect.</p></div></article></div>
+      </section>
+
+      <section class="statement" aria-label="Virtual PM principle"><div class="section-wrap statement-inner"><span class="section-kicker">The operating principle</span><p>Make the plan part of the work, <em>not another place to report the work.</em></p><div class="statement-arrow" aria-hidden="true">↗</div></div></section>
+
+      <section class="workflow section-wrap" id="workflow" aria-labelledby="workflow-title"><div class="section-intro"><span class="section-kicker">02 / How it works</span><h2 id="workflow-title">A project rhythm<br /><em>built into every change.</em></h2><p>Virtual PM is a Markdown file in the same shared branch as the project. People and their coding agents read it before building and update it when work changes.</p></div><div class="workflow-grid"><article><div class="workflow-icon"><span>↘</span></div><span class="step-num">01 / Start here</span><h3>Read the whole story</h3><p>Open the file for the goal, scope, decisions, owners, current state, and open questions.</p></article><article><div class="workflow-icon"><span>↗</span></div><span class="step-num">02 / Make the change</span><h3>Update the same file</h3><p>In the same contribution, update your task’s state, next proof, blocker, and evidence.</p></article><article><div class="workflow-icon"><span>✓</span></div><span class="step-num">03 / Check the claim</span><h3>Prove before “done”</h3><p>Attach a test or review result. An agent can audit the file against code and evidence when asked.</p></article></div><div class="workflow-note"><span class="note-star" aria-hidden="true">✳</span><p>The file does not change by itself. The team’s contribution rule keeps it current; agent reviews help catch drift.</p></div></section>
+
+      <section class="sample" id="sample" aria-labelledby="sample-title"><div class="section-wrap sample-grid"><div class="sample-copy"><span class="section-kicker">03 / See it move</span><h2 id="sample-title">A living record,<br /><em>not a status slide.</em></h2><p>Here’s an illustrative task. The story does not end when code is written. It moves when the result is checked and the next person can see what happened.</p><button class="button button-dark" id="advance-sample" type="button" aria-controls="sample-card" aria-pressed="false">Show the next update <span aria-hidden="true">→</span></button><small>Illustrative sample. No connection to a real project.</small></div><div class="sample-stage"><div class="sample-glow" aria-hidden="true"></div><article class="sample-card" id="sample-card" aria-live="polite"><div class="sample-top"><span class="sample-file">PROJECT.md</span><span class="sample-version" id="sample-version">VERSION 01</span></div><div class="sample-divider"></div><div class="sample-row"><span>Task</span><strong>Make the welcome moment clear</strong></div><div class="sample-row"><span>Owner</span><strong>Experience</strong></div><div class="sample-row"><span>State</span><strong><span class="state-pill" id="sample-state">In progress</span></strong></div><div class="sample-row"><span>Next proof</span><strong id="sample-proof">Walk through the screen in a browser</strong></div><div class="sample-row"><span>Blocker</span><strong id="sample-blocker">Needs visual review</strong></div><div class="sample-row"><span>Evidence</span><strong id="sample-evidence">Not yet attached</strong></div><div class="sample-divider"></div><div class="sample-footer"><span class="sample-change-dot"></span><span id="sample-change">The next change carries the next update.</span></div></article></div></div></section>
+
+      <section class="origin section-wrap" aria-labelledby="origin-title"><div class="origin-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div><div><span class="section-kicker">Where it came from</span><h2 id="origin-title">We built this while<br /><em>building Dial Bot.</em></h2><p>A small hackathon team needed one place to hold the experience, the work split, and the truth about what had actually been tested. Virtual PM is that working pattern, shaped into something other teams can try.</p><div class="origin-links"><a href="../dialbot/">See Dial Bot <span aria-hidden="true">↗</span></a><a href="../tap/">See Tap <span aria-hidden="true">↗</span></a></div></div></section>
+
+      <section class="closing section-wrap"><span class="section-kicker">The invitation</span><h2>Ship with the plan<br /><em>in the room.</em></h2><p>Give every builder the same current story. Let the code, decisions, and proof travel together.</p><a class="button button-light" href="#top">Back to the top <span aria-hidden="true">↑</span></a></section>
+    </main>
+    <footer class="site-footer"><div><strong>Virtual PM</strong><span>An experiment from Amit’s lab.</span></div><div><a href="../dialbot/">Dial Bot</a><a href="../tap/">Tap</a><a href="https://github.com/amitdialpad/amitdialpad.github.io/tree/main/virtual-pm" target="_blank" rel="noopener noreferrer">Page source ↗</a></div></footer>
+  </body>
+</html>
