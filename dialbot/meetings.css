@@ -135,3 +135,14 @@ h2{font-size:clamp(45px,4.75vw,72px);line-height:1.07;font-weight:750;margin-bot
 .bot-mark::before,.benefit-grid article:last-child .benefit-icon::before,.setup-card-body .setup-line:first-child .setup-icon::before{content:"";display:block;width:14px;height:14px;flex:none;background:#7c52ff;clip-path:path("M13.2693 6.06663C13.4434 6.10558 13.478 6.38984 13.3151 6.46391C10.1719 7.53391 7.69768 10.2695 6.40581 13.9112C6.33511 14.0877 6.02495 14.0451 5.99579 13.8567C5.55387 11.0005 3.58055 8.72007 1.0384 8.10471C0.869937 8.06394 0.838124 7.79929 0.994936 7.72438C4.2224 6.39645 6.64803 3.67242 7.76883 0.192182C7.83883 0.0106005 8.17702 0.0564606 8.20579 0.249371C8.64033 3.1625 10.6666 5.48461 13.2693 6.06663Z");transform:scale(1.55)}
 .bot-mark.small::before,.bot-tile .bot-mark::before{transform:scale(1.35)}
 .bot-mark,.bot-tile .bot-mark{background:#f3eff9}
+
+/* The attendee context story extends the existing Meetings layout. */
+.setup-action{flex:none;padding:8px 11px;border:1px solid #d9cbed;border-radius:999px;color:#5832a6;background:#f5f0fc;font-size:11px;font-weight:760}
+.setup-card-note{margin:10px 0 0;padding:13px 0 0;border-top:1px solid var(--line);color:#71677e;font-size:12px;line-height:1.45}
+.context{padding-bottom:145px}
+.context-grid article{background:#faf8fd}
+.context-icon{font-family:'Season Mix',Georgia,serif;font-size:21px}
+.context-grid article:last-child .context-icon{font-size:21px}
+.context-grid article:last-child .context-icon::before{display:none}
+@media(max-width:760px){.context{padding-bottom:96px}}
+@media(max-width:460px){.setup-action{font-size:10px;padding:7px 9px}.setup-card-note{font-size:11px}}
