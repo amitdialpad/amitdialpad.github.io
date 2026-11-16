@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "name": "My project",
+  "scenarios": [
+    {
+      "id": "first-proof",
+      "title": "First proof",
+      "handoffHeading": "First proof",
+      "liveProof": "Name the real user observation still needed before this work is Done.",
+      "checks": []
+    }
+  ]
+}

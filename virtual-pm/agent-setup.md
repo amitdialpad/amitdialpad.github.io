@@ -1,4 +1,4 @@
-# Set up Virtual PM in your project
+# Set up Workloop in your project
 
 Virtual PM is a project-specific living plan plus a small GitHub workflow. The
 setup line below is an instruction for your coding agent, not a terminal
@@ -7,7 +7,7 @@ tasks, and requires a successful push-triggered update before it says ready.
 
 ## Copy this into your coding agent
 
-> Set up Virtual PM for this repo using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Map our real tasks to code, auto-update the living plan on branch pushes, and prove it with a GitHub Actions run. Never mark Done from a commit alone.
+> Set up Workloop in this repo using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Install Virtual PM and Virtual QA, map our real tasks and checks, then prove a branch-push plan update and a QA report. Never mark Done from a commit or test alone.
 
 Your coding agent needs access to a GitHub repository and a named working
 branch. The setup does not need an OpenAI, Claude, or personal GitHub API key
@@ -44,6 +44,16 @@ back to that branch.
    and the exact branch it watches. Explain what is automatic and what still
    needs human acceptance evidence.
 
+## Add Virtual QA
+
+After the plan exists, follow the [Virtual QA setup](qa-setup.md). It installs
+a scenario manifest, runner, and read-only GitHub workflow alongside Virtual
+PM. Map checks to real task headings, run them locally, and inspect the report
+before pushing. The starter manifest has no checks and deliberately exits
+nonzero until mapped. Add your project’s dependency setup to the workflow.
+Then prove an actual Actions run. Give the team both the plan and the QA report.
+An automated pass does not replace a real user walkthrough or customer-release QA.
+
 ## Optional starter file
 
 The [starter plan](starter-plan.md) helps a team write its first plan. The
@@ -56,3 +66,7 @@ After a watched-branch push, the GitHub workflow records a compare link and
 project-file activity in the plan. It updates mapped task activity and can show
 that work has started. It does not listen to conversations or infer acceptance
 from code. Decisions, approvals, and Done status still need explicit evidence.
+Publishing a new Workloop site version does not silently change files already
+installed in your repository. Re-run the setup review when you want to adopt
+an updated runner or workflow; the installers stop on differing files so your
+agent can inspect and merge the change deliberately.

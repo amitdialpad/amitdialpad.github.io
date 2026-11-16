@@ -1,0 +1,164 @@
+#!/usr/bin/env python3
+"""Install Virtual QA beside an existing Virtual PM plan, without replacing project work."""
+
+from __future__ import annotations
+
+import argparse
+import base64
+import json
+from pathlib import Path
+import subprocess
+import sys
+
+
+MANIFEST = Path("VIRTUAL_QA_SCENARIOS.json")
+RUNNER = Path(".github/scripts/virtual_qa_runner.mjs")
+WORKFLOW = Path(".github/workflows/virtual-qa.yml")
+PLAN = Path("VIRTUAL_PM.md")
+PM_CONFIG = Path(".virtual-pm.json")
+RUNNER_PAYLOAD = "IyEvdXNyL2Jpbi9lbnYgbm9kZQoKaW1wb3J0IHsgZXhlY0ZpbGVTeW5jLCBzcGF3biB9IGZyb20gJ25vZGU6Y2hpbGRfcHJvY2Vzcyc7CmltcG9ydCB7IGV4aXN0c1N5bmMsIHJlYWxwYXRoU3luYyB9IGZyb20gJ25vZGU6ZnMnOwppbXBvcnQgeyBta2RpciwgcmVhZEZpbGUsIHdyaXRlRmlsZSB9IGZyb20gJ25vZGU6ZnMvcHJvbWlzZXMnOwppbXBvcnQgcGF0aCBmcm9tICdub2RlOnBhdGgnOwppbXBvcnQgeyBmaWxlVVJMVG9QYXRoIH0gZnJvbSAnbm9kZTp1cmwnOwoKY29uc3QgaGVyZSA9IHBhdGguZGlybmFtZShmaWxlVVJMVG9QYXRoKGltcG9ydC5tZXRhLnVybCkpOwpjb25zdCBNQVhfTE9HX0JZVEVTID0gMjU2XzAwMDsKY29uc3QgTUFYX1RJTUVPVVRfTVMgPSAzMDBfMDAwOwoKLyoqIFJldHVybiB0aGUgbmFtZWQgc2VjdGlvbiBmcm9tIHRoZSBsaXZpbmcgcGxhbiB3aXRob3V0IGludGVycHJldGluZyBpdHMgc3RhdHVzLiAqLwpleHBvcnQgZnVuY3Rpb24gcmVhZFRhc2tCbG9ja3MgKG1hcmtkb3duKSB7CiAgY29uc3QgYmxvY2tzID0gbmV3IE1hcCgpOwogIGNvbnN0IHRhc2tzU3RhcnQgPSAvXiMjIFRhc2tzXHMqJC9tLmV4ZWMobWFya2Rvd24pOwogIGlmICghdGFza3NTdGFydCkgdGhyb3cgbmV3IEVycm9yKCdMaXZpbmcgcGxhbiBoYXMgbm8gVGFza3Mgc2VjdGlvbicpOwogIGNvbnN0IHNlY3Rpb25TdGFydCA9IHRhc2tzU3RhcnQuaW5kZXggKyB0YXNrc1N0YXJ0WzBdLmxlbmd0aDsKICBjb25zdCBuZXh0U2VjdGlvbiA9IC9eIyMgKD8hIykuKyQvbS5leGVjKG1hcmtkb3duLnNsaWNlKHNlY3Rpb25TdGFydCkpOwogIGNvbnN0IHRhc2tzID0gbWFya2Rvd24uc2xpY2Uoc2VjdGlvblN0YXJ0LCBuZXh0U2VjdGlvbiA/IHNlY3Rpb25TdGFydCArIG5leHRTZWN0aW9uLmluZGV4IDogdW5kZWZpbmVkKTsKICBjb25zdCBoZWFkZXJzID0gWy4uLnRhc2tzLm1hdGNoQWxsKC9eIyMjICguKykkL2dtKV07CiAgZm9yIChsZXQgaW5kZXggPSAwOyBpbmRleCA8IGhlYWRlcnMubGVuZ3RoOyBpbmRleCArPSAxKSB7CiAgICBjb25zdCBoZWFkaW5nID0gaGVhZGVyc1tpbmRleF1bMV0udHJpbSgpOwogICAgY29uc3Qgc3RhcnQgPSBoZWFkZXJzW2luZGV4XS5pbmRleCArIGhlYWRlcnNbaW5kZXhdWzBdLmxlbmd0aDsKICAgIGNvbnN0IGVuZCA9IGhlYWRlcnNbaW5kZXggKyAxXT8uaW5kZXggPz8gdGFza3MubGVuZ3RoOwogICAgY29uc3QgYm9keSA9IHRhc2tzLnNsaWNlKHN0YXJ0LCBlbmQpOwogICAgYmxvY2tzLnNldChoZWFkaW5nLCB7CiAgICAgIHN0YXRlOiBib2R5Lm1hdGNoKC9eXCpcKlN0YXRlOlwqXCogKC4rKSQvbSk/LlsxXSA/PyAnTm90IHJlY29yZGVkJywKICAgICAgb3duZXI6IGJvZHkubWF0Y2goL15cKlwqT3duZXI6XCpcKiAoLispJC9tKT8uWzFdID8/ICdOb3QgYXNzaWduZWQnLAogICAgICBuZXh0UHJvb2Y6IGJvZHkubWF0Y2goL15cKlwqTmV4dCAoPzpwcm9vZnxjaGVjayk6XCpcKiAoLispJC9tKT8uWzFdID8/ICdOb3QgcmVjb3JkZWQnCiAgICB9KTsKICB9CiAgcmV0dXJuIGJsb2NrczsKfQoKLyoqIEtlZXAgc2NlbmFyaW8gcGF0aHMgaW5zaWRlIHRoZSBzZWxlY3RlZCByZXBvc2l0b3J5LiAqLwpleHBvcnQgZnVuY3Rpb24gcmVzb2x2ZUluc2lkZSAocm9vdCwgcmVsYXRpdmVQYXRoKSB7CiAgaWYgKHBhdGguaXNBYnNvbHV0ZShyZWxhdGl2ZVBhdGgpKSB0aHJvdyBuZXcgRXJyb3IoYEFic29sdXRlIHBhdGggaXMgbm90IGFsbG93ZWQ6ICR7cmVsYXRpdmVQYXRofWApOwogIGNvbnN0IHJlc29sdmVkID0gcGF0aC5yZXNvbHZlKHJvb3QsIHJlbGF0aXZlUGF0aCk7CiAgY29uc3QgZnJvbVJvb3QgPSBwYXRoLnJlbGF0aXZlKHJvb3QsIHJlc29sdmVkKTsKICBpZiAoZnJvbVJvb3QgPT09ICcuLicgfHwgZnJvbVJvb3Quc3RhcnRzV2l0aChgLi4ke3BhdGguc2VwfWApKSB7CiAgICB0aHJvdyBuZXcgRXJyb3IoYFBhdGggbGVhdmVzIHJlcG9zaXRvcnk6ICR7cmVsYXRpdmVQYXRofWApOwogIH0KICByZXR1cm4gcmVzb2x2ZWQ7Cn0KCmZ1bmN0aW9uIGFwcGVuZENhcHBlZCAocHJldmlvdXMsIGNodW5rKSB7CiAgaWYgKEJ1ZmZlci5ieXRlTGVuZ3RoKHByZXZpb3VzKSA+PSBNQVhfTE9HX0JZVEVTKSByZXR1cm4gcHJldmlvdXM7CiAgY29uc3QgcmVtYWluaW5nID0gTUFYX0xPR19CWVRFUyAtIEJ1ZmZlci5ieXRlTGVuZ3RoKHByZXZpb3VzKTsKICByZXR1cm4gcHJldmlvdXMgKyBjaHVuay50b1N0cmluZygndXRmOCcpLnNsaWNlKDAsIHJlbWFpbmluZyk7Cn0KCi8qKiBSdW4gb25lIGRlY2xhcmVkIGNvbW1hbmQgd2l0aG91dCBpbnZva2luZyBhIHNoZWxsLiAqLwpleHBvcnQgZnVuY3Rpb24gcnVuQ29tbWFuZCAoYXJndiwgY3dkLCB0aW1lb3V0TXMpIHsKICByZXR1cm4gbmV3IFByb21pc2UocmVzb2x2ZSA9PiB7CiAgICBjb25zdCBzdGFydCA9IERhdGUubm93KCk7CiAgICBsZXQgb3V0cHV0ID0gJyc7CiAgICBsZXQgdGltZWRPdXQgPSBmYWxzZTsKICAgIGxldCBmYWlsdXJlID0gbnVsbDsKICAgIGNvbnN0IGNoaWxkID0gc3Bhd24oYXJndlswXSwgYXJndi5zbGljZSgxKSwgewogICAgICBjd2QsCiAgICAgIHNoZWxsOiBmYWxzZSwKICAgICAgZW52OiB7IC4uLnByb2Nlc3MuZW52LCBDSTogJzEnIH0sCiAgICAgIHN0ZGlvOiBbJ2lnbm9yZScsICdwaXBlJywgJ3BpcGUnXQogICAgfSk7CiAgICBjaGlsZC5zdGRvdXQub24oJ2RhdGEnLCBjaHVuayA9PiB7IG91dHB1dCA9IGFwcGVuZENhcHBlZChvdXRwdXQsIGNodW5rKTsgfSk7CiAgICBjaGlsZC5zdGRlcnIub24oJ2RhdGEnLCBjaHVuayA9PiB7IG91dHB1dCA9IGFwcGVuZENhcHBlZChvdXRwdXQsIGNodW5rKTsgfSk7CiAgICBjaGlsZC5vbignZXJyb3InLCBlcnJvciA9PiB7IGZhaWx1cmUgPSBlcnJvci5tZXNzYWdlOyB9KTsKICAgIGNvbnN0IHRpbWVyID0gc2V0VGltZW91dCgoKSA9PiB7CiAgICAgIHRpbWVkT3V0ID0gdHJ1ZTsKICAgICAgY2hpbGQua2lsbCgnU0lHVEVSTScpOwogICAgfSwgdGltZW91dE1zKTsKICAgIGNoaWxkLm9uKCdjbG9zZScsIGNvZGUgPT4gewogICAgICBjbGVhclRpbWVvdXQodGltZXIpOwogICAgICByZXNvbHZlKHsKICAgICAgICBleGl0Q29kZTogY29kZSwKICAgICAgICBlbGFwc2VkTXM6IERhdGUubm93KCkgLSBzdGFydCwKICAgICAgICB0aW1lZE91dCwKICAgICAgICBmYWlsdXJlLAogICAgICAgIG91dHB1dAogICAgICB9KTsKICAgIH0pOwogIH0pOwp9CgpmdW5jdGlvbiB2YWxpZGF0ZU1hbmlmZXN0IChtYW5pZmVzdCkgewogIGlmIChtYW5pZmVzdC52ZXJzaW9uICE9PSAxIHx8ICFBcnJheS5pc0FycmF5KG1hbmlmZXN0LnNjZW5hcmlvcykpIHsKICAgIHRocm93IG5ldyBFcnJvcignTWFuaWZlc3QgbXVzdCBoYXZlIHZlcnNpb24gMSBhbmQgYSBzY2VuYXJpb3MgbGlzdCcpOwogIH0KICBjb25zdCBpZHMgPSBuZXcgU2V0KCk7CiAgZm9yIChjb25zdCBzY2VuYXJpbyBvZiBtYW5pZmVzdC5zY2VuYXJpb3MpIHsKICAgIGlmICghL15bYS16MC05LV0rJC8udGVzdChzY2VuYXJpby5pZCkgfHwgaWRzLmhhcyhzY2VuYXJpby5pZCkpIHsKICAgICAgdGhyb3cgbmV3IEVycm9yKGBTY2VuYXJpbyBJRCBpcyBpbnZhbGlkIG9yIGR1cGxpY2F0ZWQ6ICR7c2NlbmFyaW8uaWR9YCk7CiAgICB9CiAgICBpZHMuYWRkKHNjZW5hcmlvLmlkKTsKICAgIGlmICh0eXBlb2Ygc2NlbmFyaW8udGl0bGUgIT09ICdzdHJpbmcnIHx8IHR5cGVvZiBzY2VuYXJpby5oYW5kb2ZmSGVhZGluZyAhPT0gJ3N0cmluZycKICAgICAgfHwgdHlwZW9mIHNjZW5hcmlvLmxpdmVQcm9vZiAhPT0gJ3N0cmluZycgfHwgIUFycmF5LmlzQXJyYXkoc2NlbmFyaW8uY2hlY2tzKSkgewogICAgICB0aHJvdyBuZXcgRXJyb3IoYFNjZW5hcmlvIGlzIGluY29tcGxldGU6ICR7c2NlbmFyaW8uaWR9YCk7CiAgICB9CiAgICBmb3IgKGNvbnN0IGNoZWNrIG9mIHNjZW5hcmlvLmNoZWNrcykgewogICAgICBpZiAoIUFycmF5LmlzQXJyYXkoY2hlY2suYXJndikgfHwgIWNoZWNrLmFyZ3YubGVuZ3RoCiAgICAgICAgfHwgY2hlY2suYXJndi5zb21lKHZhbHVlID0+IHR5cGVvZiB2YWx1ZSAhPT0gJ3N0cmluZycgfHwgdmFsdWUubGVuZ3RoID09PSAwKQogICAgICAgIHx8IHR5cGVvZiBjaGVjay5jd2QgIT09ICdzdHJpbmcnIHx8ICFBcnJheS5pc0FycmF5KGNoZWNrLnJlcXVpcmVzKSkgewogICAgICAgIHRocm93IG5ldyBFcnJvcihgQ2hlY2sgaXMgaW5jb21wbGV0ZTogJHtzY2VuYXJpby5pZH1gKTsKICAgICAgfQogICAgICBpZiAoY2hlY2sudGltZW91dE1zICE9PSB1bmRlZmluZWQKICAgICAgICAmJiAoIU51bWJlci5pc0ludGVnZXIoY2hlY2sudGltZW91dE1zKSB8fCBjaGVjay50aW1lb3V0TXMgPCAxIHx8IGNoZWNrLnRpbWVvdXRNcyA+IE1BWF9USU1FT1VUX01TKSkgewogICAgICAgIHRocm93IG5ldyBFcnJvcihgQ2hlY2sgdGltZW91dCBpcyBpbnZhbGlkOiAke3NjZW5hcmlvLmlkfWApOwogICAgICB9CiAgICB9CiAgfQp9CgpmdW5jdGlvbiBlc2NhcGVDZWxsICh2YWx1ZSkgewogIHJldHVybiBTdHJpbmcodmFsdWUpLnJlcGxhY2VBbGwoJ3wnLCAnXFx8JykucmVwbGFjZUFsbCgnXG4nLCAnICcpOwp9CgovKiogUHJvZHVjZSBhIGNvbmNpc2UgcmVwb3J0IHRoYXQgbmV2ZXIgZXF1YXRlcyBhIHBhc3NpbmcgY29kZSBjaGVjayB3aXRoIGxpdmUgYWNjZXB0YW5jZS4gKi8KZXhwb3J0IGZ1bmN0aW9uIHJlbmRlclJlcG9ydCAocmVzdWx0KSB7CiAgY29uc3QgbGluZXMgPSBbCiAgICBgIyBWaXJ0dWFsIFFBOiAke3Jlc3VsdC5uYW1lfWAsCiAgICAnJywKICAgIGBHZW5lcmF0ZWQ6ICR7cmVzdWx0LmdlbmVyYXRlZEF0fWAsCiAgICBgQ29kZSB1bmRlciB0ZXN0OiBcYCR7cmVzdWx0LnJlcG99XGAgKCR7cmVzdWx0LnJldmlzaW9ufSR7cmVzdWx0LmRpcnR5ID8gJywgdW5jb21taXR0ZWQgY2hhbmdlcycgOiAnJ30pYCwKICAgICcnLAogICAgYCoqQXV0b21hdGVkOioqICR7cmVzdWx0LnN1bW1hcnkucGFzc2VkfSBwYXNzZWQsICR7cmVzdWx0LnN1bW1hcnkuZmFpbGVkfSBmYWlsZWQsICR7cmVzdWx0LnN1bW1hcnkubm90UnVufSBub3QgcnVuLmAsCiAgICBgKipMaXZlIHByb2R1Y3QgcHJvb2Y6KiogU2VlIGVhY2ggc2NlbmFyaW8gYmVsb3cuIFRoaXMgcmVwb3J0IGRvZXMgbm90IG1hcmsgcHJvZHVjdCB3b3JrIERvbmUuYCwKICAgICcnLAogICAgJ3wgU2NlbmFyaW8gfCBBdXRvbWF0ZWQgY2hlY2sgfCBSZWNvcmRlZCBzdGF0ZSB8IE93bmVyIHwnLAogICAgJ3wgLS0tIHwgLS0tIHwgLS0tIHwgLS0tIHwnCiAgXTsKICBmb3IgKGNvbnN0IHNjZW5hcmlvIG9mIHJlc3VsdC5zY2VuYXJpb3MpIHsKICAgIGxpbmVzLnB1c2goYHwgJHtlc2NhcGVDZWxsKHNjZW5hcmlvLnRpdGxlKX0gfCAke3NjZW5hcmlvLmF1dG9tYXRlZH0gfCAke2VzY2FwZUNlbGwoc2NlbmFyaW8udGFzay5zdGF0ZSl9IHwgJHtlc2NhcGVDZWxsKHNjZW5hcmlvLnRhc2sub3duZXIpfSB8YCk7CiAgfQogIGlmIChyZXN1bHQudW5tYXBwZWRUYXNrcy5sZW5ndGgpIHsKICAgIGxpbmVzLnB1c2goJycsICcjIyBMaXZpbmctcGxhbiB0YXNrcyB3aXRob3V0IGEgUUEgc2NlbmFyaW8nLCAnJywKICAgICAgJ1RoZXNlIHJlbWFpbiB2aXNpYmxlIHVudGlsIHNvbWVvbmUgbWFwcyBhIGNoZWNrIG9yIGV4cGxpY2l0bHkgc2NvcGVzIHRoZW0gb3V0LicsICcnKTsKICAgIGZvciAoY29uc3QgdGFzayBvZiByZXN1bHQudW5tYXBwZWRUYXNrcykgbGluZXMucHVzaChgLSAke3Rhc2t9YCk7CiAgfQogIGxpbmVzLnB1c2goJycsICcjIyBFdmlkZW5jZSBhbmQgbmV4dCBwcm9vZicsICcnKTsKICBmb3IgKGNvbnN0IHNjZW5hcmlvIG9mIHJlc3VsdC5zY2VuYXJpb3MpIHsKICAgIGxpbmVzLnB1c2goYCMjIyAke3NjZW5hcmlvLnRpdGxlfWAsICcnLAogICAgICBgLSAqKkF1dG9tYXRlZCByZXN1bHQ6KiogJHtzY2VuYXJpby5hdXRvbWF0ZWR9JHtzY2VuYXJpby5yZWFzb24gPyBgIOKAlCAke3NjZW5hcmlvLnJlYXNvbn1gIDogJyd9LmAsCiAgICAgIGAtICoqTGl2ZSBwcm9vZiByZXF1aXJlZDoqKiAke3NjZW5hcmlvLmxpdmVQcm9vZn1gLAogICAgICBgLSAqKkxpdmluZy1wbGFuIG5leHQgcHJvb2Y6KiogJHtzY2VuYXJpby50YXNrLm5leHRQcm9vZn1gKTsKICAgIGZvciAoY29uc3QgY2hlY2sgb2Ygc2NlbmFyaW8uY2hlY2tzKSB7CiAgICAgIGxpbmVzLnB1c2goYC0gKipDaGVjazoqKiBcYCR7Y2hlY2suYXJndi5qb2luKCcgJyl9XGAg4oCUICR7Y2hlY2suc3RhdHVzfSR7Y2hlY2suZWxhcHNlZE1zICE9PSB1bmRlZmluZWQgPyBgICgkeyhjaGVjay5lbGFwc2VkTXMgLyAxMDAwKS50b0ZpeGVkKDEpfSBzKWAgOiAnJ30ke2NoZWNrLmxvZyA/IGA7IFtsb2ddKCR7Y2hlY2subG9nfSlgIDogJyd9LmApOwogICAgfQogICAgbGluZXMucHVzaCgnJyk7CiAgfQogIGxpbmVzLnB1c2goJ1RoZSByZWNvcmRlZCB0YXNrIHN0YXRlIGNvbWVzIGZyb20gdGhlIGxpdmluZyBoYW5kb2ZmLiBBdXRvbWF0ZWQgY2hlY2tzIHByb3ZlIG9ubHkgdGhlIG5hbWVkIGNvZGUgYmVoYXZpb3I7IGEgcmVhbC1yb29tIG9ic2VydmF0aW9uIGFuZCBodW1hbiBhY2NlcHRhbmNlIHN0YXkgc2VwYXJhdGUuJywgJycpOwogIHJldHVybiBsaW5lcy5qb2luKCdcbicpOwp9CgovKiogQW4gYWxsLXVubWFwcGVkIG1hbmlmZXN0IGlzIGFuIGluY29tcGxldGUgc2V0dXAsIG5vdCBhIHN1Y2Nlc3NmdWwgUUEgcnVuLiAqLwpleHBvcnQgZnVuY3Rpb24gZXhpdENvZGVGb3JTdW1tYXJ5IChzdW1tYXJ5KSB7CiAgcmV0dXJuIHN1bW1hcnkuZmFpbGVkID4gMCA/IDEgOiBzdW1tYXJ5LnBhc3NlZCA9PT0gMCA/IDMgOiAwOwp9CgpmdW5jdGlvbiBnaXRTdGF0ZSAocm9vdCkgewogIHRyeSB7CiAgICBjb25zdCByZXZpc2lvbiA9IGV4ZWNGaWxlU3luYygnZ2l0JywgWydyZXYtcGFyc2UnLCAnLS1zaG9ydCcsICdIRUFEJ10sIHsKICAgICAgY3dkOiByb290LCBlbmNvZGluZzogJ3V0ZjgnLCBzdGRpbzogWydpZ25vcmUnLCAncGlwZScsICdpZ25vcmUnXQogICAgfSkudHJpbSgpOwogICAgY29uc3QgZGlydHkgPSBleGVjRmlsZVN5bmMoJ2dpdCcsIFsnc3RhdHVzJywgJy0tcG9yY2VsYWluJ10sIHsKICAgICAgY3dkOiByb290LCBlbmNvZGluZzogJ3V0ZjgnLCBzdGRpbzogWydpZ25vcmUnLCAncGlwZScsICdpZ25vcmUnXQogICAgfSkudHJpbSgpLmxlbmd0aCA+IDA7CiAgICByZXR1cm4geyByZXZpc2lvbiwgZGlydHkgfTsKICB9IGNhdGNoIHsKICAgIHJldHVybiB7IHJldmlzaW9uOiAncmV2aXNpb24gdW5rbm93bicsIGRpcnR5OiBmYWxzZSB9OwogIH0KfQoKLyoqIEV4ZWN1dGUgdGhlIG1hbmlmZXN0IGFnYWluc3QgYSBjaGVja291dCBhbmQgd3JpdGUgcHJpdmF0ZSBsb2NhbCBldmlkZW5jZS4gKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHJ1blFhICh7IHJlcG8sIG1hbmlmZXN0UGF0aCwgaGFuZG9mZlBhdGgsIG91dERpciwgZXhlY3V0ZSA9IHJ1bkNvbW1hbmQgfSkgewogIGNvbnN0IHJvb3QgPSBwYXRoLnJlc29sdmUocmVwbyk7CiAgY29uc3Qgb3V0cHV0ID0gcGF0aC5yZXNvbHZlKG91dERpcik7CiAgY29uc3Qgc291cmNlU3RhdGUgPSBnaXRTdGF0ZShyb290KTsKICBjb25zdCBtYW5pZmVzdCA9IEpTT04ucGFyc2UoYXdhaXQgcmVhZEZpbGUobWFuaWZlc3RQYXRoLCAndXRmOCcpKTsKICBjb25zdCB0YXNrQmxvY2tzID0gcmVhZFRhc2tCbG9ja3MoYXdhaXQgcmVhZEZpbGUoaGFuZG9mZlBhdGgsICd1dGY4JykpOwogIHZhbGlkYXRlTWFuaWZlc3QobWFuaWZlc3QpOwogIGF3YWl0IG1rZGlyKG91dHB1dCwgeyByZWN1cnNpdmU6IHRydWUgfSk7CiAgY29uc3Qgc2NlbmFyaW9zID0gW107CiAgZm9yIChjb25zdCBzY2VuYXJpbyBvZiBtYW5pZmVzdC5zY2VuYXJpb3MpIHsKICAgIGNvbnN0IHRhc2sgPSB0YXNrQmxvY2tzLmdldChzY2VuYXJpby5oYW5kb2ZmSGVhZGluZyk7CiAgICBpZiAoIXRhc2spIHRocm93IG5ldyBFcnJvcihgTGl2aW5nLXBsYW4gdGFzayBpcyBtaXNzaW5nOiAke3NjZW5hcmlvLmhhbmRvZmZIZWFkaW5nfWApOwogICAgY29uc3QgY2hlY2tzID0gW107CiAgICBmb3IgKGNvbnN0IGNoZWNrIG9mIHNjZW5hcmlvLmNoZWNrcykgewogICAgICBjb25zdCBjd2QgPSByZXNvbHZlSW5zaWRlKHJvb3QsIGNoZWNrLmN3ZCk7CiAgICAgIGNvbnN0IG1pc3NpbmcgPSBjaGVjay5yZXF1aXJlcy5maWx0ZXIoZmlsZSA9PiAhZXhpc3RzU3luYyhyZXNvbHZlSW5zaWRlKHJvb3QsIGZpbGUpKSk7CiAgICAgIGlmIChtaXNzaW5nLmxlbmd0aCkgewogICAgICAgIGNoZWNrcy5wdXNoKHsgYXJndjogY2hlY2suYXJndiwgc3RhdHVzOiAnTk9UIFJVTicsIHJlYXNvbjogYE1pc3NpbmcgJHttaXNzaW5nLmpvaW4oJywgJyl9YCB9KTsKICAgICAgICBjb250aW51ZTsKICAgICAgfQogICAgICBjb25zdCBvdXRjb21lID0gYXdhaXQgZXhlY3V0ZShjaGVjay5hcmd2LCBjd2QsIGNoZWNrLnRpbWVvdXRNcyA/PyAxMjBfMDAwKTsKICAgICAgY29uc3Qgc3RhdHVzID0gb3V0Y29tZS5leGl0Q29kZSA9PT0gMCAmJiAhb3V0Y29tZS50aW1lZE91dCA/ICdQQVNTJyA6ICdGQUlMJzsKICAgICAgY29uc3QgbG9nID0gYGxvZ3MvJHtzY2VuYXJpby5pZH0tJHtjaGVja3MubGVuZ3RoICsgMX0udHh0YDsKICAgICAgYXdhaXQgbWtkaXIocGF0aC5qb2luKG91dHB1dCwgJ2xvZ3MnKSwgeyByZWN1cnNpdmU6IHRydWUgfSk7CiAgICAgIGF3YWl0IHdyaXRlRmlsZShwYXRoLmpvaW4ob3V0cHV0LCBsb2cpLCBvdXRjb21lLm91dHB1dCB8fCBvdXRjb21lLmZhaWx1cmUgfHwgJycsICd1dGY4Jyk7CiAgICAgIGNoZWNrcy5wdXNoKHsKICAgICAgICBhcmd2OiBjaGVjay5hcmd2LAogICAgICAgIHN0YXR1cywKICAgICAgICBlbGFwc2VkTXM6IG91dGNvbWUuZWxhcHNlZE1zLAogICAgICAgIGV4aXRDb2RlOiBvdXRjb21lLmV4aXRDb2RlLAogICAgICAgIHRpbWVkT3V0OiBvdXRjb21lLnRpbWVkT3V0LAogICAgICAgIHJlYXNvbjogb3V0Y29tZS5mYWlsdXJlID8/IChvdXRjb21lLnRpbWVkT3V0ID8gJ1RpbWVkIG91dCcgOiB1bmRlZmluZWQpLAogICAgICAgIGxvZwogICAgICB9KTsKICAgIH0KICAgIGNvbnN0IGF1dG9tYXRlZCA9IGNoZWNrcy5zb21lKGNoZWNrID0+IGNoZWNrLnN0YXR1cyA9PT0gJ0ZBSUwnKSA/ICdGQUlMJwogICAgICA6IGNoZWNrcy5sZW5ndGggPT09IDAgfHwgY2hlY2tzLnNvbWUoY2hlY2sgPT4gY2hlY2suc3RhdHVzID09PSAnTk9UIFJVTicpID8gJ05PVCBSVU4nIDogJ1BBU1MnOwogICAgc2NlbmFyaW9zLnB1c2goewogICAgICBpZDogc2NlbmFyaW8uaWQsCiAgICAgIHRpdGxlOiBzY2VuYXJpby50aXRsZSwKICAgICAgbGl2ZVByb29mOiBzY2VuYXJpby5saXZlUHJvb2YsCiAgICAgIGF1dG9tYXRlZCwKICAgICAgcmVhc29uOiBhdXRvbWF0ZWQgPT09ICdOT1QgUlVOJyAmJiAhY2hlY2tzLmxlbmd0aCA/ICdObyBhdXRvbWF0ZWQgY2hlY2sgaXMgZGVmaW5lZCcgOiB1bmRlZmluZWQsCiAgICAgIHRhc2ssCiAgICAgIGNoZWNrcwogICAgfSk7CiAgfQogIGNvbnN0IG1hcHBlZCA9IG5ldyBTZXQobWFuaWZlc3Quc2NlbmFyaW9zLm1hcChzY2VuYXJpbyA9PiBzY2VuYXJpby5oYW5kb2ZmSGVhZGluZykpOwogIGNvbnN0IHVubWFwcGVkVGFza3MgPSBbLi4udGFza0Jsb2Nrcy5lbnRyaWVzKCldCiAgICAuZmlsdGVyKChbaGVhZGluZywgdGFza10pID0+IHRhc2suc3RhdGUgIT09ICdOb3QgcmVjb3JkZWQnICYmICFtYXBwZWQuaGFzKGhlYWRpbmcpKQogICAgLm1hcCgoW2hlYWRpbmddKSA9PiBoZWFkaW5nKTsKICBjb25zdCByZXN1bHQgPSB7CiAgICBuYW1lOiBtYW5pZmVzdC5uYW1lIHx8ICdQcm9qZWN0IGNoZWNrJywKICAgIGdlbmVyYXRlZEF0OiBuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCksCiAgICByZXBvOiByb290LAogICAgLi4uc291cmNlU3RhdGUsCiAgICB1bm1hcHBlZFRhc2tzLAogICAgc3VtbWFyeTogewogICAgICBwYXNzZWQ6IHNjZW5hcmlvcy5maWx0ZXIoc2NlbmFyaW8gPT4gc2NlbmFyaW8uYXV0b21hdGVkID09PSAnUEFTUycpLmxlbmd0aCwKICAgICAgZmFpbGVkOiBzY2VuYXJpb3MuZmlsdGVyKHNjZW5hcmlvID0+IHNjZW5hcmlvLmF1dG9tYXRlZCA9PT0gJ0ZBSUwnKS5sZW5ndGgsCiAgICAgIG5vdFJ1bjogc2NlbmFyaW9zLmZpbHRlcihzY2VuYXJpbyA9PiBzY2VuYXJpby5hdXRvbWF0ZWQgPT09ICdOT1QgUlVOJykubGVuZ3RoCiAgICB9LAogICAgc2NlbmFyaW9zCiAgfTsKICBhd2FpdCB3cml0ZUZpbGUocGF0aC5qb2luKG91dHB1dCwgJ3JlcG9ydC5qc29uJyksIEpTT04uc3RyaW5naWZ5KHJlc3VsdCwgbnVsbCwgMikgKyAnXG4nKTsKICBhd2FpdCB3cml0ZUZpbGUocGF0aC5qb2luKG91dHB1dCwgJ3JlcG9ydC5tZCcpLCByZW5kZXJSZXBvcnQocmVzdWx0KSk7CiAgcmV0dXJuIHJlc3VsdDsKfQoKZnVuY3Rpb24gcGFyc2VBcmdzIChhcmdzKSB7CiAgY29uc3Qgb3B0aW9ucyA9IHsKICAgIHJlcG86IHByb2Nlc3MuY3dkKCksCiAgICBtYW5pZmVzdFBhdGg6IHBhdGguam9pbihoZXJlLCAnc2NlbmFyaW9zLmpzb24nKSwKICAgIGhhbmRvZmZQYXRoOiBwYXRoLnJlc29sdmUoaGVyZSwgJy4uJywgJ1RFQU1fU1RBVFVTX0hBTkRPRkYubWQnKSwKICAgIG91dERpcjogcGF0aC5qb2luKHByb2Nlc3MuY3dkKCksICd2aXJ0dWFsLXFhLW91dHB1dCcpCiAgfTsKICBmb3IgKGxldCBpbmRleCA9IDA7IGluZGV4IDwgYXJncy5sZW5ndGg7IGluZGV4ICs9IDIpIHsKICAgIGNvbnN0IGtleSA9IGFyZ3NbaW5kZXhdOwogICAgY29uc3QgdmFsdWUgPSBhcmdzW2luZGV4ICsgMV07CiAgICBpZiAoIXZhbHVlIHx8ICFbJy0tcmVwbycsICctLW1hbmlmZXN0JywgJy0taGFuZG9mZicsICctLW91dCddLmluY2x1ZGVzKGtleSkpIHsKICAgICAgdGhyb3cgbmV3IEVycm9yKCdVc2FnZTogbm9kZSBydW5uZXIubWpzIFstLXJlcG8gUEFUSF0gWy0tbWFuaWZlc3QgUEFUSF0gWy0taGFuZG9mZiBQQVRIXSBbLS1vdXQgUEFUSF0nKTsKICAgIH0KICAgIG9wdGlvbnNbeyAnLS1yZXBvJzogJ3JlcG8nLCAnLS1tYW5pZmVzdCc6ICdtYW5pZmVzdFBhdGgnLCAnLS1oYW5kb2ZmJzogJ2hhbmRvZmZQYXRoJywgJy0tb3V0JzogJ291dERpcicgfVtrZXldXSA9IHZhbHVlOwogIH0KICByZXR1cm4gb3B0aW9uczsKfQoKaWYgKHByb2Nlc3MuYXJndlsxXSAmJiByZWFscGF0aFN5bmMocHJvY2Vzcy5hcmd2WzFdKSA9PT0gcmVhbHBhdGhTeW5jKGZpbGVVUkxUb1BhdGgoaW1wb3J0Lm1ldGEudXJsKSkpIHsKICB0cnkgewogICAgY29uc3QgcmVzdWx0ID0gYXdhaXQgcnVuUWEocGFyc2VBcmdzKHByb2Nlc3MuYXJndi5zbGljZSgyKSkpOwogICAgcHJvY2Vzcy5zdGRvdXQud3JpdGUoYFZpcnR1YWwgUUE6ICR7cmVzdWx0LnN1bW1hcnkucGFzc2VkfSBwYXNzZWQsICR7cmVzdWx0LnN1bW1hcnkuZmFpbGVkfSBmYWlsZWQsICR7cmVzdWx0LnN1bW1hcnkubm90UnVufSBub3QgcnVuXG5gKTsKICAgIHByb2Nlc3MuZXhpdENvZGUgPSBleGl0Q29kZUZvclN1bW1hcnkocmVzdWx0LnN1bW1hcnkpOwogIH0gY2F0Y2ggKGVycm9yKSB7CiAgICBwcm9jZXNzLnN0ZGVyci53cml0ZShgVmlydHVhbCBRQSBjb3VsZCBub3QgcnVuOiAke2Vycm9yLm1lc3NhZ2V9XG5gKTsKICAgIHByb2Nlc3MuZXhpdENvZGUgPSAyOwogIH0KfQo="
+
+
+def repository_root() -> Path:
+    result = subprocess.run(
+        ["git", "rev-parse", "--show-toplevel"], text=True, capture_output=True
+    )
+    if result.returncode:
+        raise ValueError("Run this inside a Git repository")
+    return Path(result.stdout.strip())
+
+
+def read_pm_config(root: Path) -> dict:
+    if not (root / PLAN).is_file() or not (root / PM_CONFIG).is_file():
+        raise ValueError("Set up Virtual PM and its plan before Virtual QA")
+    config = json.loads((root / PM_CONFIG).read_text())
+    branch = config.get("branch")
+    if not isinstance(branch, str) or not branch or "\n" in branch:
+        raise ValueError("Virtual PM needs a valid watched branch")
+    result = subprocess.run(
+        ["git", "check-ref-format", "--branch", branch], capture_output=True
+    )
+    if result.returncode:
+        raise ValueError("Virtual PM branch is invalid")
+    return config
+
+
+def workflow_template(branch: str) -> str:
+    quoted = json.dumps(branch)
+    return f"""name: Virtual QA checks
+
+on:
+  push:
+    branches:
+      - {quoted}
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+      - name: Run project scenario checks
+        run: node .github/scripts/virtual_qa_runner.mjs --repo . --manifest VIRTUAL_QA_SCENARIOS.json --handoff VIRTUAL_PM.md --out virtual-qa-output
+      - name: Keep the evidence report
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: virtual-qa-${{{{ github.run_id }}}}
+          path: virtual-qa-output/
+          if-no-files-found: warn
+          retention-days: 14
+"""
+
+
+def runner_source() -> str:
+    if RUNNER_PAYLOAD.startswith("@@"):
+        return (Path(__file__).parent / "virtual_qa_runner.mjs").read_text()
+    return base64.b64decode(RUNNER_PAYLOAD).decode("utf-8")
+
+
+def manifest_source() -> str:
+    if RUNNER_PAYLOAD.startswith("@@"):
+        return (Path(__file__).parent / "qa-scenarios-starter.json").read_text()
+    return json.dumps({
+        "version": 1,
+        "name": "My project",
+        "scenarios": [{
+            "id": "first-proof",
+            "title": "First proof",
+            "handoffHeading": "First proof",
+            "liveProof": "Name the real user observation still needed before this work is Done.",
+            "checks": [],
+        }],
+    }, indent=2) + "\n"
+
+
+def verify(root: Path) -> None:
+    config = read_pm_config(root)
+    for path in (MANIFEST, RUNNER, WORKFLOW):
+        if not (root / path).is_file():
+            raise ValueError(f"Virtual QA file is missing: {path}")
+    manifest = json.loads((root / MANIFEST).read_text())
+    if manifest.get("version") != 1 or not isinstance(manifest.get("scenarios"), list):
+        raise ValueError("Virtual QA scenario manifest is invalid")
+    if config["branch"] not in (root / WORKFLOW).read_text():
+        raise ValueError("Virtual QA workflow is watching a different branch")
+    check = subprocess.run(
+        ["node", "--check", str(root / RUNNER)], text=True, capture_output=True
+    )
+    if check.returncode:
+        raise ValueError(f"Virtual QA runner has a syntax error: {check.stderr.strip()}")
+    print("Virtual QA files verified. Map real scenarios and prove a push-triggered run.")
+
+
+def install(root: Path, dry_run: bool) -> None:
+    config = read_pm_config(root)
+    files = {
+        MANIFEST: manifest_source(),
+        RUNNER: runner_source(),
+        WORKFLOW: workflow_template(config["branch"]),
+    }
+    conflicts = [path for path, content in files.items()
+                 if (root / path).exists() and (root / path).read_text() != content]
+    if conflicts:
+        raise ValueError("Existing project file differs; integrate deliberately: " +
+                         ", ".join(map(str, conflicts)))
+    if all((root / path).is_file() for path in files):
+        verify(root)
+        return
+    for path, content in files.items():
+        if not (root / path).exists():
+            print(("Would add" if dry_run else "Adding") + f" {path}")
+            if not dry_run:
+                (root / path).parent.mkdir(parents=True, exist_ok=True)
+                (root / path).write_text(content)
+    if not dry_run:
+        verify(root)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("action", choices=("init", "verify"))
+    parser.add_argument("--dry-run", action="store_true")
+    args = parser.parse_args()
+    try:
+        root = repository_root()
+        if args.action == "init":
+            install(root, args.dry_run)
+        else:
+            verify(root)
+        return 0
+    except (OSError, ValueError, json.JSONDecodeError) as error:
+        print(f"Virtual QA setup stopped: {error}", file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

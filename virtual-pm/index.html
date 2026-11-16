@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="Virtual PM is a living project plan that keeps goals, work, decisions, and proof together. Set it up in your repo with one line for your coding agent." />
-    <title>Virtual PM — The plan moves with the work</title>
+    <meta name="description" content="Workloop brings Virtual PM and Virtual QA together: one living project plan, repeatable checks, and honest evidence. Start with one instruction for your coding agent." />
+    <title>Workloop — Plan the work. Check the proof.</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="stylesheet" href="./styles.css" />
     <script src="./site.js" defer></script>
@@ -13,20 +13,21 @@
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="Virtual PM, back to top"><span class="wordmark-symbol" aria-hidden="true">✳</span> Virtual PM</a>
+      <a class="wordmark" href="#top" aria-label="Workloop, back to top"><span class="wordmark-symbol" aria-hidden="true">✳</span> Workloop</a>
       <nav aria-label="Main navigation">
         <a href="#plan">The plan</a>
+        <a href="#qa">The checks</a>
         <a href="#install">Get started</a>
         <a href="#origin">Our story</a>
       </nav>
-      <a class="header-external" href="../dialbot/">Made alongside Dial Bot <span aria-hidden="true">↗</span></a>
+      <a class="header-external" href="https://amitdialpad.github.io/dialbot/">Made alongside Dial Bot <span aria-hidden="true">↗</span></a>
     </header>
 
     <main id="main">
       <section class="hero page-width" id="top" aria-labelledby="hero-title">
-        <h1 id="hero-title">The plan should<span>move with the work.</span></h1>
+        <h1 id="hero-title">The <em class="plan-accent">plan</em> moves.<span>The proof keeps up.</span></h1>
         <div class="hero-bottom">
-          <p>Virtual PM gives a project one honest, current story: what matters, who is doing what, what changed, and what has actually been proven.</p>
+          <p>Virtual PM keeps the work and decisions together. Virtual QA runs the checks you choose and shows what still needs a real-world test.</p>
           <div class="hero-actions"><button type="button" class="hero-action" data-copy-target="setup-line" data-copy-label="Setup line" data-copy-feedback="hero-copy-feedback">Copy the setup instruction <span aria-hidden="true">↗</span></button><p class="hero-hint">Paste it into your coding agent in your project.</p><a href="#install">See how it works <span aria-hidden="true">↘</span></a><p id="hero-copy-feedback" role="status" aria-live="polite"></p></div>
         </div>
       </section>
@@ -35,16 +36,16 @@
         <div class="page-width">
           <div class="section-heading">
             <div class="section-label"><span>01</span> GET STARTED</div>
-            <h2 id="install-title">Put Virtual PM to work<br /><span>in your project.</span></h2>
+            <h2 id="install-title">One instruction.<br /><span>Two working companions.</span></h2>
           </div>
           <div class="install-grid">
             <div class="install-intro">
-              <p>Open your repository in Codex, Claude Code, or another coding agent. Paste this instruction. Your agent will read the setup guide, make a plan that fits your project, and set up branch-push updates.</p>
-              <div class="install-note"><span class="note-icon" aria-hidden="true">i</span><p>Ask to see a real GitHub Actions run and a plan update from a push. If your repo blocks write access, the agent should tell you.</p></div>
+              <p>Open your repository in Codex, Claude Code, or another coding agent. Paste this instruction. Your agent will set up the living plan, map your real checks, and show you the first report.</p>
+              <div class="install-note"><span class="note-icon" aria-hidden="true">i</span><p>Ask to see a push update and an actual QA run. A passing code check never marks a product task Done.</p></div>
             </div>
             <div class="install-command">
               <div class="command-head"><span>PASTE INTO YOUR CODING AGENT</span><span>01 / COPY</span></div>
-              <p id="setup-line">Set up Virtual PM for this repo using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Map our real tasks to code, auto-update the living plan on branch pushes, and prove it with a GitHub Actions run. Never mark Done from a commit alone.</p>
+              <p id="setup-line">Set up Workloop in this repo using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Install Virtual PM and Virtual QA, map our real tasks and checks, then prove a branch-push plan update and a QA report. Never mark Done from a commit or test alone.</p>
               <div class="command-actions">
                 <button type="button" class="copy-button" data-copy-target="setup-line" data-copy-label="Setup line">Copy this line <span aria-hidden="true">↗</span></button>
                 <a href="./agent-setup.md">Read the setup guide <span aria-hidden="true">→</span></a>
@@ -100,14 +101,34 @@
         </div>
       </section>
 
+      <section class="qa" id="qa" aria-labelledby="qa-title">
+        <div class="page-width qa-grid">
+          <div class="qa-intro">
+            <div class="section-label"><span>03</span> VIRTUAL QA</div>
+            <h2 id="qa-title">Know what passed.<br /><span>See what hasn’t.</span></h2>
+            <p>Virtual QA runs the scenarios you map to your project. Every result points back to a plan task, its owner, and the next proof. Missing checks stay visible as <strong>Not run</strong>.</p>
+            <ol class="qa-steps" aria-label="Virtual QA process"><li><span>01</span> Map</li><li class="qa-step-active"><span>02</span> Run</li><li><span>03</span> Read</li><li><span>04</span> Prove</li></ol>
+            <p class="qa-boundary">It helps a hackathon team move faster. A live user walkthrough and customer release QA still need people.</p>
+            <a href="./qa-setup.md" class="qa-link">How the checks are set up <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="qa-example" aria-label="Illustrative Virtual QA report">
+            <div class="qa-example-head"><span>EXAMPLE PROJECT / QA REPORT</span><span>ILLUSTRATIVE</span></div>
+            <div class="qa-example-title">First-run experience <span>↗</span></div>
+            <div class="qa-result"><span class="qa-result-mark">01</span><div><strong>Welcome copy check</strong><small>Automated test · passed</small></div><span class="qa-tag">PASS</span></div>
+            <div class="qa-result"><span class="qa-result-mark">02</span><div><strong>New teammate walkthrough</strong><small>Real-person proof still needed</small></div><span class="qa-tag quiet">NOT RUN</span></div>
+            <div class="qa-example-foot">Owner: Experience <span>·</span> Next proof: watch one new teammate complete setup.</div>
+          </div>
+        </div>
+      </section>
+
       <section class="origin page-width" id="origin" aria-labelledby="origin-title">
-        <div class="section-label"><span>03</span> THE ORIGIN</div>
+        <div class="section-label"><span>04</span> THE ORIGIN</div>
         <div class="origin-grid">
           <h2 id="origin-title">Made in the middle<br />of <span>making.</span></h2>
-          <div><p>Virtual PM began while a small team was building Dial Bot. We needed the idea, the work, and the honest result to travel together. It became a working pattern other teams can bring into their own projects.</p><div class="origin-links"><a href="../dialbot/">See Dial Bot <span aria-hidden="true">↗</span></a><a href="../tap/">See Tap <span aria-hidden="true">↗</span></a></div></div>
+          <div><p>Workloop began while a small team was building Dial Bot. We needed the idea, the work, and the honest result to travel together. Virtual PM kept the plan moving; Virtual QA made the gaps impossible to hide.</p><div class="origin-links"><a href="https://amitdialpad.github.io/dialbot/">See Dial Bot <span aria-hidden="true">↗</span></a><a href="https://amitdialpad.github.io/tap/">See Tap <span aria-hidden="true">↗</span></a></div></div>
         </div>
       </section>
     </main>
-    <footer class="site-footer"><div class="page-width"><span>Virtual PM · An experiment from Amit's lab.</span><div><a href="#install">Get started</a><a href="./agent-setup.md">Setup guide</a><a href="https://github.com/amitdialpad/amitdialpad.github.io/tree/main/virtual-pm" target="_blank" rel="noopener noreferrer">Source ↗</a></div></div></footer>
+    <footer class="site-footer"><div class="page-width"><span class="maker-credit">Workloop · Made on hackathon day one by <a href="https://epd-team.apps.dialpadhq.com/profile/amit.ayre@dialpad.com" target="_blank" rel="noopener noreferrer" aria-label="Amit’s EPD profile (opens in a new tab)">Amit</a> and <a href="https://epd-team.apps.dialpadhq.com/profile/yacine.khraimeche@dialpad.com" target="_blank" rel="noopener noreferrer" aria-label="Yacine Khraimeche’s EPD profile (opens in a new tab)">Yacine</a>. Shaped with feedback from <a href="https://epd-team.apps.dialpadhq.com/profile/josh.everhart@dialpad.com" target="_blank" rel="noopener noreferrer" aria-label="Joshua Everhart’s EPD profile (opens in a new tab)">Joshua Everhart</a>.</span><div><a href="#install">Get started</a><a href="./agent-setup.md">Setup guide</a><a href="https://github.com/amitdialpad/amitdialpad.github.io/tree/main/virtual-pm" target="_blank" rel="noopener noreferrer">Source ↗</a></div></div></footer>
   </body>
 </html>
