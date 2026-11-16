@@ -1,13 +1,14 @@
 # Set up Workloop in your project
 
-Virtual PM is a project-specific living plan plus a small GitHub workflow. The
+Virtual PM means Virtual Project Manager: a project-specific living plan plus
+a small GitHub workflow. The
 setup line below is an instruction for your coding agent, not a terminal
 command. It gives the agent an inspectable installer, asks it to map your real
 tasks, and requires a successful push-triggered update before it says ready.
 
 ## Copy this into your coding agent
 
-> Set up Workloop in this repo using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Install Virtual PM and Virtual QA, map our real tasks and checks, then prove a branch-push plan update and a QA report. Never mark Done from a commit or test alone.
+> Set up Workloop in this repo using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Install Virtual Project Manager (PM) and Virtual QA, map our real tasks and checks, then prove a branch-push plan update and a QA report. Never mark Done from a commit or test alone.
 
 Your coding agent needs access to a GitHub repository and a named working
 branch. The setup does not need an OpenAI, Claude, or personal GitHub API key

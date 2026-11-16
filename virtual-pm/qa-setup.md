@@ -1,7 +1,7 @@
 # Add Virtual QA to your project
 
 Virtual QA is the checkable half of Workloop. It reads task headings, owners,
-states, and next proof from your Virtual PM plan. It runs only the commands you
+states, and next proof from your Virtual Project Manager (PM) plan. It runs only the commands you
 explicitly map to scenarios, then writes a report with pass, fail, and not-run
 results. It does not invent a test from a feature description or mark a task
 Done because code passed.
