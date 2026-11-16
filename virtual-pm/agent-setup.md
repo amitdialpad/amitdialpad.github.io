@@ -6,7 +6,7 @@ and prove that code pushes update the plan automatically.
 
 ## Copy this into your coding agent
 
-> Set up Virtual PM in this repository using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Build one project-specific living plan and a commit-triggered updater on our working branch, map our tasks to the code they cover, test it with a real push, and give me the plan and proof links. Do not mark work Done just because code changed.
+> Set up Virtual PM for this repo using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Map our real tasks to code, auto-update the living plan on branch pushes, and prove it with a GitHub Actions run. Never mark Done from a commit alone.
 
 Your coding agent needs access to the repository. The setup does not need an
 OpenAI, Claude, or personal GitHub API key pasted into chat. Existing repository
@@ -25,7 +25,9 @@ permissions still govern whether GitHub Actions can write back to the branch.
    blocks. The update must be idempotent and should not run again on its own bot
    commit. Keep the workflow scoped to the named branch and give it only the
    repository permission it requires. Pin its checkout action to a reviewed
-   version, and do not run untrusted product code with the write token.
+   version. Use a branch whose contributors are trusted, review changes to the
+   workflow and updater before they run with write access, and do not execute
+   unrelated product code with that token.
 4. Keep product judgments separate. A changed file may move an Open task to
    Working, but it cannot prove user acceptance, change a product decision, or
    mark a task Done. Unmapped code changes should be visible in an activity
