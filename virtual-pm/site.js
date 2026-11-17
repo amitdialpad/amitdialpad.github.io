@@ -52,7 +52,7 @@ if (publicProjectCounts.length) {
       return response.json();
     })
     .then((snapshot) => {
-      if (snapshot.schemaVersion !== 1 || !Array.isArray(snapshot.projects)) {
+      if (![1, 2].includes(snapshot.schemaVersion) || !Array.isArray(snapshot.projects)) {
         throw new Error('Public project snapshot is invalid');
       }
       for (const label of publicProjectCounts) {

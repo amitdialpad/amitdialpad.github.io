@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#ffffff" />
-  <meta name="description" content="Workloop keeps a project's plan, people, next action, and QA proof together so builders can pick up the work." />
-  <title>Workloop — One place for the ambition and the evidence</title>
+  <meta name="description" content="Workloop is project management and QA for builders. It turns one shared plan into a live view of work, code activity, and test results." />
+  <title>Workloop — Project management and QA for builders</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="stylesheet" href="./styles.css" />
   <script src="./site.js" defer></script>
@@ -14,26 +14,26 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <a class="wordmark" href="#top" aria-label="Workloop, back to top"><span class="wordmark-symbol" aria-hidden="true">✳</span> Workloop</a>
-    <nav aria-label="Main navigation"><a href="#real-projects">Real projects</a><a href="#install">Get started</a><a href="#origin">Our story</a></nav>
+    <nav aria-label="Main navigation"><a href="#loop">How it works</a><a href="#real-projects">Live projects</a></nav>
     <a class="header-external" href="#install">Get started <span aria-hidden="true">↗</span></a>
   </header>
 
   <main id="main">
-    <section class="hero page-width" id="top" aria-labelledby="hero-title">
-      <div class="section-label"><span>01</span> TOOLS FOR PRODUCT MAKERS</div>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="page-width">
       <div class="hero-intro">
-        <h1 id="hero-title">One place for the ambition.<span>And the evidence.</span></h1>
+        <h1 id="hero-title">Project management<span>that updates with code.</span></h1>
         <div class="hero-side">
-          <p>A plan worth using says more than “in progress.” It shows the decision behind the work, the person taking it forward, and the next proof.</p>
+          <p>Workloop turns one shared plan into a live view of tasks, owners, blockers, decisions, and QA results. When code is pushed, matching progress and mapped checks update automatically.</p>
           <div class="hero-actions">
-            <button type="button" class="hero-action" data-copy-target="combined-setup-line" data-copy-label="Workloop setup" data-copy-feedback="hero-copy-feedback">Copy setup instruction <span aria-hidden="true">↗</span></button>
-            <a href="#real-projects">See real projects <span aria-hidden="true">→</span></a>
+            <a class="hero-action" href="./projects.html?project=dialbot">Explore live projects <span aria-hidden="true">↗</span></a>
+            <button type="button" class="text-action" data-copy-target="combined-setup-line" data-copy-label="Workloop setup" data-copy-feedback="hero-copy-feedback">Copy setup instruction <span aria-hidden="true">↗</span></button>
             <p id="hero-copy-feedback" role="status" aria-live="polite"></p>
           </div>
         </div>
       </div>
       <div class="preview-wrap" id="preview">
-        <div class="preview-topline"><span>THE PROJECT VIEW</span><span>ILLUSTRATIVE EXAMPLE</span></div>
+        <div class="preview-topline"><span>ONE VIEW FOR THE WORK AND ITS PROOF</span><span>ILLUSTRATIVE EXAMPLE</span></div>
         <div class="plan-preview" aria-label="Illustrative Workloop project plan">
           <aside class="preview-rail">
             <div class="preview-identity">Plan<span>✳</span></div>
@@ -55,21 +55,21 @@
               <div class="sheet-proof">
                 <div class="sheet-subhead"><span>LATEST ACTIVITY</span><span>↗</span></div>
                 <div class="activity"><i></i><div><strong>Code activity recorded</strong><p>The welcome screen changed. Task 01 remains Working.</p><small>From the working branch</small></div></div>
-                <div class="activity"><i></i><div><strong>Next proof</strong><p>Walk through the screen with one new teammate.</p><small>Still to be checked</small></div></div>
+                <div class="activity"><i></i><div><strong>QA after the push</strong><p>2 passed · 1 not run. Next: try the welcome with a teammate.</p><small>Mapped checks + live proof</small></div></div>
                 <p class="proof-rule">A commit can show progress.<br />A person decides when it is Done.</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="preview-caption"><span>This first view shows the product. The two projects below show selected real work.</span><div><a href="#real-projects">See real projects ↗</a><a href="./agent-setup.md">Setup guide ↗</a></div></div>
+        <div class="preview-caption"><span>Tasks, decisions, code activity, QA, and next proof together. Open the projects for real work.</span><div><a href="#real-projects">See real projects ↗</a><a href="./agent-setup.md">Setup guide ↗</a></div></div>
+      </div>
       </div>
     </section>
 
     <section class="real-projects page-width" id="real-projects" aria-labelledby="real-projects-title">
-      <div class="section-label"><span>02</span> REAL PROJECTS</div>
       <div class="real-projects-heading">
-        <h2 id="real-projects-title">See what we’re building.</h2>
-        <p>Dial Bot and Workloop are built by the same pod using this shared view. Open either project to see real owners, status, and current focus.</p>
+        <h2 id="real-projects-title">See the actual work.</h2>
+        <p>Our pod uses Workloop to build Dial Bot and Workloop itself. Open either project for current tasks, owners, decisions, activity, and QA results.</p>
       </div>
       <div class="real-project-cards" aria-label="Public project snapshots">
         <a class="real-project-card" href="./projects.html?project=dialbot">
@@ -91,19 +91,21 @@
     <section class="workloop-story" id="loop" aria-labelledby="loop-title">
       <div class="page-width">
         <div class="story-intro">
-          <div class="section-label"><span>03</span> THE WORKLOOP</div>
           <h2 id="loop-title">Made for a pod<br />that <span>builds together.</span></h2>
-          <div class="story-copy"><p>One task moves between people. Its decisions, progress, QA proof, and next move stay together, so the next builder knows where to begin.</p><p>Today: shared activity and QA results. Next: automatic handoff when work gets stuck.</p></div>
+          <div class="story-copy"><p>Give the team one plan. Workloop keeps code activity and QA results beside the work, so the next builder can pick up with context.</p></div>
         </div>
-
-        <div class="story-end"><span>No one starts from zero.</span><a href="#install">Start with your project <span aria-hidden="true">↗</span></a></div>
+        <ol class="loop-steps">
+          <li><span class="loop-number">01 / PLAN</span><h3>Define the work once.</h3><p>Keep tasks, owners, blockers, decisions, and the next proof in one shared Markdown plan.</p></li>
+          <li><span class="loop-number">02 / PUSH</span><h3>Let code show progress.</h3><p>A push to the watched branch links matching changes to tasks and can move open work to Working.</p></li>
+          <li><span class="loop-number">03 / CHECK</span><h3>See the QA proof.</h3><p>Mapped checks run after the push. Pass, fail, and not run are visible in the project view.</p></li>
+        </ol>
+        <div class="story-end"><span>People decide when work is Done.</span><a href="#install">Set it up in your project <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
 
     <section class="setup" id="install" aria-labelledby="install-title">
       <div class="page-width">
-        <div class="section-label"><span>04</span> START IN YOUR PROJECT</div>
-        <div class="setup-heading"><h2 id="install-title">One instruction to start.<br /><span>Two ways to keep moving.</span></h2><p>Paste the instructions into your coding agent. Ask for a real plan update and QA run before calling setup complete.</p></div>
+        <div class="setup-heading"><h2 id="install-title">Bring the plan and checks<br /><span>into your repo.</span></h2><p>Paste the setup instruction into your coding agent. Ask it to prove a real push-triggered plan update and QA run before calling setup complete.</p></div>
         <p class="visually-hidden" id="combined-setup-line">Set up Workloop in this repo using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Install its shared plan and QA checks, map our real tasks and scenarios, then prove a branch-push plan update and a QA report. Never mark Done from a commit or test alone.</p>
         <div class="setup-list">
           <article class="setup-item">
@@ -122,7 +124,6 @@
     </section>
 
     <section class="origin page-width" id="origin" aria-labelledby="origin-title">
-      <div class="section-label"><span>05</span> OUR STORY</div>
       <div class="origin-grid"><h2 id="origin-title">Made in the middle<br />of <span>making.</span></h2><div><p>We needed this while building Dial Bot. So we made a way for the plan and its proof to move with the people doing the work.</p><div class="origin-links"><a href="https://amitdialpad.github.io/dialbot/">See Dial Bot <span aria-hidden="true">↗</span></a><a href="https://amitdialpad.github.io/tap/">See Tap <span aria-hidden="true">↗</span></a></div></div></div>
     </section>
   </main>
