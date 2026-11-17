@@ -1,15 +1,15 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-17T18:01:05Z",
+  "generatedAt": "2026-11-17T18:43:04Z",
   "projects": [
     {
       "id": "dialbot",
       "name": "Dial Bot",
       "summary": "A meeting assistant shaped by a small product team.",
       "counts": {
-        "total": 17,
-        "working": 9,
-        "open": 6,
+        "total": 19,
+        "working": 10,
+        "open": 7,
         "ready": 1,
         "blocked": 1,
         "done": 0
@@ -56,6 +56,21 @@
             "nextProof": "Jimut will prove trusted prejoin presence. Yacine will hand connection gaps to Vishal, whose Settings pickup needs confirmation. Then test real opt-in and revoke.",
             "blocker": "Prejoin presence and per-person grants remain unproved. Settings connections are only a preview, and Vishal has not confirmed pickup.",
             "evidence": "The optional in-room introduction was observed. Amit said the Connect screens do not work; Yacine agreed to document connection gaps.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
+        },
+        {
+          "id": "shared-integration",
+          "title": "Shared branch integration",
+          "owner": "Jimut",
+          "state": "working",
+          "focus": "Integrate reviewed PRs and verify the combined build.",
+          "detail": {
+            "stateDetail": "Working — Jimut is coordinating reviewed PRs into the shared branch; no combined build is verified.",
+            "nextProof": "Resolve overlap and review findings, integrate the tested slices, check the shared branch, then prove the combined flow in a real meeting.",
+            "blocker": "At the meeting, both PRs were unmerged and a connection review issue remained; a combined live test is still needed.",
+            "evidence": "Jimut agreed to coordinate the branches and tell the team which revision to pull. No merge was shown at the meeting.",
             "codeActivity": null,
             "reviewPending": []
           }
@@ -161,6 +176,21 @@
             "nextProof": "Yacine will document working and blocked connections for Vishal and define with Jimut how connection and Bot processing move to the backend.",
             "blocker": "Glean and Calendar paths, backend-held access, and Vishal’s Settings pickup remain unresolved.",
             "evidence": "Yacine showed Jira access and reported Dialpad MCP progress in the beta demo; these are prototype findings.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
+        },
+        {
+          "id": "settings-connections",
+          "title": "Settings and Meetings connections",
+          "owner": "Vishal",
+          "state": "open",
+          "focus": "Confirm the proposed Settings pickup and prove real source sharing.",
+          "detail": {
+            "stateDetail": "Open — Vishal’s Settings and Meetings connection pickup is proposed, pending his confirmation.",
+            "nextProof": "After Jimut points Vishal to the combined branch and Yacine shares connection gaps, confirm scope and demonstrate real participant source sharing.",
+            "blocker": "Vishal has not accepted the work. The Meetings connection route and backend grant path need confirmation; Glean and Calendar remain open.",
+            "evidence": "Amit proposed the Settings and Meetings MCP work for Vishal; Jimut and Yacine agreed to support the handoff. Current controls remain previews.",
             "codeActivity": null,
             "reviewPending": []
           }
@@ -276,7 +306,7 @@
         "passed": 2,
         "failed": 1,
         "notRun": 6,
-        "generatedAt": "2026-11-17T18:00:55Z",
+        "generatedAt": "2026-11-17T18:42:54Z",
         "scenarios": [
           {
             "id": "host-autojoin",
@@ -346,7 +376,7 @@
       "activity": [
         {
           "id": "qa-run",
-          "text": "QA checked 2026-11-17T18:00:55Z: 2 passed, 1 failed, 6 not run."
+          "text": "QA checked 2026-11-17T18:42:54Z: 2 passed, 1 failed, 6 not run."
         }
       ],
       "decisions": [
