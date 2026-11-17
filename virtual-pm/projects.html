@@ -4,55 +4,73 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#ffffff" />
-  <meta name="description" content="A read-only public snapshot of the real work behind Dial Bot and Workloop." />
-  <title>Real projects — Workloop</title>
+  <meta name="description" content="The real work, decisions, activity, and QA behind Dial Bot and Workloop." />
+  <title>Dial Bot work — Workloop</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./projects.css" />
   <script src="./projects.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#project-main">Skip to project work</a>
+  <a class="skip-link" href="#work">Skip to project work</a>
   <header class="project-header">
-    <a class="wordmark" href="./index.html" aria-label="Workloop homepage"><span class="wordmark-symbol" aria-hidden="true">✳</span> Workloop</a>
+    <div class="project-identity">
+      <a class="project-mark" href="./index.html" aria-label="Workloop homepage">✳</a>
+      <select id="project-choice" aria-label="Choose project"><option value="dialbot">Dial Bot</option><option value="workloop">Workloop</option></select>
+    </div>
     <div class="project-header-right">
-      <label for="project-choice">Project</label>
-      <select id="project-choice" aria-label="Choose public project"><option value="dialbot">Dial Bot</option><option value="workloop">Workloop</option></select>
-      <button type="button" id="refresh-snapshot" class="project-refresh" aria-label="Refresh public project snapshot">Refresh ↻</button>
-      <a href="./index.html#real-projects">About Workloop <span aria-hidden="true">↗</span></a>
+      <span class="public-pill">PUBLIC · READ ONLY</span>
+      <button type="button" id="refresh-snapshot" class="project-refresh" aria-label="Refresh project">Refresh project <span aria-hidden="true">↻</span></button>
     </div>
   </header>
 
   <main id="project-main" class="project-main page-width">
-    <div class="project-eyebrow"><span>REAL WORK</span><span>SELECTED PUBLIC FIELDS</span></div>
-    <div class="project-intro">
-      <div><h1 id="project-title">Loading project…</h1><p id="project-summary">Loading the latest public snapshot.</p></div>
-      <p class="project-public-note">A read-only look at the work behind the product. The private working plan contains more detail.</p>
-    </div>
-    <div class="project-stats" id="project-stats" aria-label="Project task counts"></div>
-    <p class="project-snapshot-meta" id="project-snapshot-meta" role="status">Loading the latest published snapshot…</p>
-
-    <nav class="project-nav" aria-label="Public project sections"><a href="#work">Work</a><a href="#checks">QA checks</a></nav>
-
-    <section class="project-work" id="work" aria-labelledby="project-work-title">
-      <h2 id="project-work-title" class="visually-hidden">Project work</h2>
-      <div class="project-filters">
-        <label class="project-search">Find work <input id="task-search" type="search" placeholder="Search work or people" autocomplete="off" /></label>
-        <label>Owner <select id="owner-filter"><option value="">All owners</option></select></label>
-        <label>State <select id="state-filter"><option value="">All states</option></select></label>
+    <div class="workspace-head">
+      <div>
+        <div class="app-eyebrow">PLAN &amp; QA CHECKS</div>
+        <h1 id="project-title">Loading project…</h1>
+        <p id="project-summary">Loading the latest project state.</p>
       </div>
-      <p class="task-visible-count" id="task-visible-count"></p>
-      <div class="public-task-list" id="public-task-list" aria-live="polite"><p class="project-loading">Loading public task fields…</p></div>
+      <div class="project-stats" id="project-stats" aria-label="Project task counts"></div>
+    </div>
+    <p class="project-snapshot-meta" id="project-snapshot-meta" role="status">Loading the latest published update…</p>
+
+    <nav class="project-nav" aria-label="Project views">
+      <a href="#work" data-view="work" aria-current="page">Work</a>
+      <a href="#decisions" data-view="decisions">Decisions</a>
+      <a href="#activity" data-view="activity">Activity</a>
+      <a href="#checks" data-view="checks">QA checks</a>
+    </nav>
+
+    <section class="project-panel project-work" id="work" aria-labelledby="project-title">
+      <div class="sheet-meta"><span id="project-sheet-name">DIAL BOT / SHARED PLAN</span><span id="task-visible-count">FETCHING</span></div>
+      <div class="owner-chips" id="owner-chips" role="group" aria-label="Filter work by owner"></div>
+      <div class="project-filters">
+        <label for="task-search">Find work</label>
+        <input id="task-search" type="search" placeholder="Search tasks or owners" autocomplete="off" />
+        <label for="state-filter">State</label>
+        <select id="state-filter" aria-label="Filter work by state"><option value="">All states</option></select>
+      </div>
+      <div class="public-task-list" id="public-task-list" aria-live="polite"><p class="project-loading">Loading project work…</p></div>
+      <p class="source-foot">Task states and QA update from the shared project workflows. A code push alone does not prove a user flow is complete.</p>
     </section>
 
-    <section class="project-checks" id="checks" aria-labelledby="project-checks-title">
-      <div class="project-section-heading"><div><span class="project-kicker">02 / THE EVIDENCE</span><h2 id="project-checks-title">What’s proved.</h2></div><p>Checks report what ran. They do not turn an untested user flow into a pass.</p></div>
-      <div id="project-qa" class="project-qa-panel"><p class="project-loading">Loading QA snapshot…</p></div>
+    <section class="project-panel project-decisions" id="decisions" aria-labelledby="decisions-title" hidden>
+      <div class="panel-heading"><h2 id="decisions-title">Decisions</h2><p>What the team decided, and why it matters for the next builder.</p></div>
+      <div class="decision-layout"><div><h3>Current decisions</h3><div id="decision-list"></div></div><div><h3>Latest discussion decisions</h3><div id="recent-decisions"></div></div></div>
     </section>
 
-    <div class="project-boundary"><strong>Why this is a snapshot</strong><p>The public view shows curated fields from the real shared handoff. Private implementation details and links stay with the team. The snapshot updates when the published project feed updates; it does not read the private repository in your browser.</p></div>
+    <section class="project-panel project-activity" id="activity" aria-labelledby="activity-title" hidden>
+      <div class="panel-heading"><h2 id="activity-title">Activity</h2><p>Code and plan movement that belongs to this project.</p></div>
+      <div id="activity-list" class="activity-list"></div>
+    </section>
+
+    <section class="project-panel project-checks" id="checks" aria-labelledby="checks-title" hidden>
+      <div class="panel-heading"><h2 id="checks-title">Latest QA evidence</h2><p>Checks show what ran. Live experience and product acceptance still need review.</p></div>
+      <div id="project-qa" class="project-qa-panel"><p class="project-loading">Loading QA results…</p></div>
+    </section>
   </main>
 
-  <footer class="project-footer"><div class="page-width"><span>Workloop · Made in the middle of making.</span><a href="./index.html#install">Start in your own project <span aria-hidden="true">↗</span></a></div></footer>
+  <footer class="project-footer"><div class="page-width"><span>Workloop · Made in the middle of making.</span><a href="./index.html">About Workloop <span aria-hidden="true">↗</span></a></div></footer>
 </body>
 </html>
