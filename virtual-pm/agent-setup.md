@@ -25,8 +25,10 @@ back to that branch.
    --dry-run`, then `python3 install.py init`. It creates `VIRTUAL_PM.md`,
    `.virtual-pm.json`, and a branch-scoped GitHub workflow and updater. The
    installer makes local file changes only; it does not commit, push, or ask
-   for credentials. If any target file already differs, it stops without
-   changing files; integrate with the existing plan deliberately instead.
+   for credentials. A first or partial install stops if an existing target
+   differs; integrate with the existing plan deliberately instead. Once all
+   files exist, a repeated `init` preserves the plan and task map while
+   checking the managed workflow and updater for drift.
 3. Replace the sample goal, owner, task, next check, and proof with this
    project's real work. In `.virtual-pm.json`, map every task heading to the
    code paths that belong to it. An empty task map will log general activity
@@ -71,3 +73,8 @@ Publishing a new Workloop site version does not silently change files already
 installed in your repository. Re-run the setup review when you want to adopt
 an updated runner or workflow; the installers stop on differing files so your
 agent can inspect and merge the change deliberately.
+`install.py verify` checks the installed PM workflow and updater byte for byte
+against the bundled installer. If either has changed, `verify` and a repeated
+`init` name the file and stop without replacing it. Review the local change
+against the installer before adopting an update; the plan and task map remain
+project-owned and are never reset by a repeated `init`.
