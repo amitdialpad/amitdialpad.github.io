@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-17T18:43:04Z",
+  "generatedAt": "2026-11-17T19:13:35Z",
   "projects": [
     {
       "id": "dialbot",
@@ -306,7 +306,7 @@
         "passed": 2,
         "failed": 1,
         "notRun": 6,
-        "generatedAt": "2026-11-17T18:42:54Z",
+        "generatedAt": "2026-11-17T19:13:14Z",
         "scenarios": [
           {
             "id": "host-autojoin",
@@ -376,7 +376,11 @@
       "activity": [
         {
           "id": "qa-run",
-          "text": "QA checked 2026-11-17T18:42:54Z: 2 passed, 1 failed, 6 not run."
+          "text": "QA checked 2026-11-17T19:13:14Z: 2 passed, 1 failed, 6 not run."
+        },
+        {
+          "id": "team-integration",
+          "text": "17 Nov 2026: Team handoff recorded. Jimut coordinates integration; Vishal's Settings pickup remains proposed."
         }
       ],
       "decisions": [
@@ -421,16 +425,22 @@
           "title": "One Bot, personal connections",
           "detail": "A meeting has one Dial Bot. Each person can connect their own sources to it and choose what to share with the room.",
           "reviewPending": false
+        },
+        {
+          "id": "team-integration",
+          "title": "Shared branch handoff",
+          "detail": "Jimut coordinates reviewed PR integration; Yacine documents connection gaps for Vishal's proposed Settings pickup.",
+          "reviewPending": false
         }
       ],
       "recentDecisions": [
         {
-          "id": "event-motion",
-          "text": "Listening, Thinking, and Speaking visuals must follow actual events."
-        },
-        {
           "id": "one-brain",
           "text": "A meeting has one Dial Bot. Each person can connect their own sources to it and choose what to share with the room."
+        },
+        {
+          "id": "team-integration",
+          "text": "Jimut coordinates reviewed PR integration; Yacine documents connection gaps for Vishal's proposed Settings pickup."
         }
       ]
     },
