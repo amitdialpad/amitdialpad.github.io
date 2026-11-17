@@ -154,17 +154,20 @@ def discover() -> dict[str, object]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--open", action="store_true", help="Also ask macOS to open the page")
+    parser.add_argument("--no-open", action="store_true", help="Print the live URL without opening a browser")
     args = parser.parse_args()
     try:
         result = discover()
     except RuntimeError as exc:
         print(str(exc), file=sys.stderr)
         return 1
-    if args.open:
+    if not args.no_open:
         opened = run("open", str(result["url"]))
         if opened.returncode:
-            print("The service is ready, but this shell could not open the browser. Open the returned URL with browser control.", file=sys.stderr)
+            print("The service is ready, but macOS could not open the browser. Open the returned URL with browser control.", file=sys.stderr)
+            result["browserOpened"] = False
+        else:
+            result["browserOpened"] = True
     print(json.dumps(result, separators=(",", ":")))
     return 0
 

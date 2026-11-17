@@ -8,26 +8,98 @@
 @media(max-width:700px){.topbar{padding:15px 17px;gap:15px}.brand small{display:none}.top-controls{gap:8px;flex-wrap:wrap}.session-field{width:calc(100% - 100px)}.day-field{width:92px}.local-label{display:none}.refresh-button{position:absolute;right:17px;top:12px;width:34px;height:34px}.brand{padding-right:40px}.main{padding:26px 16px 30px}.page-head{display:block;margin-bottom:21px}.page-head h1{font-size:38px;margin:11px 0 8px}.page-head p{font-size:13px}.freshness{font-size:11px;margin-top:12px}.roster-head{display:block;padding:19px 16px 16px}.roster-head h2{font-size:19px}.roster-tools{margin-top:16px;display:flex;flex-direction:row-reverse;justify-content:space-between;gap:12px}.search{min-width:0;flex:1}.visible-count{font-size:11px}.agent-table,.agent-table tbody{display:block;width:100%}.agent-table thead{display:none}.agent-table tbody tr.agent-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 8px;padding:16px;border-bottom:1px solid #405057;align-items:start}.agent-table td{display:block;border:0;padding:0!important;font-size:12px}.agent-table .who-cell{grid-column:1;grid-row:1}.agent-table .state-cell{grid-column:2;grid-row:1;text-align:right}.agent-table .assignment-cell{grid-column:1/-1;grid-row:2;font-size:15px;padding-left:41px!important}.agent-table .latest-cell{grid-column:1/-1;grid-row:3;padding-left:41px!important}.agent-table .response-cell{display:none}.row-open{width:100%}.who-name{font-size:13px}.row-chevron{display:none}.agent-table .day-row{display:block}.agent-table .day-row th{display:block;padding:11px 16px}.agent-table .expanded-row{display:block}.agent-table .expanded-row td{display:block;padding:0 16px 18px!important}.detail-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.detail-note{margin-top:14px}.footer{display:block;font-size:10px;line-height:1.6}.footer span{display:block}}
 @media(max-width:390px){.brand strong{font-size:15px}.header-field select{font-size:11px;padding-left:9px;padding-right:24px}.header-field:after{right:8px}.session-field{width:calc(100% - 94px)}.day-field{width:86px}.agent-table .assignment-cell,.agent-table .latest-cell{padding-left:39px!important}}
 @media(max-width:700px){.agent-table .assignment-cell,.agent-table .latest-cell{padding-left:0!important}}
-/* Agent roster: a dated activity column and a concise assignment explanation. */
-.agent-table th:nth-child(1){width:17%}
-.agent-table th:nth-child(2){width:19%}
-.agent-table th:nth-child(3){width:33%}
-.agent-table th:nth-child(4){width:12%}
-.agent-table th:nth-child(5){width:19%}
-.description-cell{color:#c8d3d5!important;font-size:12px!important;line-height:1.5!important}
+/* Agent roster: four scannable columns; optional summaries live in row details. */
+.agent-table th:nth-child(1){width:20%}
+.agent-table th:nth-child(2){width:44%}
+.agent-table th:nth-child(3){width:16%}
+.agent-table th:nth-child(4){width:20%}
 .latest-cell .latest-date{display:block;color:#c7d3d5;font-size:12px;line-height:1.45}
 @media(max-width:1080px){
-  .agent-table th:nth-child(1){width:18%}
-  .agent-table th:nth-child(2){width:18%}
-  .agent-table th:nth-child(3){width:31%}
-  .agent-table th:nth-child(4){width:13%}
-  .agent-table th:nth-child(5){width:20%}
+  .agent-table th:nth-child(1){width:22%}
+  .agent-table th:nth-child(2){width:42%}
+  .agent-table th:nth-child(3){width:16%}
+  .agent-table th:nth-child(4){width:20%}
 }
 @media(max-width:700px){
   .agent-table .assignment-cell{grid-column:1/-1;grid-row:2;padding-left:0!important}
-  .agent-table .description-cell{grid-column:1/-1;grid-row:3}
-  .agent-table .latest-cell{grid-column:1/-1;grid-row:4;padding-left:0!important}
+  .agent-table .latest-cell{grid-column:1/-1;grid-row:3;padding-left:0!important}
 }
-.description-unavailable{color:#798c90!important}
 .detail-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:520px}
 @media(max-width:700px){.detail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.child-agents{margin-top:18px;max-width:760px;border:1px solid #465960;border-radius:8px;background:#1a272d}
+.hierarchy-empty{margin:17px 0 0;color:#afc0c4;font-size:12px}
+.child-agents-heading{margin:0;padding:11px 14px;color:#d5e8e6;font-size:12px;font-weight:700}
+.child-agent-open:focus-visible{outline:2px solid #b5ded9;outline-offset:2px}
+.child-agents-list{list-style:none;margin:0;padding:0 12px 12px}
+.child-agents-list li+li{border-top:1px solid #3b4c52}
+.child-agent-open{display:flex;align-items:center;gap:12px;width:100%;padding:10px 2px;border:0;background:transparent;color:#f2f5f5;text-align:left}
+.child-agent-open:hover{background:#26383e}
+.child-agent-name{min-width:125px;font-size:12px;font-weight:700}
+.child-agent-task{min-width:0;flex:1;color:#c6d2d5;font-size:12px;overflow-wrap:anywhere}
+.child-agent-open .status-badge{margin-left:auto}
+@media(max-width:700px){.child-agents{margin-top:15px}.child-agent-open{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px}.child-agent-name{min-width:0}.child-agent-task{grid-column:1;grid-row:2}.child-agent-open .status-badge{grid-column:2;grid-row:1/3}}
+
+/* Match the Mission Control skill page without changing the live roster layout. */
+:root{--mc-paper:#0b0d0e;--mc-surface:#111416;--mc-raised:#171b1e;--mc-ink:#f3f5f3;--mc-muted:#b8c0bb;--mc-line:#303638;--mc-accent:#5be39a;color:var(--mc-ink);background:var(--mc-paper)}
+html{scrollbar-color:#3a5142 var(--mc-paper)}
+body,.shell{background:var(--mc-paper)}
+.topbar{background:var(--mc-surface);border-color:var(--mc-line)}
+.brand strong,.page-head h1,.roster-head h2,.agent-table .who-cell,.row-open{color:var(--mc-ink)}
+.brand small,.page-head p,.roster-head p,.visible-count,.freshness,.footer{color:var(--mc-muted)}
+.brand-mark{border-color:var(--mc-accent)}
+.brand-mark span,.local-dot{background:var(--mc-accent)}
+.eyebrow{color:var(--mc-accent)}
+.eyebrow-mark{background:var(--mc-accent)}
+.freshness #sync-state{color:var(--mc-accent)}
+.header-field select,.refresh-button{border-color:#46504a;background:var(--mc-raised);color:var(--mc-ink)}
+.header-field:after{color:#d3dfd5}
+.header-field select:hover,.refresh-button:hover{border-color:#6a9475;background:#1d2a21}
+.header-field select:focus-visible,.refresh-button:focus-visible,.search input:focus-visible,.row-open:focus-visible,.load-more:focus-visible{outline-color:var(--mc-accent)}
+.roster{border-color:#3a5142;background:var(--mc-surface)}
+.search{border-color:#46504a;background:var(--mc-paper);color:var(--mc-muted)}
+.search:focus-within{outline-color:var(--mc-accent)}
+.search input::placeholder{color:#aab5ae}
+.agent-table thead{background:var(--mc-raised);border-color:var(--mc-line)}
+.agent-table th{color:#b9cbbd}
+.agent-table tbody tr.agent-row{border-color:var(--mc-line)}
+.agent-table tbody tr.agent-row:hover,.agent-table tbody tr.agent-row.selected{background:#1e2a22}
+.agent-table td{color:var(--mc-ink)}
+.assignment-cell{color:#e9f0ea!important}
+.latest-cell .latest-date{color:#bccbbf}
+.row-chevron{color:#a6bca9}
+.status-badge.working{border-color:#5b9c6e;background:#20452e;color:#d0f4d8}
+.status-badge.finished{border-color:#6d8174;background:#34443b;color:#e6efe8}
+.day-row th{background:#101713;color:#a9d3b2;border-color:var(--mc-line)}
+.expanded-row{background:#19231d;border-color:#3a5142}
+.detail-grid{border-color:#3a5142}
+.detail-item span{color:#b8ccb9}
+.detail-item strong{color:var(--mc-ink)}
+.detail-note,.hierarchy-empty{color:var(--mc-muted)}
+.child-agents{background:#111a14;border-color:#3a5142}
+.child-agents-heading{color:#d8eadb}
+.child-agents-list li+li{border-color:#324538}
+.child-agent-open:hover{background:#1c2c20}
+.child-agent-task{color:#c6d5c8}
+.child-agent-open:focus-visible{outline-color:var(--mc-accent)}
+.load-more{border-color:#61886a;background:#203628;color:#ecf8ef}
+.load-more:hover{background:#2a4833}
+@media(max-width:700px){.agent-table tbody tr.agent-row{border-color:var(--mc-line)}}
+
+/* The live view opens directly on the roster, with one title and compact controls. */
+.topbar h1{margin:0;color:var(--mc-ink);font-size:clamp(25px,2.3vw,34px);font-weight:730;letter-spacing:-.055em;line-height:1.1}
+.main{padding-top:28px}
+.attention-banner{margin:0 0 18px}
+.roster-head{align-items:center;padding:17px 28px;background:linear-gradient(105deg,rgba(91,227,154,.08),transparent 42%)}
+.roster-meta{display:flex;align-items:center;gap:18px}
+.visible-count{color:#d7e7d9;font-size:13px;font-weight:700}
+.checked-time{color:var(--mc-muted);font-size:11px;white-space:nowrap}
+.search{width:230px}
+@media(max-width:700px){
+  .topbar{position:relative;align-items:flex-start;padding:19px 17px 16px}
+  .topbar h1{font-size:29px;padding-right:43px}
+  .top-controls{width:100%;justify-content:flex-start}
+  .main{padding:22px 16px 30px}
+  .roster-head{display:flex;flex-direction:column;align-items:stretch;gap:13px;padding:17px 16px}
+  .roster-meta{justify-content:space-between}
+  .search{width:100%}
+}

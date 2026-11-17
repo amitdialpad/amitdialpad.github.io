@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101417">
+  <meta name="theme-color" content="#0b0d0e">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <title>Mission Control · Codex agents</title>
   <meta name="description" content="A private, live roster of your Codex sessions and specialist agents.">
@@ -13,49 +13,35 @@
 <body>
   <div class="shell">
     <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
-        <div><strong>Mission Control</strong><small>Codex agent workspace</small></div>
-      </div>
+      <h1 id="page-title">Agents at work</h1>
       <div class="top-controls">
         <label class="header-field session-field"><span class="sr-only">Session</span><select id="session-select" aria-label="Choose a current or older session"></select></label>
         <label class="header-field day-field"><span class="sr-only">Day</span><select id="day-select" aria-label="Choose a day"><option value="today">Today</option><option value="all">All days</option></select></label>
-        <span class="local-label"><span class="local-dot" aria-hidden="true"></span>Local only</span>
         <button id="refresh-button" class="refresh-button" type="button" aria-label="Refresh agent data" title="Refresh agent data">↻</button>
       </div>
     </header>
 
     <main class="main">
-      <section class="page-head" aria-labelledby="page-title">
-        <div>
-          <div class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span><span id="day-marker">LIVE SESSION · TODAY</span></div>
-          <h1 id="page-title">Agents at work</h1>
-          <p id="scope-line">The current session, from the Codex activity index.</p>
-        </div>
-        <div class="freshness"><span id="sync-state">Connecting…</span><span class="freshness-divider">·</span><span>Checked <time id="last-checked">—</time></span></div>
-      </section>
-
       <section id="attention-banner" class="attention-banner" aria-live="polite" hidden>
         <strong id="attention-title"></strong><span id="attention-copy"></span>
       </section>
 
-      <section class="roster" aria-labelledby="roster-title">
+      <section class="roster" aria-label="Agent roster">
         <div class="roster-head">
-          <div><h2 id="roster-title">Agent roster</h2><p id="roster-note">Select an agent to see its recorded activity.</p></div>
-          <div class="roster-tools">
+          <div class="roster-meta">
             <span id="visible-count" class="visible-count">—</span>
-            <label class="search"><span class="sr-only">Find an agent or assignment</span><input id="agent-search" type="search" placeholder="Find agent or work" autocomplete="off"><span aria-hidden="true">⌕</span></label>
+            <span class="checked-time">Checked <time id="last-checked">—</time></span>
           </div>
+          <label class="search"><span class="sr-only">Find an agent or assignment</span><input id="agent-search" type="search" placeholder="Find agent or work" autocomplete="off"><span aria-hidden="true">⌕</span></label>
         </div>
         <div class="table-scroll">
           <table class="agent-table">
-            <thead><tr><th scope="col">Agent</th><th scope="col">Assignment</th><th scope="col">About the work</th><th scope="col">State</th><th scope="col">Updated</th></tr></thead>
+            <thead><tr><th scope="col">Agent</th><th scope="col">Assignment</th><th scope="col">State</th><th scope="col">Updated</th></tr></thead>
             <tbody id="agent-rows"></tbody>
           </table>
         </div>
         <button id="load-more" class="load-more" type="button" hidden>Show more agents <span aria-hidden="true">↓</span></button>
       </section>
-      <footer class="footer"><span>Read-only · Refreshes every 5 seconds · Times on this device</span><span>Assignment labels come from Codex. A dash means no local brief is available; full briefs stay in Codex.</span></footer>
     </main>
   </div>
 </body>
