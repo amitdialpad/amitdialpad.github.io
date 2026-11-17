@@ -1,134 +1,108 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="Workloop brings a Virtual Project Manager and Virtual QA together: one living project plan, repeatable checks, and honest evidence. Start with one instruction for your coding agent." />
-    <title>Workloop — Plan the work. Check the proof.</title>
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <link rel="stylesheet" href="./styles.css" />
-    <script src="./site.js" defer></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="Workloop, back to top"><span class="wordmark-symbol" aria-hidden="true">✳</span> Workloop</a>
-      <nav aria-label="Main navigation">
-        <a href="#plan">The plan</a>
-        <a href="#qa">The checks</a>
-        <a href="#install">Get started</a>
-        <a href="#origin">Our story</a>
-      </nav>
-      <a class="header-external" href="https://amitdialpad.github.io/dialbot/">Made alongside Dial Bot <span aria-hidden="true">↗</span></a>
-    </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Workloop keeps a project's plan, people, next action, and QA proof together so builders can pick up the work." />
+  <title>Workloop — One place for the ambition and the evidence</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="./site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Workloop, back to top"><span class="wordmark-symbol" aria-hidden="true">✳</span> Workloop</a>
+    <nav aria-label="Main navigation"><a href="#preview">The view</a><a href="#install">Get started</a><a href="#origin">Our story</a></nav>
+    <a class="header-external" href="#install">Get started <span aria-hidden="true">↗</span></a>
+  </header>
 
-    <main id="main">
-      <section class="hero page-width" id="top" aria-labelledby="hero-title">
-        <h1 id="hero-title">The <em class="plan-accent">plan</em> moves.<span>The proof keeps up.</span></h1>
-        <div class="hero-bottom">
-          <p>Virtual PM, your project manager, keeps the work and decisions together. Virtual QA runs the checks you choose and shows what still needs a real-world test.</p>
-          <div class="hero-actions"><button type="button" class="hero-action" data-copy-target="setup-line" data-copy-label="Setup line" data-copy-feedback="hero-copy-feedback">Copy the setup instruction <span aria-hidden="true">↗</span></button><p class="hero-hint">Paste it into your coding agent in your project.</p><a href="#install">See how it works <span aria-hidden="true">↘</span></a><p id="hero-copy-feedback" role="status" aria-live="polite"></p></div>
-        </div>
-      </section>
-
-      <section class="install" id="install" aria-labelledby="install-title">
-        <div class="page-width">
-          <div class="section-heading">
-            <div class="section-label"><span>01</span> GET STARTED</div>
-            <h2 id="install-title">One instruction.<br /><span>Two working companions.</span></h2>
+  <main id="main">
+    <section class="hero page-width" id="top" aria-labelledby="hero-title">
+      <div class="section-label"><span>01</span> TOOLS FOR PRODUCT MAKERS</div>
+      <div class="hero-intro">
+        <h1 id="hero-title">One place for the ambition.<span>And the evidence.</span></h1>
+        <div class="hero-side">
+          <p>A plan worth using says more than “in progress.” It shows the decision behind the work, the person taking it forward, and the next proof.</p>
+          <div class="hero-actions">
+            <button type="button" class="hero-action" data-copy-target="combined-setup-line" data-copy-label="Workloop setup" data-copy-feedback="hero-copy-feedback">Copy setup instruction <span aria-hidden="true">↗</span></button>
+            <a href="#preview">See the project view <span aria-hidden="true">→</span></a>
+            <p id="hero-copy-feedback" role="status" aria-live="polite"></p>
           </div>
-          <div class="install-grid">
-            <div class="install-intro">
-              <p>Open your repository in Codex, Claude Code, or another coding agent. Paste this instruction. Your agent will set up the living plan, map your real checks, and show you the first report.</p>
-              <div class="install-note"><span class="note-icon" aria-hidden="true">i</span><p>Ask to see a push update and an actual QA run. A passing code check never marks a product task Done.</p></div>
-            </div>
-            <div class="install-command">
-              <div class="command-head"><span>PASTE INTO YOUR CODING AGENT</span><span>01 / COPY</span></div>
-              <p id="setup-line">Set up Workloop in this repo using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Install Virtual Project Manager (PM) and Virtual QA, map our real tasks and checks, then prove a branch-push plan update and a QA report. Never mark Done from a commit or test alone.</p>
-              <div class="command-actions">
-                <button type="button" class="copy-button" data-copy-target="setup-line" data-copy-label="Setup line">Copy this line <span aria-hidden="true">↗</span></button>
-                <a href="./agent-setup.md">Read the setup guide <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="preview-wrap" id="preview">
+        <div class="preview-topline"><span>THE PROJECT VIEW</span><span>ILLUSTRATIVE EXAMPLE</span></div>
+        <div class="plan-preview" aria-label="Illustrative Workloop project plan">
+          <aside class="preview-rail">
+            <div class="preview-identity">Plan<span>✳</span></div>
+            <div class="preview-nav"><span class="active">01 &nbsp; Intent</span><span>02 &nbsp; Work</span><span>03 &nbsp; Decisions</span><span>04 &nbsp; Proof</span></div>
+            <p>EXAMPLE PROJECT<br /><strong>First-run experience</strong></p>
+          </aside>
+          <div class="preview-sheet">
+            <div class="sheet-meta"><span>PROJECT PLAN / REVISION 03</span><span>ILLUSTRATIVE</span></div>
+            <h2>Welcome, without the work.</h2>
+            <p class="sheet-goal">Help a new teammate understand the first step and finish setup with confidence.</p>
+            <div class="sheet-body">
+              <div class="sheet-work">
+                <div class="sheet-subhead"><span>WORK IN MOTION</span><span>2 ITEMS</span></div>
+                <div class="task-row"><div><span class="task-number">01</span><strong>Make the welcome moment clear</strong><small>Owner: Experience</small></div><span class="task-status">Working</span></div>
+                <div class="task-row"><div><span class="task-number">02</span><strong>Check the first run with a teammate</strong><small>Owner: Research</small></div><span class="task-status waiting">Next</span></div>
+                <div class="sheet-subhead decision-head"><span>DECISION</span><span>17 NOV</span></div>
+                <p class="decision">Keep the first step optional. Let people move on and return when they need it.</p>
               </div>
-              <p class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></p>
-            </div>
-          </div>
-          <details class="no-repo">
-            <summary>Not working in a code repository? <span>Start with a simple shared plan <span aria-hidden="true">+</span></span></summary>
-            <div class="no-repo-content">
-              <p>Paste this into any AI assistant and answer in your own words. Share the result wherever your team works. This version changes when you or your agent update it.</p>
-              <p class="simple-prompt" id="starter-prompt">Help me make a Virtual PM plan for my project. Ask me about the goal, people, what exists, decisions, next steps, open questions, and what would prove progress. Then make one easy-to-read shared plan with those sections, owners, blockers, and proof. Mark unknowns honestly. When I tell you something changed, help me update the plan. Do not claim to monitor the project automatically.</p>
-              <div class="no-repo-actions"><button type="button" class="secondary-copy" data-copy-target="starter-prompt" data-copy-label="Simple-plan prompt">Copy simple prompt <span aria-hidden="true">↗</span></button><a href="./starter-plan.md" download>Download a starter plan <span aria-hidden="true">↓</span></a></div>
-            </div>
-          </details>
-        </div>
-      </section>
-
-      <section class="plan" id="plan" aria-labelledby="plan-title">
-        <div class="page-width">
-          <div class="plan-heading">
-            <div class="section-label"><span>02</span> THE WORKING VIEW</div>
-            <h2 id="plan-title">One place for the ambition.<br /><span>And the evidence.</span></h2>
-            <p>A plan worth using says more than “in progress.” It shows the decision behind the work, the person taking it forward, and the next proof. This is an illustrative example.</p>
-          </div>
-          <div class="plan-preview" aria-label="Illustrative Virtual PM project plan">
-            <aside class="preview-rail">
-              <div class="preview-identity">VPM<span>✳</span></div>
-              <div class="preview-nav"><span class="active">01 &nbsp; Intent</span><span>02 &nbsp; Work</span><span>03 &nbsp; Decisions</span><span>04 &nbsp; Proof</span></div>
-              <p>EXAMPLE PROJECT<br /><strong>First-run experience</strong></p>
-            </aside>
-            <div class="preview-sheet">
-              <div class="sheet-meta"><span>PROJECT PLAN / REVISION 03</span><span>ILLUSTRATIVE</span></div>
-              <h3>Welcome, without the work.</h3>
-              <p class="sheet-goal">Help a new teammate understand the first step and finish setup with confidence.</p>
-              <div class="sheet-body">
-                <div class="sheet-work">
-                  <div class="sheet-subhead"><span>WORK IN MOTION</span><span>2 ITEMS</span></div>
-                  <div class="task-row"><div><span class="task-number">01</span><strong>Make the welcome moment clear</strong><small>Owner: Experience</small></div><span class="task-status">Working</span></div>
-                  <div class="task-row"><div><span class="task-number">02</span><strong>Check the first run with a teammate</strong><small>Owner: Research</small></div><span class="task-status waiting">Next</span></div>
-                  <div class="sheet-subhead decision-head"><span>DECISION</span><span>17 NOV</span></div>
-                  <p class="decision">Keep the first step optional. Let people move on and return when they need it.</p>
-                </div>
-                <div class="sheet-proof">
-                  <div class="sheet-subhead"><span>LATEST ACTIVITY</span><span>↗</span></div>
-                  <div class="activity"><i></i><div><strong>Code activity recorded</strong><p>The welcome screen changed. Task 01 remains Working.</p><small>From the working branch</small></div></div>
-                  <div class="activity"><i></i><div><strong>Next proof</strong><p>Walk through the screen with one new teammate.</p><small>Still to be checked</small></div></div>
-                  <p class="proof-rule">A commit can show progress.<br />A person decides when it is Done.</p>
-                </div>
+              <div class="sheet-proof">
+                <div class="sheet-subhead"><span>LATEST ACTIVITY</span><span>↗</span></div>
+                <div class="activity"><i></i><div><strong>Code activity recorded</strong><p>The welcome screen changed. Task 01 remains Working.</p><small>From the working branch</small></div></div>
+                <div class="activity"><i></i><div><strong>Next proof</strong><p>Walk through the screen with one new teammate.</p><small>Still to be checked</small></div></div>
+                <p class="proof-rule">A commit can show progress.<br />A person decides when it is Done.</p>
               </div>
             </div>
           </div>
         </div>
-      </section>
+        <div class="preview-caption"><span>This preview uses example data. Set up the plan and checks in your own project.</span><div><a href="./agent-setup.md">See setup guide ↗</a></div></div>
+      </div>
+    </section>
 
-      <section class="qa" id="qa" aria-labelledby="qa-title">
-        <div class="page-width qa-grid">
-          <div class="qa-intro">
-            <div class="section-label"><span>03</span> VIRTUAL QA</div>
-            <h2 id="qa-title">Know what passed.<br /><span>See what hasn’t.</span></h2>
-            <p>Virtual QA runs the scenarios you map to your project. Every result points back to a plan task, its owner, and the next proof. Missing checks stay visible as <strong>Not run</strong>.</p>
-            <ol class="qa-steps" aria-label="Virtual QA process"><li><span>01</span> Map</li><li class="qa-step-active"><span>02</span> Run</li><li><span>03</span> Read</li><li><span>04</span> Prove</li></ol>
-            <p class="qa-boundary">It helps a hackathon team move faster. A live user walkthrough and customer release QA still need people.</p>
-            <a href="./qa-setup.md" class="qa-link">How the checks are set up <span aria-hidden="true">→</span></a>
-          </div>
-          <div class="qa-example" aria-label="Illustrative Virtual QA report">
-            <div class="qa-example-head"><span>EXAMPLE PROJECT / QA REPORT</span><span>ILLUSTRATIVE</span></div>
-            <div class="qa-example-title">First-run experience <span>↗</span></div>
-            <div class="qa-result"><span class="qa-result-mark">01</span><div><strong>Welcome copy check</strong><small>Automated test · passed</small></div><span class="qa-tag">PASS</span></div>
-            <div class="qa-result"><span class="qa-result-mark">02</span><div><strong>New teammate walkthrough</strong><small>Real-person proof still needed</small></div><span class="qa-tag quiet">NOT RUN</span></div>
-            <div class="qa-example-foot">Owner: Experience <span>·</span> Next proof: watch one new teammate complete setup.</div>
-          </div>
+    <section class="workloop-story" id="loop" aria-labelledby="loop-title">
+      <div class="page-width">
+        <div class="story-intro">
+          <div class="section-label"><span>02</span> THE WORKLOOP</div>
+          <h2 id="loop-title">Made for a pod<br />that <span>builds together.</span></h2>
+          <div class="story-copy"><p>One task moves between people. Its decisions, progress, QA proof, and next move stay together, so the next builder knows where to begin.</p><p>Today: shared activity and QA results. Next: automatic handoff when work gets stuck.</p></div>
         </div>
-      </section>
 
-      <section class="origin page-width" id="origin" aria-labelledby="origin-title">
-        <div class="section-label"><span>04</span> THE ORIGIN</div>
-        <div class="origin-grid">
-          <h2 id="origin-title">Made in the middle<br />of <span>making.</span></h2>
-          <div><p>Workloop began while a small team was building Dial Bot. We needed the idea, the work, and the honest result to travel together. Virtual PM kept the plan moving; Virtual QA made the gaps impossible to hide.</p><div class="origin-links"><a href="https://amitdialpad.github.io/dialbot/">See Dial Bot <span aria-hidden="true">↗</span></a><a href="https://amitdialpad.github.io/tap/">See Tap <span aria-hidden="true">↗</span></a></div></div>
+        <div class="story-end"><span>No one starts from zero.</span><a href="#install">Start with your project <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="setup" id="install" aria-labelledby="install-title">
+      <div class="page-width">
+        <div class="section-label"><span>03</span> START IN YOUR PROJECT</div>
+        <div class="setup-heading"><h2 id="install-title">One instruction to start.<br /><span>Two ways to keep moving.</span></h2><p>Paste the instructions into your coding agent. Ask for a real plan update and QA run before calling setup complete.</p></div>
+        <p class="visually-hidden" id="combined-setup-line">Set up Workloop in this repo using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Install its shared plan and QA checks, map our real tasks and scenarios, then prove a branch-push plan update and a QA report. Never mark Done from a commit or test alone.</p>
+        <div class="setup-list">
+          <article class="setup-item">
+            <div><span class="setup-number">01 / PLAN</span><h3>Keep the plan moving.</h3><p>Goal, decisions, owners, next action, and code activity in one shared plan.</p></div>
+            <div class="setup-control"><button type="button" class="copy-button" data-copy-target="setup-line" data-copy-label="Plan setup" data-copy-feedback="pm-copy-feedback">Copy plan setup <span aria-hidden="true">↗</span></button><a href="./agent-setup.md">Setup guide →</a><p class="copy-feedback" id="pm-copy-feedback" role="status" aria-live="polite"></p></div>
+            <details><summary>See the instruction</summary><p id="setup-line">Set up Workloop's shared plan in this repo using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Map our real goal, owners, decisions, open work, and next proof. Prove a branch-push plan update. Never mark Done from a commit alone.</p></details>
+          </article>
+          <article class="setup-item">
+            <div><span class="setup-number">02 / QA CHECKS</span><h3>Check the proof.</h3><p>Mapped scenarios show pass, fail, or not run, with gaps kept visible.</p></div>
+            <div class="setup-control"><button type="button" class="copy-button" data-copy-target="qa-setup-line" data-copy-label="QA setup" data-copy-feedback="qa-copy-feedback">Copy QA setup <span aria-hidden="true">↗</span></button><a href="./qa-setup.md">Setup guide →</a><p class="copy-feedback" id="qa-copy-feedback" role="status" aria-live="polite"></p></div>
+            <details><summary>See the instruction</summary><p id="qa-setup-line">Set up Workloop's QA checks beside our shared plan using https://amitdialpad.github.io/virtual-pm/qa-setup.md. Map each real use case to a plan task, add the code checks we can actually run, leave live user proof explicit, and show me the first report and a GitHub Actions run. Do not call unmapped cases passed.</p></details>
+          </article>
         </div>
-      </section>
-    </main>
-    <footer class="site-footer"><div class="page-width"><span class="maker-credit">Workloop · Made on hackathon day one by <a href="https://epd-team.apps.dialpadhq.com/profile/amit.ayre@dialpad.com" target="_blank" rel="noopener noreferrer" aria-label="Amit’s EPD profile (opens in a new tab)">Amit</a> and <a href="https://epd-team.apps.dialpadhq.com/profile/yacine.khraimeche@dialpad.com" target="_blank" rel="noopener noreferrer" aria-label="Yacine Khraimeche’s EPD profile (opens in a new tab)">Yacine</a>. Shaped with feedback from <a href="https://epd-team.apps.dialpadhq.com/profile/josh.everhart@dialpad.com" target="_blank" rel="noopener noreferrer" aria-label="Joshua Everhart’s EPD profile (opens in a new tab)">Joshua Everhart</a>.</span><div><a href="#install">Get started</a><a href="./agent-setup.md">Setup guide</a><a href="https://github.com/amitdialpad/amitdialpad.github.io/tree/main/virtual-pm" target="_blank" rel="noopener noreferrer">Source ↗</a></div></div></footer>
-  </body>
+        <p class="setup-truth">Code activity and mapped checks update automatically. People still record decisions and decide when work is Done.</p>
+      </div>
+    </section>
+
+    <section class="origin page-width" id="origin" aria-labelledby="origin-title">
+      <div class="section-label"><span>04</span> OUR STORY</div>
+      <div class="origin-grid"><h2 id="origin-title">Made in the middle<br />of <span>making.</span></h2><div><p>We needed this while building Dial Bot. So we made a way for the plan and its proof to move with the people doing the work.</p><div class="origin-links"><a href="https://amitdialpad.github.io/dialbot/">See Dial Bot <span aria-hidden="true">↗</span></a><a href="https://amitdialpad.github.io/tap/">See Tap <span aria-hidden="true">↗</span></a></div></div></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="page-width"><span class="maker-credit">Workloop · Made on hackathon day one by <a href="https://epd-team.apps.dialpadhq.com/profile/amit.ayre@dialpad.com" target="_blank" rel="noopener noreferrer" aria-label="Amit’s EPD profile (opens in a new tab)">Amit</a> and <a href="https://epd-team.apps.dialpadhq.com/profile/yacine.khraimeche@dialpad.com" target="_blank" rel="noopener noreferrer" aria-label="Yacine Khraimeche’s EPD profile (opens in a new tab)">Yacine</a>. Shaped with feedback from <a href="https://epd-team.apps.dialpadhq.com/profile/josh.everhart@dialpad.com" target="_blank" rel="noopener noreferrer" aria-label="Joshua Everhart’s EPD profile (opens in a new tab)">Joshua Everhart</a> and Vishal.</span><div><a href="#install">Get started</a><a href="./agent-setup.md">Setup guide</a></div></div></footer>
+</body>
 </html>
