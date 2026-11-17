@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-17T02:54:37Z",
+  "generatedAt": "2026-11-17T18:01:05Z",
   "projects": [
     {
       "id": "dialbot",
@@ -23,7 +23,7 @@
           "focus": "Review the first-time attendee path in a real meeting.",
           "detail": {
             "stateDetail": "Working — host entry observed; attendee and spoken journey still need review.",
-            "nextProof": "Review the attendee's first visit and Bot motion in a real meeting, then complete a spoken exchange after audio repair.",
+            "nextProof": "Amit will review host and attendee flow and Bot motion on the combined build Jimut identifies; a full spoken exchange still needs a real-room test.",
             "blocker": "The attendee review and full spoken exchange remain open.",
             "evidence": "The host's saved choice brought a silent Bot into local rooms; a signed-out attendee saw the optional introduction.",
             "codeActivity": null,
@@ -38,7 +38,7 @@
           "focus": "Align the public story with the agreed meeting experience.",
           "detail": {
             "stateDetail": "Open — public wording still needs to match the agreed source-sharing rule.",
-            "nextProof": "Correct the public explanation of meeting-shared sources and verify the published copy.",
+            "nextProof": "Explain one shared Bot, meeting-shared sources for group questions, and speaker-owned sources for first-person requests; verify the published copy.",
             "blocker": "Current copy still describes a narrower questioner-only rule.",
             "evidence": "The sharing rule is documented, but the full participant connection is not implemented.",
             "codeActivity": null,
@@ -53,9 +53,9 @@
           "focus": "Verify the optional first-time introduction in a live join.",
           "detail": {
             "stateDetail": "Working — optional introduction observed; more attendee paths need review.",
-            "nextProof": "Prove trusted Bot presence before join and review the signed-in and repeat-visit paths.",
-            "blocker": "Prejoin detection and participant setup need further development.",
-            "evidence": "A signed-out attendee saw the optional in-room introduction; Amit's review remains open.",
+            "nextProof": "Jimut will prove trusted prejoin presence. Yacine will hand connection gaps to Vishal, whose Settings pickup needs confirmation. Then test real opt-in and revoke.",
+            "blocker": "Prejoin presence and per-person grants remain unproved. Settings connections are only a preview, and Vishal has not confirmed pickup.",
+            "evidence": "The optional in-room introduction was observed. Amit said the Connect screens do not work; Yacine agreed to document connection gaps.",
             "codeActivity": null,
             "reviewPending": []
           }
@@ -83,9 +83,9 @@
           "focus": "Repeat host choice and Bot join across fresh rooms.",
           "detail": {
             "stateDetail": "Working — local Bot presence observed; broader reliability remains open.",
-            "nextProof": "Repeat automatic join across fresh and returning rooms, then prove recovery, controls, and one Bot only.",
-            "blocker": "Normal audio and repeatable multi-room behavior remain open.",
-            "evidence": "Automatic join and a later manual invite were observed locally; join-timeout recovery is still awaiting live proof.",
+            "nextProof": "Jimut will integrate the two PRs, identify a combined build, then repeat one-Bot join, Resume, reinvite, and attendee tests in a real room.",
+            "blocker": "The PRs remain unmerged. Resume and duplicate-reinvite guards have code tests but no live proof; room classification and spoken flow remain open.",
+            "evidence": "A four-person local room showed one silent Bot Listening; the draft PR has tested guards, but those guards were not active in that room.",
             "codeActivity": null,
             "reviewPending": []
           }
@@ -128,9 +128,9 @@
           "focus": "Prove a grounded answer and follow-up.",
           "detail": {
             "stateDetail": "Working — local helpers exist; full live proof open.",
-            "nextProof": "Demonstrate an attributed, evidence-backed live answer and follow-up with measured timing.",
-            "blocker": "No repeatable full live answer has been recorded.",
-            "evidence": "Local research helpers exist; live correctness remains to be checked.",
+            "nextProof": "Yacine will run a two-person meeting with trusted attribution, a sourced spoken answer, timer acknowledgement, and repeated timing.",
+            "blocker": "A complete two-person answer, action confirmation, and measured voice response are unproved. The prototype brain runs client-side.",
+            "evidence": "Yacine demonstrated beta generic and Jira questions plus timer start and stop; the client-side prototype is not a merged backend flow.",
             "codeActivity": null,
             "reviewPending": []
           }
@@ -143,24 +143,24 @@
           "focus": "Check group and personal questions use intended context.",
           "detail": {
             "stateDetail": "Open — multi-person source routing is not yet available.",
-            "nextProof": "Test group and first-person questions using two people's selected sources, including revocation.",
+            "nextProof": "Test two active person-owned grants: group questions use permitted room-shared sources, while first-person questions use the speaker’s own.",
             "blocker": "Meeting-shared behavior awaits multi-person implementation.",
-            "evidence": "The current prototype still uses host-local research.",
+            "evidence": "The team agreed on one Bot with person-owned connections; the beta demo did not prove two-person sharing.",
             "codeActivity": null,
             "reviewPending": []
           }
         },
         {
           "id": "assistant-connections",
-          "title": "Assistant connections",
+          "title": "Source connections",
           "owner": "Yacine",
           "state": "working",
-          "focus": "Document supported setup paths.",
+          "focus": "Document working source connections and backend gaps.",
           "detail": {
-            "stateDetail": "Working — local assistant setup exists; broader setup paths remain open.",
-            "nextProof": "Document supported assistant setup routes and a per-source fallback.",
-            "blocker": "Assistant setup across supported environments remains unverified.",
-            "evidence": "A local assistant-tool probe exists.",
+            "stateDetail": "Working — beta Jira access was shown; Dialpad MCP was reported, while Glean and Calendar remain open.",
+            "nextProof": "Yacine will document working and blocked connections for Vishal and define with Jimut how connection and Bot processing move to the backend.",
+            "blocker": "Glean and Calendar paths, backend-held access, and Vishal’s Settings pickup remain unresolved.",
+            "evidence": "Yacine showed Jira access and reported Dialpad MCP progress in the beta demo; these are prototype findings.",
             "codeActivity": null,
             "reviewPending": []
           }
@@ -173,9 +173,9 @@
           "focus": "Prove opt-in and revoke in a real meeting.",
           "detail": {
             "stateDetail": "Open — participant sharing and revocation need end-to-end work.",
-            "nextProof": "Build the participant sharing controls and verify opt-out and revoke in a real meeting.",
-            "blocker": "Participant sharing controls are still in development.",
-            "evidence": "The current connection flow is an interaction preview.",
+            "nextProof": "Jimut will name the backend implementer, then prove a person-bound grant, opt-out, and revoke. Yacine will document the retrieval contract.",
+            "blocker": "The beta brain runs in the client; backend access and enforceable person-bound grants are not yet built.",
+            "evidence": "The team identified the client-side gap. Settings Connect remains a preview without a verified real grant.",
             "codeActivity": null,
             "reviewPending": []
           }
@@ -248,9 +248,9 @@
           "focus": "Review notice and retention experience.",
           "detail": {
             "stateDetail": "Open — retention, notice, and action enforcement need decisions and proof.",
-            "nextProof": "Decide retention and notice behavior, then prove enforcement and action confirmation.",
+            "nextProof": "Amit will decide notice and retention behavior; Jimut will verify timer authority and acknowledgement, plus owner confirmation for consequential account actions.",
             "blocker": "The participant notice and after-meeting controls still need product decisions and proof.",
-            "evidence": "The intended behavior is documented; the end-to-end experience is unverified.",
+            "evidence": "Yacine demonstrated beta timer start and stop, but owner confirmation and server enforcement are unverified.",
             "codeActivity": null,
             "reviewPending": []
           }
@@ -276,7 +276,7 @@
         "passed": 2,
         "failed": 1,
         "notRun": 6,
-        "generatedAt": "2026-11-17T02:54:30Z",
+        "generatedAt": "2026-11-17T18:00:55Z",
         "scenarios": [
           {
             "id": "host-autojoin",
@@ -346,7 +346,7 @@
       "activity": [
         {
           "id": "qa-run",
-          "text": "QA checked 2026-11-17T02:54:30Z: 2 passed, 1 failed, 6 not run."
+          "text": "QA checked 2026-11-17T18:00:55Z: 2 passed, 1 failed, 6 not run."
         }
       ],
       "decisions": [
@@ -385,16 +385,22 @@
           "title": "Truthful Bot motion",
           "detail": "Listening, Thinking, and Speaking visuals must follow actual events.",
           "reviewPending": false
+        },
+        {
+          "id": "one-brain",
+          "title": "One Bot, personal connections",
+          "detail": "A meeting has one Dial Bot. Each person can connect their own sources to it and choose what to share with the room.",
+          "reviewPending": false
         }
       ],
       "recentDecisions": [
         {
-          "id": "optional-intro",
-          "text": "The first-time introduction cannot block joining."
-        },
-        {
           "id": "event-motion",
           "text": "Listening, Thinking, and Speaking visuals must follow actual events."
+        },
+        {
+          "id": "one-brain",
+          "text": "A meeting has one Dial Bot. Each person can connect their own sources to it and choose what to share with the room."
         }
       ]
     },
