@@ -118,7 +118,7 @@ function escapeCell (value) {
 /** Produce a concise report that never equates a passing code check with live acceptance. */
 export function renderReport (result) {
   const lines = [
-    `# Virtual QA: ${result.name}`,
+    `# Workloop checks: ${result.name}`,
     '',
     `Generated: ${result.generatedAt}`,
     `Code under test: \`${result.repo}\` (${result.revision}${result.dirty ? ', uncommitted changes' : ''})`,
@@ -262,10 +262,10 @@ function parseArgs (args) {
 if (process.argv[1] && realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url))) {
   try {
     const result = await runQa(parseArgs(process.argv.slice(2)));
-    process.stdout.write(`Virtual QA: ${result.summary.passed} passed, ${result.summary.failed} failed, ${result.summary.notRun} not run\n`);
+    process.stdout.write(`Workloop checks: ${result.summary.passed} passed, ${result.summary.failed} failed, ${result.summary.notRun} not run\n`);
     process.exitCode = exitCodeForSummary(result.summary);
   } catch (error) {
-    process.stderr.write(`Virtual QA could not run: ${error.message}\n`);
+    process.stderr.write(`Workloop checks could not run: ${error.message}\n`);
     process.exitCode = 2;
   }
 }

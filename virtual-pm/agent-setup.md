@@ -71,10 +71,20 @@ that work has started. It does not listen to conversations or infer acceptance
 from code. Decisions, approvals, and Done status still need explicit evidence.
 Publishing a new Workloop site version does not silently change files already
 installed in your repository. Re-run the setup review when you want to adopt
-an updated runner or workflow; the installers stop on differing files so your
-agent can inspect and merge the change deliberately.
-`install.py verify` checks the installed plan workflow and updater byte for byte
-against the bundled installer. If either has changed, `verify` and a repeated
-`init` name the file and stop without replacing it. Review the local change
-against the installer before adopting an update; the plan and task map remain
-project-owned and are never reset by a repeated `init`.
+an updated runner or workflow. The plan installer checks its managed workflow
+and updater against this release or the exact previous generated version; any
+other change stops `verify` and `init` with the file path. The plan and task
+map remain project-owned and are never reset by a repeated `init`.
+
+## Existing installs and Workloop labels
+
+Old file names, configuration keys, activity markers, and this site URL remain
+valid. To change only the generated workflow and updater labels, review
+`python3 install.py migrate-labels --dry-run`, then run
+`python3 install.py migrate-labels`. For QA, use the same two commands with
+`install_qa.py`. These commands accept only known generated files and never
+rewrite your plan, task map, or scenario manifest. If a team customized a
+runner or workflow, the migration stops and names it for manual integration.
+Existing plan headings and earlier reports keep their historical wording until
+the team edits them; new reports use Workloop labels. Review and push the
+resulting managed-file changes, then confirm the next Actions runs.

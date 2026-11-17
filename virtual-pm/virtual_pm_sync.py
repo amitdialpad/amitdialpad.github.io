@@ -35,32 +35,32 @@ def git(*args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
 
 def validate_sha(sha: str) -> str:
     if not SHA_RE.fullmatch(sha):
-        raise ValueError("Invalid Virtual PM sync revision")
+        raise ValueError("Invalid Workloop sync revision")
     return sha
 
 
 def load_config() -> dict:
     config = json.loads(CONFIG_PATH.read_text())
     if config.get("version") != 1:
-        raise ValueError("Unsupported Virtual PM configuration")
+        raise ValueError("Unsupported Workloop configuration")
     if not REPO_RE.fullmatch(config.get("repository", "")):
-        raise ValueError("Invalid GitHub repository in Virtual PM configuration")
+        raise ValueError("Invalid GitHub repository in Workloop configuration")
     branch = config.get("branch")
     if not isinstance(branch, str) or not branch or "\n" in branch:
-        raise ValueError("Invalid branch in Virtual PM configuration")
+        raise ValueError("Invalid branch in Workloop configuration")
     if git("check-ref-format", "--branch", branch, check=False).returncode:
-        raise ValueError("Invalid Git branch in Virtual PM configuration")
+        raise ValueError("Invalid Git branch in Workloop configuration")
     plan = config.get("plan")
     if plan != "VIRTUAL_PM.md":
-        raise ValueError("Unexpected Virtual PM plan path")
+        raise ValueError("Unexpected Workloop plan path")
     tasks = config.get("tasks")
     if not isinstance(tasks, dict):
-        raise ValueError("Virtual PM task map must be an object")
+        raise ValueError("Workloop task map must be an object")
     for title, patterns in tasks.items():
         if not isinstance(title, str) or not isinstance(patterns, list) or not all(
             isinstance(pattern, str) for pattern in patterns
         ):
-            raise ValueError("Virtual PM task mapping is malformed")
+            raise ValueError("Workloop task mapping is malformed")
     return config
 
 
@@ -70,7 +70,7 @@ def changed_paths(base: str, head: str) -> list[str]:
     if git("cat-file", "-e", f"{base}^{{commit}}", check=False).returncode:
         git("fetch", "--no-tags", "--filter=blob:none", "--depth=1", "origin", base)
     if git("merge-base", "--is-ancestor", base, head, check=False).returncode:
-        raise ValueError("Virtual PM marker is not an ancestor of this branch")
+        raise ValueError("Workloop marker is not an ancestor of this branch")
     result = git("diff", "--name-only", "--diff-filter=ACMRD", base, head, "--")
     return sorted(set(result.stdout.splitlines()))
 
@@ -98,19 +98,19 @@ def update_task(content: str, title: str, activity: str) -> str:
     heading = f"### {title}\n"
     start_at = content.find("## Tasks")
     if start_at < 0:
-        raise ValueError("Virtual PM plan has no Tasks section")
+        raise ValueError("Workloop plan has no Tasks section")
     start = content.find(heading, start_at)
     if start < 0:
-        raise ValueError(f"Virtual PM task heading is missing: {title}")
+        raise ValueError(f"Workloop task heading is missing: {title}")
     end = content.find("\n## ", start + len(heading))
     other_task = content.find("\n### ", start + len(heading))
     if end < 0 or (other_task >= 0 and other_task < end):
         end = other_task
     if end < 0:
-        raise ValueError(f"Virtual PM task has no closing heading: {title}")
+        raise ValueError(f"Workloop task has no closing heading: {title}")
     block = content[start:end]
     if block.count(LATEST) != 1:
-        raise ValueError(f"Virtual PM task must have one activity line: {title}")
+        raise ValueError(f"Workloop task must have one activity line: {title}")
     block = re.sub(
         r"^\*\*Latest code activity \(automatic\):\*\*.*$",
         f"{LATEST} {activity}", block, count=1, flags=re.MULTILINE,
@@ -127,7 +127,7 @@ def render_plan(content: str, head: str, paths: list[str], config: dict) -> str:
     validate_sha(head)
     markers = SYNC_RE.findall(content)
     if len(markers) != 1 or content.count(START) != 1 or content.count(END) != 1:
-        raise ValueError("Virtual PM plan has missing or duplicate sync markers")
+        raise ValueError("Workloop plan has missing or duplicate sync markers")
     base = markers[0]
     if base == head:
         return content
@@ -161,7 +161,7 @@ def sync_branch(config: dict, attempts: int = 4) -> bool:
         "GITHUB_REPOSITORY"
     ) != config["repository"]:
         raise RuntimeError(
-            "Virtual PM sync only runs in GitHub Actions for this repository"
+            "Workloop sync only runs in GitHub Actions for this repository"
         )
     branch = config["branch"]
     plan = Path(config["plan"])
@@ -172,7 +172,7 @@ def sync_branch(config: dict, attempts: int = 4) -> bool:
         original = plan.read_text()
         markers = SYNC_RE.findall(original)
         if len(markers) != 1:
-            raise ValueError("Virtual PM sync marker is missing or duplicated")
+            raise ValueError("Workloop sync marker is missing or duplicated")
         updated = render_plan(
             original, head, changed_paths(markers[0], head), config
         )
@@ -182,12 +182,12 @@ def sync_branch(config: dict, attempts: int = 4) -> bool:
         git("add", "--", str(plan))
         git("config", "user.name", "github-actions[bot]")
         git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com")
-        git("commit", "-m", "Sync Virtual PM code activity")
+        git("commit", "-m", "Sync Workloop code activity")
         pushed = git("push", "origin", f"HEAD:refs/heads/{branch}", check=False)
         if pushed.returncode == 0:
             return True
         if attempt == attempts - 1:
-            raise RuntimeError("Virtual PM could not push; check branch write permissions")
+            raise RuntimeError("Workloop could not push; check branch write permissions")
         time.sleep(2 ** attempt)
     return False
 

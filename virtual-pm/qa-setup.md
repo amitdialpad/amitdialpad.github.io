@@ -48,3 +48,12 @@ the latest private report for the actual count. That report cannot by itself
 prove a quiet live meeting, a participant grant, or customer readiness. Every
 project needs its own mapping and a real push-triggered run. Manual QA still
 belongs in customer release.
+
+## Existing QA installs
+
+The existing manifest and `virtual_qa_runner.mjs` paths remain valid. An older
+generated QA runner and workflow still verify; `python3 install_qa.py
+migrate-labels --dry-run` shows the label update, and `python3 install_qa.py
+migrate-labels` applies it to exact known generated files. A customized
+workflow or runner needs a manual review and will not be overwritten. Existing
+reports remain historical evidence; newly generated reports say Workloop.
