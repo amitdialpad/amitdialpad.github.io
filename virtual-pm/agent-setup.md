@@ -1,14 +1,14 @@
 # Set up Workloop in your project
 
-Virtual PM means Virtual Project Manager: a project-specific living plan plus
-a small GitHub workflow. The
-setup line below is an instruction for your coding agent, not a terminal
-command. It gives the agent an inspectable installer, asks it to map your real
-tasks, and requires a successful push-triggered update before it says ready.
+Workloop is a set of tools for product makers: a project-specific living plan
+and QA checks. The setup line below is an instruction for your coding agent,
+not a terminal command. It gives the agent inspectable installers, asks it to
+map your real tasks and checks, and requires successful push-triggered runs
+before it says ready.
 
 ## Copy this into your coding agent
 
-> Set up Workloop in this repo using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Install Virtual Project Manager (PM) and Virtual QA, map our real tasks and checks, then prove a branch-push plan update and a QA report. Never mark Done from a commit or test alone.
+> Set up Workloop in this repo using https://amitdialpad.github.io/virtual-pm/agent-setup.md. Install its shared plan and QA checks, map our real tasks and scenarios, then prove a branch-push plan update and a QA report. Never mark Done from a commit or test alone.
 
 Your coding agent needs access to a GitHub repository and a named working
 branch. The setup does not need an OpenAI, Claude, or personal GitHub API key
@@ -47,11 +47,11 @@ back to that branch.
    and the exact branch it watches. Explain what is automatic and what still
    needs human acceptance evidence.
 
-## Add Virtual QA
+## Add QA checks
 
-After the plan exists, follow the [Virtual QA setup](qa-setup.md). It installs
-a scenario manifest, runner, and read-only GitHub workflow alongside Virtual
-PM. Map checks to real task headings, run them locally, and inspect the report
+After the plan exists, follow the [QA checks setup](qa-setup.md). It installs
+a scenario manifest, runner, and read-only GitHub workflow alongside the plan.
+Map checks to real task headings, run them locally, and inspect the report
 before pushing. The starter manifest has no checks and deliberately exits
 nonzero until mapped. Add your project’s dependency setup to the workflow.
 Then prove an actual Actions run. Give the team both the plan and the QA report.
@@ -73,7 +73,7 @@ Publishing a new Workloop site version does not silently change files already
 installed in your repository. Re-run the setup review when you want to adopt
 an updated runner or workflow; the installers stop on differing files so your
 agent can inspect and merge the change deliberately.
-`install.py verify` checks the installed PM workflow and updater byte for byte
+`install.py verify` checks the installed plan workflow and updater byte for byte
 against the bundled installer. If either has changed, `verify` and a repeated
 `init` name the file and stop without replacing it. Review the local change
 against the installer before adopting an update; the plan and task map remain

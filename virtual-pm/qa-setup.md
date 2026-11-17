@@ -1,18 +1,18 @@
-# Add Virtual QA to your project
+# Add Workloop QA checks to your project
 
-Virtual QA is the checkable half of Workloop. It reads task headings, owners,
-states, and next proof from your Virtual Project Manager (PM) plan. It runs only the commands you
-explicitly map to scenarios, then writes a report with pass, fail, and not-run
-results. It does not invent a test from a feature description or mark a task
+Workloop's QA checks read task headings, owners, states, and next proof from
+your shared plan. They run only the commands you explicitly map to scenarios,
+then write a report with pass, fail, and not-run results. They do not invent a
+test from a feature description or mark a task
 Done because code passed.
 
 ## Give this to your coding agent
 
-> Set up Virtual QA beside our Virtual PM plan using https://amitdialpad.github.io/virtual-pm/qa-setup.md. Map each real use case to a plan task, add the code checks we can actually run, leave live user proof explicit, and show me the first report and a GitHub Actions run. Do not call unmapped cases passed.
+> Set up Workloop's QA checks beside our shared plan using https://amitdialpad.github.io/virtual-pm/qa-setup.md. Map each real use case to a plan task, add the code checks we can actually run, leave live user proof explicit, and show me the first report and a GitHub Actions run. Do not call unmapped cases passed.
 
 ## Setup path
 
-1. Set up [Virtual PM](agent-setup.md) first. Review its plan and map real
+1. Set up [Workloop's shared plan](agent-setup.md) first. Review it and map real
    tasks to code paths. Work from a named GitHub branch.
 2. Review the [QA installer](install_qa.py), [runner source](virtual_qa_runner.mjs),
    and [starter manifest](qa-scenarios-starter.json). Download the one-file
