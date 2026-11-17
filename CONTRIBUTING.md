@@ -1,6 +1,6 @@
 # Contributing to Workloop
 
-Workloop grew out of product teams building together. Improvements to the shared plan, QA checks, setup, and site are welcome through reviewable pull requests. The repository is public for visibility and review, but [no open-source license has been selected](README.md); please do not assume permission for use or redistribution outside this repository.
+Workloop grew out of product teams building together. Improvements to the shared plan, QA checks, setup, and site are welcome through reviewable pull requests. The [Mission Control skill package](mission-control/skills/mission-control/) has its own MIT license. The remaining code is public for visibility and review, but [has no open-source license](README.md); please do not assume permission for use or redistribution of that other code outside this repository.
 
 ## Where changes belong
 

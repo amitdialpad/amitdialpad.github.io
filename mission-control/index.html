@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0d0e" />
+    <meta name="description" content="Mission Control is a local Codex skill for seeing the specialist agents working in your chat." />
+    <title>Mission Control — a skill for seeing your agent team</title>
+    <link rel="stylesheet" href="./styles.css?v=20261118-skill-dark-r2" />
+    <script defer src="./app.js?v=20261118-skill-dark-r2"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="#main" aria-label="Mission Control, page start"><span class="brand-mark" aria-hidden="true">✳</span><span>Mission Control</span></a>
+        <span class="header-kind">A CODEX SKILL</span>
+      </div>
+    </header>
+
+    <main id="main" class="shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-layout">
+          <div class="hero-text">
+            <p class="eyebrow">BUILT DURING HACKATHON WEEK</p>
+            <h1 id="hero-title">Mission Control</h1>
+            <p class="hero-lead">See the agents working alongside your Codex chat.</p>
+            <p class="hero-copy">You direct the work in one conversation. When Codex delegates to specialists, Mission Control shows who is working on what, their state, and when they last updated.</p>
+            <p class="byline">Made by <a href="https://epd-team.apps.dialpadhq.com/raw/amit.ayre@dialpad.com">Amit Ayre</a></p>
+          </div>
+          <figure class="hero-visual" role="img" aria-label="Illustration of one Codex chat coordinating design, build, QA, and research agents">
+            <div class="orbit orbit-outer" aria-hidden="true"></div>
+            <div class="orbit orbit-inner" aria-hidden="true"></div>
+            <svg class="network-lines" viewBox="0 0 390 390" aria-hidden="true" focusable="false">
+              <path d="M195 195 L76 86" />
+              <path d="M195 195 L316 90" />
+              <path d="M195 195 L76 300" />
+              <path d="M195 195 L314 301" />
+            </svg>
+            <div class="hub" aria-hidden="true"><span class="hub-kicker">YOUR CODEX CHAT</span><span class="hub-mark">✳</span><span class="hub-caption">One conversation</span></div>
+            <span class="agent-node node-design" aria-hidden="true"><i></i>Design</span>
+            <span class="agent-node node-build" aria-hidden="true"><i></i>Build</span>
+            <span class="agent-node node-qa" aria-hidden="true"><i></i>QA</span>
+            <span class="agent-node node-research" aria-hidden="true"><i></i>Research</span>
+            <figcaption>Illustration · one chat, specialist work</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="commands" aria-label="Install and use the skill">
+        <div class="command-card" id="install">
+          <div class="card-heading">
+            <h2>Install the skill</h2>
+            <span>Codex on macOS</span>
+          </div>
+          <div class="command-line" data-command-row>
+            <span class="prompt-mark" aria-hidden="true">$</span>
+            <code id="install-command" data-command="npx skills@latest add amitdialpad/amitdialpad.github.io --skill mission-control -g -a codex">npx skills@latest add amitdialpad/amitdialpad.github.io --skill mission-control -g -a codex</code>
+            <button class="copy-button" type="button" data-copy="install-command" aria-label="Copy install command">Copy</button>
+          </div>
+          <p class="command-note">Run in a terminal, then invoke the skill in Codex to open your own dashboard.</p>
+          <p class="copy-feedback" role="status" aria-live="polite"></p>
+        </div>
+        <div class="command-card">
+          <div class="card-heading">
+            <h2>Invoke with</h2>
+            <span>After installation</span>
+          </div>
+          <div class="command-line">
+            <span class="prompt-mark" aria-hidden="true">&gt;</span>
+            <code id="invoke-command" data-command="$mission-control">$mission-control</code>
+            <button class="copy-button" type="button" data-copy="invoke-command" aria-label="Copy Codex invocation">Copy</button>
+          </div>
+          <p class="command-note">Ask Codex to open your local dashboard. It uses your own session records.</p>
+          <p class="copy-feedback" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="showcase" aria-labelledby="showcase-title">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">THE VIEW</p>
+            <h2 id="showcase-title">Your agent work, in sight.</h2>
+          </div>
+          <p>Follow the current session, then switch to an earlier one when you need the history.</p>
+        </div>
+        <div class="demo-label">Illustrative view · sample agents and tasks</div>
+        <div class="demo-frame" role="group" aria-label="Illustrative Mission Control dashboard with sample agents and tasks">
+          <div class="demo-topbar">
+            <div class="demo-brand"><span class="demo-sigil" aria-hidden="true">✣</span><span>Mission Control<small>CODEX AGENT WORKSPACE</small></span></div>
+            <div class="demo-controls"><span>Current session</span><span>Today</span><i aria-hidden="true"></i><span>Local only</span></div>
+          </div>
+          <div class="demo-body">
+            <p class="demo-kicker">LIVE · CURRENT SESSION</p>
+            <div class="demo-title-row"><h3>Agents at work</h3><span>Live · read-only</span></div>
+            <div class="demo-table-wrap">
+              <table class="demo-table">
+                <thead><tr><th>Agent</th><th>Assignment</th><th>About the work</th><th>State</th><th>Updated</th></tr></thead>
+                <tbody>
+                  <tr><td>Ada</td><td>Flow review</td><td>Check the host and guest journey.</td><td><span class="state working">Working</span></td><td>Just now</td></tr>
+                  <tr><td>Lin</td><td>Visual polish</td><td>Refine type and spacing for the demo.</td><td><span class="state working">Working</span></td><td>2 min ago</td></tr>
+                  <tr><td>Sam</td><td>QA review</td><td>Verify the current build on desktop and mobile.</td><td><span class="state complete">Completed</span></td><td>12 min ago</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="details" aria-label="What the skill does and when to use it">
+        <div>
+          <h2>What it does</h2>
+          <p>Opens a private dashboard on your Mac, reads local Codex agent records, and refreshes the roster as work changes. Each row shows the agent, assignment, short explanation, state, and update time.</p>
+        </div>
+        <div>
+          <h2>When to use it</h2>
+          <p>Ask Codex to delegate a few pieces of work. Then invoke <code>$mission-control</code> to see each agent and its current assignment in one place.</p>
+        </div>
+      </section>
+
+      <section class="proof" aria-labelledby="proof-title">
+        <div class="proof-heading">
+          <p class="eyebrow">WHY WE MADE IT</p>
+          <h2 id="proof-title">A clear view of delegated work.</h2>
+        </div>
+        <div class="proof-pair">
+          <div><span class="proof-label">In a long chat</span><p>Who has the UI review? Did QA finish? Where is the latest update?</p></div>
+          <div><span class="proof-label">In Mission Control</span><p>One live table shows the agent, assignment, short explanation, state, and update time.</p></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="shell footer-inner"><span>Mission Control</span><span>Made by <a href="https://epd-team.apps.dialpadhq.com/raw/amit.ayre@dialpad.com">Amit Ayre</a> · A skill for Codex</span></div></footer>
+    <span class="sr-only" id="copy-status" role="status" aria-live="polite"></span>
+  </body>
+</html>

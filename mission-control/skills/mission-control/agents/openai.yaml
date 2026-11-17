@@ -1,0 +1,3 @@
+interface:
+  display_name: "Mission Control"
+  short_description: "Open your local Codex agent dashboard"
