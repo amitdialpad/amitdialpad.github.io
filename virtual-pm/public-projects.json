@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-11-17T02:25:46Z",
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T02:50:22Z",
   "projects": [
     {
       "id": "dialbot",
@@ -20,119 +20,255 @@
           "title": "Meeting journey",
           "owner": "Amit",
           "state": "working",
-          "focus": "Review the first-time attendee path in a real meeting."
+          "focus": "Review the first-time attendee path in a real meeting.",
+          "detail": {
+            "stateDetail": "Working — host entry observed; attendee and spoken journey still need review.",
+            "nextProof": "Review the attendee's first visit and Bot motion in a real meeting, then complete a spoken exchange after audio repair.",
+            "blocker": "The attendee review and full spoken exchange remain open.",
+            "evidence": "The host's saved choice brought a silent Bot into local rooms; a signed-out attendee saw the optional introduction.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "public-story",
           "title": "Public story",
           "owner": "Amit + Yacine",
           "state": "open",
-          "focus": "Align the public story with the agreed meeting experience."
+          "focus": "Align the public story with the agreed meeting experience.",
+          "detail": {
+            "stateDetail": "Open — public wording still needs to match the agreed source-sharing rule.",
+            "nextProof": "Correct the public explanation of meeting-shared sources and verify the published copy.",
+            "blocker": "Current copy still describes a narrower questioner-only rule.",
+            "evidence": "The sharing rule is documented, but the full participant connection is not implemented.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "attendee-introduction",
           "title": "Attendee introduction",
           "owner": "Jimut",
           "state": "working",
-          "focus": "Verify the optional first-time introduction in a live join."
+          "focus": "Verify the optional first-time introduction in a live join.",
+          "detail": {
+            "stateDetail": "Working — optional introduction observed; more attendee paths need review.",
+            "nextProof": "Prove trusted Bot presence before join and review the signed-in and repeat-visit paths.",
+            "blocker": "Prejoin detection and participant setup need further development.",
+            "evidence": "A signed-out attendee saw the optional in-room introduction; Amit's review remains open.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "bot-presence",
           "title": "Bot presence and motion",
           "owner": "Amit",
           "state": "ready",
-          "focus": "Review listening, thinking, and speaking in a real room."
+          "focus": "Review listening, thinking, and speaking in a real room.",
+          "detail": {
+            "stateDetail": "Ready for test — Listening seen live; other visual states await live review.",
+            "nextProof": "Review the Bot tile at both sizes and observe real Thinking and Speaking transitions.",
+            "blocker": "Visual acceptance and live speaking-state proof remain open.",
+            "evidence": "The solid Listening shape moved in a live room; other states have only code and preview checks.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "bot-joins",
           "title": "Bot joins and stays present",
           "owner": "Jimut",
           "state": "working",
-          "focus": "Repeat host choice and Bot join across fresh rooms."
+          "focus": "Repeat host choice and Bot join across fresh rooms.",
+          "detail": {
+            "stateDetail": "Working — local Bot presence observed; broader reliability remains open.",
+            "nextProof": "Repeat automatic join across fresh and returning rooms, then prove recovery, controls, and one Bot only.",
+            "blocker": "Normal audio and repeatable multi-room behavior remain open.",
+            "evidence": "Automatic join and a later manual invite were observed locally; join-timeout recovery is still awaiting live proof.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "host-controls",
           "title": "Host controls",
           "owner": "Jimut",
           "state": "working",
-          "focus": "Verify invite, pause, resume, and remove."
+          "focus": "Verify invite, pause, resume, and remove.",
+          "detail": {
+            "stateDetail": "Working — simpler copy passes isolated checks; active integration open.",
+            "nextProof": "Integrate the simpler idle label and verify invite, pause, resume, remove, and Explore.",
+            "blocker": "The isolated copy change is not yet integrated; loading and full-screen speed remain unverified.",
+            "evidence": "Focused Settings and host-control checks passed in an isolated build.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "meeting-identity",
           "title": "Meeting identity",
           "owner": "Jimut",
           "state": "working",
-          "focus": "Check room labels with different participants."
+          "focus": "Check room labels with different participants.",
+          "detail": {
+            "stateDetail": "Working — incorrect External label reproduced; correction open.",
+            "nextProof": "Show that a host plus Bot remains Internal while a real outside attendee changes the room to External.",
+            "blocker": "Room classification still needs implementation and live verification.",
+            "evidence": "The room label behaved incorrectly during a local review.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "questions-and-answers",
           "title": "Questions and answers",
           "owner": "Yacine",
           "state": "working",
-          "focus": "Prove a grounded answer and follow-up."
+          "focus": "Prove a grounded answer and follow-up.",
+          "detail": {
+            "stateDetail": "Working — local helpers exist; full live proof open.",
+            "nextProof": "Demonstrate an attributed, evidence-backed live answer and follow-up with measured timing.",
+            "blocker": "No repeatable full live answer has been recorded.",
+            "evidence": "Local research helpers exist; live correctness remains to be checked.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "shared-context",
           "title": "Shared and personal context",
           "owner": "Yacine + Jimut",
           "state": "open",
-          "focus": "Check group and personal questions use intended context."
+          "focus": "Check group and personal questions use intended context.",
+          "detail": {
+            "stateDetail": "Open — multi-person source routing is not yet available.",
+            "nextProof": "Test group and first-person questions using two people's selected sources, including revocation.",
+            "blocker": "Meeting-shared behavior awaits multi-person implementation.",
+            "evidence": "The current prototype still uses host-local research.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "assistant-connections",
           "title": "Assistant connections",
           "owner": "Yacine",
           "state": "working",
-          "focus": "Document supported setup paths."
+          "focus": "Document supported setup paths.",
+          "detail": {
+            "stateDetail": "Working — local assistant setup exists; broader setup paths remain open.",
+            "nextProof": "Document supported assistant setup routes and a per-source fallback.",
+            "blocker": "Assistant setup across supported environments remains unverified.",
+            "evidence": "A local assistant-tool probe exists.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "source-controls",
           "title": "Participant source controls",
           "owner": "Jimut",
           "state": "open",
-          "focus": "Prove opt-in and revoke in a real meeting."
+          "focus": "Prove opt-in and revoke in a real meeting.",
+          "detail": {
+            "stateDetail": "Open — participant sharing and revocation need end-to-end work.",
+            "nextProof": "Build the participant sharing controls and verify opt-out and revoke in a real meeting.",
+            "blocker": "Participant sharing controls are still in development.",
+            "evidence": "The current connection flow is an interaction preview.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "speaker-attribution",
           "title": "Speaker attribution",
           "owner": "Vishal",
           "state": "working",
-          "focus": "Test two-person question capture."
+          "focus": "Test two-person question capture.",
+          "detail": {
+            "stateDetail": "Working — mixed audio exists; trusted two-person proof open.",
+            "nextProof": "Capture complete questions from two people with trusted speaker identity.",
+            "blocker": "Two-person speaker attribution remains unproven.",
+            "evidence": "Mixed room audio was exercised; attribution proof is pending.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "voice-playback",
           "title": "Voice playback",
           "owner": "Vishal",
           "state": "working",
-          "focus": "Prove complete audio and interruption."
+          "focus": "Prove complete audio and interruption.",
+          "detail": {
+            "stateDetail": "Working — placeholder speech exists; managed voice proof open.",
+            "nextProof": "Demonstrate complete speech, interruption, and an approved natural voice in a real room.",
+            "blocker": "No approved managed voice connection is configured yet.",
+            "evidence": "The current voice is a placeholder; adapter contract checks used mocks.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "audio-reliability",
           "title": "Audio reliability",
           "owner": "Vishal",
           "state": "open",
-          "focus": "Verify quiet join and clean playback."
+          "focus": "Verify quiet join and clean playback.",
+          "detail": {
+            "stateDetail": "Open — repeating noise heard live; cause unknown.",
+            "nextProof": "Isolate and fix the tapping, then prove quiet join, pause without disconnect, and clean answer audio.",
+            "blocker": "The cause of the repeated tapping has not been isolated.",
+            "evidence": "The noise was heard live; stopping the local companion silenced it but also removed the Bot.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "sharing",
           "title": "Sharing",
           "owner": "Jimut",
           "state": "blocked",
-          "focus": "Confirm a safe delivery experience."
+          "focus": "Confirm a safe delivery experience.",
+          "detail": {
+            "stateDetail": "Blocked — recipient-scoped delivery is not proven.",
+            "nextProof": "Verify recipient-specific link delivery and what a later joiner can see.",
+            "blocker": "Recipient-specific delivery has not passed review.",
+            "evidence": "Link sharing remains limited while its audience is checked.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "meeting-controls",
           "title": "Meeting controls",
           "owner": "Amit + Jimut",
           "state": "open",
-          "focus": "Review notice and retention experience."
+          "focus": "Review notice and retention experience.",
+          "detail": {
+            "stateDetail": "Open — retention, notice, and action enforcement need decisions and proof.",
+            "nextProof": "Decide retention and notice behavior, then prove enforcement and action confirmation.",
+            "blocker": "The participant notice and after-meeting controls still need product decisions and proof.",
+            "evidence": "The intended behavior is documented; the end-to-end experience is unverified.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "team-runtime",
           "title": "Team-ready runtime",
           "owner": "Jimut",
           "state": "open",
-          "focus": "Prove operation beyond one local machine."
+          "focus": "Prove operation beyond one local machine.",
+          "detail": {
+            "stateDetail": "Open — team-ready hosted operation remains to be proved.",
+            "nextProof": "Demonstrate a team-ready hosted setup beyond one local machine.",
+            "blocker": "A shared hosted setup is not available yet.",
+            "evidence": "The current version runs locally.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         }
       ],
       "qa": {
@@ -140,8 +276,127 @@
         "passed": 2,
         "failed": 1,
         "notRun": 6,
-        "generatedAt": "2026-11-17T02:25:34Z"
-      }
+        "generatedAt": "2026-11-17T02:50:10Z",
+        "scenarios": [
+          {
+            "id": "host-autojoin",
+            "title": "Host auto-invite",
+            "owner": "Jimut",
+            "status": "fail",
+            "detail": "Checks the host auto-invite code path; live behavior is reviewed separately."
+          },
+          {
+            "id": "attendee-introduction",
+            "title": "First-time attendee introduction",
+            "owner": "Jimut",
+            "status": "notRun",
+            "detail": "Covers the optional first-time attendee introduction."
+          },
+          {
+            "id": "bot-visual",
+            "title": "Bot identity rendering",
+            "owner": "Amit",
+            "status": "notRun",
+            "detail": "Covers the Bot tile; live state transitions need separate review."
+          },
+          {
+            "id": "audio-and-pause",
+            "title": "Guest audio and pause",
+            "owner": "Vishal",
+            "status": "pass",
+            "detail": "Covers audio and pause code paths; live playback needs separate review."
+          },
+          {
+            "id": "source-and-service-policy",
+            "title": "Source and service policy",
+            "owner": "Yacine + Jimut",
+            "status": "pass",
+            "detail": "Covers read-source policy code paths; multi-person use needs separate review."
+          },
+          {
+            "id": "internal-classification",
+            "title": "Internal meeting classification",
+            "owner": "Jimut",
+            "status": "notRun",
+            "detail": "Covers room classification when Bot joins."
+          },
+          {
+            "id": "provider-grants",
+            "title": "Participant source grants",
+            "owner": "Jimut",
+            "status": "notRun",
+            "detail": "Covers participant choices for meeting-shared sources."
+          },
+          {
+            "id": "private-links",
+            "title": "Links to intended recipients",
+            "owner": "Jimut",
+            "status": "notRun",
+            "detail": "Covers delivery of links to intended recipients."
+          },
+          {
+            "id": "spoken-answer",
+            "title": "Attributed spoken answer",
+            "owner": "Yacine",
+            "status": "notRun",
+            "detail": "Covers a complete attributed spoken response."
+          }
+        ]
+      },
+      "activity": [
+        {
+          "id": "qa-run",
+          "text": "QA checked 2026-11-17T02:50:10Z: 2 passed, 1 failed, 6 not run."
+        }
+      ],
+      "decisions": [
+        {
+          "id": "host-choice",
+          "title": "One visible Bot",
+          "detail": "The host decides whether Bot joins; attendee setup is optional.",
+          "reviewPending": false
+        },
+        {
+          "id": "personal-sources",
+          "title": "Each person chooses sources",
+          "detail": "Participants choose meeting-shared sources and can turn sharing off.",
+          "reviewPending": false
+        },
+        {
+          "id": "question-routing",
+          "title": "Group and first-person questions",
+          "detail": "Group questions may use active shared sources; first-person questions stay with the speaker.",
+          "reviewPending": false
+        },
+        {
+          "id": "answer-approval",
+          "title": "Read answers and actions",
+          "detail": "Read answers need no per-answer host approval; account actions require owner confirmation.",
+          "reviewPending": false
+        },
+        {
+          "id": "optional-intro",
+          "title": "Optional attendee introduction",
+          "detail": "The first-time introduction cannot block joining.",
+          "reviewPending": false
+        },
+        {
+          "id": "event-motion",
+          "title": "Truthful Bot motion",
+          "detail": "Listening, Thinking, and Speaking visuals must follow actual events.",
+          "reviewPending": false
+        }
+      ],
+      "recentDecisions": [
+        {
+          "id": "optional-intro",
+          "text": "The first-time introduction cannot block joining."
+        },
+        {
+          "id": "event-motion",
+          "text": "Listening, Thinking, and Speaking visuals must follow actual events."
+        }
+      ]
     },
     {
       "id": "workloop",
@@ -161,40 +416,120 @@
           "title": "Automatic plan activity",
           "owner": "Jimut",
           "state": "done",
-          "focus": "Check that a push updates the plan."
+          "focus": "Check that a push updates the plan.",
+          "detail": {
+            "stateDetail": "Done — live pushes updated mapped plan activity.",
+            "nextProof": "For later pushes, confirm the workflow stays green and matching activity appears beside the task.",
+            "blocker": "No current code-activity blocker; product acceptance remains a separate decision.",
+            "evidence": "Live workflow runs created automatic plan updates without marking work Done.",
+            "codeActivity": "Latest mapped push touched 2 matching files.",
+            "reviewPending": []
+          }
         },
         {
           "id": "public-setup",
           "title": "Public introduction and setup",
           "owner": "Amit + Joshua",
           "state": "working",
-          "focus": "Have another team follow setup unaided."
+          "focus": "Have another team follow setup unaided.",
+          "detail": {
+            "stateDetail": "Working — public setup is live; independent adoption review open.",
+            "nextProof": "Have another team follow the public setup unaided and review the resulting experience.",
+            "blocker": "One controlled adoption does not prove universal self-service setup.",
+            "evidence": "The combined site is live and its desktop, mobile, and reduced-motion layouts were checked.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "reusable-install",
           "title": "Reusable installation",
           "owner": "Yacine",
           "state": "working",
-          "focus": "Prove installation and the first push in a new project."
+          "focus": "Prove installation and the first push in a new project.",
+          "detail": {
+            "stateDetail": "Working — one separate repository passed live setup tests.",
+            "nextProof": "Have an unrelated team provide its task map, install the package, and verify its first push.",
+            "blocker": "Each new team must supply a task map and repository workflow permissions.",
+            "evidence": "Two pushes in a separate adoption repository triggered plan and QA workflows without false Done.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         },
         {
           "id": "qa-checks",
           "title": "QA checks",
           "owner": "Vishal",
           "state": "working",
-          "focus": "Review scenario coverage and the latest report."
+          "focus": "Review scenario coverage and the latest report.",
+          "detail": {
+            "stateDetail": "Working — the runner is live; scenario coverage needs review.",
+            "nextProof": "Repair the failing host test, rerun QA, and keep unverified live cases visible.",
+            "blocker": "Scenario coverage and live verification remain open.",
+            "evidence": "The mapped runner keeps pass, fail, and not-run outcomes distinct.",
+            "codeActivity": "Latest mapped push touched 1 matching file.",
+            "reviewPending": []
+          }
         },
         {
           "id": "verified-completion",
           "title": "Evidence-backed completion",
           "owner": "Yacine",
           "state": "open",
-          "focus": "Prove verified tasks become Done without board edits."
+          "focus": "Prove verified tasks become Done without board edits.",
+          "detail": {
+            "stateDetail": "Open — evidence-backed automatic Done is not implemented.",
+            "nextProof": "Prove that complete task-specific evidence moves a task to Done while weak or stale proof does not.",
+            "blocker": "The workflow has no validated acceptance record or automatic Done transition yet.",
+            "evidence": "Pushes can update activity and Open to Working; an owner and their coding agent still record verified Done.",
+            "codeActivity": null,
+            "reviewPending": []
+          }
         }
       ],
       "qa": {
         "available": false
-      }
+      },
+      "activity": [
+        {
+          "id": "plan-activity",
+          "text": "Automatic plan activity: Latest mapped push touched 2 matching files."
+        },
+        {
+          "id": "qa-checks",
+          "text": "QA checks: Latest mapped push touched 1 matching file."
+        }
+      ],
+      "decisions": [
+        {
+          "id": "mapped-pushes",
+          "title": "Mapped push activity",
+          "detail": "Code pushes record activity and may move Open work to Working; Done still needs evidence.",
+          "reviewPending": false
+        },
+        {
+          "id": "honest-qa",
+          "title": "Honest QA outcomes",
+          "detail": "Pass, fail, and not-run remain distinct; code checks do not replace live acceptance.",
+          "reviewPending": false
+        },
+        {
+          "id": "shared-plan",
+          "title": "Shared project context",
+          "detail": "The plan keeps owners, progress, decisions, and proof visible across builders.",
+          "reviewPending": false
+        }
+      ],
+      "recentDecisions": [
+        {
+          "id": "honest-qa",
+          "text": "Pass, fail, and not-run remain distinct; code checks do not replace live acceptance."
+        },
+        {
+          "id": "shared-plan",
+          "text": "The plan keeps owners, progress, decisions, and proof visible across builders."
+        }
+      ]
     }
   ]
 }
