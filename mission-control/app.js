@@ -19,15 +19,8 @@ async function copyCommand(command) {
   textarea.select();
 
   let copied = false;
-  let copyEventFired = false;
-  textarea.addEventListener('copy', (event) => {
-    if (!event.clipboardData) return;
-    event.clipboardData.setData('text/plain', command);
-    event.preventDefault();
-    copyEventFired = true;
-  }, { once: true });
   try {
-    copied = document.execCommand('copy') && copyEventFired;
+    copied = document.execCommand('copy');
   } catch {
     copied = false;
   }
@@ -44,14 +37,16 @@ document.querySelectorAll('[data-copy]').forEach((button) => {
     const feedback = button.closest('.command-card').querySelector('.copy-feedback');
     const copied = await copyCommand(command);
     feedback.classList.toggle('error', !copied);
+    const isInvoke = button.dataset.copy === 'invoke-command';
+    const buttonLabel = isInvoke ? 'Copy invoke' : 'Copy install';
 
     if (copied) {
       button.textContent = 'Copied';
-      feedback.textContent = 'Copied to clipboard';
-      globalStatus.textContent = `${button.getAttribute('aria-label')} copied`;
-      window.setTimeout(() => { button.textContent = 'Copy'; }, 2000);
+      feedback.textContent = isInvoke ? 'Invoke copied: $mission-control' : 'Install command copied';
+      globalStatus.textContent = feedback.textContent;
+      window.setTimeout(() => { button.textContent = buttonLabel; }, 2000);
     } else {
-      feedback.textContent = 'Could not copy automatically. Select the command and copy it manually.';
+      feedback.textContent = `Could not copy the ${isInvoke ? 'invoke' : 'install'} command automatically. Select it and copy it manually.`;
       globalStatus.textContent = feedback.textContent;
     }
   });
