@@ -1,0 +1,35 @@
+name: Contributor checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.11'
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+      - name: Test installers and QA reports
+        run: python3 -m unittest discover -s virtual-pm -p 'test_*.py' -v
+      - name: Check Python syntax
+        run: python3 -m py_compile virtual-pm/install.py virtual-pm/install_qa.py virtual-pm/virtual_pm_sync.py
+      - name: Check JavaScript syntax
+        run: |
+          node --check virtual-pm/virtual_qa_runner.mjs
+          node --check virtual-pm/site.js
+          node --check virtual-pm/projects.js

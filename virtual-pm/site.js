@@ -43,3 +43,36 @@ document.querySelectorAll('[data-copy-target]').forEach((button) => {
     }
   });
 });
+
+const publicProjectCounts = document.querySelectorAll('[data-project-count]');
+if (publicProjectCounts.length) {
+  fetch('./public-projects.json', { cache: 'no-store' })
+    .then((response) => {
+      if (!response.ok) throw new Error('Public project snapshot is unavailable');
+      return response.json();
+    })
+    .then((snapshot) => {
+      if (snapshot.schemaVersion !== 1 || !Array.isArray(snapshot.projects)) {
+        throw new Error('Public project snapshot is invalid');
+      }
+      for (const label of publicProjectCounts) {
+        const project = snapshot.projects.find((item) => item.id === label.dataset.projectCount);
+        if (!project || !Number.isInteger(project.counts?.total)) continue;
+        const total = project.counts.total;
+        label.textContent = `${total} real task${total === 1 ? '' : 's'} · ${project.counts.working || 0} working`;
+      }
+      const freshness = document.getElementById('real-projects-freshness');
+      if (freshness) {
+        const date = new Date(snapshot.generatedAt);
+        const dateLabel = Number.isNaN(date.getTime())
+          ? 'date unavailable'
+          : new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', year: 'numeric' }).format(date);
+        freshness.textContent = `Selected public fields from the real project handoff · Snapshot ${dateLabel} · Read-only`;
+      }
+    })
+    .catch(() => {
+      for (const label of publicProjectCounts) label.textContent = 'Snapshot temporarily unavailable';
+      const freshness = document.getElementById('real-projects-freshness');
+      if (freshness) freshness.textContent = 'The public project snapshot is temporarily unavailable. The setup guide is still available below.';
+    });
+}

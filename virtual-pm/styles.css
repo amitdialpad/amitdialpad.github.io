@@ -347,3 +347,34 @@ h1, h2, h3, p { margin-top: 0; }
 @media (prefers-reduced-motion: reduce) {
   .hero h1 span { animation: none; }
 }
+
+/* Public, read-only entry into selected fields from the two real projects. */
+.real-projects { padding-top: 82px; padding-bottom: 91px; }
+.real-projects-heading { display: flex; align-items: end; justify-content: space-between; gap: 55px; margin: 26px 0 36px; }
+.real-projects-heading h2 { font-family: "Iowan Old Style", Baskerville, Georgia, serif; font-size: clamp(47px, 5vw, 70px); font-weight: 400; line-height: 1.07; letter-spacing: -.055em; margin: 0; }
+.real-projects-heading p { max-width: 420px; color: #625e65; font-size: 17px; line-height: 1.45; margin: 0 0 3px; }
+.real-project-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.real-project-card { border: 1px solid #d7d4dc; min-height: 256px; padding: 24px 26px 22px; display: flex; flex-direction: column; transition: border-color .16s ease, background .16s ease; }
+.real-project-card:hover { border-color: #524c59; background: #faf9fb; }
+.real-project-card:focus-visible { outline-offset: 3px; }
+.real-card-top, .real-card-bottom { display: flex; justify-content: space-between; gap: 12px; }
+.real-card-top { color: #6d6574; font: 11px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing: .08em; }
+.real-card-top > span:last-child { color: #6c44da; font-size: 17px; line-height: .9; }
+.real-project-card strong { color: #1b191d; font-size: clamp(31px, 3.2vw, 43px); font-weight: 450; letter-spacing: -.055em; margin-top: 30px; }
+.real-card-description { color: #68636c; font-size: 15px; line-height: 1.45; margin-top: 5px; }
+.real-card-bottom { border-top: 1px solid #dbd8df; align-items: end; color: #77717b; font-size: 12px; margin-top: auto; padding-top: 19px; }
+.real-card-bottom > span:last-child { color: #302a37; border-bottom: 1px solid #827989; padding-bottom: 2px; white-space: nowrap; }
+.real-projects-foot { color: #85808a; font: 11px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace; margin: 16px 0 0; }
+@media (max-width: 900px) {
+  .real-projects-heading { display: block; }
+  .real-projects-heading p { max-width: 660px; margin-top: 18px; }
+}
+@media (max-width: 700px) {
+  .real-projects { padding-top: 68px; padding-bottom: 72px; }
+  .real-projects-heading { margin: 20px 0 29px; }
+  .real-projects-heading h2 { font-size: clamp(43px, 8vw, 60px); }
+  .real-projects-heading p { font-size: 15px; }
+  .real-project-cards { grid-template-columns: 1fr; }
+  .real-project-card { min-height: 212px; padding: 20px; }
+  .real-project-card strong { margin-top: 20px; }
+}

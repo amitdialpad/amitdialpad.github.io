@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-17T02:17:03Z",
+  "projects": [
+    {
+      "id": "dialbot",
+      "name": "Dial Bot",
+      "summary": "A meeting assistant shaped by a small product team.",
+      "counts": {
+        "total": 17,
+        "working": 9,
+        "open": 6,
+        "ready": 1,
+        "blocked": 1,
+        "done": 0
+      },
+      "tasks": [
+        {
+          "id": "meeting-journey",
+          "title": "Meeting journey",
+          "owner": "Amit",
+          "state": "working",
+          "focus": "Review the first-time attendee path in a real meeting."
+        },
+        {
+          "id": "public-story",
+          "title": "Public story",
+          "owner": "Amit + Yacine",
+          "state": "open",
+          "focus": "Align the public story with the agreed meeting experience."
+        },
+        {
+          "id": "attendee-introduction",
+          "title": "Attendee introduction",
+          "owner": "Jimut",
+          "state": "working",
+          "focus": "Verify the optional first-time introduction in a live join."
+        },
+        {
+          "id": "bot-presence",
+          "title": "Bot presence and motion",
+          "owner": "Amit",
+          "state": "ready",
+          "focus": "Review listening, thinking, and speaking in a real room."
+        },
+        {
+          "id": "bot-joins",
+          "title": "Bot joins and stays present",
+          "owner": "Jimut",
+          "state": "working",
+          "focus": "Repeat host choice and Bot join across fresh rooms."
+        },
+        {
+          "id": "host-controls",
+          "title": "Host controls",
+          "owner": "Jimut",
+          "state": "working",
+          "focus": "Verify invite, pause, resume, and remove."
+        },
+        {
+          "id": "meeting-identity",
+          "title": "Meeting identity",
+          "owner": "Jimut",
+          "state": "working",
+          "focus": "Check room labels with different participants."
+        },
+        {
+          "id": "questions-and-answers",
+          "title": "Questions and answers",
+          "owner": "Yacine",
+          "state": "working",
+          "focus": "Prove a grounded answer and follow-up."
+        },
+        {
+          "id": "shared-context",
+          "title": "Shared and personal context",
+          "owner": "Yacine + Jimut",
+          "state": "open",
+          "focus": "Check group and personal questions use intended context."
+        },
+        {
+          "id": "assistant-connections",
+          "title": "Assistant connections",
+          "owner": "Yacine",
+          "state": "working",
+          "focus": "Document supported setup paths."
+        },
+        {
+          "id": "source-controls",
+          "title": "Participant source controls",
+          "owner": "Jimut",
+          "state": "open",
+          "focus": "Prove opt-in and revoke in a real meeting."
+        },
+        {
+          "id": "speaker-attribution",
+          "title": "Speaker attribution",
+          "owner": "Vishal",
+          "state": "working",
+          "focus": "Test two-person question capture."
+        },
+        {
+          "id": "voice-playback",
+          "title": "Voice playback",
+          "owner": "Vishal",
+          "state": "working",
+          "focus": "Prove complete audio and interruption."
+        },
+        {
+          "id": "audio-reliability",
+          "title": "Audio reliability",
+          "owner": "Vishal",
+          "state": "open",
+          "focus": "Verify quiet join and clean playback."
+        },
+        {
+          "id": "sharing",
+          "title": "Sharing",
+          "owner": "Jimut",
+          "state": "blocked",
+          "focus": "Confirm a safe delivery experience."
+        },
+        {
+          "id": "meeting-controls",
+          "title": "Meeting controls",
+          "owner": "Amit + Jimut",
+          "state": "open",
+          "focus": "Review notice and retention experience."
+        },
+        {
+          "id": "team-runtime",
+          "title": "Team-ready runtime",
+          "owner": "Jimut",
+          "state": "open",
+          "focus": "Prove operation beyond one local machine."
+        }
+      ],
+      "qa": {
+        "available": true,
+        "passed": 2,
+        "failed": 1,
+        "notRun": 6,
+        "generatedAt": "2026-11-17T01:49:02Z"
+      }
+    },
+    {
+      "id": "workloop",
+      "name": "Workloop",
+      "summary": "Plan and QA tools built while making Dial Bot.",
+      "counts": {
+        "total": 5,
+        "working": 3,
+        "open": 1,
+        "ready": 0,
+        "blocked": 0,
+        "done": 1
+      },
+      "tasks": [
+        {
+          "id": "plan-activity",
+          "title": "Automatic plan activity",
+          "owner": "Jimut",
+          "state": "done",
+          "focus": "Check that a push updates the plan."
+        },
+        {
+          "id": "public-setup",
+          "title": "Public introduction and setup",
+          "owner": "Amit + Joshua",
+          "state": "working",
+          "focus": "Have another team follow setup unaided."
+        },
+        {
+          "id": "reusable-install",
+          "title": "Reusable installation",
+          "owner": "Yacine",
+          "state": "working",
+          "focus": "Prove installation and the first push in a new project."
+        },
+        {
+          "id": "qa-checks",
+          "title": "QA checks",
+          "owner": "Vishal",
+          "state": "working",
+          "focus": "Review scenario coverage and the latest report."
+        },
+        {
+          "id": "verified-completion",
+          "title": "Evidence-backed completion",
+          "owner": "Yacine",
+          "state": "open",
+          "focus": "Prove verified tasks become Done without board edits."
+        }
+      ],
+      "qa": {
+        "available": false
+      }
+    }
+  ]
+}
