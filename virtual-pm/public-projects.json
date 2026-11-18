@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-17T20:23:05Z",
+  "generatedAt": "2026-11-18T20:26:10Z",
   "projects": [
     {
       "id": "dialbot",
@@ -101,7 +101,7 @@
             "nextProof": "Jimut will integrate the two PRs, identify a combined build, then repeat one-Bot join, Resume, reinvite, and attendee tests in a real room.",
             "blocker": "The PRs remain unmerged. Resume and duplicate-reinvite guards have code tests but no live proof; room classification and spoken flow remain open.",
             "evidence": "A four-person local room showed one silent Bot Listening; the draft PR has tested guards, but those guards were not active in that room.",
-            "codeActivity": "Latest mapped push touched 4 matching files.",
+            "codeActivity": "Latest mapped push touched 2 matching files.",
             "reviewPending": []
           }
         },
@@ -306,7 +306,7 @@
         "passed": 2,
         "failed": 1,
         "notRun": 6,
-        "generatedAt": "2026-11-17T20:22:44Z",
+        "generatedAt": "2026-11-18T20:25:55Z",
         "scenarios": [
           {
             "id": "host-autojoin",
@@ -376,7 +376,7 @@
       "activity": [
         {
           "id": "qa-run",
-          "text": "QA checked 2026-11-17T20:22:44Z: 2 passed, 1 failed, 6 not run."
+          "text": "QA checked 2026-11-18T20:25:55Z: 2 passed, 1 failed, 6 not run."
         },
         {
           "id": "team-integration",
@@ -384,7 +384,7 @@
         },
         {
           "id": "bot-joins",
-          "text": "Bot joins and stays present: Latest mapped push touched 4 matching files."
+          "text": "Bot joins and stays present: Latest mapped push touched 2 matching files."
         }
       ],
       "decisions": [
