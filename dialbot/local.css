@@ -62,9 +62,16 @@ html{scroll-behavior:smooth}body{margin:0;min-width:320px}button,a{font:inherit}
 .hero-lede strong{color:var(--ink);font-weight:760}
 .hero-showcase{width:min(calc(100% - 28px),1520px);margin:35px auto 0;padding:clamp(18px,3.8vw,52px);border-radius:29px;background:linear-gradient(140deg,#f5f5f4 0%,#ebebed 100%)}
 .hero-showcase .film-stage{border-radius:20px;border:1px solid #3b3a42;box-shadow:0 28px 55px #19171c2e}
+.film-play{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:12px;padding:10px;border:0;background:transparent;color:#fff;cursor:pointer;transition:opacity .2s ease}
+.film-play[hidden]{display:none}.film-play.is-dismissed{opacity:0;pointer-events:none}
+.film-play-icon{display:grid;place-items:center;width:78px;height:78px;border-radius:50%;background:#fff;box-shadow:0 8px 28px #0006}
+.film-play-icon::before{content:'';display:block;margin-left:5px;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:18px solid #37224f}
+.film-play-label{padding:7px 12px;border-radius:999px;background:#17131dcc;font-size:14px;font-weight:750;line-height:1.2;white-space:nowrap}
+.film-play:hover .film-play-icon{background:#f2ecfb}.film-play:focus-visible{outline:none}.film-play:focus-visible .film-play-icon{outline:3px solid #fff;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.film-play{transition:none}}
 .hero-caption{max-width:760px;margin:17px auto 0;padding:0 20px 76px;text-align:center;color:#847d89;font-size:12px;line-height:1.45}
 @media(max-width:900px){.hero{padding-top:55px}.hero-copy h1{font-size:clamp(66px,9vw,92px)}.hero-showcase{margin-top:52px;padding:30px}.hero-caption{padding-bottom:65px}}
-@media(max-width:620px){.hero{padding-top:44px}.hero-copy h1{font-size:clamp(52px,13vw,67px);margin:0 0 18px}.hero-lede{font-size:18px;line-height:1.47}.hero-showcase{width:calc(100% - 16px);margin-top:39px;padding:11px;border-radius:19px}.hero-showcase .film-stage{border-radius:12px}.hero-caption{font-size:10px;margin-top:13px;padding-bottom:48px}}
+@media(max-width:620px){.hero{padding-top:44px}.hero-copy h1{font-size:clamp(52px,13vw,67px);margin:0 0 18px}.hero-lede{font-size:18px;line-height:1.47}.hero-showcase{width:calc(100% - 16px);margin-top:39px;padding:11px;border-radius:19px}.hero-showcase .film-stage{border-radius:12px}.film-play{gap:8px}.film-play-icon{width:58px;height:58px}.film-play-icon::before{border-top-width:8px;border-bottom-width:8px;border-left-width:14px}.film-play-label{font-size:12px}.hero-caption{font-size:10px;margin-top:13px;padding-bottom:48px}}
 
 /* Local halftone study for the Dial Bot Personality Kit. It does not replace app motion. */
 .emotions-showcase{background:#fbfaff}
