@@ -37,6 +37,11 @@
 .pack-choice span{display:flex;flex-direction:column;gap:6px}
 .pack-choice strong{font-size:16px;font-weight:720}
 .pack-choice small{font-size:14px;line-height:1.4;color:#6d6474}
+.pack-cap{margin:24px 0 0 32px;padding-left:18px;border-left:2px solid #ded9e4}
+.pack-cap[hidden]{display:none}
+.pack-cap label{display:block;font-size:14px;font-weight:700;margin-bottom:9px}
+.calculator-inputs .pack-cap input[type=number]{width:105px;height:48px;font-size:23px}
+.pack-cap p{font-size:13px;line-height:1.4;color:#766e7b;margin:9px 0 0}
 .calculator-result{padding:40px 45px}
 .calculator-result>span{font-size:15px;color:#655b70}
 .calculator-result>strong{display:block;font-size:clamp(62px,7vw,95px);line-height:1;letter-spacing:-.07em;margin:7px 0 27px}
