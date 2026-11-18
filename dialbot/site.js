@@ -2,15 +2,12 @@ const film = document.getElementById('hero-film');
 const stage = document.getElementById('film-stage');
 const playButton = document.getElementById('film-play');
 if (film && stage) {
-  film.addEventListener('loadedmetadata', () => {
-    film.hidden = false;
-    stage.classList.add('has-film');
-    if (playButton && film.paused && !film.error) playButton.hidden = false;
-  }, { once: true });
   film.addEventListener('error', () => {
     film.hidden = true;
-    stage.classList.remove('has-film');
+    stage.classList.add('has-error');
     if (playButton) playButton.hidden = true;
+    const fallback = stage.querySelector('.film-placeholder');
+    if (fallback) fallback.hidden = false;
   });
   if (playButton) {
     playButton.addEventListener('click', () => {
@@ -27,10 +24,4 @@ if (film && stage) {
       window.setTimeout(() => { playButton.hidden = true; }, 220);
     }, { once: true });
   }
-  const source = film.dataset.src;
-  fetch(source, { method: 'HEAD' }).then((response) => {
-    if (!response.ok) return;
-    film.src = source;
-    film.load();
-  }).catch(() => {});
 }
