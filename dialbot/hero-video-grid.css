@@ -1,0 +1,52 @@
+/* Adapted from Tap's neutral, corner-morphing demonstration grid. */
+.hero-showcase{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  width:100%;
+  max-width:none;
+  border-radius:0;
+  background:#f4f3f1;
+}
+.hero-video-grid{
+  position:absolute;
+  z-index:0;
+  inset:0;
+  display:grid;
+  grid-template-columns:repeat(42,minmax(0,1fr));
+  grid-template-rows:repeat(24,minmax(0,1fr));
+  gap:4px;
+  padding:8px;
+  pointer-events:none;
+}
+.hero-video-grid span{
+  display:block;
+  min-width:0;
+  min-height:0;
+  border-radius:10%;
+  background:#dcd9d6;
+  opacity:.2;
+}
+.hero-video-grid.is-active .is-morphing{
+  animation:hero-grid-round 24s linear infinite;
+  animation-delay:var(--grid-delay);
+}
+@keyframes hero-grid-round{
+  0%,100%{border-radius:10%}
+  8%{border-radius:50%}
+  16%{border-radius:10%}
+}
+.hero-showcase .film-stage{
+  position:relative;
+  z-index:1;
+  width:min(calc(100% - 28px),1416px);
+  margin-inline:auto;
+}
+@media(max-width:620px){
+  .hero-video-grid{display:none}
+  .hero-showcase .film-stage{width:calc(100% - 16px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-video-grid.is-active .is-morphing{animation:none}
+  .hero-video-grid .is-resting-round{border-radius:50%}
+}

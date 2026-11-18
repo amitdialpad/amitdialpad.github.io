@@ -1,0 +1,302 @@
+.catchup-showcase {
+  padding: 118px 0 124px;
+  background: #fff;
+  border-top: 1px solid #eeeaf1;
+}
+
+.catchup-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 64px;
+  margin-bottom: 50px;
+}
+
+.catchup-eyebrow {
+  margin: 0 0 20px;
+  color: #7052a1;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.catchup-heading h2 {
+  margin: 0;
+  font-size: clamp(54px, 5.9vw, 82px);
+  font-weight: 750;
+  line-height: 1.02;
+  letter-spacing: -.06em;
+}
+
+.catchup-heading h2 em {
+  font-family: 'Season Mix', Georgia, serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.catchup-heading > p {
+  max-width: 420px;
+  margin: 0 0 4px;
+  color: #625b68;
+  font-size: 18px;
+  line-height: 1.52;
+}
+
+.catchup-scene {
+  display: grid;
+  grid-template-columns: minmax(320px, .9fr) minmax(0, 1.48fr);
+  gap: 18px;
+  min-height: 520px;
+  padding: 19px;
+  border: 1px solid #312b3a;
+  border-radius: 25px;
+  background: #15131d;
+  box-shadow: 0 28px 65px #21162e24;
+}
+
+.catchup-meeting,
+.catchup-panel {
+  min-width: 0;
+  border: 1px solid #383341;
+  border-radius: 15px;
+  background: #1d1b25;
+}
+
+.catchup-meeting {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.catchup-meeting-bar {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 45px;
+  padding: 0 15px;
+  border-bottom: 1px solid #342f3c;
+  color: #c4bdcc;
+  font-size: 11px;
+  font-weight: 680;
+}
+
+.catchup-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #61d18f;
+  box-shadow: 0 0 0 4px #61d18f1c;
+}
+
+.catchup-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  flex: 1;
+  min-height: 0;
+  padding: 10px;
+}
+
+.catchup-person {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #3a3444;
+  border-radius: 11px;
+  background: radial-gradient(circle at 70% 20%, #3b344c, #282430 62%, #24212c);
+}
+
+.catchup-person:nth-child(2) {
+  background: radial-gradient(circle at 35% 20%, #304153, #252d3a 62%, #202833);
+}
+
+.catchup-person:nth-child(3) {
+  background: radial-gradient(circle at 75% 15%, #473b41, #2f2934 60%, #25232d);
+}
+
+.catchup-person.is-speaking {
+  border-color: #63d891;
+  box-shadow: inset 0 0 0 1px #63d891, 0 0 0 1px #63d89155;
+}
+
+.catchup-avatar {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #5f4b87;
+  color: #f5efff;
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: -.04em;
+}
+
+.catchup-person:nth-child(2) .catchup-avatar { background: #52768d; }
+.catchup-person:nth-child(3) .catchup-avatar { background: #795b6e; }
+
+.catchup-person-name {
+  position: absolute;
+  right: 8px;
+  bottom: 10px;
+  left: 12px;
+  color: #f4f0f8;
+  font-size: 11px;
+  font-weight: 710;
+  text-shadow: 0 1px 2px #0008;
+}
+
+.catchup-person.is-bot {
+  background: radial-gradient(circle at center, #302844, #1c1a28 60%, #1a1923);
+}
+
+.catchup-bot-orbit {
+  display: grid;
+  place-items: center;
+  width: 73px;
+  height: 73px;
+  border: 1px solid #68527b;
+  border-radius: 50%;
+  color: #d4bdec;
+  font-size: 24px;
+  box-shadow: 0 0 0 24px #ac80d408;
+}
+
+.catchup-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  color: #f5f1f9;
+}
+
+.catchup-chat-header {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #453e4b;
+}
+
+.catchup-chat-header p {
+  margin: 0 0 5px;
+  color: #f5f1f9;
+  font-size: 13px;
+  font-weight: 720;
+}
+
+.catchup-chat-header span {
+  color: #a99eaf;
+  font-size: 11px;
+}
+
+.catchup-request {
+  align-self: flex-end;
+  max-width: 88%;
+  margin: 18px 0 16px;
+}
+
+.catchup-speaker {
+  margin: 0 0 7px;
+  color: #bfb1c9;
+  font-size: 11px;
+  font-weight: 710;
+}
+
+.catchup-request .catchup-speaker {
+  text-align: right;
+}
+
+.catchup-request > p:last-child {
+  margin: 0;
+  padding: 12px 15px;
+  border: 1px solid #504659;
+  border-radius: 12px 12px 3px 12px;
+  background: #393340;
+  color: #f4eff7;
+  font-size: 13px;
+  line-height: 1.42;
+}
+
+.catchup-response {
+  flex: 1;
+  padding: 17px 18px 18px;
+  border: 1px solid #403a49;
+  border-radius: 12px;
+  background: #24212c;
+}
+
+.catchup-panel h3 {
+  margin: 0 0 6px;
+  color: #fff;
+  font-size: clamp(27px, 2.35vw, 32px);
+  font-weight: 750;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+
+.catchup-range {
+  margin: 0 0 21px;
+  color: #b6a9c0;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.catchup-recap-item {
+  padding-top: 13px;
+  border-top: 1px solid #453e4b;
+}
+
+.catchup-recap-item h4 {
+  margin: 0 0 10px;
+  color: #c6b6d3;
+  font-size: 11px;
+  font-weight: 740;
+  letter-spacing: .02em;
+}
+
+.catchup-recap-item p {
+  margin: 0;
+  color: #eee9f2;
+  font-size: 13px;
+  line-height: 1.46;
+}
+
+.catchup-recap-open {
+  margin-top: 18px;
+}
+
+.catchup-study-note {
+  margin: 18px 0 0;
+  color: #8a8290;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .catchup-showcase { padding: 90px 0 96px; }
+  .catchup-heading { align-items: start; gap: 28px; }
+  .catchup-heading > p { max-width: 330px; font-size: 16px; }
+  .catchup-scene { grid-template-columns: 1fr; min-height: 0; }
+  .catchup-meeting { min-height: 380px; }
+  .catchup-panel { min-height: 0; }
+}
+
+@media (max-width: 620px) {
+  .catchup-showcase { padding: 75px 0 82px; }
+  .catchup-heading { display: block; margin-bottom: 32px; }
+  .catchup-heading h2 { margin-bottom: 19px; font-size: clamp(48px, 11vw, 60px); }
+  .catchup-heading > p { max-width: 100%; font-size: 16px; }
+  .catchup-scene { gap: 10px; padding: 10px; border-radius: 17px; }
+  .catchup-meeting { min-height: 300px; }
+  .catchup-meeting-bar { min-height: 38px; font-size: 10px; }
+  .catchup-tiles { gap: 6px; padding: 7px; }
+  .catchup-person { border-radius: 8px; }
+  .catchup-avatar { width: 44px; height: 44px; font-size: 16px; }
+  .catchup-person-name { right: 5px; bottom: 7px; left: 8px; font-size: 9px; }
+  .catchup-bot-orbit { width: 55px; height: 55px; font-size: 20px; box-shadow: 0 0 0 16px #ac80d408; }
+  .catchup-panel { padding: 19px; }
+  .catchup-response { padding: 16px; }
+  .catchup-range { margin-bottom: 20px; }
+  .catchup-study-note { font-size: 10px; }
+}

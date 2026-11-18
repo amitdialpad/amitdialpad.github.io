@@ -5,51 +5,139 @@
   <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#111015">
   <meta name="description" content="Meet Dial Bot, an extra mind for Dialpad Meetings. Say Hey Dial Bot when your team needs it.">
   <title>Dial Bot — Meetings, plus one</title>
+  <link rel="icon" href="./assets/dialpad-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/tokens-base-light.css"><link rel="stylesheet" href="./assets/tokens-dp-light.css">
-  <link rel="stylesheet" href="./local.css"><script src="./site.js" defer></script>
+  <link rel="stylesheet" href="./local.css?v=personality3"><link rel="stylesheet" href="./catchup.css"><link rel="stylesheet" href="./features.css"><link rel="stylesheet" href="./hero-bot-tittle.css?v=3"><link rel="stylesheet" href="./hero-video-grid.css?v=2"><link rel="stylesheet" href="./pricing.css"><script src="./site.js" defer></script><script src="./mood-kit.js?v=personality5" defer></script><script src="./hero-bot-tittle.js" defer></script><script src="./hero-video-grid.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header"><a class="brand" href="#top" aria-label="Dialpad, back to top"><img src="./assets/dialpad-logo.svg" alt=""></a><nav aria-label="Page sections"><a href="#experience">The idea</a><a href="#emotions">Expression Kit</a><a href="#context">Your context</a></nav></header>
+  <header class="site-header"><a class="brand" href="#top" aria-label="Dialpad, back to top"><img src="./assets/dialpad-logo.svg" alt=""></a><nav aria-label="Page sections"><a href="#experience">The idea</a><a href="#emotions">Dial Bot Personality Kit</a><a href="#catch-up">Catch up</a><a href="#features">In the meeting</a><a href="#context">Your context</a><a class="site-pricing-link" href="./pricing.html">Pricing</a></nav></header>
   <main id="main">
     <section class="hero" id="top" aria-labelledby="intro-title">
       <div class="hero-copy page-wrap" id="experience">
-        <h1 id="intro-title">Meetings, <em>plus one.</em></h1>
-        <p class="hero-lede"><strong>Dial Bot</strong> is designed to wait quietly until someone says “Hey Dial Bot.”</p>
+        <h1 id="intro-title" aria-label="Meetings, plus one."><span aria-hidden="true">Meet<span class="hero-bot-i"><span class="hero-bot-stem">i</span><span class="hero-bot-tittle"></span></span>ngs, <em>plus one.</em></span></h1>
+        <p class="hero-lede">Say “<strong>Hey Dial Bot</strong>” in the meeting, or ask in chat, when you need another mind.</p>
+        <a class="hero-pricing-link" href="./pricing.html">Explore the proposed trial</a>
       </div>
       <div class="hero-showcase" aria-label="Dial Bot meeting film">
+        <div class="hero-video-grid" id="hero-video-grid" aria-hidden="true"></div>
         <div class="film-stage" id="film-stage">
-          <div class="film-placeholder"><img src="./assets/camera-off-meeting.png?v=b6f2cb4b" alt="Dialpad camera-off meeting tiles"><div class="poster-shade"></div><div class="poster-content"><span class="poster-mark" aria-hidden="true">✦</span><span class="poster-kicker">Dial Bot in a meeting</span><strong>One more mind joins the room.</strong><small>The video is unavailable in this preview.</small></div></div>
-          <video id="hero-film" controls playsinline preload="metadata" aria-label="Dial Bot pod meeting film" data-src="./assets/dial-bot-pod-film.mp4?v=dd2a5850" hidden>Your browser does not support video playback.</video>
+          <div class="film-placeholder"><img src="./assets/camera-off-meeting.png" alt="Dialpad camera-off meeting tiles"><div class="poster-shade"></div><div class="poster-content"><span class="poster-mark" aria-hidden="true">✦</span><span class="poster-kicker">Dial Bot in a meeting</span><strong>One more mind joins the room.</strong><small>The video is unavailable in this preview.</small></div></div>
+          <video id="hero-film" controls playsinline preload="metadata" aria-label="Dial Bot pod meeting film" data-src="./assets/dial-bot-pod-film-mood-kit-local-v2.mp4?v=5c26116c" hidden>Your browser does not support video playback.</video>
         </div>
       </div>
-      <p class="hero-caption">Staged meeting film. Dial Bot motion was captured from the current app.</p>
+      <p class="hero-caption">Staged meeting film with the updated Dial Bot motion.</p>
     </section>
     <section class="emotions-showcase" id="emotions" aria-labelledby="emotions-title">
       <div class="page-wrap">
         <div class="emotions-heading">
-          <div><h2 id="emotions-title">Dial Bot<br><em>Expression Kit</em></h2></div>
-          <p>The aim is to make its timing legible. When a search takes longer, Dial Bot would say so, let the meeting continue, and wait to speak.</p>
+          <div><h2 id="emotions-title">Dial Bot<br><em>Personality Kit</em></h2></div>
+          <p>Watch how Dial Bot listens, waits, speaks, and responds to the room. The motion stays quiet so the meeting remains central.</p>
         </div>
         <div class="emotions-grid">
           <div class="motion-frame">
             <div class="motion-stage" id="motion-stage">
-              <video id="emotion-video" loop muted playsinline preload="metadata" poster="./assets/motion/dialbot-listening-renderer.png" aria-label="Actual Dial Bot listening animation from a controlled app capture" src="./assets/motion/dialbot-listening-renderer.mp4"></video>
-              <div class="standby-panel" id="standby-panel" hidden><span class="standby-indicator" aria-hidden="true"></span><strong>Standby</strong><span>Ready when called</span></div>
+              <canvas id="mood-canvas" aria-hidden="true"></canvas>
+              <span class="mood-stage-label" aria-hidden="true">Thinking</span>
             </div>
           </div>
-          <div class="emotion-controls" role="group" aria-label="Explore Dial Bot expressions">
+          <div class="emotion-controls" role="group" aria-label="Preview Dial Bot personality moments">
             <button type="button" data-state="standby" aria-pressed="false" aria-controls="motion-stage"><span class="emotion-number">01</span><span class="emotion-button-copy"><strong>Standby</strong><small>Quiet until someone calls on Dial Bot.</small></span></button>
-            <button type="button" data-state="listening" aria-pressed="true" class="is-active" aria-controls="motion-stage"><span class="emotion-number">02</span><span class="emotion-button-copy"><strong>Listening</strong><small>Awake for the question or invited reply.</small></span></button>
-            <button type="button" data-state="thinking" aria-pressed="false" aria-controls="motion-stage"><span class="emotion-number">03</span><span class="emotion-button-copy"><strong>Thinking</strong><small>Checking the context shared with the meeting.</small></span></button>
+            <button type="button" data-state="listening" aria-pressed="false" aria-controls="motion-stage"><span class="emotion-number">02</span><span class="emotion-button-copy"><strong>Listening</strong><small>Awake for the question or invited reply.</small></span></button>
+            <button type="button" data-state="thinking" aria-pressed="true" class="is-active" aria-controls="motion-stage"><span class="emotion-number">03</span><span class="emotion-button-copy"><strong>Thinking</strong><small>Checking the context shared with the meeting.</small></span></button>
             <button type="button" data-state="speaking" aria-pressed="false" aria-controls="motion-stage"><span class="emotion-number">04</span><span class="emotion-button-copy"><strong>Speaking</strong><small>Answering aloud when the room is ready.</small></span></button>
             <button type="button" data-state="paused" aria-pressed="false" aria-controls="motion-stage"><span class="emotion-number">05</span><span class="emotion-button-copy"><strong>Paused</strong><small>Held by the host until it is resumed.</small></span></button>
+            <button type="button" data-state="heart" aria-pressed="false" aria-controls="motion-stage"><span class="emotion-number">06</span><span class="emotion-button-copy"><strong>Heart</strong><small>A small response when the team shares appreciation.</small></span></button>
+            <button type="button" data-state="celebrate" aria-pressed="false" aria-controls="motion-stage"><span class="emotion-number">07</span><span class="emotion-button-copy"><strong>Celebration</strong><small>A brief flourish when the team lands a milestone.</small></span></button>
+            <button type="button" data-state="thumbs" aria-pressed="false" aria-controls="motion-stage"><span class="emotion-number">08</span><span class="emotion-button-copy"><strong>Thumbs up</strong><small>A quiet acknowledgement when the next step is clear.</small></span></button>
           </div>
         </div>
         <span class="sr-only" id="emotion-live" aria-live="polite"></span>
       </div>
     </section>
-    <section class="context page-wrap" id="context" aria-labelledby="context-title"><div class="section-head"><h2 id="context-title">The right context.<br><em>Only when shared.</em></h2></div><div class="context-copy"><p>We are designing for each person to connect Glean and choose what the meeting can use. Dial Bot would answer from that shared context and point back to its sources.</p><p>Before changing a Jira assignee, it would read back the exact change and ask the right person to confirm.</p></div></section>
+    <section class="catchup-showcase" id="catch-up" aria-labelledby="catchup-title">
+      <div class="page-wrap">
+        <div class="catchup-heading">
+          <div><p class="catchup-eyebrow">A better way to arrive late</p><h2 id="catchup-title">Catch up.<br><em>Then join in.</em></h2></div>
+          <p>Step into a meeting already in motion. Ask Dial Bot privately for the part you missed, then join the conversation with context.</p>
+        </div>
+        <div class="catchup-scene" aria-label="Illustrative late-join Catch-up experience">
+          <section class="catchup-panel" aria-label="Private chat between Amit and Dial Bot">
+            <div class="catchup-chat-header">
+              <p>Private chat with Dial Bot</p>
+              <span>Not shared with the meeting</span>
+            </div>
+            <div class="catchup-request">
+              <p class="catchup-speaker">Amit</p>
+              <p>Summarize the beginning of this meeting.</p>
+            </div>
+            <div class="catchup-response">
+              <p class="catchup-speaker">Dial Bot</p>
+              <h3 id="catchup-panel-title">Catching you up</h3>
+              <p class="catchup-range">00:00–02:18 of this meeting</p>
+              <div class="catchup-recap-item">
+                <h4>So far</h4>
+                <p>The PM and Maya are reviewing the polish items for Friday’s build. Maya can raise a PR today; QA starts next week.</p>
+              </div>
+              <div class="catchup-recap-item catchup-recap-open">
+                <h4>Open point</h4>
+                <p>Which polish items must land before the push, and which can wait for QA?</p>
+              </div>
+            </div>
+          </section>
+          <div class="catchup-meeting" role="img" aria-label="Friday release meeting in progress. The PM is speaking with Maya. Amit has just joined; Dial Bot is quiet.">
+            <div class="catchup-meeting-bar"><span class="catchup-live-dot"></span><span>Friday release · in progress</span></div>
+            <div class="catchup-tiles">
+              <div class="catchup-person is-speaking"><span class="catchup-avatar">PM</span><span class="catchup-person-name">Product manager</span></div>
+              <div class="catchup-person"><span class="catchup-avatar">MY</span><span class="catchup-person-name">Maya · Engineering</span></div>
+              <div class="catchup-person"><span class="catchup-avatar">AA</span><span class="catchup-person-name">Amit · Design · just joined</span></div>
+              <div class="catchup-person is-bot"><span class="catchup-bot-orbit" aria-hidden="true">✦</span><span class="catchup-person-name">Dial Bot · standby</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="catchup-study-note">Illustrative concept for review. The sample meeting and recap are fictional.</p>
+      </div>
+    </section>
+    <section class="feature-gallery" id="features" aria-labelledby="features-title">
+      <div class="page-wrap">
+        <div class="feature-heading">
+          <div><p class="feature-eyebrow">Beyond the answer</p><h2 id="features-title">In the flow<br><em>of the meeting.</em></h2></div>
+          <p>Speak, type, ask for a room action, or point to what is being shared. Open a line to see how it could work.</p>
+        </div>
+        <div class="feature-list">
+          <details class="feature-item">
+            <summary><span class="feature-index">01</span><strong>Type to Dial Bot.</strong><span class="feature-preview">Ask in chat without taking the floor.</span><span class="feature-mark" aria-hidden="true"></span></summary>
+            <div class="feature-detail"><p>Address a question in meeting chat with <strong>@Dialbot</strong> or its name at the start.</p><p class="feature-example">For example, Maya can type “@Dialbot Which polish items are still open?” and get a reply in chat.</p></div>
+          </details>
+          <details class="feature-item">
+            <summary><span class="feature-index">02</span><strong>Say its name.</strong><span class="feature-preview">Use a clear spoken wake phrase.</span><span class="feature-mark" aria-hidden="true"></span></summary>
+            <div class="feature-detail"><p>A spoken question starts with “Hey Dial Bot,” so it knows who invited it in.</p><p class="feature-example">“Hey Dial Bot, what is still pending?” turns a room question into a request for Dial Bot.</p></div>
+          </details>
+          <details class="feature-item">
+            <summary><span class="feature-index">03</span><strong>Leave room for the question.</strong><span class="feature-preview">A brief window for the same speaker.</span><span class="feature-mark" aria-hidden="true"></span></summary>
+            <div class="feature-detail"><p>After a bare “Hey Dial Bot,” the same speaker can finish the request without repeating the name.</p><p class="feature-example">Dial Bot can answer “Yes?” and wait briefly for that person’s next turn. This does not keep it listening through a long search.</p></div>
+          </details>
+          <details class="feature-item">
+            <summary><span class="feature-index">04</span><strong>Move the meeting along.</strong><span class="feature-preview">Requested timer and room controls.</span><span class="feature-mark" aria-hidden="true"></span></summary>
+            <div class="feature-detail"><p>Ask for a shared timer. A host or co-host can also request a room title change.</p><p class="feature-example">A visible action can finish without an extra spoken announcement; host-only changes remain gated by the speaker’s role.</p></div>
+          </details>
+          <details class="feature-item">
+            <summary><span class="feature-index">05</span><strong>Ask about what is showing.</strong><span class="feature-preview">A fresh look at the shared screen.</span><span class="feature-mark" aria-hidden="true"></span></summary>
+            <div class="feature-detail"><p>For a specific question, Dial Bot checks a fresh frame of the shared screen.</p><p class="feature-example">It looks again for each request instead of treating an earlier screen description as current.</p></div>
+          </details>
+          <details class="feature-item">
+            <summary><span class="feature-index">06</span><strong>Visible in the room.</strong><span class="feature-preview">Invited by the host, present with the team.</span><span class="feature-mark" aria-hidden="true"></span></summary>
+            <div class="feature-detail"><p>The host invites Dial Bot as a meeting participant when the group wants it there.</p><p class="feature-example">Its tile stays visible with the people while it waits quietly to be asked.</p></div>
+          </details>
+          <details class="feature-item">
+            <summary><span class="feature-index">07</span><strong>Bring the issue into focus.</strong><span class="feature-preview">A specific source for the answer.</span><span class="feature-mark" aria-hidden="true"></span></summary>
+            <div class="feature-detail"><p>A Jira issue shared for the question can anchor an answer and give the team a source to open.</p><p class="feature-example">The exact connection and sharing flow is still being explored; this study does not prescribe a Jira sign-in screen.</p></div>
+          </details>
+        </div>
+        <p class="feature-status">Open-draft capabilities and UI studies, shown with fictional meeting details. These examples are not shipped product behavior.</p>
+      </div>
+    </section>
+    <section class="context page-wrap" id="context" aria-labelledby="context-title"><div class="section-head"><h2 id="context-title">The right context.<br><em>Only when shared.</em></h2></div><div class="context-copy"><p>Each person should choose what Dial Bot may use. Glean is planned for broader context; this local draft tests Jira access. Answers should point back to their sources.</p><p>Before changing a Jira assignee, Dial Bot would read back the exact change and ask the right person to confirm.</p></div></section>
     <section class="closing page-wrap" aria-labelledby="closing-title"><h2 id="closing-title">The meeting and the agent<br><em>can move together.</em></h2><p>Dialpad can shape how Bot joins the room, listens, waits, speaks, and leaves the work with its owners. That is the experience we are designing.</p></section>
   </main>
   <footer class="site-footer"><div class="page-wrap footer-inner"><a class="brand" href="#top" aria-label="Dialpad, back to top"><img src="./assets/dialpad-logo.svg" alt=""></a><a href="https://www.dialpad.com/ai-meetings/" target="_blank" rel="noopener noreferrer">Explore Dialpad Meetings ↗</a></div></footer>

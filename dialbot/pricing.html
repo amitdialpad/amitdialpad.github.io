@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Dial Bot pricing: a one-time 100-minute trial and an optional monthly plan for Bot-enabled meetings.">
+  <title>Pricing — Dial Bot</title>
+  <link rel="icon" href="./assets/dialpad-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./local.css"><link rel="stylesheet" href="./pricing.css">
+  <script src="./pricing.js" defer></script>
+</head>
+<body class="pricing-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="./index.html" aria-label="Dialpad, back to Dial Bot"><img src="./assets/dialpad-logo.svg" alt=""></a>
+    <nav aria-label="Site navigation"><a href="./index.html">Product</a><a href="./index.html#emotions">Dial Bot Personality Kit</a><a href="./index.html#features">In the meeting</a><a class="site-pricing-link" href="./pricing.html" aria-current="page">Pricing</a></nav>
+  </header>
+  <main id="main" class="pricing-main page-wrap">
+    <div class="pricing-heading"><p class="pricing-eyebrow">Dial Bot</p><h1>Pricing</h1><p>Proposed Bot-enabled minutes for review. Regular Dialpad Meetings continue independently.</p></div>
+    <section class="plans" aria-label="Dial Bot plans">
+      <article class="plan" aria-labelledby="trial-title">
+        <div class="plan-top"><div><span class="plan-kind">Start here</span><h2 id="trial-title">Free trial</h2></div><p class="plan-price">$0</p></div>
+        <p class="plan-summary">One-time allowance for a workspace.</p>
+        <dl class="plan-facts"><div><dt>Bot minutes</dt><dd>100 total, once</dd></div><div><dt>Meeting size</dt><dd>Up to 3 people + Dial Bot</dd></div><div><dt>Payment</dt><dd>No card. No automatic charge.</dd></div></dl>
+        <p class="plan-boundary">At minute 101, Dial Bot stops unless the workspace chooses the paid plan. The people keep meeting.</p>
+      </article>
+      <article class="plan" aria-labelledby="paid-title">
+        <div class="plan-top"><div><span class="plan-kind">After the trial · optional</span><h2 id="paid-title">Monthly plan</h2></div><p class="plan-price">$49<span> / month</span></p></div>
+        <p class="plan-summary">Ongoing Bot access for a workspace.</p>
+        <dl class="plan-facts"><div><dt>Bot minutes</dt><dd>500 each month</dd></div><div><dt>Meeting size</dt><dd>Up to 3 people + Dial Bot</dd></div><div><dt>Extra minutes</dt><dd>$10 per 100, only if opted in</dd></div></dl>
+        <p class="plan-boundary">The paid allowance starts fresh when the plan begins. Trial minutes do not carry over. No packs or fees are added automatically.</p>
+      </article>
+    </section>
+    <section class="calculator" aria-labelledby="calculator-title">
+      <div class="calculator-heading"><div><h2 id="calculator-title">Estimate your monthly cost</h2><p>Enter the Bot-enabled meeting minutes you expect to use in a paid-plan month.</p></div><p class="calculator-scope">This calculator covers the optional monthly plan. The one-time free trial is separate.</p></div>
+      <div class="calculator-grid"><div class="calculator-inputs"><label for="monthly-minutes">Bot minutes per month</label><input id="monthly-minutes" type="number" inputmode="numeric" min="0" max="100000" step="1" value="500" aria-describedby="minutes-help"><p id="minutes-help">Try 101, 110, 500, or 501 minutes.</p><label class="pack-choice" for="include-packs"><input id="include-packs" type="checkbox"><span><strong>Include extra minute packs</strong><small>100 minutes for $10 each. Only when you choose them.</small></span></label></div><div class="calculator-result" aria-live="polite" aria-atomic="true"><span>Projected monthly cost</span><strong id="projected-cost">$49</strong><div class="result-rows"><p><span>Monthly plan</span><strong>$49</strong></p><p><span>Included Bot minutes</span><strong>500</strong></p><p><span>Extra packs</span><strong id="pack-count">None</strong></p><p><span>Total available Bot minutes</span><strong id="available-minutes">500</strong></p></div><p id="calculator-message">Your estimate is within the 500 included minutes.</p></div></div>
+    </section>
+    <section class="pricing-end" aria-labelledby="end-title"><h2 id="end-title">The meeting keeps going.</h2><p>If Bot minutes run out, Dial Bot pauses or leaves. The human meeting continues. The workspace is never charged for extra Bot minutes without opting in.</p><a href="./index.html">Back to Dial Bot</a></section>
+  </main>
+  <footer class="site-footer"><div class="page-wrap footer-inner"><a class="brand" href="./index.html" aria-label="Dialpad, back to Dial Bot"><img src="./assets/dialpad-logo.svg" alt=""></a><span>Pricing proposal for review, not an active Dialpad offer. No purchases here.</span></div></footer>
+</body>
+</html>

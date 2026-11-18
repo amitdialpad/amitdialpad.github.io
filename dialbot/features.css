@@ -1,0 +1,150 @@
+.feature-gallery {
+  padding: 112px 0 118px;
+  border-top: 1px solid #e8e5e7;
+  background: #fff;
+}
+
+.feature-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 64px;
+  margin-bottom: 60px;
+}
+
+.feature-eyebrow {
+  margin: 0 0 20px;
+  color: #7052a1;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.feature-heading h2 {
+  margin: 0;
+  font-size: clamp(54px, 5.9vw, 82px);
+  font-weight: 750;
+  line-height: 1.02;
+  letter-spacing: -.06em;
+}
+
+.feature-heading h2 em {
+  font-family: 'Season Mix', Georgia, serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.feature-heading > p {
+  max-width: 390px;
+  margin: 0 0 4px;
+  color: #625b68;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.feature-list { border-top: 1px solid #dedbe0; }
+.feature-item { border-bottom: 1px solid #dedbe0; }
+.feature-item summary {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) minmax(190px, .68fr) 26px;
+  align-items: center;
+  gap: 20px;
+  min-height: 126px;
+  padding: 27px 0;
+  list-style: none;
+  cursor: pointer;
+}
+.feature-item summary::-webkit-details-marker { display: none; }
+.feature-item summary::marker { content: ''; }
+.feature-index {
+  align-self: center;
+  color: #8b858e;
+  font-size: 12px;
+  font-weight: 690;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .035em;
+}
+.feature-item summary strong {
+  color: #28212e;
+  font-size: clamp(29px, 3vw, 43px);
+  font-weight: 690;
+  line-height: 1.12;
+  letter-spacing: -.05em;
+}
+.feature-preview {
+  max-width: 300px;
+  color: #77717a;
+  font-size: 15px;
+  line-height: 1.4;
+  visibility: hidden;
+  opacity: 0;
+}
+.feature-mark {
+  justify-self: end;
+  color: #655c6d;
+  font-family: Arial, sans-serif;
+  font-size: 29px;
+  font-weight: 300;
+  line-height: 1;
+}
+.feature-mark::before { content: '+'; }
+.feature-item[open] .feature-mark::before { content: '−'; }
+.feature-item[open] summary strong { color: #533b72; }
+.feature-item[open] .feature-index { color: #7052a1; }
+.feature-item[open] .feature-preview,
+.feature-item summary:focus-visible .feature-preview { visibility: visible; opacity: 1; }
+.feature-item summary:focus-visible { outline: 2px solid #7052a1; outline-offset: -2px; }
+
+.feature-detail {
+  max-width: 900px;
+  padding: 0 32px 32px 78px;
+}
+.feature-detail p {
+  max-width: 760px;
+  margin: 0 0 12px;
+  color: #4d4553;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.feature-detail p:last-child { margin-bottom: 0; }
+.feature-detail .feature-example { color: #79717e; font-size: 15px; }
+.feature-detail strong { color: #453053; font-weight: 700; }
+.feature-status {
+  max-width: 770px;
+  margin: 25px 0 0;
+  color: #827b85;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .feature-item summary:hover .feature-preview { visibility: visible; opacity: 1; }
+  .feature-item summary:hover strong { color: #533b72; }
+}
+
+@media (max-width: 900px) {
+  .feature-gallery { padding: 90px 0 96px; }
+  .feature-heading { align-items: start; gap: 28px; margin-bottom: 48px; }
+  .feature-heading > p { max-width: 320px; font-size: 16px; }
+  .feature-item summary { grid-template-columns: 44px minmax(0, 1fr) minmax(140px, .57fr) 24px; gap: 14px; min-height: 112px; }
+  .feature-item summary strong { font-size: clamp(28px, 3.6vw, 35px); }
+  .feature-preview { font-size: 13px; }
+  .feature-detail { padding-left: 58px; }
+}
+
+@media (max-width: 620px) {
+  .feature-gallery { padding: 75px 0 82px; }
+  .feature-heading { display: block; margin-bottom: 36px; }
+  .feature-heading h2 { margin-bottom: 19px; font-size: clamp(48px, 11vw, 60px); }
+  .feature-heading > p { max-width: 100%; font-size: 16px; }
+  .feature-item summary { grid-template-columns: 31px minmax(0, 1fr) 20px; gap: 11px; min-height: 98px; padding: 25px 0; }
+  .feature-item summary strong { font-size: clamp(25px, 7vw, 30px); line-height: 1.13; }
+  .feature-preview { display: none; }
+  .feature-mark { font-size: 25px; }
+  .feature-index { font-size: 11px; }
+  .feature-detail { padding: 0 22px 27px 42px; }
+  .feature-detail p { font-size: 16px; }
+  .feature-detail .feature-example { font-size: 14px; }
+  .feature-status { font-size: 10px; }
+}
