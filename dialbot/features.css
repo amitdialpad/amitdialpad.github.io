@@ -108,7 +108,6 @@
   line-height: 1.5;
 }
 .feature-detail p:last-child { margin-bottom: 0; }
-.feature-detail .feature-example { color: #79717e; font-size: 15px; }
 .feature-detail strong { color: #453053; font-weight: 700; }
 .feature-status {
   max-width: 770px;
@@ -145,6 +144,5 @@
   .feature-index { font-size: 11px; }
   .feature-detail { padding: 0 22px 27px 42px; }
   .feature-detail p { font-size: 16px; }
-  .feature-detail .feature-example { font-size: 14px; }
   .feature-status { font-size: 10px; }
 }
