@@ -35,6 +35,7 @@ let canvasWidth = 0;
 let canvasHeight = 0;
 let reactionEffect = null;
 let lastWheelAt = 0;
+let wheelDelta = 0;
 let touchStartY = null;
 let suppressClickUntil = 0;
 const displayed = structuredClone(treatments.thinking);
@@ -369,13 +370,21 @@ moodButtons.forEach((button) => button.addEventListener('click', () => {
   selectMood(button.dataset.state, true);
 }));
 moodControls.addEventListener('wheel', (event) => {
+  if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+  // This is a discrete wheel, not a scroll container. Keep vertical gestures here,
+  // including the events received while the selection animation is settling.
+  event.preventDefault();
   const now = performance.now();
-  if (Math.abs(event.deltaY) < 5 || now - lastWheelAt < 420) return;
+  if (now - lastWheelAt < 420) return;
+  const pixels = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? moodControls.clientHeight : 1);
+  wheelDelta += pixels;
+  if (Math.abs(wheelDelta) < 12) return;
   lastWheelAt = now;
   stopOnInteraction();
-  const step = event.deltaY > 0 ? 1 : -1;
+  const step = wheelDelta > 0 ? 1 : -1;
+  wheelDelta = 0;
   selectMood(moodOrder[(moodOrder.indexOf(activeMood) + step + moodOrder.length) % moodOrder.length], true);
-}, { passive: true });
+}, { passive: false });
 moodControls.addEventListener('touchstart', (event) => {
   touchStartY = event.changedTouches[0]?.clientY ?? null;
 }, { passive: true });

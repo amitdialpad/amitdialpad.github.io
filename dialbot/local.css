@@ -93,7 +93,7 @@ html{scroll-behavior:smooth}body{margin:0;min-width:320px}button,a{font:inherit}
 @media(max-width:620px){.mood-stage-label{left:0;right:0;bottom:17px}}
 
 /* Compact looping selector. Its viewport stays the height of the original five-row list. */
-.emotion-controls{display:block;position:relative;height:410px;max-height:none;overflow:hidden;border-color:#dcd9e0;padding:0;user-select:none}
+.emotion-controls{display:block;position:relative;height:410px;max-height:none;overflow:hidden;border-color:#dcd9e0;padding:0;user-select:none;touch-action:pan-x}
 .emotion-controls button{position:absolute;top:50%;left:0;right:0;height:82px;grid-template-columns:30px minmax(0,1fr) 8px;align-items:center;gap:14px;padding:16px 5px 16px 4px;border-color:#dcd9e0;background:transparent;box-shadow:none;opacity:1;transform:translateY(calc(-50% + var(--wheel-offset,0px)));transition:transform .42s cubic-bezier(.77,0,.175,1),opacity .24s cubic-bezier(.23,1,.32,1),background .18s ease}
 .emotion-controls button.wheel-hidden{opacity:0;pointer-events:none;transition:none}
 .emotion-controls button::after{content:'';width:7px;height:7px;border-radius:50%;background:transparent}
