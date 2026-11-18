@@ -3,59 +3,40 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#111015">
-  <meta name="description" content="Dial Bot: a North Star concept for a natural voice in Dialpad Meetings.">
+  <meta name="description" content="Meet Dial Bot, an extra mind for Dialpad Meetings. Say Hey Dial Bot when your team needs it.">
   <title>Dial Bot — Meetings, plus one</title>
   <link rel="stylesheet" href="./assets/tokens-base-light.css"><link rel="stylesheet" href="./assets/tokens-dp-light.css">
   <link rel="stylesheet" href="./local.css"><script src="./site.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header"><a class="brand" href="#top" aria-label="Dialpad Bot, back to top"><img src="./assets/dialpad-logo.svg" alt="Dialpad"><span>Bot</span></a><nav aria-label="Page sections"><a href="#experience">The idea</a><a href="#emotions">Expression Kit</a><a href="#context">Your context</a></nav><span class="header-note">North Star concept</span></header>
+  <header class="site-header"><a class="brand" href="#top" aria-label="Dialpad, back to top"><img src="./assets/dialpad-logo.svg" alt=""></a><nav aria-label="Page sections"><a href="#experience">The idea</a><a href="#emotions">Expression Kit</a><a href="#context">Your context</a></nav></header>
   <main id="main">
     <section class="hero" id="top" aria-labelledby="intro-title">
       <div class="hero-copy page-wrap" id="experience">
-        <p class="hero-eyebrow"><span aria-hidden="true"></span>Dial Bot for Meetings · North Star</p>
         <h1 id="intro-title">Meetings, <em>plus one.</em></h1>
-        <p class="hero-lede">An extra mind in the room when your team needs one. Ask out loud, keep talking while it checks, and move forward together.</p>
+        <p class="hero-lede"><strong>Dial Bot</strong> is designed to wait quietly until someone says “Hey Dial Bot.”</p>
       </div>
-      <div class="hero-showcase" aria-label="Dial Bot concept film">
+      <div class="hero-showcase" aria-label="Dial Bot meeting film">
         <div class="film-stage" id="film-stage">
-          <div class="film-placeholder"><img src="./assets/camera-off-meeting.png" alt="Illustrative Dialpad meeting with camera-off cards"><div class="poster-shade"></div><div class="poster-content"><span class="poster-mark" aria-hidden="true">✦</span><span class="poster-kicker">Dial Bot in a meeting</span><strong>One more mind joins the room.</strong><small>The concept film will play here when its video is available.</small></div></div>
-          <video id="hero-film" controls playsinline preload="metadata" aria-label="Dial Bot pod meeting concept film" data-src="./assets/dial-bot-pod-film.mp4?v=b3f78e28" hidden>Your browser does not support video playback.</video>
+          <div class="film-placeholder"><img src="./assets/camera-off-meeting.png" alt="Dialpad camera-off meeting tiles"><div class="poster-shade"></div><div class="poster-content"><span class="poster-mark" aria-hidden="true">✦</span><span class="poster-kicker">Dial Bot in a meeting</span><strong>One more mind joins the room.</strong><small>The video is unavailable in this preview.</small></div></div>
+          <video id="hero-film" controls playsinline preload="metadata" aria-label="Dial Bot pod meeting film" data-src="./assets/dial-bot-pod-film.mp4?v=dd2a5850" hidden>Your browser does not support video playback.</video>
         </div>
       </div>
-      <p class="hero-caption">A North Star concept film with staged meeting scenes and Bot motion captured from the current app.</p>
-    </section>
-    <section class="conversation page-wrap" aria-labelledby="latency-title">
-      <div class="section-head">
-        <p class="eyebrow">Meeting etiquette · North Star</p>
-        <h2 id="latency-title">The room keeps<br><em>moving.</em></h2>
-      </div>
-      <div class="conversation-body">
-        <p>Looking up a Jira ticket can take time. Dial Bot acknowledges the ask, gives a natural update if the search runs long, and lets everyone keep talking. When it is ready, it waits for a pause and an invitation to answer.</p>
-        <div class="dialogue" aria-label="Intended conversation during a longer search">
-          <div><span>Dial Bot</span><p>“I’m still checking the linked items. This may take a moment.”</p></div>
-          <div><span>Engineer</span><p>“I can start on the failed-join fix while you look.”</p></div>
-          <div><span>Dial Bot</span><p>“I have the list whenever you’re ready.”</p></div>
-          <div><span>PM</span><p>“Go ahead.”</p></div>
-        </div>
-        <p class="latency-note">This is conversational timing, not a promise of instant AI answers. The waiting and invitation flow is a future-state design.</p>
-      </div>
+      <p class="hero-caption">Staged meeting film. Dial Bot motion was captured from the current app.</p>
     </section>
     <section class="emotions-showcase" id="emotions" aria-labelledby="emotions-title">
       <div class="page-wrap">
         <div class="emotions-heading">
-          <div><p class="eyebrow">Visual study · North Star</p><h2 id="emotions-title">Dial Bot<br><em>Expression Kit</em></h2></div>
-          <p>The Bot has a presence in the room. Its motion gives people a simple cue for what it is doing, without taking over the meeting.</p>
+          <div><h2 id="emotions-title">Dial Bot<br><em>Expression Kit</em></h2></div>
+          <p>The aim is to make its timing legible. When a search takes longer, Dial Bot would say so, let the meeting continue, and wait to speak.</p>
         </div>
         <div class="emotions-grid">
           <div class="motion-frame">
-            <div class="motion-frame-head"><span>Dial Bot in a meeting</span><span>Motion preview · sound off</span></div>
             <div class="motion-stage" id="motion-stage">
               <video id="emotion-video" loop muted playsinline preload="metadata" poster="./assets/motion/dialbot-listening-renderer.png" aria-label="Actual Dial Bot listening animation from a controlled app capture" src="./assets/motion/dialbot-listening-renderer.mp4"></video>
               <div class="standby-panel" id="standby-panel" hidden><span class="standby-indicator" aria-hidden="true"></span><strong>Standby</strong><span>Ready when called</span></div>
             </div>
-            <div class="motion-frame-foot"><strong id="emotion-current-label">Listening</strong><span id="emotion-source-label">Current app renderer · controlled capture</span></div>
           </div>
           <div class="emotion-controls" role="group" aria-label="Explore Dial Bot expressions">
             <button type="button" data-state="standby" aria-pressed="false" aria-controls="motion-stage"><span class="emotion-number">01</span><span class="emotion-button-copy"><strong>Standby</strong><small>Quiet until someone calls on Dial Bot.</small></span></button>
@@ -65,13 +46,12 @@
             <button type="button" data-state="paused" aria-pressed="false" aria-controls="motion-stage"><span class="emotion-number">05</span><span class="emotion-button-copy"><strong>Paused</strong><small>Held by the host until it is resumed.</small></span></button>
           </div>
         </div>
-        <p class="motion-provenance">Listening, Thinking, Speaking, and Paused show silent motion captured from the current Dial Bot renderer in a controlled scene. Standby is a visual concept. These clips do not demonstrate a complete live meeting or the future turn-taking flow.</p>
         <span class="sr-only" id="emotion-live" aria-live="polite"></span>
       </div>
     </section>
-    <section class="context page-wrap" id="context" aria-labelledby="context-title"><div class="section-head"><p class="eyebrow">Context, by invitation · North Star</p><h2 id="context-title">The right context.<br><em>Only when shared.</em></h2></div><div class="context-copy"><p>People connect their own Glean access and choose what the meeting may use. Dial Bot can draw on that shared context to answer a question aloud, point back to a source, or propose a follow-up.</p><p>Before a consequential action—such as reassigning a Jira ticket—it reads back the exact change and asks the right person to confirm.</p></div></section>
-    <section class="closing page-wrap" aria-labelledby="closing-title"><p class="eyebrow">Why build it</p><h2 id="closing-title">The meeting and the agent<br><em>can move together.</em></h2><p>Dialpad can shape how Bot joins the room, listens, waits, speaks, and leaves the work with its owners. That is the experience this concept explores.</p></section>
+    <section class="context page-wrap" id="context" aria-labelledby="context-title"><div class="section-head"><h2 id="context-title">The right context.<br><em>Only when shared.</em></h2></div><div class="context-copy"><p>We are designing for each person to connect Glean and choose what the meeting can use. Dial Bot would answer from that shared context and point back to its sources.</p><p>Before changing a Jira assignee, it would read back the exact change and ask the right person to confirm.</p></div></section>
+    <section class="closing page-wrap" aria-labelledby="closing-title"><h2 id="closing-title">The meeting and the agent<br><em>can move together.</em></h2><p>Dialpad can shape how Bot joins the room, listens, waits, speaks, and leaves the work with its owners. That is the experience we are designing.</p></section>
   </main>
-  <footer class="site-footer"><div class="page-wrap footer-inner"><a class="brand" href="#top" aria-label="Dialpad Bot, back to top"><img src="./assets/dialpad-logo.svg" alt="Dialpad"><span>Bot</span></a><span>Concept by <a href="https://epd-team.apps.dialpadhq.com/raw/amit.ayre@dialpad.com" target="_blank" rel="noopener noreferrer">Amit Ayre</a></span><a href="https://www.dialpad.com/ai-meetings/" target="_blank" rel="noopener noreferrer">Explore Dialpad Meetings ↗</a></div></footer>
+  <footer class="site-footer"><div class="page-wrap footer-inner"><a class="brand" href="#top" aria-label="Dialpad, back to top"><img src="./assets/dialpad-logo.svg" alt=""></a><a href="https://www.dialpad.com/ai-meetings/" target="_blank" rel="noopener noreferrer">Explore Dialpad Meetings ↗</a></div></footer>
 </body>
 </html>

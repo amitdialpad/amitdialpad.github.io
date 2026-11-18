@@ -11,8 +11,6 @@ const expressionButtons = [...expressionControls.querySelectorAll('button[data-s
 const expressionFrame = document.querySelector('.motion-frame');
 const expressionVideo = document.getElementById('emotion-video');
 const standbyPanel = document.getElementById('standby-panel');
-const expressionLabel = document.getElementById('emotion-current-label');
-const expressionSource = document.getElementById('emotion-source-label');
 const expressionLive = document.getElementById('emotion-live');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const cycleIntervalMs = 6500;
@@ -61,19 +59,16 @@ function selectExpression(expression, announce = false) {
   });
 
   const name = expression[0].toUpperCase() + expression.slice(1);
-  expressionLabel.textContent = name;
   if (announce) expressionLive.textContent = `${name} expression selected`;
   if (expression === 'standby') {
     expressionVideo.pause();
     expressionVideo.hidden = true;
     standbyPanel.hidden = false;
-    expressionSource.textContent = 'Visual concept · quiet until called';
     return;
   }
 
   standbyPanel.hidden = true;
   expressionVideo.hidden = false;
-  expressionSource.textContent = 'Current app renderer · controlled capture';
   if (changed) {
     const asset = expressionMedia[expression];
     expressionVideo.pause();
