@@ -5,13 +5,13 @@
   <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#111015">
   <meta name="description" content="Meet Dial Bot, an extra mind for Dialpad Meetings. Say Hey Dial Bot when your team needs it.">
   <title>Dial Bot — Meetings, plus one</title>
-  <link rel="icon" href="./assets/dialpad-logo.svg" type="image/svg+xml">
+  <link rel="icon" href="./assets/dialpad-icon-tile-gradient.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/tokens-base-light.css"><link rel="stylesheet" href="./assets/tokens-dp-light.css">
-  <link rel="stylesheet" href="./local.css?v=poster1"><link rel="stylesheet" href="./catchup.css"><link rel="stylesheet" href="./features.css?v=single-copy1"><link rel="stylesheet" href="./hero-bot-tittle.css?v=3"><link rel="stylesheet" href="./hero-video-grid.css?v=2"><link rel="stylesheet" href="./pricing.css"><script src="./site.js?v=poster1" defer></script><script src="./mood-kit.js?v=personality-scroll1" defer></script><script src="./hero-bot-tittle.js" defer></script><script src="./hero-video-grid.js?v=2" defer></script>
+  <link rel="stylesheet" href="./local.css?v=poster1"><link rel="stylesheet" href="./catchup.css"><link rel="stylesheet" href="./features.css?v=single-copy1"><link rel="stylesheet" href="./hero-bot-tittle.css?v=3"><link rel="stylesheet" href="./hero-video-grid.css?v=2"><link rel="stylesheet" href="./pricing.css"><link rel="stylesheet" href="./bot-sequence.css?v=7"><script src="./site.js?v=poster1" defer></script><script src="./mood-kit.js?v=personality-scroll1" defer></script><script src="./hero-bot-tittle.js" defer></script><script src="./hero-video-grid.js?v=2" defer></script><script src="./bot-sequence.js?v=7" type="module"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header"><a class="brand" href="#top" aria-label="Dialpad, back to top"><img src="./assets/dialpad-logo.svg" alt=""></a><nav aria-label="Page sections"><a href="#experience">The idea</a><a href="#emotions">Dial Bot Personality Kit</a><a href="#catch-up">Catch up</a><a href="#features">In the meeting</a><a href="#context">Your context</a><a class="site-pricing-link" href="./pricing.html">Pricing</a></nav></header>
+  <header class="site-header"><a class="brand" href="#top" aria-label="Dialpad, back to top"><img src="./assets/dialpad-logo.svg" alt=""></a><nav aria-label="Page navigation"><a class="site-pricing-link" href="./pricing.html">Pricing</a></nav></header>
   <main id="main">
     <section class="hero" id="top" aria-labelledby="intro-title">
       <div class="hero-copy page-wrap" id="experience">
@@ -27,7 +27,6 @@
           <button class="film-play" id="film-play" type="button" aria-label="Watch the meeting: play the Dial Bot film"><span class="film-play-icon" aria-hidden="true"></span><span class="film-play-label">Watch the meeting</span></button>
         </div>
       </div>
-      <p class="hero-caption">Staged meeting film with the updated Dial Bot motion.</p>
     </section>
     <section class="emotions-showcase" id="emotions" aria-labelledby="emotions-title">
       <div class="page-wrap">
@@ -96,7 +95,6 @@
             </div>
           </div>
         </div>
-        <p class="catchup-study-note">Illustrative concept for review. The sample meeting and recap are fictional.</p>
       </div>
     </section>
     <section class="feature-gallery" id="features" aria-labelledby="features-title">
@@ -132,14 +130,21 @@
           </details>
           <details class="feature-item">
             <summary><span class="feature-index">07</span><strong>Bring the issue into focus.</strong><span class="feature-preview">A specific source for the answer.</span><span class="feature-mark" aria-hidden="true"></span></summary>
-            <div class="feature-detail"><p>A Jira issue shared for the question gives Dial Bot a specific source to answer from and link back to. The connection and sharing flow are still being explored.</p></div>
+            <div class="feature-detail"><p>Choose what context Dial Bot can use for a question. A shared Jira issue gives it a specific source to answer from and link back to; the connection and sharing flow are still being explored.</p></div>
           </details>
         </div>
-        <p class="feature-status">Open-draft capabilities and UI studies, shown with fictional meeting details. These examples are not shipped product behavior.</p>
       </div>
     </section>
-    <section class="context page-wrap" id="context" aria-labelledby="context-title"><div class="section-head"><h2 id="context-title">The right context.<br><em>Only when shared.</em></h2></div><div class="context-copy"><p>Each person should choose what Dial Bot may use. Glean is planned for broader context; this local draft tests Jira access. Answers should point back to their sources.</p><p>Before changing a Jira assignee, Dial Bot would read back the exact change and ask the right person to confirm.</p></div></section>
-    <section class="closing page-wrap" aria-labelledby="closing-title"><h2 id="closing-title">The meeting and the agent<br><em>can move together.</em></h2><p>Dialpad can shape how Bot joins the room, listens, waits, speaks, and leaves the work with its owners. That is the experience we are designing.</p></section>
+    <section class="closing sequence-showcase page-wrap" id="sequence" aria-labelledby="closing-title">
+      <div class="closing-copy"><h2 id="closing-title">The meeting and the agent <em>can move together.</em></h2></div>
+      <div class="sequence-player" id="sequence-demo">
+        <div class="sequence-canvas-stack" id="sequence-canvas-stack" role="img" aria-label="Dial Bot in standby">
+          <canvas id="sequence-canvas" class="sequence-canvas is-front" width="960" height="540" aria-hidden="true"></canvas>
+          <canvas id="sequence-canvas-next" class="sequence-canvas is-back" width="960" height="540" aria-hidden="true"></canvas>
+        </div>
+        <span class="sequence-state" id="sequence-state" role="status" aria-live="off">Standby</span>
+      </div>
+    </section>
   </main>
   <footer class="site-footer"><div class="page-wrap footer-inner"><a class="brand" href="#top" aria-label="Dialpad, back to top"><img src="./assets/dialpad-logo.svg" alt=""></a><a href="https://www.dialpad.com/ai-meetings/" target="_blank" rel="noopener noreferrer">Explore Dialpad Meetings ↗</a></div></footer>
 </body>
