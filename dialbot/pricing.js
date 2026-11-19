@@ -58,7 +58,7 @@
     costOutput.textContent = '$' + quoteCost.toLocaleString();
     quoteBreakdown.textContent = requiredPacks === 0 ? '500 minutes included in the monthly plan' : 'Includes ' + requiredPacks + ' × $10 extra ' + (requiredPacks === 1 ? 'pack' : 'packs');
     currentCostOutput.textContent = '$' + currentCost.toLocaleString();
-    currentCoverage.textContent = shortfall > 0 ? covered.toLocaleString() + ' of ' + value.toLocaleString() + ' minutes covered · ' + shortfall.toLocaleString() + '-minute shortfall' : 'All ' + value.toLocaleString() + ' estimated minutes covered';
+    currentCoverage.textContent = shortfall > 0 ? shortfall.toLocaleString() + (shortfall === 1 ? ' minute' : ' minutes') + ' uncovered' : 'All ' + value.toLocaleString() + ' minutes covered';
     currentSettings.dataset.shortfall = String(shortfall > 0);
     packOutput.textContent = packsUsed === 0 ? 'None' : packsUsed + ' × $10';
     spendOutput.textContent = '$' + budget.toLocaleString();
