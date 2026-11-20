@@ -1,0 +1,86 @@
+WEBVTT
+
+00:00:02.000 --> 00:00:04.300
+Mira: We need a call on Friday. I sent the review deck,
+
+00:00:04.300 --> 00:00:06.700
+but the last decision and the polish issue
+
+00:00:06.700 --> 00:00:08.850
+don't quite line up.
+
+00:00:11.500 --> 00:00:14.100
+Yacine: Let's bring Dial Bot in while we sort that out.
+
+00:00:30.000 --> 00:00:34.374
+Mira: Here's the Friday slide. The QA line is what worries me.
+
+00:00:36.100 --> 00:00:39.568
+Mira: Dial Bot, what does this slide say about QA?
+
+00:00:40.900 --> 00:00:43.479
+Dial Bot: It says QA is complete.
+
+00:00:44.000 --> 00:00:47.486
+Mira: Exactly. We need to check that before we send it.
+
+00:00:48.000 --> 00:00:54.534
+Mira: Dial Bot, check my Jira polish issue and the Glean decision log for Friday. Send me the findings privately.
+
+00:00:55.867 --> 00:00:57.584
+Dial Bot: I've sent that privately.
+
+00:01:01.600 --> 00:01:07.126
+Yacine: I'll change QA complete to demo-ready; QA next week on the slide.
+
+00:01:09.133 --> 00:01:13.147
+Yacine: Then Friday is the demo. We won't call QA done.
+
+00:01:13.666 --> 00:01:16.742
+Mira: I'll check the message after Amit sends the final deck.
+
+00:01:17.266 --> 00:01:22.480
+Yacine: Hey Dial Bot, add an action item for Amit to update and send the Friday deck today.
+
+00:01:26.200 --> 00:01:32.614
+Yacine: Hey Dial Bot, record the decision: Friday demo with the revised deck; QA follows next week.
+
+00:01:34.633 --> 00:01:36.833
+[Amit joins the meeting]
+
+00:01:36.983 --> 00:01:40.283
+Dial Bot (private text): Hi Amit, I'm Dial Bot. Want a private catch-up on what happened before you joined? Reply yes.
+
+00:01:40.583 --> 00:01:42.283
+Amit (private text): yes
+
+00:01:42.583 --> 00:01:48.283
+Dial Bot (private text): Friday's demo is on after you update the deck. Mira will check the wording. QA starts next week. Your open task is the revised Friday deck.
+
+00:01:48.683 --> 00:01:51.609
+Amit: Okay, I'm with you. I'll update the deck.
+
+00:01:52.383 --> 00:01:55.465
+Yacine: Hey Dial Bot, what still needs doing before Friday?
+
+00:01:56.816 --> 00:02:01.179
+Dial Bot: Amit needs to send the revised deck. And Mira needs to...
+
+00:02:01.283 --> 00:02:06.587
+Mira: One second. Amit sends the final deck, and I'll check the wording. That's the next step.
+
+00:02:07.383 --> 00:02:11.439
+Yacine: Let's pause Dial Bot while we check the final handoff wording ourselves.
+
+00:02:12.650 --> 00:02:15.575
+Yacine: Okay. Let's bring Dial Bot back for the handoff.
+
+00:02:17.333 --> 00:02:22.033
+Dial Bot (room chat): Friday demo goes ahead with Amit's revised deck. Amit sends the deck today; Mira checks the wording. QA starts next week.
+
+00:02:24.633 --> 00:02:27.324
+Mira: I'll check Amit's final wording when it arrives.
+
+00:02:28.100 --> 00:02:30.137
+Amit: And I'll send the revised deck.
+

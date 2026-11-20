@@ -1,0 +1,13 @@
+{
+  "film": "../assets/dialbot-story-review-v3.mp4?v=story-qa-context-review-4",
+  "captions": "../assets/dialbot-story-review-v3.vtt?v=story-qa-context-review-4",
+  "poster": "../assets/chapter-01-friday-review-poster.jpg",
+  "durationSeconds": 152.433,
+  "reviewStatus": "local-review",
+  "beats": [
+    { "number": 1, "title": "The problem", "startSeconds": 0 },
+    { "number": 2, "title": "Check and decide", "startSeconds": 48 },
+    { "number": 3, "title": "Amit catches up", "startSeconds": 93.133 },
+    { "number": 4, "title": "The handoff", "startSeconds": 112.133 }
+  ]
+}

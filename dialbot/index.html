@@ -7,11 +7,11 @@
   <title>Dial Bot — Meetings, plus one</title>
   <link rel="icon" href="./assets/dialpad-icon-tile-gradient.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/tokens-base-light.css"><link rel="stylesheet" href="./assets/tokens-dp-light.css">
-  <link rel="stylesheet" href="./local.css?v=poster1"><link rel="stylesheet" href="./catchup.css"><link rel="stylesheet" href="./features.css?v=single-copy1"><link rel="stylesheet" href="./hero-bot-tittle.css?v=3"><link rel="stylesheet" href="./hero-video-grid.css?v=2"><link rel="stylesheet" href="./pricing.css"><link rel="stylesheet" href="./bot-sequence.css?v=7"><script src="./site.js?v=poster1" defer></script><script src="./mood-kit.js?v=personality-scroll1" defer></script><script src="./hero-bot-tittle.js" defer></script><script src="./hero-video-grid.js?v=2" defer></script><script src="./bot-sequence.js?v=7" type="module"></script>
+  <link rel="stylesheet" href="./local.css?v=poster2"><link rel="stylesheet" href="./features.css?v=lanes1"><link rel="stylesheet" href="./skills-kit.css?v=7"><link rel="stylesheet" href="./hero-bot-tittle.css?v=3"><link rel="stylesheet" href="./hero-video-grid.css?v=2"><link rel="stylesheet" href="./pricing.css"><link rel="stylesheet" href="./bot-sequence.css?v=7"><link rel="stylesheet" href="./marketing-nav.css?v=1"><script src="./site.js?v=poster1" defer></script><script src="./mood-kit.js?v=personality-scroll1" defer></script><script src="./skills-kit.js?v=7" defer></script><script src="./hero-bot-tittle.js" defer></script><script src="./hero-video-grid.js?v=2" defer></script><script src="./bot-sequence.js?v=7" type="module"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header"><a class="brand" href="#top" aria-label="Dialpad, back to top"><img src="./assets/dialpad-logo.svg" alt=""></a><nav aria-label="Page navigation"><a class="site-pricing-link" href="./pricing.html">Pricing</a></nav></header>
+  <header class="site-header"><a class="brand" href="#top" aria-label="Dialpad, back to top"><img src="./assets/dialpad-logo.svg" alt=""></a><nav aria-label="Site navigation"><a href="./index.html" aria-current="page">Home</a><a class="site-pricing-link" href="./pricing.html">Pricing</a><a href="./demo/">Demo</a><a href="./team.html">Team</a></nav></header>
   <main id="main">
     <section class="hero" id="top" aria-labelledby="intro-title">
       <div class="hero-copy page-wrap" id="experience">
@@ -55,84 +55,48 @@
         <span class="sr-only" id="emotion-live" aria-live="polite"></span>
       </div>
     </section>
-    <section class="catchup-showcase" id="catch-up" aria-labelledby="catchup-title">
+    <section class="skills-showcase" id="skills" aria-labelledby="skills-title">
       <div class="page-wrap">
-        <div class="catchup-heading">
-          <div><p class="catchup-eyebrow">A better way to arrive late</p><h2 id="catchup-title">Catch up.<br><em>Then join in.</em></h2></div>
-          <p>Step into a meeting already in motion. Ask Dial Bot privately for the part you missed, then join the conversation with context.</p>
+        <div class="emotions-heading skills-heading">
+          <div><h2 id="skills-title">Meeting skills</h2></div>
         </div>
-        <div class="catchup-scene" aria-label="Illustrative late-join Catch-up experience">
-          <section class="catchup-panel" aria-label="Private chat between Amit and Dial Bot">
-            <div class="catchup-chat-header">
-              <p>Private chat with Dial Bot</p>
-              <span>Not shared with the meeting</span>
-            </div>
-            <div class="catchup-request">
-              <p class="catchup-speaker">Amit</p>
-              <p>Summarize the beginning of this meeting.</p>
-            </div>
-            <div class="catchup-response">
-              <p class="catchup-speaker">Dial Bot</p>
-              <h3 id="catchup-panel-title">Catching you up</h3>
-              <p class="catchup-range">00:00–02:18 of this meeting</p>
-              <div class="catchup-recap-item">
-                <h4>So far</h4>
-                <p>The PM and Maya are reviewing the polish items for Friday’s build. Maya can raise a PR today; QA starts next week.</p>
-              </div>
-              <div class="catchup-recap-item catchup-recap-open">
-                <h4>Open point</h4>
-                <p>Which polish items must land before the push, and which can wait for QA?</p>
+        <div class="skills-active-heading" id="skills-active-heading"><button type="button" id="skill-current-name" aria-label="Play Answer a question">Answer a question</button></div>
+        <div class="emotions-grid skills-grid">
+          <div class="skills-player-column">
+            <div class="motion-frame skills-frame">
+              <div class="motion-stage skills-stage" id="skills-stage" role="button" tabindex="0" aria-label="Play Answer a question video">
+                <video id="skills-video" playsinline preload="metadata" poster="./assets/chapters/chapter-01-poster.jpg" aria-hidden="true"><source type="video/mp4"></video>
               </div>
             </div>
-          </section>
-          <div class="catchup-meeting" role="img" aria-label="Friday release meeting in progress. The PM is speaking with Maya. Amit has just joined; Dial Bot is quiet.">
-            <div class="catchup-meeting-bar"><span class="catchup-live-dot"></span><span>Friday release · in progress</span></div>
-            <div class="catchup-tiles">
-              <div class="catchup-person is-speaking"><span class="catchup-avatar">PM</span><span class="catchup-person-name">Product manager</span></div>
-              <div class="catchup-person"><span class="catchup-avatar">MY</span><span class="catchup-person-name">Maya · Engineering</span></div>
-              <div class="catchup-person"><span class="catchup-avatar">AA</span><span class="catchup-person-name">Amit · Design · just joined</span></div>
-              <div class="catchup-person is-bot"><span class="catchup-bot-orbit" aria-hidden="true">✦</span><span class="catchup-person-name">Dial Bot · standby</span></div>
+            <div class="skills-player-meta">
+              <div class="skills-stepper" aria-label="Skill playback navigation"><button type="button" id="skill-prev" aria-label="Previous skill" title="Previous skill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" id="skill-next" aria-label="Next skill" title="Next skill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+              <button type="button" id="skill-sound" class="skills-sound-button" aria-label="Turn sound off" aria-pressed="true"><svg class="skills-sound-on-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4zM16 9a4 4 0 0 1 0 6m2-9a8 8 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="skills-sound-off-icon" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6m0-6-5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
             </div>
+            <p class="skills-play-status" id="skill-play-status" role="status" hidden>Playback paused. Click the video to continue.</p>
+          </div>
+          <div class="emotion-controls skills-controls" role="group" aria-label="Watch Dial Bot meeting skills">
+            <button type="button" data-skill="02" aria-pressed="false" aria-controls="skills-video"><span class="emotion-number">01</span><span class="emotion-button-copy"><strong>Answer a question</strong><small>Give a brief answer aloud.</small></span></button>
+            <button type="button" data-skill="05" aria-pressed="false" aria-controls="skills-video"><span class="emotion-number">02</span><span class="emotion-button-copy"><strong>Start a meeting timer</strong><small>Keep the room on time.</small></span></button>
+            <button type="button" data-skill="07" aria-pressed="false" aria-controls="skills-video"><span class="emotion-number">03</span><span class="emotion-button-copy"><strong>Find the evidence</strong><small>Look up a Jira issue and decision log privately.</small></span></button>
+            <button type="button" data-skill="08" aria-pressed="false" aria-controls="skills-video"><span class="emotion-number">04</span><span class="emotion-button-copy"><strong>Capture the decision</strong><small>Record the outcome and owners.</small></span></button>
+            <button type="button" data-skill="09" aria-pressed="false" aria-controls="skills-video"><span class="emotion-number">05</span><span class="emotion-button-copy"><strong>Recap the room</strong><small>Bring the discussion together aloud.</small></span></button>
+            <button type="button" data-skill="10" aria-pressed="false" aria-controls="skills-video"><span class="emotion-number">06</span><span class="emotion-button-copy"><strong>Catch up</strong><small>Share a private meeting brief.</small></span></button>
+            <button type="button" data-skill="12" aria-pressed="false" aria-controls="skills-video"><span class="emotion-number">07</span><span class="emotion-button-copy"><strong>Share the meeting link</strong><small>Return one copyable room link.</small></span></button>
+            <button type="button" data-skill="13" aria-pressed="false" aria-controls="skills-video"><span class="emotion-number">08</span><span class="emotion-button-copy"><strong>Plan a follow-up</strong><small>Propose a time for confirmation.</small></span></button>
           </div>
         </div>
+        <span class="sr-only" id="skills-live" aria-live="polite"></span>
       </div>
     </section>
     <section class="feature-gallery" id="features" aria-labelledby="features-title">
       <div class="page-wrap">
-        <div class="feature-heading">
-          <div><p class="feature-eyebrow">Beyond the answer</p><h2 id="features-title">In the flow<br><em>of the meeting.</em></h2></div>
-          <p>Speak, type, ask for a room action, or point to what is being shared. Open a line to see how it could work.</p>
+        <div class="feature-heading"><h2 id="features-title">Who gets what<br><em>in the meeting.</em></h2></div>
+        <div class="feature-rows">
+          <div class="feature-row"><span class="feature-number" aria-hidden="true">01</span><h3>Host controls</h3><p>The host invites Dial Bot, can pause or resume it, and can remove it from the meeting.</p></div>
+          <div class="feature-row"><span class="feature-number" aria-hidden="true">02</span><h3>Personal lane</h3><p>Private questions and catch-up stay in the requester's Meetings chat.</p></div>
+          <div class="feature-row"><span class="feature-number" aria-hidden="true">03</span><h3>Room lane</h3><p>Addressed spoken answers, public links, and the final handoff go to Everyone.</p></div>
         </div>
-        <div class="feature-list">
-          <details class="feature-item">
-            <summary><span class="feature-index">01</span><strong>Private chat with Dial Bot.</strong><span class="feature-preview">A conversation only you can see.</span><span class="feature-mark" aria-hidden="true"></span></summary>
-            <div class="feature-detail"><p>Open a private thread with Dial Bot in the meeting chat. Ask a question and see its reply there, without posting either to the group.</p></div>
-          </details>
-          <details class="feature-item">
-            <summary><span class="feature-index">02</span><strong>Say its name.</strong><span class="feature-preview">Use a clear spoken wake phrase.</span><span class="feature-mark" aria-hidden="true"></span></summary>
-            <div class="feature-detail"><p>Begin a spoken request with <strong>“Hey Dial Bot”</strong> to make clear the question is for it: “Hey Dial Bot, what’s still pending?”</p></div>
-          </details>
-          <details class="feature-item">
-            <summary><span class="feature-index">03</span><strong>Leave room for the question.</strong><span class="feature-preview">A brief window for the same speaker.</span><span class="feature-mark" aria-hidden="true"></span></summary>
-            <div class="feature-detail"><p>If someone says only <strong>“Hey Dial Bot,”</strong> it can answer “Yes?” and give that speaker a brief moment to ask the question without repeating its name.</p></div>
-          </details>
-          <details class="feature-item">
-            <summary><span class="feature-index">04</span><strong>Move the meeting along.</strong><span class="feature-preview">Requested timer and room controls.</span><span class="feature-mark" aria-hidden="true"></span></summary>
-            <div class="feature-detail"><p>Ask Dial Bot to start a shared timer; a host or co-host can also request a room title change. The result appears in the meeting without an unnecessary spoken announcement.</p></div>
-          </details>
-          <details class="feature-item">
-            <summary><span class="feature-index">05</span><strong>Ask about what is showing.</strong><span class="feature-preview">A fresh look at the shared screen.</span><span class="feature-mark" aria-hidden="true"></span></summary>
-            <div class="feature-detail"><p>When asked about the shared screen, Dial Bot checks a fresh frame for that question so its answer reflects what is showing now.</p></div>
-          </details>
-          <details class="feature-item">
-            <summary><span class="feature-index">06</span><strong>Visible in the room.</strong><span class="feature-preview">Invited by the host, present with the team.</span><span class="feature-mark" aria-hidden="true"></span></summary>
-            <div class="feature-detail"><p>The host invites Dial Bot as a visible meeting participant; its tile stays with the group and waits quietly for a request.</p></div>
-          </details>
-          <details class="feature-item">
-            <summary><span class="feature-index">07</span><strong>Bring the issue into focus.</strong><span class="feature-preview">A specific source for the answer.</span><span class="feature-mark" aria-hidden="true"></span></summary>
-            <div class="feature-detail"><p>Choose what context Dial Bot can use for a question. A shared Jira issue gives it a specific source to answer from and link back to; the connection and sharing flow are still being explored.</p></div>
-          </details>
-        </div>
+        <a class="feature-demo-link" href="./demo/">Watch the full demo <span aria-hidden="true">↗</span></a>
       </div>
     </section>
     <section class="closing sequence-showcase page-wrap" id="sequence" aria-labelledby="closing-title">

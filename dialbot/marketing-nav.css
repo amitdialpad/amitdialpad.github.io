@@ -1,0 +1,10 @@
+.site-header nav{align-items:center}
+body .site-header nav a{display:inline-flex;align-items:center;line-height:1.2;border:0;padding:0;text-decoration:none}
+.site-header nav .site-pricing-link{padding:0;min-height:0}
+body .site-header nav a[aria-current="page"]{color:#5d3b91;font-weight:800;border:0!important;padding:0!important}
+@media(max-width:620px){
+  .site-header{gap:10px}
+  .site-header nav{display:flex;gap:clamp(8px,2vw,15px);margin-left:auto;white-space:nowrap}
+  .site-header nav a,body .site-header nav a:not(.site-pricing-link){display:inline-flex;font-size:clamp(10.5px,2.8vw,12px);line-height:1.2}
+  .site-header nav .site-pricing-link{font-size:clamp(10.5px,2.8vw,12px)}
+}

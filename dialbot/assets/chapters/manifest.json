@@ -1,0 +1,309 @@
+{
+  "revision": "c62eb7a2829f",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Bring Dial Bot in",
+      "description": "Dial Bot joins the review quietly, then introduces itself in Mira's private chat.",
+      "points": [
+        "Yacine invites Dial Bot from Host Controls.",
+        "The three-card meeting settles into Standby.",
+        "Mira opens her private greeting and first-use guidance."
+      ],
+      "cues": [
+        "Host Controls invite",
+        "Quiet Standby",
+        "Private greeting"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-01.mp4",
+      "captions": "./assets/chapters/chapter-01.vtt",
+      "poster": "./assets/chapters/chapter-01-poster.jpg"
+    },
+    {
+      "number": 2,
+      "title": "A quick answer",
+      "description": "A spoken question gets a brief spoken date answer while the meeting continues.",
+      "points": [
+        "The deck needs Friday's actual date.",
+        "Yacine asks Dial Bot aloud.",
+        "Mira returns to the slide with the answer."
+      ],
+      "cues": [
+        "Spoken question",
+        "Spoken answer",
+        "Back to the deck"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-02.mp4",
+      "captions": "./assets/chapters/chapter-02.vtt",
+      "poster": "./assets/chapters/chapter-02-poster.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Knowing its limits",
+      "description": "Dial Bot waits until addressed and says when live weather data is unavailable.",
+      "points": [
+        "An ordinary comment does not wake the Bot.",
+        "Yacine asks for current weather.",
+        "The Bot states its limit aloud."
+      ],
+      "cues": [
+        "Standby",
+        "Direct question",
+        "Honest limit"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-03.mp4",
+      "captions": "./assets/chapters/chapter-03.vtt",
+      "poster": "./assets/chapters/chapter-03-poster.jpg"
+    },
+    {
+      "number": 4,
+      "title": "A natural follow-up",
+      "description": "Yacine follows up without repeating the wake phrase before deciding not to disturb Amit.",
+      "points": [
+        "Mira considers bringing Amit into the meeting.",
+        "Yacine asks the current time in India.",
+        "They let Amit join on his own if he can."
+      ],
+      "cues": [
+        "Wake phrase",
+        "Follow-up",
+        "Human decision"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-04.mp4",
+      "captions": "./assets/chapters/chapter-04.vtt",
+      "poster": "./assets/chapters/chapter-04-poster.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Start a timer",
+      "description": "A spoken clarification starts a visible ten-minute meeting timer.",
+      "points": [
+        "Yacine asks for a timer.",
+        "Dial Bot asks how long.",
+        "The shared timer starts counting down."
+      ],
+      "cues": [
+        "Clarification",
+        "Ten minutes",
+        "Meeting timer"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-05.mp4",
+      "captions": "./assets/chapters/chapter-05.vtt",
+      "poster": "./assets/chapters/chapter-05-poster.jpg"
+    },
+    {
+      "number": 6,
+      "title": "See the shared slide",
+      "description": "Mira shares the Friday slide and asks what its QA line says.",
+      "points": [
+        "Mira shares the slide in Meetings.",
+        "Dial Bot reads the visible QA claim.",
+        "Mira flags the claim for verification."
+      ],
+      "cues": [
+        "Screen share",
+        "Visible claim",
+        "Check the wording"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-06.mp4",
+      "captions": "./assets/chapters/chapter-06.vtt",
+      "poster": "./assets/chapters/chapter-06-poster.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Check the sources privately",
+      "description": "Mira explicitly asks for source findings in her private chat.",
+      "points": [
+        "Mira names the Jira issue and Glean decision log.",
+        "Dial Bot acknowledges the private handoff.",
+        "Mira summarizes the decision-relevant facts aloud."
+      ],
+      "cues": [
+        "Private request",
+        "Source findings",
+        "Room summary"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-07.mp4",
+      "captions": "./assets/chapters/chapter-07.vtt",
+      "poster": "./assets/chapters/chapter-07-poster.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Make the decision",
+      "description": "The people decide Friday is a demo, then assign the revised deck and record the decision.",
+      "points": [
+        "Yacine makes the Friday call.",
+        "Mira will check Amit's wording.",
+        "The Bot captures the action item and decision in this staged scene."
+      ],
+      "cues": [
+        "Human decision",
+        "Deck owner",
+        "Action item"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-08.mp4",
+      "captions": "./assets/chapters/chapter-08.vtt",
+      "poster": "./assets/chapters/chapter-08-poster.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Recap the room",
+      "description": "A short spoken recap prepares the team to bring Amit up to speed.",
+      "points": [
+        "Mira asks for the clear version.",
+        "Yacine requests a room recap.",
+        "Dial Bot speaks only the shared decision and owners."
+      ],
+      "cues": [
+        "Room question",
+        "Spoken recap",
+        "Amit's context"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-09.mp4",
+      "captions": "./assets/chapters/chapter-09.vtt",
+      "poster": "./assets/chapters/chapter-09-poster.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Catch Amit up",
+      "description": "Amit joins from his standing invite and reads a private catch-up while the room keeps talking.",
+      "points": [
+        "Amit joins voluntarily.",
+        "He opens Dial Bot's private message.",
+        "He reads the decision and open work in his own view."
+      ],
+      "cues": [
+        "Roster change",
+        "Private offer",
+        "Catch-up"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-10.mp4",
+      "captions": "./assets/chapters/chapter-10.vtt",
+      "poster": "./assets/chapters/chapter-10-poster.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Find the brief",
+      "description": "Amit checks his current deck brief in a staged private connected-source answer.",
+      "points": [
+        "Amit asks privately which brief is current.",
+        "The staged answer points to a fictional test record.",
+        "He confirms he will send the revised deck."
+      ],
+      "cues": [
+        "Private question",
+        "Test source",
+        "Deck owner"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-11.mp4",
+      "captions": "./assets/chapters/chapter-11.vtt",
+      "poster": "./assets/chapters/chapter-11-poster.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Share the meeting link",
+      "description": "Mira asks for one copyable room link to send to Alex, the QA lead.",
+      "points": [
+        "Mira explains why Alex needs to see the wording.",
+        "Dial Bot acknowledges the voice-to-chat request.",
+        "The test-room link appears in Everyone chat."
+      ],
+      "cues": [
+        "QA lead",
+        "Room chat",
+        "Copyable link"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-12.mp4",
+      "captions": "./assets/chapters/chapter-12.vtt",
+      "poster": "./assets/chapters/chapter-12-poster.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Plan the follow-up",
+      "description": "A conceptual Calendar scene shows the checks and confirmation needed before booking.",
+      "points": [
+        "Yacine asks privately who on the invite has not joined.",
+        "The Bot drafts a follow-up for his review.",
+        "The proposal is not booked; Calendar connection remains required."
+      ],
+      "cues": [
+        "Planned visualization",
+        "Private proposal",
+        "No booking"
+      ],
+      "reviewStatus": "planned-visualization",
+      "video": "./assets/chapters/chapter-13.mp4",
+      "captions": "./assets/chapters/chapter-13.vtt",
+      "poster": "./assets/chapters/chapter-13-poster.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Give the room back",
+      "description": "Mira interrupts a proposed Bot answer to settle the next step herself.",
+      "points": [
+        "Yacine asks what remains before Friday.",
+        "Dial Bot begins an answer.",
+        "Mira takes the floor and names the deck handoff."
+      ],
+      "cues": [
+        "Remaining work",
+        "Interruption",
+        "Human lead"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-14.mp4",
+      "captions": "./assets/chapters/chapter-14.vtt",
+      "poster": "./assets/chapters/chapter-14-poster.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Pause and resume",
+      "description": "Yacine pauses Dial Bot while the people check the final wording, then resumes it.",
+      "points": [
+        "Host Controls shows Pause Dial Bot.",
+        "Mira and Amit agree on the final headline.",
+        "Yacine resumes Dial Bot for the handoff."
+      ],
+      "cues": [
+        "Host pause",
+        "Wording check",
+        "Resume"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-15.mp4",
+      "captions": "./assets/chapters/chapter-15.vtt",
+      "poster": "./assets/chapters/chapter-15-poster.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Leave a clear handoff",
+      "description": "The timer stops, Dial Bot leaves, and the room has the public decision and owners.",
+      "points": [
+        "Yacine stops the timer before removal.",
+        "The staged room handoff omits private source details.",
+        "Amit and Mira continue with clear responsibilities."
+      ],
+      "cues": [
+        "Timer stopped",
+        "Room handoff",
+        "Remove Dial Bot"
+      ],
+      "reviewStatus": "staged-review",
+      "video": "./assets/chapters/chapter-16.mp4",
+      "captions": "./assets/chapters/chapter-16.vtt",
+      "poster": "./assets/chapters/chapter-16-poster.jpg"
+    }
+  ]
+}

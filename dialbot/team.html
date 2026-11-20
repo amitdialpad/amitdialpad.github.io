@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Meet the five people and specialist sub-agents behind Dial Bot.">
+  <title>Team — Dial Bot</title>
+  <link rel="icon" href="./assets/dialpad-icon-tile-gradient.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./local.css">
+  <link rel="stylesheet" href="./team.css?v=8">
+  <link rel="stylesheet" href="./marketing-nav.css?v=1">
+</head>
+<body class="team-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="./index.html" aria-label="Dialpad, back to Dial Bot"><img src="./assets/dialpad-logo.svg" alt=""></a>
+    <nav aria-label="Site navigation"><a href="./index.html">Home</a><a class="site-pricing-link" href="./pricing.html">Pricing</a><a href="./demo/">Demo</a><a href="./team.html" aria-current="page">Team</a></nav>
+  </header>
+
+  <main id="main">
+    <section class="team-hero" aria-labelledby="team-title">
+      <div class="page-wrap">
+        <p class="team-eyebrow">DIAL BOT · THE MAKING OF</p>
+        <h1 id="team-title">A human team.<br><em>An AI studio.</em></h1>
+        <p class="team-hero-lede">Five teammates set the direction and made the calls. Specialist sub-agents helped build, test, write, and produce the work.</p>
+        <div class="team-hero-actions"><a class="team-button" href="#people">Meet the people <span aria-hidden="true">↓</span></a><a class="team-text-link" href="#agents">Explore their roles <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="team-section page-wrap" id="people" aria-labelledby="people-title">
+      <div class="team-section-head team-section-head--stacked"><div><p class="team-eyebrow">THE PEOPLE</p><h2 id="people-title">The team behind Dial Bot.</h2></div><p>Five people shaped the product, the assistant, its Meetings home, and the connections behind it.</p></div>
+      <div class="human-grid">
+        <article class="human-card"><p class="human-role">Product Designer</p><h3>Amit</h3><a class="human-profile" href="https://epd-team.apps.dialpadhq.com/raw/amit.ayre@dialpad.com" target="_blank" rel="noopener noreferrer">View profile <span aria-hidden="true">↗</span></a><p class="human-summary">Amit gave Dial Bot its face and feel. His North Star demo aligned the team, and he mapped the end-to-end journey while designing the Bot’s identity, personality, motion, interactions, brand, and marketing site. He also authored the merged Meetings PR for the synthetic video track and safeguards around camera capture and private replies.</p></article>
+        <article class="human-card"><p class="human-role">Applied AI Scientist</p><h3>Yacine</h3><a class="human-profile" href="https://epd-team.apps.dialpadhq.com/raw/yacine.khraimeche@dialpad.com" target="_blank" rel="noopener noreferrer">View profile <span aria-hidden="true">↗</span></a><p class="human-summary">Yacine built the assistant brain with speaker-scoped, read-only Atlassian and Dialpad connections plus tools for meeting state, timers, chat, and shared-screen questions. His merged meeting work added wake detection, short spoken answers, follow-up turns, private greetings, and late-join catch-up. A connected-account expansion remains draft.</p></article>
+        <article class="human-card"><p class="human-role">Meetings DRI</p><h3>Vishal</h3><a class="human-profile" href="https://epd-team.apps.dialpadhq.com/raw/vishal.bhardwaj@dialpad.com" target="_blank" rel="noopener noreferrer">View profile <span aria-hidden="true">↗</span></a><p class="human-summary">Vishal's merged speech work silenced the guest's fake mic, preserved outgoing speech when media was rebuilt, and stopped Bot speech when a person talked over it or muted. A separate open PR proposes host-scoped, read-only Glean access; that addition is still under review.</p></article>
+        <article class="human-card"><p class="human-role">Meetings specialist engineer</p><h3>Himanshu</h3><p class="human-summary">Himanshu proposed HTTP invite and remove endpoints and wired the UC RemoteDialBotHost path in an open backend PR. Its server launch functions are still stubs, so the PR establishes an API seam but does not prove an end-to-end Bot join. The work remains under review.</p></article>
+        <article class="human-card"><p class="human-role">Product Integrations Engineer</p><h3>Jimut</h3><p class="human-summary">Jimut authored local changes to Host Controls visibility, room state, and the beta guest's launch and pairing setup. Those commits sit within a shared draft integration. Its PR body is empty, so this credit follows the inspected commits and does not attribute the connected-source connectors to him.</p></article>
+        <a class="human-cta-card" href="#agents" aria-label="Explore specialist sub-agents">
+          <span class="human-cta-kicker">BEYOND THE HUMAN TEAM</span>
+          <span class="human-cta-main"><strong>Specialist<br>sub-agents</strong><span>Engineers, designers, writers, producers, and reviewers helped bring Dial Bot to life.</span></span>
+          <span class="human-cta-action">Explore their roles <span aria-hidden="true">↓</span></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="agent-band" id="agents" aria-labelledby="agents-title">
+      <div class="page-wrap">
+        <div class="team-section-head team-section-head--stacked"><div><p class="team-eyebrow">THE WORK</p><h2 id="agents-title">Specialist sub-agents</h2></div><p>AI sub-agents filled roles usually held by people: engineers, designers, writers, producers, and reviewers. Open each role to see the work it helped complete. These work credits are not a count of distinct agents.</p></div>
+        <div class="agent-group" aria-labelledby="agent-group-0">
+          <div class="agent-group-head"><h3 id="agent-group-0">Product &amp; engineering</h3></div>
+          <div class="agent-list">
+            <details class="agent-row" id="contribution-01" open>
+              <summary><span class="agent-number">01</span><span class="agent-row-heading"><strong>Meetings integration engineer</strong><small>The Bot arrives as a silent meeting guest.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>Focused local work stabilized host autojoin and kept the guest quiet until addressed. This credit describes the tested local join path, not every final meeting behavior.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-02">
+              <summary><span class="agent-number">02</span><span class="agent-row-heading"><strong>Runtime engineer</strong><small>A safer path for the beta guest to connect.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>The local launcher restored file-backed pairing and browser network checks so the guest could connect without placing the pairing value in the page.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-03">
+              <summary><span class="agent-number">03</span><span class="agent-row-heading"><strong>Privacy engineer</strong><small>Who can ask, and where the answer goes.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>The integration review mapped speaker-scoped, read-only source access and private replies for connected context. This is a reviewed privacy boundary, not a claim that this assignment implemented the connector architecture.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-04">
+              <summary><span class="agent-number">04</span><span class="agent-row-heading"><strong>Product designer</strong><small>A draft way to choose personal sources.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>A separate draft explored Settings setup and an attendee entry prompt for connecting a person’s context. It remains preview work until the real grant and permission flow is integrated.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-05">
+              <summary><span class="agent-number">05</span><span class="agent-row-heading"><strong>Motion engineer</strong><small>The familiar Dial Bot identity in Meetings.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>The approved Mood Kit was translated into reusable tile states for Standby, Listening, Thinking, Speaking, and Paused, keeping the Bot’s matte identity across the meeting view.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-06">
+              <summary><span class="agent-number">06</span><span class="agent-row-heading"><strong>Software engineer</strong><small>One copyable answer in room chat.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>A focused local fix addressed repeated source links after the live review showed the same meeting link twice. This credit is for that narrow chat-quality repair.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-07">
+              <summary><span class="agent-number">07</span><span class="agent-row-heading"><strong>Meetings engineer</strong><small>Clearer behavior when a timer is requested privately.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>A local change clarified private-chat timer messaging while the shared timer action received a separate room check. It should not be read as proof that every live timer request succeeds.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-08">
+              <summary><span class="agent-number">08</span><span class="agent-row-heading"><strong>Frontend engineer</strong><small>The film can be watched and revisited by chapter.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>The local chapter player gained seeking from its idle frame, captions, quiet controls below the film, a poster, and active chapter context. Player and site work share the same local source, so they appear as one credit.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-09">
+              <summary><span class="agent-number">09</span><span class="agent-row-heading"><strong>Motion designer</strong><small>A restrained visual language for the Bot.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>An isolated study developed five base states and three exploratory expressions around the matte Dial Bot contour. It also checked keyboard use and reduced-motion behavior. The extra expressions are design explorations, not shipped meeting behavior.</p><div class="agent-row-links"></div></div>
+            </details>
+            <details class="agent-row" id="contribution-10">
+              <summary><span class="agent-number">10</span><span class="agent-row-heading"><strong>Film editor</strong><small>Sixteen segments become one seekable film.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>A dedicated assembly pass joined sixteen chapter cuts, merged their captions, and wrote the timeline that drives navigation. The current film uses licensed stock-voice takes and remains open for creative review.</p><div class="agent-row-links"> <a href="./demo/">Open the standalone demo <span aria-hidden="true">↗</span></a></div></div>
+            </details>
+          </div>
+        </div>
+        <div class="agent-group" aria-labelledby="agent-group-1">
+          <div class="agent-group-head"><h3 id="agent-group-1">Story &amp; production</h3><p>A single meeting story, scripted and visualized for review.</p></div>
+          <div class="agent-list">
+            <details class="agent-row" id="contribution-11">
+              <summary><span class="agent-number">11</span><span class="agent-row-heading"><strong>Creative director</strong><small>One Friday review carries the full film.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>The treatment set a continuous meeting arc in which people make the decision and Dial Bot helps with evidence, actions, and catch-up. Product shots were directed to follow real Meetings UI.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-12">
+              <summary><span class="agent-number">12</span><span class="agent-row-heading"><strong>Scriptwriter</strong><small>Dialogue with motives and clear handoffs.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>The chapter script turned feature beats into a conversation and absorbed continuity feedback about why a person asks, where an answer goes, and what the rest of the room is doing.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-13">
+              <summary><span class="agent-number">13</span><span class="agent-row-heading"><strong>Storyboard artist</strong><small>Scenes mapped to the actual meeting view.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>The storyboard lays out participant cards, Host Controls, room and private chat, motion, and layout transitions so the film can be checked against Meetings rather than an invented interface.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-14">
+              <summary><span class="agent-number">14</span><span class="agent-row-heading"><strong>Casting director</strong><small>Performance guidance for the chapter cast.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>The casting packet describes character purpose and performance, while retaining Dial Bot’s established voice direction. It is a planning artifact; final voice takes are still subject to review.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-15">
+              <summary><span class="agent-number">15</span><span class="agent-row-heading"><strong>Video producer</strong><small>The first assembled scene is available to inspect.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>The opening chapter shows the join transition, quiet Bot arrival, and private welcome in the meeting view.</p><a href="./demo/">Watch in the standalone demo <span aria-hidden="true">↗</span></a></div>
+            </details>
+            <details class="agent-row" id="contribution-16">
+              <summary><span class="agent-number">16</span><span class="agent-row-heading"><strong>Audio engineer</strong><small>An earlier voiced film with timed captions.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>A separate production pass assembled 22 licensed stock-voice takes into a dialogue-only mix, four role stems, and timed captions for an earlier short film. It does not establish final voice casting for the 16-chapter demo.</p><div class="agent-row-links"></div></div>
+            </details>
+            <details class="agent-row" id="contribution-17">
+              <summary><span class="agent-number">17</span><span class="agent-row-heading"><strong>Video producer</strong><small>Seven staged scenes extend the meeting.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>A production pass rendered the next seven chapter segments with the Chapter 1 meeting geometry and active-speaker cues. Licensed stock-voice takes now replace the early timing voices. The Jira and Glean examples are staged records rather than live connected results.</p><div class="agent-row-links"></div></div>
+            </details>
+            <details class="agent-row" id="contribution-18">
+              <summary><span class="agent-number">18</span><span class="agent-row-heading"><strong>Video producer</strong><small>Eight more staged scenes complete the arc.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>A second pass completed the later chapters, including Amit in a four-person grid. It kept the timer continuous and treated the proposed calendar booking as not booked. Licensed stock voices now replace the early timing takes; product actions still need real test-room capture.</p><div class="agent-row-links"></div></div>
+            </details>
+            <details class="agent-row" id="contribution-19">
+              <summary><span class="agent-number">19</span><span class="agent-row-heading"><strong>Visual designer</strong><small>Sharper chat, card cues, and meeting controls.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>Focused image reviews corrected chat text scale, the active speaker ring, and bottom control proportions in the Chapter 1 render. These files show the visual changes directly rather than claiming new product functionality.</p><div class="agent-row-links"> </div></div>
+            </details>
+            <details class="agent-row" id="contribution-20">
+              <summary><span class="agent-number">20</span><span class="agent-row-heading"><strong>UX designer</strong><small>A private recap while the meeting continues.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>An isolated experience study explored a late arrival reading a private recap without leaving the live conversation. The handoff labels the interaction as illustrative pending exact product UI verification.</p><div class="agent-row-links"></div></div>
+            </details>
+          </div>
+        </div>
+        <div class="agent-group" aria-labelledby="agent-group-2">
+          <div class="agent-group-head"><h3 id="agent-group-2">Review &amp; delivery</h3><p>Product truth, coverage, QA, and a separate marketing exploration.</p></div>
+          <div class="agent-list">
+            <details class="agent-row" id="contribution-21">
+              <summary><span class="agent-number">21</span><span class="agent-row-heading"><strong>Design QA specialist</strong><small>Real controls and cards guide the film.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>A product reference checks participant cards, Host Controls, chat, timer, and bottom-bar placement against the actual Meetings interface and supplied captures.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-22">
+              <summary><span class="agent-number">22</span><span class="agent-row-heading"><strong>Product analyst</strong><small>Each scene has an evidence boundary.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>The coverage map compares the planned film with Yacine’s meeting work, distinguishing described behavior, reported live checks, and capture still needed for the finished demo.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-23">
+              <summary><span class="agent-number">23</span><span class="agent-row-heading"><strong>QA engineer</strong><small>Focused tests for the meeting path.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>Post-merge local changes repaired Bot stop callback and canvas media tests. This credit covers the test work, not a claim that the full production flow has passed every check.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-24">
+              <summary><span class="agent-number">24</span><span class="agent-row-heading"><strong>QA specialist</strong><small>A repeatable way to inspect meeting behavior.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>A local Virtual QA artifact prepared evidence-backed scenarios and a repeatable review path for Dial Bot meeting behavior, including clear separation of observed and proposed states.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-25">
+              <summary><span class="agent-number">25</span><span class="agent-row-heading"><strong>Web designer</strong><small>A separate preview for the existing site section.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>The website exploration produced two private layouts for the current “In the flow of the meeting” section. The chosen layout now carries the chapter films within the existing marketing section.</p></div>
+            </details>
+            <details class="agent-row" id="contribution-26">
+              <summary><span class="agent-number">26</span><span class="agent-row-heading"><strong>Market researcher</strong><small>Claims checked against the category.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>A comparative research pass reviewed current meeting assistants and set boundaries for the page story: spoken participation, source-backed help, and honest limits. It explicitly avoided unsupported first-to-market and live-availability claims.</p><div class="agent-row-links"></div></div>
+            </details>
+            <details class="agent-row" id="contribution-27">
+              <summary><span class="agent-number">27</span><span class="agent-row-heading"><strong>Documentation designer</strong><small>A map of what is captured, previewed, or missing.</small></span><span class="agent-toggle" aria-hidden="true"></span></summary>
+              <div class="agent-row-content"><p>The screenshot-board assignment produced a three-lane manifest and self-contained SVG workflow for visual review. Its status fields distinguish captured product states from previews and missing evidence.</p><div class="agent-row-links"></div></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+  <footer class="site-footer"><div class="page-wrap footer-inner"><a class="brand" href="./index.html" aria-label="Dialpad, back to Dial Bot"><img src="./assets/dialpad-logo.svg" alt=""></a><span>The people and specialist sub-agents behind Dial Bot</span><a href="./index.html">Back to Dial Bot ↗</a></div></footer>
+</body>
+</html>

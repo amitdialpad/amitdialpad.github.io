@@ -1,0 +1,13 @@
+WEBVTT
+
+00:00:00.250 --> 00:00:12.754
+Mira: Alex leads QA. He has the invite, but hasn't joined. I want him to check that our deck doesn't claim QA is finished. Hey Dial Bot, put this meeting link in room chat so I can send it to Alex.
+
+00:00:14.217 --> 00:00:15.784
+Dial Bot: I put the link in chat.
+
+00:00:16.450 --> 00:00:20.350
+Dial Bot (room chat): Staged test room link: https://example.invalid/friday-demo-room
+
+00:00:20.750 --> 00:00:22.552
+Mira: Got it. I'll send it to him.

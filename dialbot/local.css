@@ -110,6 +110,7 @@ html{scroll-behavior:smooth}body{margin:0;min-width:320px}button,a{font:inherit}
 .emotion-controls button:focus-visible{outline:2px solid #7956a4;outline-offset:-2px}
 .emotion-number{padding-top:0;color:#8b8791;font-size:11px;font-weight:650;letter-spacing:.045em}
 .emotion-controls button.is-active .emotion-number{color:#7956a4}
+.emotion-controls button.is-active .emotion-button-copy strong{color:#7956a4}
 .emotion-button-copy{gap:5px}
 .emotion-button-copy strong{color:#29232e;font-size:19px;font-weight:650;letter-spacing:-.025em;line-height:1.12}
 .emotion-button-copy small{color:#6c6671;font-size:12.5px;line-height:1.4}

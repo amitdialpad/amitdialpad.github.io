@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="The Dial Bot meeting story and sixteen individual chapter clips.">
+  <title>Dial Bot demo — one meeting, 16 chapters</title>
+  <link rel="icon" href="../assets/dialpad-icon-tile-gradient.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../chapters.css?v=full-16-v5">
+  <link rel="stylesheet" href="./demo.css?v=story-cut-v4">
+  <script src="./chapters.js?v=story-cut-v4" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#catch-up">Skip to demo</a>
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Dialpad, Home"><img src="../assets/dialpad-logo.svg" alt=""></a>
+    <nav aria-label="Site navigation">
+      <a href="../index.html">Home</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="./" aria-current="page">Demo</a>
+      <a href="../team.html">Team</a>
+    </nav>
+  </header>
+  <main>
+    <section class="chapter-showcase is-compact" id="catch-up" aria-labelledby="chapters-title">
+      <div class="page-wrap">
+        <div class="chapter-heading">
+          <p class="chapter-eyebrow">One meeting · 16 use cases</p>
+          <h1 id="chapters-title">Watch the Dial Bot demo.</h1>
+          <p>A short meeting story, with all 16 individual moments below. This is an illustrative film; connected results use sample data.</p>
+        </div>
+        <div class="chapter-viewer" id="chapter-viewer">
+          <div class="chapter-top">
+            <div class="chapter-film-column">
+              <div class="chapter-player">
+                <video id="chapter-film" playsinline preload="metadata" tabindex="0" poster="../assets/chapter-01-friday-review-poster.jpg" aria-label="Dial Bot short meeting story">Your browser does not support video playback.</video>
+                <button class="chapter-poster-play" id="chapter-poster-play" type="button" aria-label="Play the Dial Bot demo" hidden><span class="chapter-poster-play-icon" aria-hidden="true">▶</span><span>Play demo</span></button>
+                <div class="chapter-media-pending" id="chapter-media-pending" role="status">
+                  <span class="chapter-media-mark" aria-hidden="true">01</span>
+                  <strong>Loading the Dial Bot story.</strong>
+                  <span>Please wait while the film is prepared.</span>
+                </div>
+              </div>
+              <div class="chapter-transport" id="chapter-transport" role="group" aria-label="Film playback controls" hidden>
+                <button class="chapter-transport-button" id="chapter-play-toggle" type="button" aria-label="Play film" title="Play film" data-state="play">
+                  <svg class="chapter-icon chapter-icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z" fill="currentColor"/></svg>
+                  <svg class="chapter-icon chapter-icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14M17 5v14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                  <svg class="chapter-icon chapter-icon-replay" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 10a8 8 0 1 1 0 4M4.5 5v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <label class="chapter-scrub-label" for="chapter-scrub">Film position</label>
+                <input id="chapter-scrub" class="chapter-scrub" type="range" min="0" max="0" step="0.1" value="0" aria-label="Seek film" aria-valuetext="00:00 of 00:00">
+                <span class="chapter-time-readout" id="chapter-time-readout" aria-live="off">00:00 / 00:00</span>
+                <button class="chapter-transport-button" id="chapter-mute-toggle" type="button" aria-label="Mute film" title="Mute film" data-muted="false"><svg class="chapter-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path class="chapter-icon-sound" d="M16 9a4 4 0 0 1 0 6m2-9a8 8 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="chapter-icon-muted" d="m17 9 5 6m0-6-5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+                <button class="chapter-transport-button chapter-cc-button" id="chapter-captions-toggle" type="button" aria-label="Turn captions on" title="Turn captions on" aria-pressed="false" disabled>CC</button>
+              </div>
+              <div class="demo-source-line" aria-live="polite"><span id="demo-current-label">Short story</span><button type="button" id="back-to-story" hidden>← Back to story</button></div>
+              <span class="demo-sr-only" id="chapter-media-status" role="status">Preparing the story</span>
+            </div>
+          </div>
+        </div>
+        <section class="chapter-index" aria-labelledby="chapter-list-title">
+          <div class="chapter-index-heading"><h2 id="chapter-list-title">Jump to a moment</h2><p>Individual clips from the same meeting.</p></div>
+          <nav aria-labelledby="chapter-list-title"><ol class="chapter-list" id="chapter-list" hidden></ol></nav>
+          <noscript><p>Enable JavaScript to play the film and choose chapters.</p></noscript>
+        </section>
+        <details class="demo-setup">
+          <summary><span>Try Dial Bot in a beta meeting</span><span class="demo-setup-type">Internal local setup</span></summary>
+          <div class="demo-setup-body">
+            <p>This is a local, nonproduction test. You need a compatible <code>uc_client</code> checkout, approved npm access, Chrome, the trusted local development certificate, and a beta account that can host a meeting. Spoken requests also need Voice AI transcription enabled with everyone’s consent.</p>
+            <div class="demo-setup-grid">
+              <div>
+                <h3>Set it up manually</h3>
+                <ol>
+                  <li>From <code>uc_client/</code>, run <code>npm ci</code> and complete the approved local certificate setup.</li>
+                  <li>Create an owner-only <code>~/.dialbot/dialbot.env</code> file outside the repository and a fresh pairing file. Both files must be mode <code>0600</code>. Add these settings to the environment file, replacing the placeholders with approved values:<pre><code>DIALBOT_BRAIN_MODEL=&lt;approved-model-name&gt;
+DIALBOT_OPENAI_API_KEY=&lt;project-scoped-server-key&gt;
+DIALBOT_LOCAL_SECRET_FILE=$HOME/.dialbot/host-pairing-secret
+DIALBOT_GUEST_LOCAL_BUNDLE=1</code></pre>Load the same pairing-file path in both processes.</li>
+                  <li>Load that environment file in two terminals. Start the local client with <code>npm run dev</code> in one and the launcher with <code>node scripts/dialbot-local/server.mjs</code> in the other. Use the port requested by your beta page.</li>
+                  <li>Start a beta meeting. In Host Controls, choose <strong>Dial Bot → Invite</strong>. Try “Hey Dialbot” or send a private chat message. Use <strong>Remove</strong> when finished.</li>
+                </ol>
+              </div>
+              <div>
+                <h3>With Claude Code</h3>
+                <p>Open the same checkout and ask Claude Code to walk through <code>uc_client/scripts/dialbot-local/DEMO.md</code> and the launcher <code>README.md</code>. Keep keys and the pairing value in local owner-only files or the approved secret manager, never in the chat, browser URL, or repository. Review the commands before running them.</p>
+                <h3>Before you test</h3>
+                <p>A natural voice needs the approved voice configuration; without it, the launcher may use a test voice. This audited build is meeting-only. Personal Jira, Glean, and Calendar account connections are not enabled here; check the current internal guide for any separately approved branch.</p>
+              </div>
+            </div>
+            <p class="demo-setup-help"><strong>If it does not connect:</strong> Check that the local client and launcher loaded the same pairing-file path. If the guest asks for a name, verify <code>DIALBOT_GUEST_LOCAL_BUNDLE=1</code> and the local client port. If speech does not wake the Bot, check Voice AI transcription and the wake phrase. If the browser blocks the local bundle or WebSocket, use an approved preview instead of bypassing the block. Live spoken answers and voice quality still need to be checked in a real room.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

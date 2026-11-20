@@ -1,0 +1,85 @@
+.chapter-item .feature-detail { max-width: none; padding-right: 0; }
+.chapter-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(260px, .82fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 68px);
+}
+.chapter-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 21px;
+  background: #111015;
+  box-shadow: 0 16px 40px #21132f1c;
+}
+.chapter-media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.chapter-media-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid #ffffffbd;
+  border-radius: 50%;
+  background: #14131ad9;
+  color: #fff;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: background .2s ease, scale .2s ease;
+}
+.chapter-media-play span { margin-left: 3px; font-size: 22px; line-height: 1; }
+.chapter-media-play.is-playing { opacity: 0; pointer-events: none; }
+.chapter-media-play:hover, .chapter-media-play:focus-visible { background: #3b2b50; scale: 1.08; }
+.chapter-media-play:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.chapter-media-error {
+  position: absolute;
+  left: 14px;
+  bottom: 58px;
+  padding: 6px 9px;
+  border-radius: 5px;
+  background: #121218d9;
+  color: #fff;
+  font-size: 12px;
+}
+.chapter-media-error[hidden] { display: none; }
+.chapter-detail-kicker {
+  display: block;
+  color: #7052a1;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.chapter-detail-copy p {
+  margin: 14px 0 0;
+  color: #3d3645;
+  font-size: clamp(18px, 1.7vw, 23px);
+  line-height: 1.4;
+  letter-spacing: -.025em;
+}
+.chapter-status { color: #72569d; font-weight: 700; }
+.chapter-load-error { padding: 26px 0; color: #4d4553; }
+
+@media (max-width: 900px) {
+  .chapter-detail-grid { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .chapter-detail-copy { max-width: 680px; }
+}
+
+@media (max-width: 700px) {
+  .chapter-detail-grid { gap: 18px; }
+  .chapter-item .feature-detail { padding-right: 0; }
+  .chapter-media { border-radius: 15px; }
+  .chapter-media-play { width: 54px; height: 54px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter-media-play { transition: none; }
+}

@@ -1,0 +1,412 @@
+{
+  "revision": "1ca8013e67fa",
+  "sourceRevision": "1ad7990734d0",
+  "film": "../assets/continuous-chapters-01-16.mp4?v=1ca8013e67fa",
+  "captions": "../assets/continuous-chapters-01-16.vtt?v=9203a6e50950",
+  "poster": "../assets/chapter-01-friday-review-poster.jpg?v=8f907085f7f8",
+  "totalDurationSeconds": 347.522667,
+  "reviewStatus": "staged-review",
+  "audioStatus": "licensed-stock-cast-review",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Bring Dial Bot in",
+      "startSeconds": 0.0,
+      "durationSeconds": 38.0,
+      "takeaway": "Dial Bot joins the review quietly, then introduces itself in Mira's private chat.",
+      "points": [
+        "Yacine invites Dial Bot from Host Controls.",
+        "The three-card meeting settles into Standby.",
+        "Mira opens her private greeting and first-use guidance."
+      ],
+      "cues": [
+        "Host Controls invite",
+        "Quiet Standby",
+        "Private greeting"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-01-friday-review.mp4?v=a9cbe8e24d4f",
+        "captions": "../assets/chapter-01-friday-review.vtt?v=b014cdd7792b",
+        "poster": "../assets/chapter-01-friday-review-poster.jpg?v=8f907085f7f8"
+      },
+      "notes": "Staged pilot with approved Jessica and Mark stock-cast takes; the archived late-joiner line is excluded."
+    },
+    {
+      "number": 2,
+      "title": "A quick answer",
+      "startSeconds": 38.0,
+      "durationSeconds": 14.833333,
+      "takeaway": "A spoken question gets a brief spoken date answer while the meeting continues.",
+      "points": [
+        "The deck needs Friday's actual date.",
+        "Yacine asks Dial Bot aloud.",
+        "Mira returns to the slide with the answer."
+      ],
+      "cues": [
+        "Spoken question",
+        "Spoken answer",
+        "Back to the deck"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-02.mp4?v=a39bf280c0a4",
+        "captions": "../assets/chapter-02.vtt?v=a4ddcf319210",
+        "poster": "../assets/chapter-02-poster.jpg?v=8fb41633b54b"
+      },
+      "notes": "Reconstructed Meetings visualization, not captured product behavior. ElevenLabs stock-cast takes need human listening review. Proposed product results still need actual test-room capture before public behavior claims."
+    },
+    {
+      "number": 3,
+      "title": "Knowing its limits",
+      "startSeconds": 52.833333,
+      "durationSeconds": 15.9,
+      "takeaway": "Dial Bot waits until addressed and says when live weather data is unavailable.",
+      "points": [
+        "An ordinary comment does not wake the Bot.",
+        "Yacine asks for current weather.",
+        "The Bot states its limit aloud."
+      ],
+      "cues": [
+        "Standby",
+        "Direct question",
+        "Honest limit"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-03.mp4?v=902abbd25d8b",
+        "captions": "../assets/chapter-03.vtt?v=3813f4b71a46",
+        "poster": "../assets/chapter-03-poster.jpg?v=8fb41633b54b"
+      },
+      "notes": "Reconstructed Meetings visualization, not captured product behavior. ElevenLabs stock-cast takes need human listening review. Proposed product results still need actual test-room capture before public behavior claims."
+    },
+    {
+      "number": 4,
+      "title": "A natural follow-up",
+      "startSeconds": 68.733333,
+      "durationSeconds": 22.7,
+      "takeaway": "Yacine follows up without repeating the wake phrase before deciding not to disturb Amit.",
+      "points": [
+        "Mira considers bringing Amit into the meeting.",
+        "Yacine asks the current time in India.",
+        "They let Amit join on his own if he can."
+      ],
+      "cues": [
+        "Wake phrase",
+        "Follow-up",
+        "Human decision"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-04.mp4?v=8a27557395cd",
+        "captions": "../assets/chapter-04.vtt?v=0f9ba2369b23",
+        "poster": "../assets/chapter-04-poster.jpg?v=8fb41633b54b"
+      },
+      "notes": "Reconstructed Meetings visualization, not captured product behavior. ElevenLabs stock-cast takes need human listening review. Proposed product results still need actual test-room capture before public behavior claims."
+    },
+    {
+      "number": 5,
+      "title": "Start a timer",
+      "startSeconds": 91.433333,
+      "durationSeconds": 13.166667,
+      "takeaway": "A spoken clarification starts a visible ten-minute meeting timer.",
+      "points": [
+        "Yacine asks for a timer.",
+        "Dial Bot asks how long.",
+        "The shared timer starts counting down."
+      ],
+      "cues": [
+        "Clarification",
+        "Ten minutes",
+        "Meeting timer"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-05.mp4?v=b5f0f6cba315",
+        "captions": "../assets/chapter-05.vtt?v=a02e68a4f4c6",
+        "poster": "../assets/chapter-05-poster.jpg?v=8fb41633b54b"
+      },
+      "notes": "Reconstructed Meetings visualization, not captured product behavior. ElevenLabs stock-cast takes need human listening review. Proposed product results still need actual test-room capture before public behavior claims."
+    },
+    {
+      "number": 6,
+      "title": "See the shared slide",
+      "startSeconds": 104.6,
+      "durationSeconds": 18.0,
+      "takeaway": "Mira shares the Friday slide and asks what its QA line says.",
+      "points": [
+        "Mira shares the slide in Meetings.",
+        "Dial Bot reads the visible QA claim.",
+        "Mira flags the claim for verification."
+      ],
+      "cues": [
+        "Screen share",
+        "Visible claim",
+        "Check the wording"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-06-qa-review.mp4?v=qa-review-1",
+        "captions": "../assets/chapter-06-qa-review.vtt?v=qa-review-1",
+        "poster": "../assets/chapter-06-poster.jpg?v=6ebb9d3160d9"
+      },
+      "notes": "Reconstructed Meetings visualization, not captured product behavior. ElevenLabs stock-cast takes need human listening review. Proposed product results still need actual test-room capture before public behavior claims."
+    },
+    {
+      "number": 7,
+      "title": "Check the sources privately",
+      "startSeconds": 122.6,
+      "durationSeconds": 30.466667,
+      "takeaway": "Mira explicitly asks for source findings in her private chat.",
+      "points": [
+        "Mira names the Jira issue and Glean decision log.",
+        "Dial Bot acknowledges the private handoff.",
+        "Mira summarizes the decision-relevant facts aloud."
+      ],
+      "cues": [
+        "Private request",
+        "Source findings",
+        "Room summary"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-07-qa-review.mp4?v=qa-review-1",
+        "captions": "../assets/chapter-07-qa-review.vtt?v=qa-review-1",
+        "poster": "../assets/chapter-07-poster.jpg?v=3eb9885fa215"
+      },
+      "notes": "Reconstructed Meetings visualization, not captured product behavior. ElevenLabs stock-cast takes need human listening review. Proposed product results still need actual test-room capture before public behavior claims."
+    },
+    {
+      "number": 8,
+      "title": "Make the decision",
+      "startSeconds": 153.066667,
+      "durationSeconds": 26.0,
+      "takeaway": "The people decide Friday is a demo, then assign the revised deck and record the decision.",
+      "points": [
+        "Yacine makes the Friday call.",
+        "Mira will check Amit's wording.",
+        "The Bot captures the action item and decision in this staged scene."
+      ],
+      "cues": [
+        "Human decision",
+        "Deck owner",
+        "Action item"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-08-qa-review.mp4?v=qa-review-1",
+        "captions": "../assets/chapter-08-qa-review.vtt?v=qa-review-1",
+        "poster": "../assets/chapter-08-poster.jpg?v=37969353fc3e"
+      },
+      "notes": "Reconstructed Meetings visualization, not captured product behavior. ElevenLabs stock-cast takes need human listening review. Proposed product results still need actual test-room capture before public behavior claims."
+    },
+    {
+      "number": 9,
+      "title": "Recap the room",
+      "startSeconds": 179.066667,
+      "durationSeconds": 19.9,
+      "takeaway": "A short spoken recap prepares the team to bring Amit up to speed.",
+      "points": [
+        "Mira asks for the clear version.",
+        "Yacine requests a room recap.",
+        "Dial Bot speaks only the shared decision and owners."
+      ],
+      "cues": [
+        "Room question",
+        "Spoken recap",
+        "Amit's context"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-09-qa-review.mp4?v=qa-review-1",
+        "captions": "../assets/chapter-09-qa-review.vtt?v=qa-review-1",
+        "poster": "../assets/chapter-09-poster.jpg?v=e1835369d2a3"
+      },
+      "notes": "Proposed spoken recap from meeting dialogue. This is not a captured live Bot result."
+    },
+    {
+      "number": 10,
+      "title": "Catch Amit up",
+      "startSeconds": 198.966667,
+      "durationSeconds": 22.433333,
+      "takeaway": "Amit joins from his standing invite and reads a private catch-up while the room keeps talking.",
+      "points": [
+        "Amit joins voluntarily.",
+        "He opens Dial Bot's private message.",
+        "He reads the decision and open work in his own view."
+      ],
+      "cues": [
+        "Roster change",
+        "Private offer",
+        "Catch-up"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-10-catchup-review.mp4?v=catchup-review-1",
+        "captions": "../assets/chapter-10-catchup-review.vtt?v=catchup-review-1",
+        "poster": "../assets/chapter-10-poster.jpg?v=edf07ee42126"
+      },
+      "notes": "Amit joins voluntarily. Private greeting and catch-up are proposed text, visible only in his staged view."
+    },
+    {
+      "number": 11,
+      "title": "Find the brief",
+      "startSeconds": 221.4,
+      "durationSeconds": 17.233333,
+      "takeaway": "Amit checks his current deck brief in a staged private connected-source answer.",
+      "points": [
+        "Amit asks privately which brief is current.",
+        "The staged answer points to a fictional test record.",
+        "He confirms he will send the revised deck."
+      ],
+      "cues": [
+        "Private question",
+        "Test source",
+        "Deck owner"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-11.mp4?v=593854aa55d8",
+        "captions": "../assets/chapter-11.vtt?v=00e9db90d5c2",
+        "poster": "../assets/chapter-11-poster.jpg?v=1f109cedb84e"
+      },
+      "notes": "Private connected-source result uses a clearly marked fictional test record; no live Confluence or Dialpad lookup is claimed."
+    },
+    {
+      "number": 12,
+      "title": "Share the meeting link",
+      "startSeconds": 238.633333,
+      "durationSeconds": 23.067,
+      "takeaway": "Mira asks for one copyable room link to send to Alex, the QA lead.",
+      "points": [
+        "Mira explains why Alex needs to see the wording.",
+        "Dial Bot acknowledges the voice-to-chat request.",
+        "The test-room link appears in Everyone chat."
+      ],
+      "cues": [
+        "QA lead",
+        "Room chat",
+        "Copyable link"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-12-qa-review.mp4?v=qa-review-1",
+        "captions": "../assets/chapter-12-qa-review.vtt?v=qa-review-1",
+        "poster": "../assets/chapter-12-poster.jpg?v=6da0041b8498"
+      },
+      "notes": "Everyone chat uses an illustrative test-room URL; actual room-link action and recipient delivery need capture."
+    },
+    {
+      "number": 13,
+      "title": "Plan the follow-up",
+      "startSeconds": 261.700333,
+      "durationSeconds": 23.667,
+      "takeaway": "A conceptual Calendar scene shows the checks and confirmation needed before booking.",
+      "points": [
+        "Yacine asks privately who on the invite has not joined.",
+        "The Bot drafts a follow-up for his review.",
+        "The proposal is not booked; Calendar connection remains required."
+      ],
+      "cues": [
+        "Planned visualization",
+        "Private proposal",
+        "No booking"
+      ],
+      "reviewStatus": "planned-visualization",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-13.mp4?v=2faeb7f8c2e8",
+        "captions": "../assets/chapter-13.vtt?v=d036828114a6",
+        "poster": "../assets/chapter-13-poster.jpg?v=6a7f922335d9"
+      },
+      "notes": "Future-only Calendar integration. Proposal is conceptual; no invitee read or event creation is represented as successful."
+    },
+    {
+      "number": 14,
+      "title": "Give the room back",
+      "startSeconds": 285.367333,
+      "durationSeconds": 16.367,
+      "takeaway": "Mira interrupts a proposed Bot answer to settle the next step herself.",
+      "points": [
+        "Yacine asks what remains before Friday.",
+        "Dial Bot begins an answer.",
+        "Mira takes the floor and names the deck handoff."
+      ],
+      "cues": [
+        "Remaining work",
+        "Interruption",
+        "Human lead"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-14.mp4?v=5d3568dc22ba",
+        "captions": "../assets/chapter-14.vtt?v=e71552cadedd",
+        "poster": "../assets/chapter-14-poster.jpg?v=c227f950eb06"
+      },
+      "notes": "Staged scene illustrates an interruption. Product yielding still requires one uncut live audio capture."
+    },
+    {
+      "number": 15,
+      "title": "Pause and resume",
+      "startSeconds": 301.734333,
+      "durationSeconds": 22.067,
+      "takeaway": "Yacine pauses Dial Bot while the people check the final wording, then resumes it.",
+      "points": [
+        "Host Controls shows Pause Dial Bot.",
+        "Mira and Amit agree on the final headline.",
+        "Yacine resumes Dial Bot for the handoff."
+      ],
+      "cues": [
+        "Host pause",
+        "Wording check",
+        "Resume"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-15.mp4?v=155ecffe5951",
+        "captions": "../assets/chapter-15.vtt?v=0e6244f63d83",
+        "poster": "../assets/chapter-15-poster.jpg?v=11ad1141a2ae"
+      },
+      "notes": "Host Pause/Resume labels come from the Meetings control; staged timing does not prove a live pause action."
+    },
+    {
+      "number": 16,
+      "title": "Leave a clear handoff",
+      "startSeconds": 323.801333,
+      "durationSeconds": 23.7,
+      "takeaway": "The timer stops, Dial Bot leaves, and the room has the public decision and owners.",
+      "points": [
+        "Yacine stops the timer before removal.",
+        "The staged room handoff omits private source details.",
+        "Amit and Mira continue with clear responsibilities."
+      ],
+      "cues": [
+        "Timer stopped",
+        "Room handoff",
+        "Remove Dial Bot"
+      ],
+      "reviewStatus": "staged-review",
+      "audioStatus": "licensed-stock-cast-review",
+      "media": {
+        "film": "../assets/chapter-16.mp4?v=3f439a364204",
+        "captions": "../assets/chapter-16.vtt?v=3f8f8f025f91",
+        "poster": "../assets/chapter-16-poster.jpg?v=6a6e397e0136"
+      },
+      "notes": "Timer is manually stopped before removal; Yacine says 'Let's stop the timer here' before the stopped state appears because ten minutes have not elapsed in this cut. Public summary is staged and excludes private source details. No live action-item creation is claimed."
+    }
+  ]
+}
